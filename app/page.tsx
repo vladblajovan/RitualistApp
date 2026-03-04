@@ -1172,36 +1172,12 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/vladblajovan/Ritualist"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-                >
-                  <FaGithub className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-                >
-                  <FaTwitter className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://instagram.com"
+                  href="https://instagram.com/ritualist.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
                 >
                   <FaInstagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://tiktok.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-                >
-                  <FaTiktok className="h-5 w-5" />
                 </a>
               </div>
             </div>
