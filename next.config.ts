@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
   basePath: '/Ritualist',
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './imageLoader.ts',
+  },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/Ritualist',
   },
 };
 
