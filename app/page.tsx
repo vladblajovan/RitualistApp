@@ -1309,7 +1309,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-12 border-t border-zinc-200 pt-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-            © 2025–2026 Ritualist. Built with ❤️ by Vlad Blajovan
+            © 2025–{new Date().getFullYear()} Ritualist. Built with ❤️ by Vlad Blajovan
           </div>
         </div>
       </footer>
