@@ -1057,7 +1057,7 @@ export default function Home() {
             Choose your plan
           </motion.h3>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-3">
             {/* Weekly */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1117,26 +1117,6 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Lifetime - Best Value */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="relative rounded-2xl border-2 border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 p-4 md:p-6 dark:border-purple-400 dark:from-purple-950/50 dark:to-pink-950/50"
-            >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-3 py-0.5 text-[10px] font-medium text-white md:px-4 md:py-1 md:text-xs">
-                Best Value
-              </div>
-              <h4 className="mb-2 text-base font-bold text-black md:mb-3 md:text-lg dark:text-white">Lifetime</h4>
-              <div className="mb-1">
-                <span className="text-2xl font-bold text-black md:text-4xl dark:text-white">$99.99</span>
-              </div>
-              <p className="mb-2 text-[10px] text-zinc-600 md:mb-3 md:text-xs dark:text-zinc-400">One-time payment</p>
-              <p className="text-xs text-zinc-700 md:text-sm dark:text-zinc-300">
-                Pay once, own forever
-              </p>
-            </motion.div>
           </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
