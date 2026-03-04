@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import BmcWidget from "./components/BmcWidget";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -94,6 +93,20 @@ export default function RootLayout({
                   document.documentElement.classList.toggle('dark', e.matches);
                 });
               })();
+              window.addEventListener('load', function() {
+                var s = document.createElement('script');
+                s.setAttribute('data-name', 'BMC-Widget');
+                s.setAttribute('data-cfasync', 'false');
+                s.setAttribute('data-id', 'vladblajovan');
+                s.setAttribute('data-description', 'Support me on Buy me a coffee!');
+                s.setAttribute('data-message', '');
+                s.setAttribute('data-color', '#FFDD00');
+                s.setAttribute('data-position', 'Right');
+                s.setAttribute('data-x_margin', '18');
+                s.setAttribute('data-y_margin', '18');
+                s.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
+                document.body.appendChild(s);
+              });
             `,
           }}
         />
@@ -102,7 +115,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <BmcWidget />
       </body>
     </html>
   );
