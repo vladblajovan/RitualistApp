@@ -2,14 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: '/Ritualist',
+  basePath: '/RitualistWebsite',
   trailingSlash: true,
   images: {
     loader: 'custom',
     loaderFile: './imageLoader.ts',
   },
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/Ritualist',
+    NEXT_PUBLIC_BASE_PATH: '/RitualistWebsite',
   },
 };
 
