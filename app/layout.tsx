@@ -93,20 +93,6 @@ export default function RootLayout({
                   document.documentElement.classList.toggle('dark', e.matches);
                 });
               })();
-              window.addEventListener('load', function() {
-                var s = document.createElement('script');
-                s.setAttribute('data-name', 'BMC-Widget');
-                s.setAttribute('data-cfasync', 'false');
-                s.setAttribute('data-id', 'vladblajovan');
-                s.setAttribute('data-description', 'Support me on Buy me a coffee!');
-                s.setAttribute('data-message', '');
-                s.setAttribute('data-color', '#FFDD00');
-                s.setAttribute('data-position', 'Right');
-                s.setAttribute('data-x_margin', '18');
-                s.setAttribute('data-y_margin', '18');
-                s.src = 'https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js';
-                document.body.appendChild(s);
-              });
             `,
           }}
         />
@@ -115,6 +101,19 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {/* Buy Me a Coffee floating widget */}
+        <script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          data-id="vladblajovan"
+          data-description="Support me on Buy me a coffee!"
+          data-message=""
+          data-color="#FFDD00"
+          data-position="Right"
+          data-x_margin="18"
+          data-y_margin="18"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        />
       </body>
     </html>
   );
