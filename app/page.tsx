@@ -105,9 +105,22 @@ const faqLd = {
 };
 
 
+const navLinkClass = "text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white";
+const linkClass = "text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white";
+
 export default function Home() {
   const [state, setState] = useState({ tagline: '', mounted: false });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    setIsDark(document.documentElement.classList.contains('dark'));
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     // Only run in the browser
@@ -155,33 +168,48 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
+              <button
+                onClick={() => document.documentElement.classList.toggle('dark')}
+                aria-label="Toggle theme"
+                className="flex items-center justify-center rounded-full border border-zinc-300 p-1.5 text-zinc-600 transition hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500 dark:hover:text-white"
+              >
+                {isDark ? (
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                  </svg>
+                ) : (
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+                  </svg>
+                )}
+              </button>
               <a
                 href="#features"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                className={navLinkClass}
               >
                 Features
               </a>
               <a
                 href="#difference"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                className={navLinkClass}
               >
                 Why Ritualist
               </a>
               <a
                 href="#testimonials"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                className={navLinkClass}
               >
                 Testimonials
               </a>
               <a
                 href="#faq"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                className={navLinkClass}
               >
                 FAQ
               </a>
               <a
                 href="#pricing"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                className={navLinkClass}
               >
                 Pricing
               </a>
@@ -202,38 +230,59 @@ export default function Home() {
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-black">
               <div className="flex flex-col px-6 py-4 space-y-4">
+                <button
+                  onClick={() => document.documentElement.classList.toggle('dark')}
+                  aria-label="Toggle theme"
+                  className="flex items-center gap-2 text-base font-medium text-zinc-600 dark:text-zinc-400"
+                >
+                  {isDark ? (
+                    <>
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                      </svg>
+                      Light mode
+                    </>
+                  ) : (
+                    <>
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+                      </svg>
+                      Dark mode
+                    </>
+                  )}
+                </button>
                 <a
                   href="#features"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={navLinkClass}
                 >
                   Features
                 </a>
                 <a
                   href="#difference"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={navLinkClass}
                 >
                   Why Ritualist
                 </a>
                 <a
                   href="#testimonials"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={navLinkClass}
                 >
                   Testimonials
                 </a>
                 <a
                   href="#faq"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={navLinkClass}
                 >
                   FAQ
                 </a>
                 <a
                   href="#pricing"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={navLinkClass}
                 >
                   Pricing
                 </a>
@@ -1175,7 +1224,7 @@ export default function Home() {
                   href="https://instagram.com/ritualist.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                  className={linkClass}
                 >
                   <FaInstagram className="h-5 w-5" />
                 </a>
@@ -1187,7 +1236,7 @@ export default function Home() {
                 <li>
                   <a
                     href="#features"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     Features
                   </a>
@@ -1195,7 +1244,7 @@ export default function Home() {
                 <li>
                   <a
                     href="#stats"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     Stats
                   </a>
@@ -1203,7 +1252,7 @@ export default function Home() {
                 <li>
                   <a
                     href="#difference"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     Why Ritualist
                   </a>
@@ -1211,7 +1260,7 @@ export default function Home() {
                 <li>
                   <a
                     href="#pricing"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     Pricing
                   </a>
@@ -1226,7 +1275,7 @@ export default function Home() {
                     href="https://github.com/vladblajovan/Ritualist"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     GitHub
                   </a>
@@ -1236,23 +1285,23 @@ export default function Home() {
                     href="https://github.com/vladblajovan/Ritualist/issues"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+                    className={linkClass}
                   >
                     Report Issues
                   </a>
                 </li>
                 <li>
-                  <Link href="/support" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                  <Link href="/support" className={linkClass}>
                     Support
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                  <Link href="/privacy" className={linkClass}>
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                  <Link href="/terms" className={linkClass}>
                     Terms of Service
                   </Link>
                 </li>

@@ -86,6 +86,13 @@ export default function RootLayout({
                   window.scrollTo(0, 0);
                 }, 0);
               });
+              (function() {
+                var mq = window.matchMedia('(prefers-color-scheme: dark)');
+                if (mq.matches) document.documentElement.classList.add('dark');
+                mq.addEventListener('change', function(e) {
+                  document.documentElement.classList.toggle('dark', e.matches);
+                });
+              })();
             `,
           }}
         />
