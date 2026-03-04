@@ -135,7 +135,7 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Contact Us</h2>
           <p className="mb-3 text-zinc-700 dark:text-zinc-300">If you have any questions about this Privacy Policy, please contact us:</p>
           <div className="bg-zinc-100 dark:bg-zinc-800 rounded-lg px-4 py-3 text-sm text-zinc-700 dark:text-zinc-300">
-            <p><strong>Email:</strong> <a href="mailto:vlad.blajovan@outlook.com" className="text-blue-600 dark:text-blue-400 hover:underline">vlad.blajovan@outlook.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:ritualist.help@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">ritualist.help@gmail.com</a></p>
             <p className="mt-1"><strong>Support:</strong> <Link href="/support" className="text-blue-600 dark:text-blue-400 hover:underline">Support page</Link></p>
           </div>
         </section>
