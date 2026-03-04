@@ -6,6 +6,7 @@ import { HiMenu, HiX } from 'react-icons/hi';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 const taglines = [
@@ -182,12 +183,6 @@ export default function Home() {
               >
                 Contact
               </a>
-              <a
-                href="/support"
-                className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-              >
-                Support
-              </a>
             </div>
 
             {/* Mobile Hamburger Menu Button */}
@@ -246,13 +241,6 @@ export default function Home() {
                   className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
                 >
                   Contact
-                </a>
-                <a
-                  href="/support"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
-                >
-                  Support
                 </a>
               </div>
             </div>
@@ -1327,6 +1315,21 @@ export default function Home() {
                   >
                     License
                   </a>
+                </li>
+                <li>
+                  <Link href="/support" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                    Support
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white">
+                    Terms of Service
+                  </Link>
                 </li>
               </ul>
             </div>
