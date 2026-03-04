@@ -228,13 +228,6 @@ export default function Home() {
             <div className="md:hidden border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-black">
               <div className="flex flex-col px-6 py-4 space-y-4">
                 <a
-                  href="https://www.buymeacoffee.com/vladblajovan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{height: '32px'}} />
-                </a>
-                <a
                   href="#features"
                   onClick={() => setMobileMenuOpen(false)}
                   className={navLinkClass}
