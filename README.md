@@ -48,10 +48,6 @@ The website accurately reflects the app's pricing:
 - **Monthly:** $9.99/month
 - **Annual:** $49.99/year (Most Popular)
 
-## Related Projects
-
-- [Ritualist iOS App](https://github.com/vladblajovan/Ritualist) - The main iOS application
-
 ## License
 
 This project is part of the Ritualist ecosystem. See the main [Ritualist repository](https://github.com/vladblajovan/Ritualist) for license information.
