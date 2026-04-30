@@ -1,0 +1,1102 @@
+{
+  "en": {
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Getting Started",
+        "items": [
+          {
+            "emoji": "➕",
+            "title": "Create Your First Habit",
+            "subtitle": "Start building better routines",
+            "content": "Tap the + button on the Habits tab to create a new habit. Give it a name, choose an emoji, and set your schedule. You can also use the Habits Assistant to get personalized suggestions based on your goals."
+          },
+          {
+            "emoji": "🔢",
+            "title": "Binary vs Numeric Habits",
+            "subtitle": "Choose the right tracking type",
+            "content": "Ritualist supports three types of habits. Binary habits are simple yes/no tasks like 'Meditate' or 'Take vitamins'. Numeric habits track quantities like '8 glasses of water' or '30 minutes of reading'. Timed habits let you track fasting intervals and guided breathing sessions with built-in timers, protocols, and mood logging."
+          },
+          {
+            "emoji": "📅",
+            "title": "Flexible Scheduling",
+            "subtitle": "Daily or specific days",
+            "content": "Set habits to repeat daily or on specific days of the week. For example, set 'Gym workout' for Monday, Wednesday, and Friday. Habits only appear on their scheduled days."
+          },
+          {
+            "emoji": "🏷️",
+            "title": "Organize with Categories",
+            "subtitle": "Group related habits together",
+            "content": "Categories help you organize habits by area of life like Health, Work, or Personal Growth. Filter your habits list by category to focus on specific goals. Create custom categories to match your lifestyle."
+          },
+          {
+            "emoji": "🤖",
+            "title": "Habits Assistant",
+            "subtitle": "Get personalized suggestions",
+            "content": "Use the Habits Assistant to browse curated habit suggestions organized by category. Filter by Health, Wellness, Fitness, Productivity, and more. Each suggestion comes pre-configured with a schedule, target, and emoji. You'll also find timed habit suggestions for fasting protocols and breathing exercises like Box Breathing, Cyclic Sighing, and Coherent Breathing. Health-linked habits are automatically set up with Apple Health integration."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Tracking Habits",
+        "items": [
+          {
+            "emoji": "✅",
+            "title": "Log a Habit",
+            "subtitle": "Mark habits as complete",
+            "content": "Tap any habit on the Today screen to log it. For binary habits, this marks it complete. For numeric habits, you can adjust the value using the stepper or quick-add buttons. Completed habits move to the 'Completed' section."
+          },
+          {
+            "emoji": "⚡",
+            "title": "Quick Log with Long Press",
+            "subtitle": "Complete habits faster",
+            "content": "Long-press any incomplete habit to instantly log it. A progress ring fills as you hold, and the habit completes when full. For numeric habits, this logs your full daily target. Great for quick logging on the go!"
+          },
+          {
+            "emoji": "🔥",
+            "title": "Build Streaks",
+            "subtitle": "Stay consistent day after day",
+            "content": "Complete habits on consecutive scheduled days to build streaks. The fire icon shows streaks at risk - complete these habits today to keep your streak alive! View all your current streaks in the Overview section."
+          },
+          {
+            "emoji": "📆",
+            "title": "Log Past Days",
+            "subtitle": "Catch up on missed entries",
+            "content": "Swipe the week selector or tap any day to view and log habits for past dates. This lets you catch up on entries you might have missed. You can also remove logs if you made a mistake."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Timed Habits",
+        "items": [
+          {
+            "emoji": "🍽️",
+            "title": "Fasting Tracker",
+            "subtitle": "Track intermittent fasting intervals",
+            "content": "Choose from popular fasting protocols like 16:8, 18:6, or 20:4, or create your own custom schedule. Start a fast from the Overview tab and track your progress in real time. You'll see elapsed time, remaining time, and goal progress. When your fasting goal is reached, you'll receive a notification. You can also set a daily reminder to start your fast at the same time each day. Each session can be logged with a mood entry to track how fasting affects your well-being over time."
+          },
+          {
+            "emoji": "🫁",
+            "title": "Breathing Exercises",
+            "subtitle": "Guided breathing with proven protocols",
+            "content": "Follow guided breathing sessions with scientifically-backed protocols. Choose from 7 predefined patterns: Box Breathing for focus, 4-7-8 for relaxation, Cyclic Sighing for quick stress relief, Coherent Breathing for heart rate variability, Calming Breath for parasympathetic activation, Power Breathing for energy, and Energizing Breath for alertness. You can also create custom protocols with your own inhale, hold, exhale, and round settings. Each session includes an animated visual guide showing the current phase, round counter, and elapsed time. Log your mood after each session to discover which techniques work best for you."
+          },
+          {
+            "emoji": "📱",
+            "title": "Live Activities",
+            "subtitle": "Track sessions from your Lock Screen",
+            "content": "When you start a fasting or breathing session, a Live Activity appears on your Lock Screen and in the Dynamic Island. Track elapsed time, remaining time, and goal progress without opening the app. Tap the Live Activity to jump directly back to your active session. Live Activities update in real time and disappear automatically when you end the session."
+          },
+          {
+            "emoji": "😊",
+            "title": "Session Mood Logging",
+            "subtitle": "Track how sessions affect your well-being",
+            "content": "After completing a fasting or breathing session, you can log how you feel. Choose from moods like Calm, Focused, Energized, Anxious, or Restless. Over time, this data helps you identify patterns — which breathing protocol helps you focus, or how different fasting windows affect your energy levels. Review your mood history in the session history view to make data-driven decisions about your wellness routine."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Reminders & Notifications",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "Time-Based Reminders",
+            "subtitle": "Never forget a habit",
+            "content": "Add time reminders to any habit to get notified at specific times. Set multiple reminders for habits you want to do at different times. Reminders only fire on days when the habit is scheduled."
+          },
+          {
+            "emoji": "📍",
+            "title": "Location-Based Reminders",
+            "subtitle": "Triggered by where you are",
+            "content": "Set a location for habits you want to do at specific places. Get reminded when you arrive at or leave a location. Perfect for habits like 'Stretch at the gym' or 'Read when I get home'."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Insights & Stats",
+        "items": [
+          {
+            "emoji": "📈",
+            "title": "Progress Trend",
+            "subtitle": "Track improvement over time",
+            "content": "The progress trend chart shows your overall completion rate over time. Watch your average climb as you build consistency. The trend line helps you see if you're improving week over week."
+          },
+          {
+            "emoji": "📊",
+            "title": "Habit Patterns",
+            "subtitle": "Discover your best days",
+            "content": "The patterns chart reveals which days of the week you perform best. Use this insight to schedule challenging habits on your strongest days, or focus extra attention on weaker days."
+          },
+          {
+            "emoji": "🗓️",
+            "title": "Consistency Heatmap",
+            "subtitle": "Visualize your history",
+            "content": "The heatmap shows your habit completion history at a glance. Darker colors mean higher completion. Select different habits to see their individual patterns. Look for gaps to identify areas for improvement."
+          },
+          {
+            "emoji": "🧠",
+            "title": "Personality Insights",
+            "subtitle": "AI-powered habit personality profile",
+            "content": "After tracking at least 5 habits for 7 days, you'll unlock a unique personality profile based on your patterns. The analysis identifies your habit personality archetype and can be configured to update daily, weekly, or monthly. You can also trigger it manually anytime. Find it on the Overview tab. This is a premium feature."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Health & Connectivity",
+        "items": [
+          {
+            "emoji": "❤️",
+            "title": "Apple Health",
+            "subtitle": "Auto-track habits from Health data",
+            "content": "Connect habits to Apple Health to automatically track metrics like steps, exercise minutes, sleep, water intake, cycling distance, and more. Health-linked habits can auto-complete when your daily target is reached. Configure sync direction for each habit: read from Health, write to Health, or both."
+          },
+          {
+            "emoji": "☁️",
+            "title": "iCloud Sync",
+            "subtitle": "Keep data in sync across devices",
+            "content": "Your habits, progress, and settings sync automatically across all your devices via iCloud. Just sign into the same Apple ID — no additional setup required. Changes appear on your other devices within moments. This feature is free for all users."
+          },
+          {
+            "emoji": "📱",
+            "title": "Home Screen Widgets",
+            "subtitle": "Track progress at a glance",
+            "content": "Add Ritualist widgets to your Home Screen for quick access to your progress. Available widgets include a completion calendar heat map, streak tracker, and personality insights card. Widgets update throughout the day as you complete habits. Long-press your Home Screen and tap + to add widgets."
+          },
+          {
+            "emoji": "📤",
+            "title": "Data Export",
+            "subtitle": "Download your data anytime",
+            "content": "Export all your habit data as a CSV file for backup or analysis. The export includes habits, categories, completion logs, and profile data. Access it from Settings > Data Management. Importing data to restore from a backup is a Pro feature."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Tips & Tricks",
+        "items": [
+          {
+            "emoji": "🌱",
+            "title": "Start Small",
+            "subtitle": "Build momentum gradually",
+            "content": "Begin with 1-3 habits and master them before adding more. It's better to consistently complete a few habits than to struggle with many. Success builds confidence and motivation for bigger goals."
+          },
+          {
+            "emoji": "🧱",
+            "title": "Habit Stacking",
+            "subtitle": "Link new habits to existing ones",
+            "content": "Attach new habits to existing routines. For example: 'After I pour my morning coffee, I will meditate for 5 minutes.' This creates automatic triggers that make new habits easier to remember."
+          },
+          {
+            "emoji": "⏱️",
+            "title": "The 2-Minute Rule",
+            "subtitle": "Make habits easy to start",
+            "content": "Scale down any habit to something you can do in 2 minutes or less. 'Read 30 minutes' becomes 'Read one page'. Once you start, you often continue. The goal is to make starting so easy you can't say no."
+          }
+        ]
+      }
+    ],
+    "ui": {
+      "pageTitle": "User Guide",
+      "subtitle": "Everything you need to make the most of Ritualist.",
+      "searchPlaceholder": "Search the guide…",
+      "noResults": "No matches. Try a different search.",
+      "home": "Home",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "language": "Language",
+      "jumpToTop": "Back to top"
+    }
+  },
+  "de": {
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Erste Schritte",
+        "items": [
+          {
+            "emoji": "➕",
+            "title": "Gewohnheit erstellen",
+            "subtitle": "Deine erste Gewohnheit einrichten",
+            "content": "Tippe + um eine neue Gewohnheit zu erstellen. Wähle einen Namen, Icon und Zeitplan."
+          },
+          {
+            "emoji": "🔢",
+            "title": "Gewohnheitstypen",
+            "subtitle": "Verschiedene Arten von Gewohnheiten",
+            "content": "Ritualist unterstützt drei Arten von Gewohnheiten. Binäre Gewohnheiten sind einfache Ja/Nein-Aufgaben wie „Meditieren“ oder „Vitamine nehmen“. Numerische Gewohnheiten verfolgen Mengen wie „8 Gläser Wasser“ oder „30 Minuten Lesen“. Zeitgesteuerte Gewohnheiten ermöglichen das Verfolgen von Fastenintervallen und geführten Atemübungen mit integrierten Timern, Protokollen und Stimmungsprotokoll."
+          },
+          {
+            "emoji": "📅",
+            "title": "Zeitplanung",
+            "subtitle": "Wähle wann Gewohnheiten erscheinen",
+            "content": "Plane Gewohnheiten für bestimmte Tage oder Intervalle."
+          },
+          {
+            "emoji": "🏷️",
+            "title": "Kategorien",
+            "subtitle": "Halte alles organisiert",
+            "content": "Organisiere deine Gewohnheiten in Kategorien für bessere Übersicht."
+          },
+          {
+            "emoji": "🤖",
+            "title": "Gewohnheits-Assistent",
+            "subtitle": "Erhalte personalisierte Vorschläge",
+            "content": "Verwende den Gewohnheits-Assistenten, um kuratierte Vorschläge nach Kategorie zu durchsuchen. Filtere nach Gesundheit, Wellness, Fitness, Produktivität und mehr. Jeder Vorschlag ist vorkonfiguriert mit Zeitplan, Ziel und Emoji. Du findest auch zeitgesteuerte Vorschläge für Fastenprotokolle und Atemübungen wie Box-Atmung, Zyklisches Seufzen und Kohärente Atmung. Gesundheitsverknüpfte Gewohnheiten werden automatisch mit Apple Health eingerichtet."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Gewohnheiten tracken",
+        "items": [
+          {
+            "emoji": "✅",
+            "title": "Gewohnheit protokollieren",
+            "subtitle": "Gewohnheit als erledigt markieren",
+            "content": "Tippe auf eine Gewohnheit, um sie als erledigt zu markieren."
+          },
+          {
+            "emoji": "⚡",
+            "title": "Schnell protokollieren",
+            "subtitle": "Schnelles Markieren",
+            "content": "Wische auf einer Gewohnheit für schnelle Aktionen."
+          },
+          {
+            "emoji": "🔥",
+            "title": "Serien",
+            "subtitle": "Halte deine Serien aufrecht",
+            "content": "Erledige Gewohnheiten an aufeinanderfolgenden geplanten Tagen, um Serien aufzubauen. Das Feuer-Symbol zeigt gefährdete Serien — erledige diese Gewohnheiten heute, um deine Serie am Leben zu halten! Sieh dir alle aktuellen Serien im Übersicht-Bereich an."
+          },
+          {
+            "emoji": "📆",
+            "title": "Vergangene Tage",
+            "subtitle": "Vergangene Einträge anzeigen",
+            "content": "Wische durch die Woche um vergangene Tage anzuzeigen und zu bearbeiten."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Zeitgesteuerte Gewohnheiten",
+        "items": [
+          {
+            "emoji": "🍽️",
+            "title": "Fasten-Tracker",
+            "subtitle": "Verfolge intermittierende Fastenintervalle",
+            "content": "Wähle aus beliebten Fastenprotokollen wie 16:8, 18:6 oder 20:4, oder erstelle deinen eigenen Zeitplan. Starte ein Fasten vom Übersicht-Tab und verfolge deinen Fortschritt in Echtzeit. Du siehst vergangene Zeit, verbleibende Zeit und Zielfortschritt. Wenn dein Fastenziel erreicht ist, erhältst du eine Benachrichtigung. Du kannst auch eine tägliche Erinnerung einstellen, um dein Fasten jeden Tag zur gleichen Zeit zu beginnen. Jede Sitzung kann mit einem Stimmungseintrag protokolliert werden, um zu verfolgen, wie sich Fasten auf dein Wohlbefinden auswirkt."
+          },
+          {
+            "emoji": "🫁",
+            "title": "Atemübungen",
+            "subtitle": "Geführte Atmung mit bewährten Protokollen",
+            "content": "Folge geführten Atemsitzungen mit wissenschaftlich fundierten Protokollen. Wähle aus 7 vordefinierten Mustern: Box-Atmung für Fokus, 4-7-8 für Entspannung, Zyklisches Seufzen für schnelle Stressbewältigung, Kohärente Atmung für Herzfrequenzvariabilität, Beruhigendes Atmen für parasympathische Aktivierung, Power-Atmung für Energie und Energetisierende Atmung für Wachheit. Du kannst auch eigene Protokolle mit individuellen Einstellungen für Einatmen, Halten, Ausatmen und Runden erstellen. Jede Sitzung enthält eine animierte visuelle Anleitung mit aktueller Phase, Rundenzähler und verstrichener Zeit. Protokolliere deine Stimmung nach jeder Sitzung, um herauszufinden, welche Techniken am besten für dich funktionieren."
+          },
+          {
+            "emoji": "📱",
+            "title": "Live-Aktivitäten",
+            "subtitle": "Verfolge Sitzungen vom Sperrbildschirm",
+            "content": "Wenn du eine Fasten- oder Atemsitzung startest, erscheint eine Live-Aktivität auf deinem Sperrbildschirm und in der Dynamic Island. Verfolge vergangene Zeit, verbleibende Zeit und Zielfortschritt, ohne die App zu öffnen. Tippe auf die Live-Aktivität, um direkt zu deiner aktiven Sitzung zurückzukehren. Live-Aktivitäten werden in Echtzeit aktualisiert und verschwinden automatisch, wenn du die Sitzung beendest."
+          },
+          {
+            "emoji": "😊",
+            "title": "Sitzungs-Stimmungsprotokoll",
+            "subtitle": "Verfolge, wie Sitzungen dein Wohlbefinden beeinflussen",
+            "content": "Nach Abschluss einer Fasten- oder Atemsitzung kannst du festhalten, wie du dich fühlst. Wähle aus Stimmungen wie Ruhig, Fokussiert, Energiegeladen, Ängstlich oder Unruhig. Im Laufe der Zeit helfen dir diese Daten, Muster zu erkennen — welches Atemprotokoll dir hilft, dich zu konzentrieren, oder wie verschiedene Fastenfenster dein Energieniveau beeinflussen. Überprüfe deine Stimmungshistorie in der Sitzungsverlaufsansicht, um datenbasierte Entscheidungen über deine Wellness-Routine zu treffen."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Erinnerungen",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "Zeiterinnerungen",
+            "subtitle": "Verpasse nie eine Gewohnheit",
+            "content": "Erhalte Erinnerungen zu festgelegten Zeiten."
+          },
+          {
+            "emoji": "📍",
+            "title": "Standort-Erinnerungen",
+            "subtitle": "Ausgelöst durch deinen Standort",
+            "content": "Lege einen Standort für Gewohnheiten fest, die du an bestimmten Orten erledigen möchtest. Werde erinnert, wenn du an einem Ort ankommst oder ihn verlässt. Perfekt für Gewohnheiten wie 'Stretching im Fitnessstudio' oder 'Lesen, wenn ich nach Hause komme'."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Einblicke",
+        "items": [
+          {
+            "emoji": "📈",
+            "title": "Fortschrittstrend",
+            "subtitle": "Verfolge deine Verbesserung",
+            "content": "Sieh, wie sich deine Erledigung über Zeit entwickelt."
+          },
+          {
+            "emoji": "📊",
+            "title": "Gewohnheitsmuster",
+            "subtitle": "Finde deine optimalen Zeiten",
+            "content": "Entdecke, an welchen Tagen du am erfolgreichsten bist."
+          },
+          {
+            "emoji": "🗓️",
+            "title": "Heatmap",
+            "subtitle": "Visualisiere deine Konsistenz",
+            "content": "Die Heatmap zeigt deinen Abschlussverlauf auf einen Blick. Dunklere Farben bedeuten höhere Erledigung. Wähle verschiedene Gewohnheiten, um ihre individuellen Muster zu sehen. Achte auf Lücken, um Verbesserungsbereiche zu erkennen."
+          },
+          {
+            "emoji": "🧠",
+            "title": "Persönlichkeitsanalyse",
+            "subtitle": "KI-gestütztes Gewohnheitsprofil",
+            "content": "Nachdem du mindestens 5 Gewohnheiten 7 Tage lang verfolgt hast, schaltest du ein einzigartiges Persönlichkeitsprofil basierend auf deinen Mustern frei. Die Analyse identifiziert deinen Gewohnheits-Archetyp und kann so eingestellt werden, dass sie täglich, wöchentlich oder monatlich aktualisiert wird. Du kannst sie auch jederzeit manuell auslösen. Findest du auf dem Übersicht-Tab. Dies ist eine Premium-Funktion."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Gesundheit & Konnektivität",
+        "items": [
+          {
+            "emoji": "❤️",
+            "title": "Apple Health",
+            "subtitle": "Gewohnheiten automatisch aus Gesundheitsdaten tracken",
+            "content": "Verbinde Gewohnheiten mit Apple Health, um automatisch Metriken wie Schritte, Trainingsminuten, Schlaf, Wasseraufnahme, Radfahrentfernung und mehr zu tracken. Gesundheitsverknüpfte Gewohnheiten können sich automatisch abschließen, wenn dein Tagesziel erreicht ist. Konfiguriere die Sync-Richtung: aus Health lesen, in Health schreiben oder beides."
+          },
+          {
+            "emoji": "☁️",
+            "title": "iCloud-Synchronisierung",
+            "subtitle": "Daten geräteübergreifend synchronisieren",
+            "content": "Deine Gewohnheiten, Fortschritte und Einstellungen synchronisieren sich automatisch über alle deine Geräte via iCloud. Melde dich einfach mit derselben Apple-ID an — keine zusätzliche Einrichtung erforderlich. Änderungen erscheinen innerhalb von Momenten auf deinen anderen Geräten. Diese Funktion ist für alle Nutzer kostenlos."
+          },
+          {
+            "emoji": "📱",
+            "title": "Startbildschirm-Widgets",
+            "subtitle": "Fortschritt auf einen Blick verfolgen",
+            "content": "Füge Ritualist-Widgets zu deinem Startbildschirm hinzu, um schnell auf deinen Fortschritt zuzugreifen. Verfügbare Widgets umfassen eine Abschluss-Kalender-Heatmap, Streak-Tracker und Persönlichkeitsanalyse-Karte. Widgets aktualisieren sich im Laufe des Tages, wenn du Gewohnheiten abschließt. Halte deinen Startbildschirm lange gedrückt und tippe +, um Widgets hinzuzufügen."
+          },
+          {
+            "emoji": "📤",
+            "title": "Datenexport",
+            "subtitle": "Lade deine Daten jederzeit herunter",
+            "content": "Exportiere alle deine Gewohnheitsdaten als CSV-Datei zur Sicherung oder Analyse. Der Export umfasst Gewohnheiten, Kategorien, Abschluss-Protokolle und Profildaten. Zugriff über Einstellungen > Datenverwaltung. Das Importieren von Daten zum Wiederherstellen aus einem Backup ist eine Pro-Funktion."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Tipps & Tricks",
+        "items": [
+          {
+            "emoji": "🌱",
+            "title": "Klein anfangen",
+            "subtitle": "Klein anfangen, groß denken",
+            "content": "Beginne mit wenigen Gewohnheiten und erweitere schrittweise."
+          },
+          {
+            "emoji": "🧱",
+            "title": "Gewohnheiten stapeln",
+            "subtitle": "Baue auf bestehenden Gewohnheiten auf",
+            "content": "Verknüpfe neue Gewohnheiten mit bestehenden für bessere Ergebnisse."
+          },
+          {
+            "emoji": "⏱️",
+            "title": "2-Minuten-Regel",
+            "subtitle": "Schnelle Erfolge",
+            "content": "Wenn eine Gewohnheit weniger als 2 Minuten dauert, mach sie sofort."
+          }
+        ]
+      }
+    ],
+    "ui": {
+      "pageTitle": "Benutzerhandbuch",
+      "subtitle": "Alles, was du brauchst, um Ritualist optimal zu nutzen.",
+      "searchPlaceholder": "Im Handbuch suchen…",
+      "noResults": "Keine Treffer. Versuche eine andere Suche.",
+      "home": "Start",
+      "privacy": "Datenschutz",
+      "terms": "Bedingungen",
+      "language": "Sprache",
+      "jumpToTop": "Nach oben"
+    }
+  },
+  "es": {
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Primeros pasos",
+        "items": [
+          {
+            "emoji": "➕",
+            "title": "Crea tu primer hábito",
+            "subtitle": "Empieza a construir mejores rutinas",
+            "content": "Toca el botón + en la pestaña Hábitos para crear un nuevo hábito. Ponle un nombre, elige un emoji y configura tu horario. También puedes usar el Asistente de Hábitos para obtener sugerencias personalizadas según tus objetivos."
+          },
+          {
+            "emoji": "🔢",
+            "title": "Hábitos binarios vs numéricos",
+            "subtitle": "Elige el tipo de seguimiento adecuado",
+            "content": "Ritualist admite tres tipos de hábitos. Los hábitos binarios son tareas simples de sí/no como 'Meditar' o 'Tomar vitaminas'. Los hábitos numéricos registran cantidades como '8 vasos de agua' o '30 minutos de lectura'. Los hábitos cronometrados permiten registrar intervalos de ayuno y sesiones de respiración guiada con temporizadores, protocolos y registro de estado de ánimo integrados."
+          },
+          {
+            "emoji": "📅",
+            "title": "Programación flexible",
+            "subtitle": "Diario o días específicos",
+            "content": "Configura hábitos para repetirse a diario o en días específicos de la semana. Por ejemplo, programa 'Entrenamiento en el gimnasio' para lunes, miércoles y viernes. Los hábitos solo aparecen en sus días programados."
+          },
+          {
+            "emoji": "🏷️",
+            "title": "Organiza con categorías",
+            "subtitle": "Agrupa hábitos relacionados",
+            "content": "Las categorías te ayudan a organizar hábitos por área de vida como Salud, Trabajo o Crecimiento personal. Filtra tu lista de hábitos por categoría para enfocarte en objetivos específicos. Crea categorías personalizadas para adaptarlas a tu estilo de vida."
+          },
+          {
+            "emoji": "🤖",
+            "title": "Asistente de hábitos",
+            "subtitle": "Obtén sugerencias personalizadas",
+            "content": "Usa el Asistente de Hábitos para explorar sugerencias organizadas por categoría. Filtra por Salud, Bienestar, Fitness, Productividad y más. Cada sugerencia viene preconfigurada con un horario, objetivo y emoji. También encontrarás sugerencias cronometradas para protocolos de ayuno y ejercicios de respiración como Respiración cuadrada, Suspiro cíclico y Respiración coherente. Los hábitos vinculados a salud se configuran automáticamente con Apple Health."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Seguimiento de hábitos",
+        "items": [
+          {
+            "emoji": "✅",
+            "title": "Registrar un hábito",
+            "subtitle": "Marca hábitos como completados",
+            "content": "Toca cualquier hábito en la pantalla de Hoy para registrarlo. Para hábitos binarios, lo marca como completado. Para hábitos numéricos, puedes ajustar el valor con el contador o los botones de suma rápida. Los hábitos completados se mueven a la sección 'Completados'."
+          },
+          {
+            "emoji": "⚡",
+            "title": "Registro rápido con pulsación larga",
+            "subtitle": "Completa hábitos más rápido",
+            "content": "Mantén pulsado cualquier hábito incompleto para registrarlo al instante. Un anillo de progreso se llena mientras mantienes, y el hábito se completa cuando está lleno. Para hábitos numéricos, esto registra tu objetivo diario completo. ¡Genial para registrar sobre la marcha!"
+          },
+          {
+            "emoji": "🔥",
+            "title": "Construye rachas",
+            "subtitle": "Mantén la constancia día tras día",
+            "content": "Completa hábitos en días programados consecutivos para construir rachas. El icono de fuego muestra rachas en riesgo: ¡completa estos hábitos hoy para mantener tu racha! Ve todas tus rachas actuales en la sección Resumen."
+          },
+          {
+            "emoji": "📆",
+            "title": "Registrar días anteriores",
+            "subtitle": "Completa entradas que olvidaste",
+            "content": "Desliza el selector de semana o toca cualquier día para ver y registrar hábitos de fechas pasadas. Esto te permite ponerte al día con entradas que hayas olvidado. También puedes eliminar registros si cometiste un error."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Hábitos cronometrados",
+        "items": [
+          {
+            "emoji": "🍽️",
+            "title": "Seguimiento de ayuno",
+            "subtitle": "Registra intervalos de ayuno intermitente",
+            "content": "Elige entre protocolos de ayuno populares como 16:8, 18:6 o 20:4, o crea tu propio horario personalizado. Inicia un ayuno desde la pestaña Resumen y sigue tu progreso en tiempo real. Verás el tiempo transcurrido, el tiempo restante y el progreso hacia tu objetivo. Cuando se alcance tu objetivo de ayuno, recibirás una notificación. También puedes establecer un recordatorio diario para comenzar tu ayuno a la misma hora cada día. Cada sesión se puede registrar con una entrada de estado de ánimo para seguir cómo el ayuno afecta tu bienestar."
+          },
+          {
+            "emoji": "🫁",
+            "title": "Ejercicios de respiración",
+            "subtitle": "Respiración guiada con protocolos comprobados",
+            "content": "Sigue sesiones de respiración guiada con protocolos respaldados científicamente. Elige entre 7 patrones predefinidos: Respiración cuadrada para concentración, 4-7-8 para relajación, Suspiro cíclico para alivio rápido del estrés, Respiración coherente para variabilidad de la frecuencia cardíaca, Respiración calmante para activación parasimpática, Respiración potente para energía y Respiración energizante para estar alerta. También puedes crear protocolos personalizados con tus propios ajustes de inhalación, retención, exhalación y rondas. Cada sesión incluye una guía visual animada que muestra la fase actual, contador de rondas y tiempo transcurrido. Registra tu estado de ánimo después de cada sesión para descubrir qué técnicas funcionan mejor para ti."
+          },
+          {
+            "emoji": "📱",
+            "title": "Actividades en vivo",
+            "subtitle": "Sigue sesiones desde la pantalla de bloqueo",
+            "content": "Cuando inicias una sesión de ayuno o respiración, aparece una Actividad en Vivo en tu pantalla de bloqueo y en la Dynamic Island. Sigue el tiempo transcurrido, el tiempo restante y el progreso hacia tu objetivo sin abrir la app. Toca la Actividad en Vivo para volver directamente a tu sesión activa. Las Actividades en Vivo se actualizan en tiempo real y desaparecen automáticamente cuando terminas la sesión."
+          },
+          {
+            "emoji": "😊",
+            "title": "Registro de ánimo de sesión",
+            "subtitle": "Registra cómo las sesiones afectan tu bienestar",
+            "content": "Después de completar una sesión de ayuno o respiración, puedes registrar cómo te sientes. Elige entre estados de ánimo como Tranquilo, Enfocado, Energizado, Ansioso o Inquieto. Con el tiempo, estos datos te ayudan a identificar patrones — qué protocolo de respiración te ayuda a concentrarte, o cómo diferentes ventanas de ayuno afectan tus niveles de energía. Revisa tu historial de ánimo en la vista de historial de sesiones para tomar decisiones basadas en datos sobre tu rutina de bienestar."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Recordatorios y notificaciones",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "Recordatorios por hora",
+            "subtitle": "Nunca olvides un hábito",
+            "content": "Añade recordatorios de hora a cualquier hábito para recibir notificaciones a horas específicas. Configura múltiples recordatorios para hábitos que quieras hacer en diferentes momentos. Los recordatorios solo se activan los días en que el hábito está programado."
+          },
+          {
+            "emoji": "📍",
+            "title": "Recordatorios por ubicación",
+            "subtitle": "Activados según tu ubicación",
+            "content": "Establece una ubicación para hábitos que quieras hacer en lugares específicos. Recibe un recordatorio al llegar o salir de un lugar. Perfecto para hábitos como 'Estirar en el gimnasio' o 'Leer al llegar a casa'."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Estadísticas e información",
+        "items": [
+          {
+            "emoji": "📈",
+            "title": "Tendencia de progreso",
+            "subtitle": "Sigue tu mejora a lo largo del tiempo",
+            "content": "El gráfico de tendencia de progreso muestra tu tasa general de completado a lo largo del tiempo. Observa cómo sube tu promedio conforme ganas constancia. La línea de tendencia te ayuda a ver si estás mejorando semana a semana."
+          },
+          {
+            "emoji": "📊",
+            "title": "Patrones de hábitos",
+            "subtitle": "Descubre tus mejores días",
+            "content": "El gráfico de patrones revela en qué días de la semana rindes mejor. Usa esta información para programar hábitos difíciles en tus mejores días, o presta más atención a los días más flojos."
+          },
+          {
+            "emoji": "🗓️",
+            "title": "Mapa de calor de constancia",
+            "subtitle": "Visualiza tu historial",
+            "content": "El mapa de calor muestra tu historial de hábitos completados de un vistazo. Los colores más oscuros significan mayor porcentaje de completado. Selecciona diferentes hábitos para ver sus patrones individuales. Busca vacíos para identificar áreas de mejora."
+          },
+          {
+            "emoji": "🧠",
+            "title": "Análisis de personalidad",
+            "subtitle": "Perfil de personalidad basado en IA",
+            "content": "Después de registrar al menos 5 hábitos durante 7 días, desbloquearás un perfil de personalidad único basado en tus patrones. El análisis identifica tu arquetipo de personalidad de hábitos y se puede configurar para actualizarse diariamente, semanalmente o mensualmente. También puedes activarlo manualmente en cualquier momento. Encuéntralo en la pestaña Resumen. Esta es una función premium."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Salud y conectividad",
+        "items": [
+          {
+            "emoji": "❤️",
+            "title": "Apple Health",
+            "subtitle": "Registra hábitos automáticamente desde datos de Salud",
+            "content": "Conecta hábitos a Apple Health para registrar automáticamente métricas como pasos, minutos de ejercicio, sueño, consumo de agua, distancia en bicicleta y más. Los hábitos vinculados a salud pueden completarse automáticamente al alcanzar tu objetivo diario. Configura la dirección de sincronización: leer de Salud, escribir en Salud o ambos."
+          },
+          {
+            "emoji": "☁️",
+            "title": "Sincronización iCloud",
+            "subtitle": "Mantén los datos sincronizados entre dispositivos",
+            "content": "Tus hábitos, progreso y configuraciones se sincronizan automáticamente en todos tus dispositivos a través de iCloud. Solo inicia sesión con el mismo Apple ID — no se requiere configuración adicional. Los cambios aparecen en tus otros dispositivos en segundos. Esta función es gratuita para todos los usuarios."
+          },
+          {
+            "emoji": "📱",
+            "title": "Widgets de pantalla de inicio",
+            "subtitle": "Sigue el progreso de un vistazo",
+            "content": "Agrega widgets de Ritualist a tu pantalla de inicio para acceder rápidamente a tu progreso. Los widgets disponibles incluyen un mapa de calor del calendario de completitud, seguimiento de rachas y tarjeta de análisis de personalidad. Los widgets se actualizan durante el día a medida que completas hábitos. Mantén presionada la pantalla de inicio y toca + para agregar widgets."
+          },
+          {
+            "emoji": "📤",
+            "title": "Exportación de datos",
+            "subtitle": "Descarga tus datos en cualquier momento",
+            "content": "Exporta todos tus datos de hábitos como archivo CSV para respaldo o análisis. La exportación incluye hábitos, categorías, registros de completitud y datos de perfil. Accede desde Ajustes > Gestión de datos. Importar datos para restaurar desde una copia de seguridad es una función Pro."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Consejos y trucos",
+        "items": [
+          {
+            "emoji": "🌱",
+            "title": "Empieza poco a poco",
+            "subtitle": "Gana impulso gradualmente",
+            "content": "Empieza con 1-3 hábitos y domínalos antes de añadir más. Es mejor completar consistentemente unos pocos hábitos que luchar con muchos. El éxito genera confianza y motivación para metas más grandes."
+          },
+          {
+            "emoji": "🧱",
+            "title": "Apilamiento de hábitos",
+            "subtitle": "Vincula nuevos hábitos a los existentes",
+            "content": "Vincula nuevos hábitos a rutinas existentes. Por ejemplo: 'Después de servirme el café de la mañana, meditaré 5 minutos.' Esto crea desencadenantes automáticos que facilitan recordar nuevos hábitos."
+          },
+          {
+            "emoji": "⏱️",
+            "title": "La regla de los 2 minutos",
+            "subtitle": "Haz que los hábitos sean fáciles de empezar",
+            "content": "Reduce cualquier hábito a algo que puedas hacer en 2 minutos o menos. 'Leer 30 minutos' se convierte en 'Leer una página'. Una vez que empiezas, a menudo continúas. El objetivo es hacer que empezar sea tan fácil que no puedas decir que no."
+          }
+        ]
+      }
+    ],
+    "ui": {
+      "pageTitle": "Guía del usuario",
+      "subtitle": "Todo lo que necesitas para sacar el máximo provecho de Ritualist.",
+      "searchPlaceholder": "Buscar en la guía…",
+      "noResults": "Sin resultados. Prueba con otra búsqueda.",
+      "home": "Inicio",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "language": "Idioma",
+      "jumpToTop": "Volver arriba"
+    }
+  },
+  "fr": {
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Pour commencer",
+        "items": [
+          {
+            "emoji": "➕",
+            "title": "Crée ta première habitude",
+            "subtitle": "Commence à construire de meilleures routines",
+            "content": "Touche le bouton + dans l'onglet Habitudes pour créer une nouvelle habitude. Donne-lui un nom, choisis un emoji et définis ton programme. Tu peux aussi utiliser l'Assistant d'habitudes pour obtenir des suggestions personnalisées selon tes objectifs."
+          },
+          {
+            "emoji": "🔢",
+            "title": "Habitudes binaires vs numériques",
+            "subtitle": "Choisis le bon type de suivi",
+            "content": "Ritualist prend en charge trois types d’habitudes. Les habitudes binaires sont des tâches simples oui/non comme « Méditer » ou « Prendre des vitamines ». Les habitudes numériques suivent des quantités comme « 8 verres d’eau » ou « 30 minutes de lecture ». Les habitudes chronométrées permettent de suivre les intervalles de jeûne et les séances de respiration guidée avec minuteries, protocoles et journal d’humeur intégrés."
+          },
+          {
+            "emoji": "📅",
+            "title": "Planification flexible",
+            "subtitle": "Quotidien ou jours spécifiques",
+            "content": "Configure les habitudes pour se répéter quotidiennement ou certains jours de la semaine. Par exemple, programme « Entraînement en salle » pour lundi, mercredi et vendredi. Les habitudes n'apparaissent que les jours prévus."
+          },
+          {
+            "emoji": "🏷️",
+            "title": "Organise avec des catégories",
+            "subtitle": "Regroupe les habitudes liées",
+            "content": "Les catégories t'aident à organiser tes habitudes par domaine de vie comme Santé, Travail ou Développement personnel. Filtre ta liste d'habitudes par catégorie pour te concentrer sur des objectifs spécifiques. Crée des catégories personnalisées pour correspondre à ton style de vie."
+          },
+          {
+            "emoji": "🤖",
+            "title": "Assistant d'habitudes",
+            "subtitle": "Obtiens des suggestions personnalisées",
+            "content": "Utilisez l’Assistant d’Habitudes pour parcourir des suggestions organisées par catégorie. Filtrez par Santé, Bien-être, Fitness, Productivité et plus. Chaque suggestion est préconfigurée avec un horaire, un objectif et un emoji. Vous trouverez aussi des suggestions chronométrées pour des protocoles de jeûne et des exercices de respiration comme la Respiration carrée, le Soupir cyclique et la Respiration cohérente. Les habitudes liées à la santé sont automatiquement configurées avec Apple Santé."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Suivi des habitudes",
+        "items": [
+          {
+            "emoji": "✅",
+            "title": "Enregistrer une habitude",
+            "subtitle": "Marque les habitudes comme terminées",
+            "content": "Touche n'importe quelle habitude sur l'écran Aujourd'hui pour l'enregistrer. Pour les habitudes binaires, cela la marque comme terminée. Pour les habitudes numériques, tu peux ajuster la valeur avec le compteur ou les boutons d'ajout rapide. Les habitudes terminées passent dans la section « Terminées »."
+          },
+          {
+            "emoji": "⚡",
+            "title": "Enregistrement rapide par appui long",
+            "subtitle": "Termine les habitudes plus vite",
+            "content": "Appui long sur n'importe quelle habitude incomplète pour l'enregistrer instantanément. Un anneau de progression se remplit pendant que tu maintiens, et l'habitude se termine quand il est plein. Pour les habitudes numériques, cela enregistre ton objectif quotidien complet. Idéal pour enregistrer en déplacement !"
+          },
+          {
+            "emoji": "🔥",
+            "title": "Construis des séries",
+            "subtitle": "Reste régulier jour après jour",
+            "content": "Termine les habitudes sur des jours programmés consécutifs pour construire des séries. L'icône de flamme indique les séries en danger : termine ces habitudes aujourd'hui pour maintenir ta série ! Consulte toutes tes séries en cours dans la section Vue d'ensemble."
+          },
+          {
+            "emoji": "📆",
+            "title": "Enregistrer les jours passés",
+            "subtitle": "Rattrape les entrées manquées",
+            "content": "Glisse le sélecteur de semaine ou touche n'importe quel jour pour voir et enregistrer des habitudes de dates passées. Cela te permet de rattraper les entrées manquées. Tu peux aussi supprimer des enregistrements en cas d'erreur."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Habitudes chronométrées",
+        "items": [
+          {
+            "emoji": "🍽️",
+            "title": "Suivi du jeûne",
+            "subtitle": "Suivez vos intervalles de jeûne intermittent",
+            "content": "Choisissez parmi des protocoles de jeûne populaires comme 16:8, 18:6 ou 20:4, ou créez votre propre programme. Démarrez un jeûne depuis l’onglet Aperçu et suivez votre progression en temps réel. Vous verrez le temps écoulé, le temps restant et la progression vers votre objectif. Lorsque votre objectif est atteint, vous recevrez une notification. Vous pouvez aussi définir un rappel quotidien pour commencer votre jeûne à la même heure chaque jour. Chaque session peut être enregistrée avec une entrée d’humeur pour suivre l’impact du jeûne sur votre bien-être."
+          },
+          {
+            "emoji": "🫁",
+            "title": "Exercices de respiration",
+            "subtitle": "Respiration guidée avec des protocoles éprouvés",
+            "content": "Suivez des séances de respiration guidée avec des protocoles scientifiquement validés. Choisissez parmi 7 schémas prédéfinis : Respiration carrée pour la concentration, 4-7-8 pour la relaxation, Soupir cyclique pour un soulagement rapide du stress, Respiration cohérente pour la variabilité cardiaque, Respiration apaisante pour l’activation parasympathique, Respiration puissante pour l’énergie et Respiration énergisante pour la vigilance. Vous pouvez aussi créer des protocoles personnalisés avec vos propres réglages d’inspiration, de rétention, d’expiration et de tours. Chaque séance comprend un guide visuel animé montrant la phase en cours, le compteur de tours et le temps écoulé. Notez votre humeur après chaque séance pour découvrir quelles techniques vous conviennent le mieux."
+          },
+          {
+            "emoji": "📱",
+            "title": "Activités en direct",
+            "subtitle": "Suivez vos séances depuis l’écran de verrouillage",
+            "content": "Lorsque vous démarrez une séance de jeûne ou de respiration, une Activité en Direct apparaît sur votre écran de verrouillage et dans la Dynamic Island. Suivez le temps écoulé, le temps restant et la progression sans ouvrir l’app. Touchez l’Activité en Direct pour revenir directement à votre séance active. Les Activités en Direct se mettent à jour en temps réel et disparaissent automatiquement lorsque vous terminez la séance."
+          },
+          {
+            "emoji": "😊",
+            "title": "Journal d’humeur de séance",
+            "subtitle": "Suivez l’impact des séances sur votre bien-être",
+            "content": "Après avoir terminé une séance de jeûne ou de respiration, vous pouvez noter comment vous vous sentez. Choisissez parmi des humeurs comme Calme, Concentré, Énergisé, Anxieux ou Agité. Au fil du temps, ces données vous aident à identifier des tendances — quel protocole de respiration vous aide à vous concentrer, ou comment différentes fenêtres de jeûne affectent votre niveau d’énergie. Consultez votre historique d’humeur dans la vue d’historique des séances pour prendre des décisions basées sur les données concernant votre routine bien-être."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Rappels et notifications",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "Rappels horaires",
+            "subtitle": "N'oublie jamais une habitude",
+            "content": "Ajoute des rappels horaires à n'importe quelle habitude pour être notifié à des heures précises. Définis plusieurs rappels pour les habitudes que tu veux faire à différents moments. Les rappels ne se déclenchent que les jours où l'habitude est programmée."
+          },
+          {
+            "emoji": "📍",
+            "title": "Rappels par emplacement",
+            "subtitle": "Déclenchés selon ta position",
+            "content": "Définis un emplacement pour les habitudes que tu veux faire à des endroits précis. Reçois un rappel en arrivant ou en quittant un lieu. Parfait pour des habitudes comme « S'étirer à la salle » ou « Lire en rentrant chez moi »."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Statistiques et analyses",
+        "items": [
+          {
+            "emoji": "📈",
+            "title": "Tendance de progression",
+            "subtitle": "Suis ton amélioration au fil du temps",
+            "content": "Le graphique de tendance montre ton taux global de complétion au fil du temps. Regarde ta moyenne augmenter au fur et à mesure que tu gagnes en régularité. La ligne de tendance t'aide à voir si tu progresses semaine après semaine."
+          },
+          {
+            "emoji": "📊",
+            "title": "Tendances des habitudes",
+            "subtitle": "Découvre tes meilleurs jours",
+            "content": "Le graphique des tendances révèle les jours de la semaine où tu es le plus performant. Utilise cette information pour planifier les habitudes difficiles les jours forts, ou concentre-toi davantage sur les jours faibles."
+          },
+          {
+            "emoji": "🗓️",
+            "title": "Carte thermique de régularité",
+            "subtitle": "Visualise ton historique",
+            "content": "La carte thermique montre ton historique de complétion en un coup d'œil. Les couleurs plus foncées signifient un taux de complétion plus élevé. Sélectionne différentes habitudes pour voir leurs tendances individuelles. Repère les lacunes pour identifier les points à améliorer."
+          },
+          {
+            "emoji": "🧠",
+            "title": "Analyse de personnalité",
+            "subtitle": "Profil de personnalité basé sur l'IA",
+            "content": "Après avoir suivi au moins 5 habitudes pendant 7 jours, vous débloquerez un profil de personnalité unique basé sur vos habitudes. L’analyse identifie votre archétype de personnalité et peut être configurée pour se mettre à jour quotidiennement, hebdomadairement ou mensuellement. Vous pouvez aussi la déclencher manuellement à tout moment. Retrouvez-la dans l’onglet Aperçu. C’est une fonctionnalité premium."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Santé et connectivité",
+        "items": [
+          {
+            "emoji": "❤️",
+            "title": "Apple Santé",
+            "subtitle": "Suivi automatique depuis les données Santé",
+            "content": "Connecte tes habitudes à Apple Santé pour suivre automatiquement des métriques comme les pas, les minutes d'exercice, le sommeil, la consommation d'eau, la distance cycliste et plus. Les habitudes liées à la santé peuvent se compléter automatiquement quand ton objectif quotidien est atteint. Configure la direction de synchronisation : lire depuis Santé, écrire dans Santé ou les deux."
+          },
+          {
+            "emoji": "☁️",
+            "title": "Synchronisation iCloud",
+            "subtitle": "Synchronise les données entre appareils",
+            "content": "Tes habitudes, progrès et paramètres se synchronisent automatiquement sur tous tes appareils via iCloud. Connecte-toi simplement avec le même identifiant Apple — aucune configuration supplémentaire requise. Les modifications apparaissent sur tes autres appareils en quelques instants. Cette fonctionnalité est gratuite pour tous les utilisateurs."
+          },
+          {
+            "emoji": "📱",
+            "title": "Widgets d'écran d'accueil",
+            "subtitle": "Suis ta progression en un coup d'œil",
+            "content": "Ajoute des widgets Ritualist à ton écran d'accueil pour accéder rapidement à ta progression. Les widgets disponibles incluent une carte thermique du calendrier, un suivi des séries et une carte d'analyse de personnalité. Les widgets se mettent à jour au fil de la journée lorsque tu complètes des habitudes. Maintiens appuyé sur ton écran d'accueil et touche + pour ajouter des widgets."
+          },
+          {
+            "emoji": "📤",
+            "title": "Exportation des données",
+            "subtitle": "Télécharge tes données à tout moment",
+            "content": "Exporte toutes tes données d'habitudes en fichier CSV pour sauvegarde ou analyse. L'export comprend les habitudes, catégories, journaux de complétion et données de profil. Accède-y depuis Réglages > Gestion des données. L'importation de données pour restaurer depuis une sauvegarde est une fonctionnalité Pro."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Conseils et astuces",
+        "items": [
+          {
+            "emoji": "🌱",
+            "title": "Commence petit",
+            "subtitle": "Prends de l'élan progressivement",
+            "content": "Commence avec 1 à 3 habitudes et maîtrise-les avant d'en ajouter d'autres. Il vaut mieux compléter régulièrement quelques habitudes que de galérer avec beaucoup. Le succès construit la confiance et la motivation pour de plus grands objectifs."
+          },
+          {
+            "emoji": "🧱",
+            "title": "Empilement d'habitudes",
+            "subtitle": "Associe de nouvelles habitudes aux existantes",
+            "content": "Associe de nouvelles habitudes à des routines existantes. Par exemple : « Après avoir versé mon café du matin, je méditerai 5 minutes. » Cela crée des déclencheurs automatiques qui facilitent la mémorisation des nouvelles habitudes."
+          },
+          {
+            "emoji": "⏱️",
+            "title": "La règle des 2 minutes",
+            "subtitle": "Rends les habitudes faciles à commencer",
+            "content": "Réduis n'importe quelle habitude à quelque chose que tu peux faire en 2 minutes ou moins. « Lire 30 minutes » devient « Lire une page ». Une fois que tu commences, tu continues souvent. L'objectif est de rendre le démarrage si facile que tu ne peux pas dire non."
+          }
+        ]
+      }
+    ],
+    "ui": {
+      "pageTitle": "Guide d'utilisation",
+      "subtitle": "Tout ce qu'il vous faut pour tirer le meilleur parti de Ritualist.",
+      "searchPlaceholder": "Rechercher dans le guide…",
+      "noResults": "Aucun résultat. Essayez une autre recherche.",
+      "home": "Accueil",
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "language": "Langue",
+      "jumpToTop": "Haut de page"
+    }
+  },
+  "ro": {
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Primii pași",
+        "items": [
+          {
+            "emoji": "➕",
+            "title": "Creează primul tău obicei",
+            "subtitle": "Începe să construiești rutine mai bune",
+            "content": "Atinge butonul + din fila Obiceiuri pentru a crea un obicei nou. Da-i un nume, alege un emoji și setează-ți programul. Poți folosi și Asistentul de obiceiuri pentru sugestii personalizate bazate pe obiectivele tale."
+          },
+          {
+            "emoji": "🔢",
+            "title": "Obiceiuri binare vs numerice",
+            "subtitle": "Alege tipul corect de urmărire",
+            "content": "Ritualist acceptă trei tipuri de obiceiuri. Obiceiurile binare sunt sarcini simple da/nu precum „Meditează“ sau „Ia vitamine“. Obiceiurile numerice urmăresc cantități precum „8 pahare de apă“ sau „30 de minute de citit“. Obiceiurile cronometrate îți permit să urmărești intervalele de post și sesiunile de respirație ghidată cu cronometre, protocoale și jurnal de dispoziție integrate."
+          },
+          {
+            "emoji": "📅",
+            "title": "Programare flexibilă",
+            "subtitle": "Zilnic sau anumite zile",
+            "content": "Setează obiceiurile să se repete zilnic sau în anumite zile ale săptămânii. De exemplu, setează 'Antrenament sală' pentru luni, miercuri și vineri. Obiceiurile apar doar în zilele lor programate."
+          },
+          {
+            "emoji": "🏷️",
+            "title": "Organizează cu categorii",
+            "subtitle": "Grupează obiceiurile înrudite",
+            "content": "Categoriile te ajută să organizezi obiceiurile pe arii de viață precum Sănătate, Munca sau Dezvoltare personală. Filtrează lista de obiceiuri pe categorie pentru a te concentra pe obiective specifice. Creează categorii personalizate pentru a se potrivi stilului tău de viață."
+          },
+          {
+            "emoji": "🤖",
+            "title": "Asistent obiceiuri",
+            "subtitle": "Primește sugestii personalizate",
+            "content": "Folosește Asistentul de Obiceiuri pentru a explora sugestii organizate pe categorii. Filtrează după Sănătate, Wellness, Fitness, Productivitate și altele. Fiecare sugestie vine preconfigurată cu program, obiectiv și emoji. Vei găsi și sugestii cronometrate pentru protocoale de post și exerciții de respirație precum Respirația pătrată, Oftatul ciclic și Respirația coerentă. Obiceiurile legate de sănătate sunt configurate automat cu Apple Health."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Urmărirea obiceiurilor",
+        "items": [
+          {
+            "emoji": "✅",
+            "title": "Înregistrează un obicei",
+            "subtitle": "Marchează obiceiurile ca finalizate",
+            "content": "Atinge orice obicei pe ecranul Astăzi pentru a-l înregistra. Pentru obiceiuri binare, îl marchează ca finalizat. Pentru obiceiuri numerice, poți ajusta valoarea folosind butoanele de incrementare sau adăugare rapidă. Obiceiurile finalizate se mută în secțiunea 'Finalizate'."
+          },
+          {
+            "emoji": "⚡",
+            "title": "Înregistrare rapidă cu apăsare lungă",
+            "subtitle": "Completează obiceiurile mai repede",
+            "content": "Apasă lung orice obicei incomplet pentru a-l înregistra instant. Un inel de progres se umple pe măsură ce tii apăsat, și obiceiul se completează când e plin. Pentru obiceiuri numerice, asta înregistrează obiectivul zilnic complet. Grozav pentru înregistrare rapidă în mers!"
+          },
+          {
+            "emoji": "🔥",
+            "title": "Construiește serii",
+            "subtitle": "Rămâi consistent zi de zi",
+            "content": "Finalizează obiceiurile în zile programate consecutive pentru a construi serii. Pictograma de foc arată seriile la risc - finalizează aceste obiceiuri astăzi pentru a-ți menține seria! Vezi toate seriile curente în secțiunea Sumar."
+          },
+          {
+            "emoji": "📆",
+            "title": "Înregistrează zile trecute",
+            "subtitle": "Recuperează înregistrările ratate",
+            "content": "Glisează selectorul de săptămână sau atinge orice zi pentru a vedea și înregistra obiceiuri pentru datele trecute. Asta îți permite să recuperezi înregistrările pe care le-ai ratat. Poți și elimină înregistrări dacă ai făcut o greșeală."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Obiceiuri cronometrate",
+        "items": [
+          {
+            "emoji": "🍽️",
+            "title": "Tracker de post",
+            "subtitle": "Urmărește intervalele de post intermitent",
+            "content": "Alege dintre protocoale populare de post precum 16:8, 18:6 sau 20:4, sau creează-ți propriul program personalizat. Începe un post din tab-ul Prezentare generală și urmărește-ți progresul în timp real. Vei vedea timpul scurs, timpul rămas și progresul către obiectiv. Când obiectivul de post este atins, vei primi o notificare. Poți seta și un memento zilnic pentru a-ți începe postul la aceeași oră în fiecare zi. Fiecare sesiune poate fi înregistrată cu o intrare de dispoziție pentru a urmări cum afectează postul starea ta de bine."
+          },
+          {
+            "emoji": "🫁",
+            "title": "Exerciții de respirație",
+            "subtitle": "Respirație ghidată cu protocoale dovedite",
+            "content": "Urmează sesiuni de respirație ghidată cu protocoale validate științific. Alege dintre 7 modele predefinite: Respirație pătrată pentru concentrare, 4-7-8 pentru relaxare, Oftat ciclic pentru ameliorarea rapidă a stresului, Respirație coerentă pentru variabilitatea ritmului cardiac, Respirație calmantă pentru activarea parasimpatică, Respirație puternică pentru energie și Respirație energizantă pentru vigilență. Poți crea și protocoale personalizate cu propriile setări de inspirație, reținere, expirație și runde. Fiecare sesiune include un ghid vizual animat care arată faza curentă, contorul de runde și timpul scurs. Înregistrează-ți dispoziția după fiecare sesiune pentru a descoperi ce tehnici funcționează cel mai bine pentru tine."
+          },
+          {
+            "emoji": "📱",
+            "title": "Activități live",
+            "subtitle": "Urmărește sesiunile de pe ecranul de blocare",
+            "content": "Când începi o sesiune de post sau respirație, o Activitate Live apare pe ecranul de blocare și în Dynamic Island. Urmărește timpul scurs, timpul rămas și progresul către obiectiv fără să deschizi aplicația. Atinge Activitatea Live pentru a reveni direct la sesiunea activă. Activitățile Live se actualizează în timp real și dispar automat când închei sesiunea."
+          },
+          {
+            "emoji": "😊",
+            "title": "Jurnal de dispoziție al sesiunii",
+            "subtitle": "Urmărește cum afectează sesiunile starea ta de bine",
+            "content": "După finalizarea unei sesiuni de post sau respirație, poți înregistra cum te simți. Alege dintre dispoziții precum Calm, Concentrat, Energizat, Anxios sau Neliniștit. În timp, aceste date te ajută să identifici tipare — ce protocol de respirație te ajută să te concentrezi sau cum diferitele ferestre de post îți afectează nivelul de energie. Revizuiește istoricul dispozițiilor în vizualizarea istoricului sesiunilor pentru a lua decizii bazate pe date despre rutina ta de wellness."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Memento-uri și notificări",
+        "items": [
+          {
+            "emoji": "⏰",
+            "title": "Memento-uri bazate pe timp",
+            "subtitle": "Nu uita niciodată un obicei",
+            "content": "Adaugă memento-uri de timp la orice obicei pentru a fi notificat la ore specifice. Setează memento-uri multiple pentru obiceiurile pe care vrei să le faci la ore diferite. Memento-urile se activează doar în zilele când obiceiul este programat."
+          },
+          {
+            "emoji": "📍",
+            "title": "Memento-uri bazate pe locație",
+            "subtitle": "Declanșate de locul unde te afli",
+            "content": "Setează o locație pentru obiceiurile pe care vrei să le faci în locuri specifice. Fii notificat când ajungi la sau pleci dintr-o locație. Perfect pentru obiceiuri precum 'Stretching la sală' sau 'Citește când ajung acasă'."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Analize și statistici",
+        "items": [
+          {
+            "emoji": "📈",
+            "title": "Tendință de progres",
+            "subtitle": "Urmărește îmbunătățirea în timp",
+            "content": "Graficul tendinței de progres îți arată rata generală de finalizare în timp. Urmărește cum crește media ta pe măsură ce construiești consistență. Linia de tendință te ajută să vezi dacă te îmbunătățești de la săptămână la săptămână."
+          },
+          {
+            "emoji": "📊",
+            "title": "Tipare de obiceiuri",
+            "subtitle": "Descoperă cele mai bune zile ale tale",
+            "content": "Graficul de tipare dezvăluie în ce zile ale săptămânii ai cele mai bune performanțe. Folosește această perspectivă pentru a programa obiceiuri dificile în zilele tale cele mai bune sau concentrează-te mai mult pe zilele mai slabe."
+          },
+          {
+            "emoji": "🗓️",
+            "title": "Harta de consistență",
+            "subtitle": "Vizualizează-ți istoricul",
+            "content": "Harta de căldură îți arată istoricul de finalizare a obiceiurilor dintr-o privire. Culorile mai închise înseamnă finalizare mai mare. Selectează obiceiuri diferite pentru a le vedea tiparele individuale. Caută goluri pentru a identifica arii de îmbunătățire."
+          },
+          {
+            "emoji": "🧠",
+            "title": "Analiză de personalitate",
+            "subtitle": "Profil de personalitate bazat pe IA",
+            "content": "După ce urmărești cel puțin 5 obiceiuri timp de 7 zile, vei debloca un profil de personalitate unic bazat pe tiparele tale. Analiza identifică arhetipul tău de personalitate și poate fi configurată să se actualizeze zilnic, săptămânal sau lunar. Poți să o declanșezi și manual oricând. O găsești în tab-ul Prezentare generală. Aceasta este o funcție premium."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Sănătate și conectivitate",
+        "items": [
+          {
+            "emoji": "❤️",
+            "title": "Apple Health",
+            "subtitle": "Urmărește automat obiceiurile din datele de sănătate",
+            "content": "Conectează obiceiurile la Apple Health pentru a urmări automat metrici precum pași, minute de exerciții, somn, consum de apă, distanță de ciclism și altele. Obiceiurile legate de sănătate se pot finaliza automat când obiectivul zilnic este atins. Configurează direcția de sincronizare: citire din Health, scriere în Health sau ambele."
+          },
+          {
+            "emoji": "☁️",
+            "title": "Sincronizare iCloud",
+            "subtitle": "Păstrează datele sincronizate între dispozitive",
+            "content": "Obiceiurile, progresul și setările tale se sincronizează automat pe toate dispozitivele tale prin iCloud. Doar conectează-te cu același Apple ID — nu este necesară nicio configurare suplimentară. Modificările apar pe celelalte dispozitive în câteva momente. Această funcție este gratuită pentru toți utilizatorii."
+          },
+          {
+            "emoji": "📱",
+            "title": "Widgeturi pe ecranul de pornire",
+            "subtitle": "Urmărește progresul dintr-o privire",
+            "content": "Adaugă widgeturi Ritualist pe ecranul de pornire pentru acces rapid la progresul tău. Widgeturile disponibile includ o hartă de căldură a calendarului de completare, urmăritor de serii și card de analiză a personalității. Widgeturile se actualizează pe parcursul zilei pe măsură ce completezi obiceiuri. Apasă lung pe ecranul de pornire și atinge + pentru a adăuga widgeturi."
+          },
+          {
+            "emoji": "📤",
+            "title": "Export de date",
+            "subtitle": "Descarcă-ți datele oricând",
+            "content": "Exportă toate datele tale de obiceiuri ca fișier CSV pentru backup sau analiză. Exportul include obiceiuri, categorii, jurnale de completare și date de profil. Accesează din Setări > Gestionare date. Importarea datelor pentru restaurare dintr-un backup este o funcție Pro."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Sfaturi și trucuri",
+        "items": [
+          {
+            "emoji": "🌱",
+            "title": "Începe mic",
+            "subtitle": "Construiește impulsul treptat",
+            "content": "Începe cu 1-3 obiceiuri și stăpânește-le înainte de a adăuga mai multe. E mai bine să finalizezi constant câteva obiceiuri decât să te lupți cu multe. Succesul construiește încredere și motivație pentru obiective mai mari."
+          },
+          {
+            "emoji": "🧱",
+            "title": "Stivuirea obiceiurilor",
+            "subtitle": "Leagă obiceiuri noi de cele existente",
+            "content": "Atașează obiceiuri noi la rutinele existente. De exemplu: 'După ce îmi torn cafeaua de dimineață, voi medita 5 minute.' Asta creează declanșatoare automate care fac obiceiurile noi mai ușor de reținut."
+          },
+          {
+            "emoji": "⏱️",
+            "title": "Regula celor 2 minute",
+            "subtitle": "Fă obiceiurile ușor de început",
+            "content": "Reduce orice obicei la ceva ce poți face în 2 minute sau mai puțin. 'Citește 30 de minute' devine 'Citește o pagină'. Odată ce începi, adesea continui. Scopul este să faci începutul atât de ușor încât să nu poți spune nu."
+          }
+        ]
+      }
+    ],
+    "ui": {
+      "pageTitle": "Ghid utilizator",
+      "subtitle": "Tot ce ai nevoie pentru a profita la maximum de Ritualist.",
+      "searchPlaceholder": "Caută în ghid…",
+      "noResults": "Nicio potrivire. Încearcă altă căutare.",
+      "home": "Acasă",
+      "privacy": "Confidențialitate",
+      "terms": "Termeni",
+      "language": "Limbă",
+      "jumpToTop": "Sus"
+    }
+  }
+}
