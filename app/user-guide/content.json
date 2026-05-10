@@ -31,10 +31,22 @@
             "content": "Categories help you organize habits by area of life like Health, Work, or Personal Growth. Filter your habits list by category to focus on specific goals. Create custom categories to match your lifestyle."
           },
           {
+            "emoji": "🎨",
+            "title": "Colors & Themes",
+            "subtitle": "Make every habit recognizable",
+            "content": "Every habit has a color you can pick when creating or editing it. Colors flow through the streaks tile, the heatmap, and the home screen widget so you can recognize habits at a glance. The overall app accent color follows your chosen Completion Theme in Settings → Preferences → Theme — try Classic, Sunset, Forest, or Ocean to match your style."
+          },
+          {
             "emoji": "🤖",
             "title": "Habits Assistant",
             "subtitle": "Get personalized suggestions",
             "content": "Use the Habits Assistant to browse curated habit suggestions organized by category. Filter by Health, Wellness, Fitness, Productivity, and more. Each suggestion comes pre-configured with a schedule, target, and emoji. You'll also find timed habit suggestions for fasting protocols and breathing exercises like Box Breathing, Cyclic Sighing, and Coherent Breathing. Health-linked habits are automatically set up with Apple Health integration."
+          },
+          {
+            "emoji": "✨",
+            "title": "Inspiration Cards",
+            "subtitle": "Daily nudges and affirmations",
+            "content": "The Overview shows context-aware inspiration cards based on the time of day, your completion progress, and your habit patterns. Swipe through the carousel to see each card, tap thumbs up or down to teach the app what resonates, and dismiss them all when you want a quieter screen. You can turn the carousel off entirely in Settings → Preferences → Inspirational Messages."
           }
         ]
       },
@@ -147,6 +159,12 @@
             "title": "Personality Insights",
             "subtitle": "AI-powered habit personality profile",
             "content": "After tracking at least 5 habits for 7 days, you'll unlock a unique personality profile based on your patterns. The analysis identifies your habit personality archetype and can be configured to update daily, weekly, or monthly. You can also trigger it manually anytime. Find it on the Overview tab. This is a premium feature."
+          },
+          {
+            "emoji": "🏆",
+            "title": "Achievements",
+            "subtitle": "Celebrate milestones as you go",
+            "content": "Ritualist celebrates the moments worth celebrating: week-long streaks, perfect days, and longer milestones at 14, 30, 100, and 365 days. Achievements unlock automatically as you log — no setup needed. Tap an unlocked badge to see when you earned it, and use the share sheet to send a snapshot card to friends or social media."
           }
         ]
       },
@@ -166,6 +184,12 @@
             "title": "iCloud Sync",
             "subtitle": "Keep data in sync across devices",
             "content": "Your habits, progress, and settings sync automatically across all your devices via iCloud. Just sign into the same Apple ID — no additional setup required. Changes appear on your other devices within moments. This feature is free for all users."
+          },
+          {
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Track from your wrist",
+            "content": "Ritualist syncs to your Apple Watch over WatchConnectivity, so today's habits are always one wrist-tap away. Open the watch app to see scheduled habits, log binary and numeric ones, and check your progress without reaching for your phone. Logs flow back to your iPhone instantly when both devices are reachable, and queue up reliably when they're not."
           },
           {
             "emoji": "📱",
@@ -203,6 +227,12 @@
             "title": "The 2-Minute Rule",
             "subtitle": "Make habits easy to start",
             "content": "Scale down any habit to something you can do in 2 minutes or less. 'Read 30 minutes' becomes 'Read one page'. Once you start, you often continue. The goal is to make starting so easy you can't say no."
+          },
+          {
+            "emoji": "🗺️",
+            "title": "Roadmap & Feature Requests",
+            "subtitle": "Help shape what comes next",
+            "content": "Ritualist has a public roadmap you can browse from Settings → Feature Requests. See what's planned, what's in progress, and what's recently shipped. Want a feature you don't see? Submit it from the same screen — every request gets read."
           }
         ]
       }
@@ -251,10 +281,22 @@
             "content": "Organisiere deine Gewohnheiten in Kategorien für bessere Übersicht."
           },
           {
+            "emoji": "🎨",
+            "title": "Farben und Themes",
+            "subtitle": "Mach jede Gewohnheit unterscheidbar",
+            "content": "Jede Gewohnheit hat eine Farbe, die du beim Erstellen oder Bearbeiten wählen kannst. Die Farben ziehen sich durch die Streak-Kachel, die Heatmap und das Homescreen-Widget, damit du Gewohnheiten auf einen Blick erkennst. Die App-Akzentfarbe richtet sich nach dem gewählten Completion-Theme in Einstellungen → Präferenzen → Theme — probier Classic, Sunset, Forest oder Ocean."
+          },
+          {
             "emoji": "🤖",
             "title": "Gewohnheits-Assistent",
             "subtitle": "Erhalte personalisierte Vorschläge",
             "content": "Verwende den Gewohnheits-Assistenten, um kuratierte Vorschläge nach Kategorie zu durchsuchen. Filtere nach Gesundheit, Wellness, Fitness, Produktivität und mehr. Jeder Vorschlag ist vorkonfiguriert mit Zeitplan, Ziel und Emoji. Du findest auch zeitgesteuerte Vorschläge für Fastenprotokolle und Atemübungen wie Box-Atmung, Zyklisches Seufzen und Kohärente Atmung. Gesundheitsverknüpfte Gewohnheiten werden automatisch mit Apple Health eingerichtet."
+          },
+          {
+            "emoji": "✨",
+            "title": "Inspirationskarten",
+            "subtitle": "Tägliche Anstöße und Affirmationen",
+            "content": "Die Übersicht zeigt kontextbezogene Inspirationskarten basierend auf der Tageszeit, deinem Fortschritt und deinen Gewohnheitsmustern. Wisch durch das Karussell, tippe Daumen hoch oder runter, um der App zu zeigen, was bei dir ankommt, und blende alle aus, wenn du Ruhe brauchst. In Einstellungen → Präferenzen → Inspirationsnachrichten kannst du das Karussell komplett deaktivieren."
           }
         ]
       },
@@ -367,6 +409,12 @@
             "title": "Persönlichkeitsanalyse",
             "subtitle": "KI-gestütztes Gewohnheitsprofil",
             "content": "Nachdem du mindestens 5 Gewohnheiten 7 Tage lang verfolgt hast, schaltest du ein einzigartiges Persönlichkeitsprofil basierend auf deinen Mustern frei. Die Analyse identifiziert deinen Gewohnheits-Archetyp und kann so eingestellt werden, dass sie täglich, wöchentlich oder monatlich aktualisiert wird. Du kannst sie auch jederzeit manuell auslösen. Findest du auf dem Übersicht-Tab. Dies ist eine Premium-Funktion."
+          },
+          {
+            "emoji": "🏆",
+            "title": "Erfolge",
+            "subtitle": "Meilensteine unterwegs feiern",
+            "content": "Ritualist feiert die Momente, die zählen: einwöchige Streaks, perfekte Tage und längere Meilensteine bei 14, 30, 100 und 365 Tagen. Erfolge schalten sich automatisch frei, sobald du einträgst — kein Setup nötig. Tippe auf ein freigeschaltetes Abzeichen, um zu sehen, wann du es verdient hast, und teile mit dem Share-Sheet eine Snapshot-Karte mit Freunden oder in sozialen Medien."
           }
         ]
       },
@@ -386,6 +434,12 @@
             "title": "iCloud-Synchronisierung",
             "subtitle": "Daten geräteübergreifend synchronisieren",
             "content": "Deine Gewohnheiten, Fortschritte und Einstellungen synchronisieren sich automatisch über alle deine Geräte via iCloud. Melde dich einfach mit derselben Apple-ID an — keine zusätzliche Einrichtung erforderlich. Änderungen erscheinen innerhalb von Momenten auf deinen anderen Geräten. Diese Funktion ist für alle Nutzer kostenlos."
+          },
+          {
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Vom Handgelenk aus tracken",
+            "content": "Ritualist synchronisiert sich über WatchConnectivity mit deiner Apple Watch — die heutigen Gewohnheiten sind nur einen Tipp entfernt. Öffne die Watch-App, um geplante Gewohnheiten zu sehen, binäre und numerische Einträge zu protokollieren und deinen Fortschritt zu prüfen, ohne zum iPhone zu greifen. Wenn beide Geräte erreichbar sind, werden Logs sofort übertragen, ansonsten zuverlässig in der Warteschlange gehalten."
           },
           {
             "emoji": "📱",
@@ -423,6 +477,12 @@
             "title": "2-Minuten-Regel",
             "subtitle": "Schnelle Erfolge",
             "content": "Wenn eine Gewohnheit weniger als 2 Minuten dauert, mach sie sofort."
+          },
+          {
+            "emoji": "🗺️",
+            "title": "Roadmap und Feature-Wünsche",
+            "subtitle": "Mitgestalten, was als Nächstes kommt",
+            "content": "Ritualist hat eine öffentliche Roadmap, die du in Einstellungen → Feature-Wünsche durchstöbern kannst. Sieh, was geplant ist, was in Arbeit ist und was kürzlich erschienen ist. Eine Funktion fehlt? Reiche sie auf derselben Seite ein — jede Anfrage wird gelesen."
           }
         ]
       }
@@ -471,10 +531,22 @@
             "content": "Las categorías te ayudan a organizar hábitos por área de vida como Salud, Trabajo o Crecimiento personal. Filtra tu lista de hábitos por categoría para enfocarte en objetivos específicos. Crea categorías personalizadas para adaptarlas a tu estilo de vida."
           },
           {
+            "emoji": "🎨",
+            "title": "Colores y temas",
+            "subtitle": "Haz que cada hábito sea reconocible",
+            "content": "Cada hábito tiene un color que puedes elegir al crearlo o editarlo. Los colores recorren la tarjeta de rachas, el mapa de calor y el widget de la pantalla de inicio para que reconozcas tus hábitos de un vistazo. El color de acento de la app sigue el Tema de cumplimiento que elijas en Ajustes → Preferencias → Tema — prueba Clásico, Atardecer, Bosque u Océano para que combine con tu estilo."
+          },
+          {
             "emoji": "🤖",
             "title": "Asistente de hábitos",
             "subtitle": "Obtén sugerencias personalizadas",
             "content": "Usa el Asistente de Hábitos para explorar sugerencias organizadas por categoría. Filtra por Salud, Bienestar, Fitness, Productividad y más. Cada sugerencia viene preconfigurada con un horario, objetivo y emoji. También encontrarás sugerencias cronometradas para protocolos de ayuno y ejercicios de respiración como Respiración cuadrada, Suspiro cíclico y Respiración coherente. Los hábitos vinculados a salud se configuran automáticamente con Apple Health."
+          },
+          {
+            "emoji": "✨",
+            "title": "Tarjetas de inspiración",
+            "subtitle": "Empujones y afirmaciones diarios",
+            "content": "La Vista General muestra tarjetas de inspiración contextuales según la hora del día, tu progreso de cumplimiento y tus patrones de hábitos. Desliza por el carrusel, toca pulgar arriba o abajo para enseñar a la app qué te resuena y descártalas todas cuando quieras una pantalla más tranquila. Puedes desactivar el carrusel por completo en Ajustes → Preferencias → Mensajes inspiradores."
           }
         ]
       },
@@ -587,6 +659,12 @@
             "title": "Análisis de personalidad",
             "subtitle": "Perfil de personalidad basado en IA",
             "content": "Después de registrar al menos 5 hábitos durante 7 días, desbloquearás un perfil de personalidad único basado en tus patrones. El análisis identifica tu arquetipo de personalidad de hábitos y se puede configurar para actualizarse diariamente, semanalmente o mensualmente. También puedes activarlo manualmente en cualquier momento. Encuéntralo en la pestaña Resumen. Esta es una función premium."
+          },
+          {
+            "emoji": "🏆",
+            "title": "Logros",
+            "subtitle": "Celebra los hitos a medida que avanzas",
+            "content": "Ritualist celebra los momentos que merecen celebrarse: rachas de una semana, días perfectos y hitos más largos a los 14, 30, 100 y 365 días. Los logros se desbloquean automáticamente a medida que registras — sin configuración. Toca una insignia desbloqueada para ver cuándo la conseguiste y usa la hoja de compartir para enviar una tarjeta a amigos o redes sociales."
           }
         ]
       },
@@ -606,6 +684,12 @@
             "title": "Sincronización iCloud",
             "subtitle": "Mantén los datos sincronizados entre dispositivos",
             "content": "Tus hábitos, progreso y configuraciones se sincronizan automáticamente en todos tus dispositivos a través de iCloud. Solo inicia sesión con el mismo Apple ID — no se requiere configuración adicional. Los cambios aparecen en tus otros dispositivos en segundos. Esta función es gratuita para todos los usuarios."
+          },
+          {
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Registra desde tu muñeca",
+            "content": "Ritualist se sincroniza con tu Apple Watch a través de WatchConnectivity, así los hábitos de hoy están siempre a un toque de distancia. Abre la app del reloj para ver tus hábitos programados, registrar los binarios y numéricos y consultar tu progreso sin necesidad de coger el iPhone. Los registros vuelven al iPhone al instante cuando ambos dispositivos están al alcance, y se ponen en cola de forma fiable cuando no."
           },
           {
             "emoji": "📱",
@@ -643,6 +727,12 @@
             "title": "La regla de los 2 minutos",
             "subtitle": "Haz que los hábitos sean fáciles de empezar",
             "content": "Reduce cualquier hábito a algo que puedas hacer en 2 minutos o menos. 'Leer 30 minutos' se convierte en 'Leer una página'. Una vez que empiezas, a menudo continúas. El objetivo es hacer que empezar sea tan fácil que no puedas decir que no."
+          },
+          {
+            "emoji": "🗺️",
+            "title": "Hoja de ruta y solicitudes",
+            "subtitle": "Ayuda a moldear lo que viene",
+            "content": "Ritualist tiene una hoja de ruta pública que puedes consultar en Ajustes → Solicitudes de funciones. Mira lo planeado, lo que está en marcha y lo que se acaba de lanzar. ¿Echas en falta una función? Envíala desde la misma pantalla — cada solicitud se lee."
           }
         ]
       }
@@ -691,10 +781,22 @@
             "content": "Les catégories t'aident à organiser tes habitudes par domaine de vie comme Santé, Travail ou Développement personnel. Filtre ta liste d'habitudes par catégorie pour te concentrer sur des objectifs spécifiques. Crée des catégories personnalisées pour correspondre à ton style de vie."
           },
           {
+            "emoji": "🎨",
+            "title": "Couleurs et thèmes",
+            "subtitle": "Rends chaque habitude reconnaissable",
+            "content": "Chaque habitude a une couleur que tu peux choisir à la création ou à l'édition. Les couleurs se retrouvent dans la tuile de séries, la heatmap et le widget de l'écran d'accueil pour repérer tes habitudes d'un coup d'œil. La couleur d'accent de l'app suit le Thème de complétion choisi dans Réglages → Préférences → Thème — essaie Classique, Coucher de soleil, Forêt ou Océan pour qu'il colle à ton style."
+          },
+          {
             "emoji": "🤖",
             "title": "Assistant d'habitudes",
             "subtitle": "Obtiens des suggestions personnalisées",
             "content": "Utilisez l’Assistant d’Habitudes pour parcourir des suggestions organisées par catégorie. Filtrez par Santé, Bien-être, Fitness, Productivité et plus. Chaque suggestion est préconfigurée avec un horaire, un objectif et un emoji. Vous trouverez aussi des suggestions chronométrées pour des protocoles de jeûne et des exercices de respiration comme la Respiration carrée, le Soupir cyclique et la Respiration cohérente. Les habitudes liées à la santé sont automatiquement configurées avec Apple Santé."
+          },
+          {
+            "emoji": "✨",
+            "title": "Cartes d'inspiration",
+            "subtitle": "Coups de pouce et affirmations quotidiens",
+            "content": "La page Aperçu affiche des cartes d'inspiration contextualisées selon l'heure, ta progression de la journée et tes habitudes. Fais défiler le carrousel, touche pouce levé ou baissé pour apprendre à l'app ce qui te parle et masque-les toutes quand tu veux un écran plus calme. Tu peux désactiver complètement le carrousel dans Réglages → Préférences → Messages d'inspiration."
           }
         ]
       },
@@ -807,6 +909,12 @@
             "title": "Analyse de personnalité",
             "subtitle": "Profil de personnalité basé sur l'IA",
             "content": "Après avoir suivi au moins 5 habitudes pendant 7 jours, vous débloquerez un profil de personnalité unique basé sur vos habitudes. L’analyse identifie votre archétype de personnalité et peut être configurée pour se mettre à jour quotidiennement, hebdomadairement ou mensuellement. Vous pouvez aussi la déclencher manuellement à tout moment. Retrouvez-la dans l’onglet Aperçu. C’est une fonctionnalité premium."
+          },
+          {
+            "emoji": "🏆",
+            "title": "Accomplissements",
+            "subtitle": "Célèbre tes paliers au fil du temps",
+            "content": "Ritualist met à l'honneur les moments qui comptent : séries d'une semaine, journées parfaites et paliers plus longs à 14, 30, 100 et 365 jours. Les accomplissements se débloquent automatiquement à mesure que tu enregistres — aucune configuration. Touche une médaille débloquée pour voir quand tu l'as gagnée et utilise la feuille de partage pour envoyer une carte à tes amis ou sur les réseaux."
           }
         ]
       },
@@ -826,6 +934,12 @@
             "title": "Synchronisation iCloud",
             "subtitle": "Synchronise les données entre appareils",
             "content": "Tes habitudes, progrès et paramètres se synchronisent automatiquement sur tous tes appareils via iCloud. Connecte-toi simplement avec le même identifiant Apple — aucune configuration supplémentaire requise. Les modifications apparaissent sur tes autres appareils en quelques instants. Cette fonctionnalité est gratuite pour tous les utilisateurs."
+          },
+          {
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Suis tes habitudes au poignet",
+            "content": "Ritualist se synchronise avec ton Apple Watch via WatchConnectivity, donc les habitudes du jour sont toujours à portée de poignet. Ouvre l'app de la montre pour voir tes habitudes programmées, enregistrer celles binaires et numériques et consulter ta progression sans toucher à ton iPhone. Les enregistrements remontent vers l'iPhone instantanément quand les deux appareils sont à portée, et patientent dans une file d'attente fiable sinon."
           },
           {
             "emoji": "📱",
@@ -863,6 +977,12 @@
             "title": "La règle des 2 minutes",
             "subtitle": "Rends les habitudes faciles à commencer",
             "content": "Réduis n'importe quelle habitude à quelque chose que tu peux faire en 2 minutes ou moins. « Lire 30 minutes » devient « Lire une page ». Une fois que tu commences, tu continues souvent. L'objectif est de rendre le démarrage si facile que tu ne peux pas dire non."
+          },
+          {
+            "emoji": "🗺️",
+            "title": "Feuille de route et demandes",
+            "subtitle": "Aide à façonner la suite",
+            "content": "Ritualist a une feuille de route publique consultable depuis Réglages → Demandes de fonctionnalités. Vois ce qui est prévu, ce qui est en cours et ce qui vient d'être livré. Une fonctionnalité te manque ? Envoie-la depuis le même écran — chaque demande est lue."
           }
         ]
       }
@@ -911,10 +1031,22 @@
             "content": "Categoriile te ajută să organizezi obiceiurile pe arii de viață precum Sănătate, Munca sau Dezvoltare personală. Filtrează lista de obiceiuri pe categorie pentru a te concentra pe obiective specifice. Creează categorii personalizate pentru a se potrivi stilului tău de viață."
           },
           {
+            "emoji": "🎨",
+            "title": "Culori și teme",
+            "subtitle": "Fă fiecare obicei ușor de recunoscut",
+            "content": "Fiecare obicei are o culoare pe care o alegi la creare sau la editare. Culorile se regăsesc în cartela de serii, în harta de intensitate și în widget-ul de pe ecranul principal, ca să-ți recunoști obiceiurile dintr-o privire. Culoarea de accent a aplicației urmează Tema de completare aleasă în Setări → Preferințe → Temă — încearcă Clasic, Apus, Pădure sau Ocean ca să se potrivească stilului tău."
+          },
+          {
             "emoji": "🤖",
             "title": "Asistent obiceiuri",
             "subtitle": "Primește sugestii personalizate",
             "content": "Folosește Asistentul de Obiceiuri pentru a explora sugestii organizate pe categorii. Filtrează după Sănătate, Wellness, Fitness, Productivitate și altele. Fiecare sugestie vine preconfigurată cu program, obiectiv și emoji. Vei găsi și sugestii cronometrate pentru protocoale de post și exerciții de respirație precum Respirația pătrată, Oftatul ciclic și Respirația coerentă. Obiceiurile legate de sănătate sunt configurate automat cu Apple Health."
+          },
+          {
+            "emoji": "✨",
+            "title": "Cartele de inspirație",
+            "subtitle": "Îmbolduri și afirmații zilnice",
+            "content": "Tabul Privire de ansamblu afișează cartele de inspirație contextuale, în funcție de momentul zilei, progresul tău și tiparele obiceiurilor. Glisează prin carusel, atinge degetul sus sau jos pentru a învăța aplicația ce rezonează cu tine și ascunde-le pe toate când vrei un ecran mai liniștit. Poți dezactiva complet caruselul în Setări → Preferințe → Mesaje inspiraționale."
           }
         ]
       },
@@ -1027,6 +1159,12 @@
             "title": "Analiză de personalitate",
             "subtitle": "Profil de personalitate bazat pe IA",
             "content": "După ce urmărești cel puțin 5 obiceiuri timp de 7 zile, vei debloca un profil de personalitate unic bazat pe tiparele tale. Analiza identifică arhetipul tău de personalitate și poate fi configurată să se actualizeze zilnic, săptămânal sau lunar. Poți să o declanșezi și manual oricând. O găsești în tab-ul Prezentare generală. Aceasta este o funcție premium."
+          },
+          {
+            "emoji": "🏆",
+            "title": "Realizări",
+            "subtitle": "Sărbătorește etapele pe parcurs",
+            "content": "Ritualist sărbătorește momentele care merită: serii de o săptămână, zile perfecte și etape mai lungi la 14, 30, 100 și 365 de zile. Realizările se deblochează automat pe măsură ce înregistrezi — fără setări suplimentare. Atinge o insignă deblocată ca să vezi când ai obținut-o și folosește foaia de partajare pentru a trimite o cartelă prietenilor sau pe rețelele sociale."
           }
         ]
       },
@@ -1046,6 +1184,12 @@
             "title": "Sincronizare iCloud",
             "subtitle": "Păstrează datele sincronizate între dispozitive",
             "content": "Obiceiurile, progresul și setările tale se sincronizează automat pe toate dispozitivele tale prin iCloud. Doar conectează-te cu același Apple ID — nu este necesară nicio configurare suplimentară. Modificările apar pe celelalte dispozitive în câteva momente. Această funcție este gratuită pentru toți utilizatorii."
+          },
+          {
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Urmărește direct de pe încheietură",
+            "content": "Ritualist se sincronizează cu Apple Watch prin WatchConnectivity, așa că obiceiurile de azi sunt mereu la o atingere distanță. Deschide aplicația de pe ceas pentru a vedea obiceiurile programate, a marca pe cele binare și numerice și a verifica progresul fără să iei iPhone-ul. Înregistrările se întorc instantaneu pe iPhone când ambele dispozitive sunt accesibile și rămân într-o coadă sigură atunci când nu sunt."
           },
           {
             "emoji": "📱",
@@ -1083,6 +1227,12 @@
             "title": "Regula celor 2 minute",
             "subtitle": "Fă obiceiurile ușor de început",
             "content": "Reduce orice obicei la ceva ce poți face în 2 minute sau mai puțin. 'Citește 30 de minute' devine 'Citește o pagină'. Odată ce începi, adesea continui. Scopul este să faci începutul atât de ușor încât să nu poți spune nu."
+          },
+          {
+            "emoji": "🗺️",
+            "title": "Plan de dezvoltare și sugestii",
+            "subtitle": "Ajută la conturarea pașilor următori",
+            "content": "Ritualist are un plan public de dezvoltare pe care îl poți răsfoi din Setări → Sugestii de funcționalități. Vezi ce e planificat, ce e în lucru și ce a fost lansat recent. Vrei o funcționalitate care nu apare? Trimite-o din același ecran — fiecare cerere e citită."
           }
         ]
       }
