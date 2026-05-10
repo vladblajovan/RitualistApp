@@ -50,7 +50,12 @@ export default function SupportPage() {
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
               <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Which devices are supported?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Ritualist is available for iPhone and iPad. Your data syncs seamlessly across all your Apple devices via iCloud.</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">Ritualist is available for iPhone, iPad, and Apple Watch. Your data syncs seamlessly across iPhone and iPad via iCloud, and the watch app stays in sync with your iPhone over WatchConnectivity even when iCloud sync is off.</p>
+            </div>
+
+            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
+              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Does Ritualist work with Apple Watch?</h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist ships with a companion Apple Watch app that stays in sync with your iPhone over WatchConnectivity. See today&apos;s habits at a glance, log binary and numeric ones from your wrist, and check your progress without reaching for your phone — even when iCloud sync is off.</p>
             </div>
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">

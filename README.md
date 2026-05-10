@@ -4,11 +4,11 @@ Modern landing page for [Ritualist](https://github.com/vladblajovan/Ritualist) -
 
 ## Overview
 
-This is the official marketing website for Ritualist, a modern iOS habit tracking app built with SwiftUI. The website showcases the app's key features including location-based reminders, AI personality insights, beautiful analytics, and more.
+This is the official marketing website for Ritualist, a modern iOS habit tracking app built with SwiftUI, with a companion Apple Watch app. The website showcases the app's key features including Apple Watch sync, location-based reminders, AI personality insights, beautiful analytics, and more.
 
 ## Features Showcase
 
-The website includes 6 feature sections with real iOS app screenshots:
+The website includes feature sections with real iOS app screenshots:
 
 ### 📍 Smart Location Triggers
 Never miss a habit again with intelligent geofencing that reminds you when you arrive at specific locations.
@@ -31,9 +31,12 @@ Personalize every detail with custom colors, emojis, and categories for each hab
 <img src="public/screenshots/customization.png" width="300" alt="Habit customization">
 
 ### ☁️ Seamless Everywhere
-iCloud sync keeps your data up-to-date across all your Apple devices in real-time.
+iCloud sync keeps your data up-to-date across iPhone and iPad in real-time.
 
 <img src="public/screenshots/sync.png" width="300" alt="iCloud sync">
+
+### ⌚ Apple Watch
+Companion watch app keeps today's habits one wrist-tap away. Logs binary and numeric habits and stays in sync with the iPhone over WatchConnectivity, even when iCloud sync is off.
 
 ### 🔒 Your Privacy, Protected
 Everything runs on-device with zero data collection. Your habits, your data, your control.

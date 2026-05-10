@@ -26,7 +26,7 @@ export default function PrivacyPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <h1 className="text-3xl font-bold mb-1">Privacy Policy</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: April 2, 2026</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: May 10, 2026</p>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Introduction</h2>
@@ -116,6 +116,7 @@ export default function PrivacyPage() {
             <li><strong>iCloud/CloudKit:</strong> For data synchronization across your devices</li>
             <li><strong>StoreKit:</strong> For processing in-app purchases and subscriptions</li>
             <li><strong>Apple Push Notification Service:</strong> For habit reminders</li>
+            <li><strong>WatchConnectivity:</strong> For peer-to-peer sync between your iPhone and paired Apple Watch. Habit data flows directly between your devices over Bluetooth/Wi-Fi without going through any server, so the watch app works even when iCloud sync is off.</li>
           </ul>
           <p className="mb-4 text-zinc-700 dark:text-zinc-300">These services are provided by Apple and governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Apple&apos;s Privacy Policy</a>.</p>
           <h3 className="font-semibold mb-2">Analytics (PostHog)</h3>
