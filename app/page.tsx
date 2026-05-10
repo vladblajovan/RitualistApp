@@ -27,9 +27,9 @@ const softwareApplicationLd = {
   '@type': 'SoftwareApplication',
   name: 'Ritualist',
   applicationCategory: 'LifestyleApplication',
-  operatingSystem: 'iOS, iPadOS',
+  operatingSystem: 'iOS, iPadOS, watchOS',
   description:
-    'Ritualist is a privacy-first habit tracker app for iPhone and iPad that uses on-device machine learning to turn your daily rituals into insight and progress.',
+    'Ritualist is a privacy-first habit tracker app for iPhone, iPad, and Apple Watch that uses on-device machine learning to turn your daily rituals into insight and progress.',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -56,7 +56,7 @@ const faqLd = {
       acceptedAnswer: {
         '@type': 'Answer',
         text:
-          'Ritualist is available for iPhone and iPad, and your data syncs seamlessly across your devices via iCloud.',
+          'Ritualist is available for iPhone, iPad, and Apple Watch. Your data syncs seamlessly across iPhone and iPad via iCloud, and the watch app stays in sync with your iPhone over WatchConnectivity even when iCloud sync is off.',
       },
     },
     {
@@ -108,6 +108,14 @@ const faqLd = {
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Yes! Ritualist can read and write health data like mindful minutes, steps, and water intake. Health integration is optional and your health data never leaves your device.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does Ritualist work with Apple Watch?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! Ritualist ships with a companion Apple Watch app that stays in sync with your iPhone over WatchConnectivity. See your scheduled habits for today, log binary and numeric ones, and check your progress without reaching for your phone — even when iCloud sync is off.',
       },
     },
     {
@@ -773,8 +781,9 @@ export default function Home() {
                   >
                     <div className="w-full max-w-[240px] md:max-w-[280px]">
                       <div className="rounded-[28px] border-2 border-rose-200 bg-white p-2 shadow-lg shadow-rose-500/10 transition-all duration-300 hover:shadow-rose-500/20 dark:border-rose-800 dark:bg-zinc-800">
+                        {/* TODO(screenshots): swap for a dedicated Apple Health screenshot. Using customization.png as placeholder — `health.png` was referenced previously but never committed. */}
                         <Image
-                          src="/screenshots/health.png"
+                          src="/screenshots/customization.png"
                           alt="Apple Health integration showing mindful minutes and activity data"
                           width={280}
                           height={560}
@@ -862,8 +871,9 @@ export default function Home() {
                   >
                     <div className="w-full max-w-[240px] md:max-w-[280px]">
                       <div className="rounded-[28px] border-2 border-teal-200 bg-white p-2 shadow-lg shadow-teal-500/10 transition-all duration-300 hover:shadow-teal-500/20 dark:border-teal-800 dark:bg-zinc-800">
+                        {/* TODO(screenshots): swap for a dedicated fasting/breathing screenshot. Using sync.png as placeholder — `timed.png` was referenced previously but never committed. */}
                         <Image
-                          src="/screenshots/timed.png"
+                          src="/screenshots/sync.png"
                           alt="Timed habits showing fasting protocols and guided breathing sessions"
                           width={280}
                           height={560}
@@ -954,6 +964,7 @@ export default function Home() {
               </motion.h2>
               <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 md:gap-6">
                 {[
+                  { icon: '⌚', title: 'Apple Watch', desc: 'Log habits and check progress straight from your wrist' },
                   { icon: '☁️', title: 'iCloud Sync', desc: 'Seamless sync across all your Apple devices' },
                   { icon: '🎨', title: 'Customization', desc: 'Custom colors, emojis, and flexible categories' },
                   { icon: '🏆', title: 'Shareable Cards', desc: 'Share streak milestones, perfect days, and weekly recaps' },
@@ -1078,7 +1089,7 @@ export default function Home() {
                   index={1}
                   onToggle={() => setOpenFaqIndex(openFaqIndex === 1 ? null : 1)}
                   question="Which devices are supported?"
-                  answer="Ritualist is available for iPhone and iPad. Your data syncs seamlessly across your devices via iCloud."
+                  answer="Ritualist is available for iPhone, iPad, and Apple Watch. Your data syncs seamlessly across iPhone and iPad via iCloud, and the watch app stays in sync with your iPhone over WatchConnectivity even when iCloud sync is off."
                 />
                 <FaqItem
                   isOpen={openFaqIndex === 2}
@@ -1126,20 +1137,27 @@ export default function Home() {
                   isOpen={openFaqIndex === 8}
                   index={8}
                   onToggle={() => setOpenFaqIndex(openFaqIndex === 8 ? null : 8)}
-                  question="What are timed habits?"
-                  answer="Timed habits let you track fasting and breathing exercises. Choose from built-in protocols like 16:8 fasting or box breathing, or create your own. Track mood, view session history, and monitor progress."
+                  question="Does Ritualist work with Apple Watch?"
+                  answer="Yes! Ritualist ships with a companion Apple Watch app that stays in sync with your iPhone over WatchConnectivity. See today's habits at a glance, log binary and numeric ones from your wrist, and check your progress without reaching for your phone — even when iCloud sync is off."
                 />
                 <FaqItem
                   isOpen={openFaqIndex === 9}
                   index={9}
                   onToggle={() => setOpenFaqIndex(openFaqIndex === 9 ? null : 9)}
-                  question="Which languages does Ritualist support?"
-                  answer="Ritualist is available in English, German, Spanish, French, and Romanian."
+                  question="What are timed habits?"
+                  answer="Timed habits let you track fasting and breathing exercises. Choose from built-in protocols like 16:8 fasting or box breathing, or create your own. Track mood, view session history, and monitor progress."
                 />
                 <FaqItem
                   isOpen={openFaqIndex === 10}
                   index={10}
                   onToggle={() => setOpenFaqIndex(openFaqIndex === 10 ? null : 10)}
+                  question="Which languages does Ritualist support?"
+                  answer="Ritualist is available in English, German, Spanish, French, and Romanian."
+                />
+                <FaqItem
+                  isOpen={openFaqIndex === 11}
+                  index={11}
+                  onToggle={() => setOpenFaqIndex(openFaqIndex === 11 ? null : 11)}
                   question="Can I share my achievements?"
                   answer="Yes! Ritualist generates shareable snapshot cards for streak milestones, perfect days, and weekly recaps. Share them directly from the app to celebrate your progress."
                 />
