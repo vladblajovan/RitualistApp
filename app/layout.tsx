@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://vladblajovan.github.io/RitualistApp";
+const socialPreviewImageUrl = `${siteUrl}/og-image-20260524.png`;
 
 export const metadata: Metadata = {
   title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Ritualist",
     images: [
       {
-        url: "/og-image.png",
+        url: socialPreviewImageUrl,
         width: 1200,
         height: 630,
         alt: "Ritualist app on iPhone and Apple Watch",
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
     description: "Track habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities, and private insights.",
-    images: ["/og-image.png"],
+    images: [socialPreviewImageUrl],
     creator: "@ritualistapp",
   },
   alternates: {
