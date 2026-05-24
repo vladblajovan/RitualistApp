@@ -14,7 +14,17 @@ body {
 .iphone-17-pro-max-frame {
   position: relative;
   aspect-ratio: 1470 / 3000;
-  filter: drop-shadow(0 24px 70px rgba(15, 23, 42, 0.22));
+  isolation: isolate;
+}
+
+.iphone-17-pro-max-frame::before {
+  content: "";
+  position: absolute;
+  inset: 7% 8% 3%;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 58%, rgba(15, 23, 42, 0.24) 0%, rgba(15, 23, 42, 0.13) 35%, rgba(15, 23, 42, 0) 72%);
+  pointer-events: none;
 }
 
 .iphone-17-pro-max-frame::after {
@@ -45,7 +55,17 @@ body {
   position: relative;
   aspect-ratio: 600 / 960;
   width: 230px;
-  filter: drop-shadow(0 20px 55px rgba(15, 23, 42, 0.24));
+  isolation: isolate;
+}
+
+.watch-ultra-3-frame::before {
+  content: "";
+  position: absolute;
+  inset: 18% 10% 10%;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 57%, rgba(15, 23, 42, 0.26) 0%, rgba(15, 23, 42, 0.14) 38%, rgba(15, 23, 42, 0) 74%);
+  pointer-events: none;
 }
 
 .watch-ultra-3-frame::after {
