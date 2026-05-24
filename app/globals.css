@@ -11,6 +11,67 @@ body {
   overflow-x: hidden;
 }
 
+.iphone-17-pro-max-frame {
+  position: relative;
+  aspect-ratio: 1470 / 3000;
+  filter: drop-shadow(0 24px 70px rgba(15, 23, 42, 0.22));
+}
+
+.iphone-17-pro-max-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("/RitualistApp/device-frames/iphone-17-pro-max-deep-blue-no-island.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.iphone-17-pro-max-screen {
+  position: absolute;
+  left: 5.102%;
+  top: 2.2%;
+  z-index: 1;
+  width: 89.796%;
+  height: 95.6%;
+  overflow: hidden;
+  border-radius: 9.25% / 4.25%;
+  background: #05070a;
+}
+
+.watch-ultra-3-frame {
+  position: relative;
+  aspect-ratio: 600 / 960;
+  width: 230px;
+  filter: drop-shadow(0 20px 55px rgba(15, 23, 42, 0.24));
+}
+
+.watch-ultra-3-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-image: url("/RitualistApp/device-frames/apple-watch-ultra-3-natural-ocean-band.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+.watch-ultra-3-screen {
+  position: absolute;
+  left: 14.8333%;
+  top: 23.2292%;
+  z-index: 1;
+  width: 70.3333%;
+  height: 53.5417%;
+  overflow: hidden;
+  border-radius: 18.2% / 14.9%;
+  background: #020304;
+}
+
 /* Animated gradient border for screenshots */
 @keyframes gradient-rotate {
   0% {

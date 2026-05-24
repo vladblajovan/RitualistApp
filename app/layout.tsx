@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 const siteUrl = "https://vladblajovan.github.io/RitualistApp";
 
 export const metadata: Metadata = {
-  title: "Ritualist - Build Better Habits",
-  description: "Transform your life with habits that actually stick. Track fasting, breathing, and daily habits with AI insights, Apple Health integration, and privacy-first design.",
+  title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
+  description: "Build rituals with a private habit tracker for iPhone, iPad, and Apple Watch. Log habits fast, follow challenges, earn achievements, run Live Activities, and understand progress with on-device insights.",
   metadataBase: new URL(siteUrl),
-  keywords: ["habit tracker", "iOS app", "productivity", "personality insights", "privacy-first", "Apple Health", "fasting tracker", "breathing exercises", "wellness", "mindful minutes", "iCloud sync", "machine learning"],
+  keywords: ["habit tracker", "Apple Watch habit tracker", "iOS app", "iPad app", "Live Activities", "achievements", "challenges", "personality insights", "privacy-first", "Apple Health", "fasting tracker", "breathing exercises", "wellness", "iCloud sync", "habit analytics"],
   authors: [{ name: "Vlad Blajovan" }],
   creator: "Vlad Blajovan",
   publisher: "Ritualist",
@@ -38,22 +38,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Ritualist - Privacy-First Habit Tracker for iOS",
-    description: "Build better habits with AI-powered insights, Apple Health integration, fasting and breathing tracking. Privacy-first, on-device processing, iCloud sync.",
+    title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
+    description: "Fast habit logging, Apple Watch support, Live Activities, challenges, achievements, Apple Health, iCloud sync, and on-device insights.",
     siteName: "Ritualist",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ritualist - Build Better Habits",
+        alt: "Ritualist habit tracker for iPhone and Apple Watch",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ritualist - Privacy-First Habit Tracker for iOS",
-    description: "Build better habits with AI-powered insights, Apple Health integration, and fasting and breathing tracking. Privacy-first.",
+    title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
+    description: "Fast logging, challenges, achievements, Live Activities, Apple Watch support, and private on-device insights.",
     images: ["/og-image.png"],
     creator: "@ritualistapp",
   },
@@ -76,8 +76,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="color-scheme" content="light dark" />
-        <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#edf6ff" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#07111c" media="(prefers-color-scheme: dark)" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

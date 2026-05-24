@@ -102,8 +102,11 @@ export default function UserGuidePage() {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    setLang(pickInitialLang());
-    setHasMounted(true);
+    const frame = requestAnimationFrame(() => {
+      setLang(pickInitialLang());
+      setHasMounted(true);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const bundle = (content as Record<Lang, LangBundle>)[lang];
