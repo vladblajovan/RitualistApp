@@ -137,15 +137,35 @@ const freeBenefits = [
   'Streaks and basic progress',
   'iCloud sync',
   'Apple Watch companion basics',
+  'Apple Health integration',
+  'Location reminders',
 ];
 
 const proBenefits = [
   'Unlimited active habits',
   'Advanced analytics and heatmaps',
   'Personality insights and assistant features',
-  'Location reminders',
-  'Apple Health integration',
+  'Richer challenge and achievement review',
+  'Power-user history and progress tools',
   'Backup, restore, import, and export tools',
+];
+
+const ritualStyleOptions = [
+  {
+    title: 'I want the fastest daily logging',
+    result: 'Start with quick actions, Apple Watch logging, widgets, Health, and location reminders. Go Pro when you want unlimited active habits and more history.',
+    pro: 'Best Pro fit: unlimited active habits and power-user progress tools.',
+  },
+  {
+    title: 'I want to understand my patterns',
+    result: 'Ritualist gives you trends, calendars, streak context, and a personal place to review progress. Pro is strongest when you want deeper analysis.',
+    pro: 'Best Pro fit: advanced analytics, heatmaps, and personality insights.',
+  },
+  {
+    title: 'I want guided momentum',
+    result: 'Challenges, achievements, and streaks turn vague goals into visible progress. Pro helps when your habit system grows beyond the basics.',
+    pro: 'Best Pro fit: richer challenge review, achievements, backup, restore, and export tools.',
+  },
 ];
 
 const faqItems = [
@@ -183,6 +203,11 @@ const faqItems = [
     question: 'How much does Ritualist Pro cost?',
     answer:
       'Ritualist Pro supports weekly, monthly, and annual plans. Final plan amounts can be shown once they are confirmed.',
+  },
+  {
+    question: 'Do I need Pro for Apple Health or location reminders?',
+    answer:
+      'No. Apple Health integration and location reminders are available in the free version. Pro is focused on unlimited active habits, deeper insights, and power-user data tools.',
   },
 ];
 
@@ -776,6 +801,101 @@ function BulletList({ items, icon = 'check' }: { items: string[]; icon?: 'check'
   );
 }
 
+function ProNudge({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="mt-7 rounded-[8px] border border-[#b8d7ff] bg-[#f1f7ff] p-4 dark:border-[#2d6cae] dark:bg-[#0d2238]">
+      <div className="flex items-start gap-3">
+        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#075cb5] dark:bg-[#15304c] dark:text-[#7bdcff]">
+          <HiSparkles className="h-5 w-5" aria-hidden />
+        </span>
+        <div>
+          <p className="text-sm font-bold text-[#15181c] dark:text-white">{title}</p>
+          <p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{body}</p>
+          <a
+            href="#pricing"
+            onClick={() => track('pro_nudge_click', 'conversion', title)}
+            className="mt-3 inline-flex text-sm font-bold text-[#075cb5] hover:text-[#064a93] dark:text-[#7bdcff] dark:hover:text-white"
+          >
+            Compare Free and Pro
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RitualStyleQuiz() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selected = ritualStyleOptions[selectedIndex];
+
+  return (
+    <section className="bg-white px-5 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-24">
+      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">Find your fit</p>
+          <h2 className="text-3xl font-bold tracking-tight text-[#15181c] dark:text-white sm:text-4xl md:text-5xl">
+            Pick the way you want Ritualist to help.
+          </h2>
+          <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-200 sm:text-lg">
+            A quick path helps visitors understand the app before they download, and shows where Pro becomes useful.
+          </p>
+        </div>
+
+        <div className="rounded-[8px] border border-slate-300 bg-[#f8fbff] p-5 shadow-[0_18px_55px_rgba(15,23,42,0.08)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_22px_70px_rgba(0,0,0,0.3)] sm:p-6">
+          <div className="grid gap-3 sm:grid-cols-3">
+            {ritualStyleOptions.map((option, index) => (
+              <button
+                key={option.title}
+                type="button"
+                onClick={() => {
+                  setSelectedIndex(index);
+                  track('ritual_style_select', 'engagement', option.title);
+                }}
+                className={cn(
+                  'rounded-[8px] border p-4 text-left text-sm font-semibold transition',
+                  selectedIndex === index
+                    ? 'border-[#075cb5] bg-white text-[#075cb5] shadow-[0_12px_30px_rgba(13,110,253,0.13)] dark:border-[#7bdcff] dark:bg-[#102a43] dark:text-[#7bdcff]'
+                    : 'border-slate-300 bg-white/70 text-slate-800 hover:border-[#81b9ff] dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-[#2d6cae]',
+                )}
+              >
+                {option.title}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-5 rounded-[8px] border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-[#0d1b2b]">
+            <p className="text-sm font-bold text-[#15181c] dark:text-white">Your Ritualist path</p>
+            <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-200">{selected.result}</p>
+            <p className="mt-4 rounded-[8px] bg-[#fff7df] px-4 py-3 text-sm font-semibold leading-6 text-[#6c4300] dark:bg-[#2c230f] dark:text-[#ffd54f]">
+              {selected.pro}
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <AppStoreButton label="ritual-style" compact />
+              <OutlineButton href="#pricing" label="ritual-style-pricing">
+                See Pro benefits
+              </OutlineButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MobileAppStoreBar() {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-300 bg-white/95 px-4 py-3 shadow-[0_-16px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]/95 md:hidden">
+      <div className="mx-auto flex max-w-md items-center justify-between gap-3">
+        <div>
+          <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
+          <p className="text-xs text-slate-600 dark:text-slate-300">Free to start. Pro when the system grows.</p>
+        </div>
+        <AppStoreButton label="sticky-mobile" compact />
+      </div>
+    </div>
+  );
+}
+
 function FaqItem({
   item,
   isOpen,
@@ -872,7 +992,7 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] text-[#15181c] dark:bg-[#07111c] dark:text-white">
+      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] pb-20 text-[#15181c] dark:bg-[#07111c] dark:text-white md:pb-0">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
@@ -935,10 +1055,14 @@ export default function Home() {
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
                 <AppStoreButton label="hero" />
-                <OutlineButton href="#features" label="features">
-                  Explore features
+                <OutlineButton href="#pricing" label="hero-pro">
+                  See Pro benefits
                 </OutlineButton>
               </div>
+              <p className="mx-auto mt-4 max-w-[25rem] text-sm font-medium leading-6 text-slate-600 dark:text-slate-300 lg:mx-0">
+                Free to start with Health, location reminders, iCloud, and Apple Watch basics. Pro unlocks unlimited habits,
+                deeper insights, and power-user data tools.
+              </p>
             </motion.div>
 
             <motion.div
@@ -975,7 +1099,12 @@ export default function Home() {
                 title="Fast enough for the moments between things."
                 body="Screenshots lead the story, with the everyday controls close beside them: quick swipes, habit sheets, timers, achievements, and challenge paths are all easy to scan."
                 features={productPillars.slice(0, 4)}
-              />
+              >
+                <ProNudge
+                  title="When your system grows"
+                  body="Pro removes the active-habit ceiling and adds deeper progress tools, while Health, location reminders, iCloud, and Apple Watch basics stay available free."
+                />
+              </FeatureMoment>
             </div>
           </div>
         </section>
@@ -1025,7 +1154,12 @@ export default function Home() {
                     body: 'Recaps and streak summaries keep the bigger pattern easy to review.',
                   },
                 ]}
-              />
+              >
+                <ProNudge
+                  title="For deeper review"
+                  body="Pro is strongest when you want advanced analytics, heatmaps, personality insights, and better tools for reviewing a growing routine."
+                />
+              </FeatureMoment>
             </div>
 
             <div className="mt-24 grid gap-10 sm:mt-28 lg:mt-32 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -1124,7 +1258,12 @@ export default function Home() {
                     body: 'Sync progress across Apple devices through your own iCloud account.',
                   },
                 ]}
-              />
+              >
+                <ProNudge
+                  title="System features start free"
+                  body="Apple Health, location reminders, iCloud, and Apple Watch basics are included free. Pro is for scale: unlimited habits, deeper insights, and data tools."
+                />
+              </FeatureMoment>
             </div>
           </div>
         </section>
@@ -1149,21 +1288,28 @@ export default function Home() {
           </div>
         </section>
 
+        <RitualStyleQuiz />
+
         <section id="pricing" className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">
             <SectionIntro
               eyebrow="Plans"
               title="Start free. Go Pro when the ritual grows."
-              body="Ritualist Pro expands the system with unlimited habits, richer insights, Health and location integrations, and data tools for power users."
+              body="Ritualist includes Health, location reminders, iCloud, and Apple Watch basics for free. Pro is for people who want more scale, deeper review, and stronger data ownership tools."
             />
 
             <div className="mt-14 grid gap-6 lg:grid-cols-2">
               <div className="rounded-[8px] border border-slate-300 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:p-8">
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-800 dark:text-slate-200">Free</p>
                 <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Build the habit loop</h3>
-                <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">Core tracking for getting started.</p>
+                <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
+                  Core tracking plus Apple system features for getting started without friction.
+                </p>
                 <div className="mt-8">
                   <BulletList items={freeBenefits} />
+                </div>
+                <div className="mt-8">
+                  <AppStoreButton label="free-plan" compact />
                 </div>
               </div>
 
@@ -1172,10 +1318,16 @@ export default function Home() {
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#075cb5] dark:text-[#7bdcff]">Ritualist Pro</p>
                 <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Unlock the full system</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Weekly, monthly, and annual options are supported.
+                  Weekly, monthly, and annual options are supported. Add the exact prices here once the App Store plans are final.
                 </p>
                 <div className="mt-8">
                   <BulletList items={proBenefits} icon="sparkle" />
+                </div>
+                <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <AppStoreButton label="pro-plan" compact />
+                  <p className="text-xs font-medium leading-5 text-slate-600 dark:text-slate-300">
+                    Subscribe and manage plans through your App Store account.
+                  </p>
                 </div>
               </div>
             </div>
@@ -1301,6 +1453,8 @@ export default function Home() {
             </div>
           </div>
         </footer>
+
+        <MobileAppStoreBar />
       </main>
     </MotionConfig>
   );
