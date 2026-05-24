@@ -168,6 +168,46 @@ const ritualStyleOptions = [
   },
 ];
 
+const proPlanPrices = [
+  {
+    name: 'Weekly',
+    price: '$2.99',
+    cadence: '/ week',
+    note: 'Flexible access',
+  },
+  {
+    name: 'Monthly',
+    price: '$9.99',
+    cadence: '/ month',
+    note: 'Best for building momentum',
+  },
+  {
+    name: 'Annual',
+    price: '$49.99',
+    cadence: '/ year',
+    note: 'Most popular',
+    featured: true,
+  },
+];
+
+const socialProofs = [
+  {
+    quote: 'Ritualist makes habit tracking feel fast instead of heavy. The Watch flow is exactly what I wanted.',
+    name: 'Alex M.',
+    handle: '@alexbuilds',
+  },
+  {
+    quote: 'The progress view helped me understand which routines were actually sticking, not just what I hoped was working.',
+    name: 'Maya R.',
+    handle: '@mayaroutines',
+  },
+  {
+    quote: 'I came for simple tracking and stayed for the challenges, achievements, and the way the app fits into my day.',
+    name: 'Chris L.',
+    handle: '@dailyrituals',
+  },
+];
+
 const faqItems = [
   {
     question: 'What can Ritualist track?',
@@ -896,6 +936,46 @@ function MobileAppStoreBar() {
   );
 }
 
+function SocialProofSection() {
+  return (
+    <section className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+          <div>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">Social proof</p>
+            <h2 className="text-3xl font-bold tracking-tight text-[#15181c] dark:text-white sm:text-4xl">
+              Built for people who want habits to fit real life.
+            </h2>
+            <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-200">
+              Replace these draft quotes with real App Store reviews, social posts, or customer notes once you have them.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {socialProofs.map((proof) => (
+              <figure
+                key={proof.handle}
+                className="rounded-[8px] border border-slate-300 bg-white p-5 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a]"
+              >
+                <div className="mb-4 flex text-[#ffd54f]" aria-label="5 star placeholder review">
+                  {'★★★★★'}
+                </div>
+                <blockquote className="text-sm leading-6 text-slate-700 dark:text-slate-200">
+                  “{proof.quote}”
+                </blockquote>
+                <figcaption className="mt-5">
+                  <p className="text-sm font-bold text-[#15181c] dark:text-white">{proof.name}</p>
+                  <p className="text-xs font-medium text-[#075cb5] dark:text-[#7bdcff]">{proof.handle}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FaqItem({
   item,
   isOpen,
@@ -1290,6 +1370,8 @@ export default function Home() {
 
         <RitualStyleQuiz />
 
+        <SocialProofSection />
+
         <section id="pricing" className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
           <div className="mx-auto max-w-6xl">
             <SectionIntro
@@ -1318,8 +1400,35 @@ export default function Home() {
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#075cb5] dark:text-[#7bdcff]">Ritualist Pro</p>
                 <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Unlock the full system</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Weekly, monthly, and annual options are supported. Add the exact prices here once the App Store plans are final.
+                  Old plan prices are shown here as placeholders until the App Store plans are finalized.
                 </p>
+                <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                  {proPlanPrices.map((plan) => (
+                    <div
+                      key={plan.name}
+                      className={cn(
+                        'relative rounded-[8px] border p-4',
+                        plan.featured
+                          ? 'border-[#075cb5] bg-[#edf6ff] shadow-[0_14px_34px_rgba(13,110,253,0.14)] dark:border-[#7bdcff] dark:bg-[#102a43]'
+                          : 'border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/5',
+                      )}
+                    >
+                      {plan.featured && (
+                        <span className="absolute -top-3 left-4 rounded-full bg-[#075cb5] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white dark:bg-[#7bdcff] dark:text-[#061523]">
+                          {plan.note}
+                        </span>
+                      )}
+                      <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
+                      <div className="mt-3 flex items-baseline gap-1">
+                        <span className="text-3xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>
+                        <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{plan.cadence}</span>
+                      </div>
+                      {!plan.featured && (
+                        <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-300">{plan.note}</p>
+                      )}
+                    </div>
+                  ))}
+                </div>
                 <div className="mt-8">
                   <BulletList items={proBenefits} icon="sparkle" />
                 </div>
