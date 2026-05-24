@@ -1390,9 +1390,6 @@ export default function Home() {
                 <div className="mt-8">
                   <BulletList items={freeBenefits} />
                 </div>
-                <div className="mt-8">
-                  <AppStoreButton label="free-plan" compact />
-                </div>
               </div>
 
               <div className="relative overflow-hidden rounded-[8px] border border-[#81b9ff] bg-white p-6 shadow-[0_20px_70px_rgba(13,110,253,0.16)] dark:border-[#2d6cae] dark:bg-[#0f1d2f] dark:shadow-[0_22px_70px_rgba(0,0,0,0.34)] sm:p-8">
@@ -1433,7 +1430,6 @@ export default function Home() {
                   <BulletList items={proBenefits} icon="sparkle" />
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <AppStoreButton label="pro-plan" compact />
                   <p className="text-xs font-medium leading-5 text-slate-600 dark:text-slate-300">
                     Subscribe and manage plans through your App Store account.
                   </p>
