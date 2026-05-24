@@ -840,7 +840,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={handleMotivationTap}
-                className="relative mx-auto mb-5 inline-flex min-h-11 translate-x-8 items-center gap-2 rounded-full border border-[#b8d7ff] bg-white px-4 py-2 text-sm font-bold text-[#075cb5] shadow-sm transition hover:-translate-y-0.5 hover:border-[#075cb5] hover:bg-[#f8fbff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075cb5] dark:border-[#2d6cae] dark:bg-[#102033] dark:text-[#7bdcff] dark:hover:border-[#7bdcff] dark:hover:bg-[#13283f] sm:translate-x-12 lg:mx-0"
+                className="relative mx-auto mb-5 inline-flex min-h-11 translate-x-8 items-center gap-2 rounded-full border border-[#b8d7ff] bg-white px-4 py-2 text-sm font-bold text-[#075cb5] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f8fbff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075cb5] dark:border-[#2d6cae] dark:bg-[#102033] dark:text-[#7bdcff] dark:hover:bg-[#13283f] sm:translate-x-12 lg:mx-0"
                 aria-label="Show another Ritualist motivation"
                 title="Tap for another motivation"
               >
