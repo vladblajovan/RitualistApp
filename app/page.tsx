@@ -240,6 +240,22 @@ function getNextMotivationIndex(currentIndex: number | null) {
   return pickMotivationIndex(fallbackIndex);
 }
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(query);
+    const updateMatch = () => setMatches(mediaQuery.matches);
+
+    updateMatch();
+    mediaQuery.addEventListener('change', updateMatch);
+
+    return () => mediaQuery.removeEventListener('change', updateMatch);
+  }, [query]);
+
+  return matches;
+}
+
 function TypingDots() {
   const [dotCount, setDotCount] = useState(1);
 
@@ -408,20 +424,25 @@ function StackedPhoneShots({
   className?: string;
   compact?: boolean;
 }) {
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
   const placements = [
     {
       frame: 'left-6 top-3 z-20 w-[58%] sm:left-5 sm:top-0 sm:w-[56%]',
       baseRotate: -4,
       swingFrom: -14,
       idleRotate: [-4, -2, -4],
+      desktopIdleRotate: [-4, -0.5, -4],
       y: [0, -8, 0],
+      desktopY: [0, -16, 0],
     },
     {
       frame: 'bottom-3 right-6 z-10 w-[58%] sm:bottom-0 sm:right-5 sm:w-[56%]',
       baseRotate: 5,
       swingFrom: 15,
       idleRotate: [5, 3, 5],
+      desktopIdleRotate: [5, 1.5, 5],
       y: [0, 10, 0],
+      desktopY: [0, 18, 0],
     },
   ];
 
@@ -449,9 +470,12 @@ function StackedPhoneShots({
           }}
         >
           <motion.div
-            animate={{ rotate: placements[index].idleRotate, y: placements[index].y }}
+            animate={{
+              rotate: isDesktop ? placements[index].desktopIdleRotate : placements[index].idleRotate,
+              y: isDesktop ? placements[index].desktopY : placements[index].y,
+            }}
             transition={{
-              duration: 7 + index,
+              duration: (isDesktop ? 6.2 : 7) + index,
               repeat: Infinity,
               repeatType: 'mirror',
               ease: 'easeInOut',
@@ -467,12 +491,25 @@ function StackedPhoneShots({
 }
 
 function HeroDeviceStack() {
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+
   return (
     <div className="relative mx-auto h-[560px] w-full max-w-[560px] sm:h-[640px]">
       <motion.div
         className="absolute right-[3%] top-4 z-30 sm:right-[6%] sm:top-2"
-        animate={{ rotate: [4, 2.2, 4], y: [0, -9, 0] }}
-        transition={{ duration: 7.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+        initial={{ opacity: 0, y: 24, rotate: 10, scale: 0.96 }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          rotate: isDesktop ? [4, 0.5, 4] : [4, 2.2, 4],
+          y: isDesktop ? [0, -17, 0] : [0, -9, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.45 },
+          scale: { duration: 0.45 },
+          y: { duration: isDesktop ? 6.8 : 7.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.45 },
+          rotate: { duration: isDesktop ? 6.8 : 7.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.45 },
+        }}
       >
         <PhoneShot
           src={screenshots.home}
@@ -485,12 +522,17 @@ function HeroDeviceStack() {
       <motion.div
         className="absolute left-[1%] top-[42%] z-40 sm:left-[3%] sm:top-[40%]"
         initial={{ opacity: 0, y: 26, rotate: -14, scale: 0.9 }}
-        animate={{ opacity: 1, y: [0, 7, 0], rotate: [-9, -6, -9], scale: 1 }}
+        animate={{
+          opacity: 1,
+          y: isDesktop ? [0, 12, 0] : [0, 7, 0],
+          rotate: isDesktop ? [-9, -4.5, -9] : [-9, -6, -9],
+          scale: 1,
+        }}
         transition={{
           opacity: { duration: 0.45, delay: 0.35 },
           scale: { duration: 0.45, delay: 0.35 },
-          y: { duration: 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
-          rotate: { duration: 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
+          y: { duration: isDesktop ? 7.2 : 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
+          rotate: { duration: isDesktop ? 7.2 : 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
         }}
       >
         <WatchShot className="w-[min(34vw,170px)]" />
@@ -518,6 +560,8 @@ function WatchShot({
 }
 
 function StackedWatchShots() {
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+
   return (
     <div className="relative mx-auto h-[360px] w-full max-w-[390px] sm:h-[390px]">
       <motion.div
@@ -528,8 +572,11 @@ function StackedWatchShots() {
         transition={{ type: 'spring', stiffness: 105, damping: 15 }}
       >
         <motion.div
-          animate={{ rotate: [-5, -3, -5], y: [0, -7, 0] }}
-          transition={{ duration: 7.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.65 }}
+          animate={{
+            rotate: isDesktop ? [-5, -1.5, -5] : [-5, -3, -5],
+            y: isDesktop ? [0, -14, 0] : [0, -7, 0],
+          }}
+          transition={{ duration: isDesktop ? 6.4 : 7.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.65 }}
         >
           <WatchShot />
         </motion.div>
@@ -542,8 +589,11 @@ function StackedWatchShots() {
         transition={{ type: 'spring', stiffness: 105, damping: 15, delay: 0.12 }}
       >
         <motion.div
-          animate={{ rotate: [7, 4.5, 7], y: [0, 8, 0] }}
-          transition={{ duration: 8.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.8 }}
+          animate={{
+            rotate: isDesktop ? [7, 2.5, 7] : [7, 4.5, 7],
+            y: isDesktop ? [0, 16, 0] : [0, 8, 0],
+          }}
+          transition={{ duration: isDesktop ? 7 : 8.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.8 }}
         >
           <WatchShot
             src={screenshots.watchProgress}
