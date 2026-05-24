@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 const siteUrl = "https://vladblajovan.github.io/RitualistApp";
 
 export const metadata: Metadata = {
-  title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
-  description: "Build rituals with a private habit tracker for iPhone, iPad, and Apple Watch. Log habits fast, follow challenges, earn achievements, run Live Activities, and understand progress with on-device insights.",
+  title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
+  description: "Track daily habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities, and private insights in one focused app.",
   metadataBase: new URL(siteUrl),
   keywords: ["habit tracker", "Apple Watch habit tracker", "iOS app", "iPad app", "Live Activities", "achievements", "challenges", "personality insights", "privacy-first", "Apple Health", "fasting tracker", "breathing exercises", "wellness", "iCloud sync", "habit analytics"],
   authors: [{ name: "Vlad Blajovan" }],
@@ -38,22 +38,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
-    description: "Fast habit logging, Apple Watch support, Live Activities, challenges, achievements, Apple Health, iCloud sync, and on-device insights.",
+    title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
+    description: "Daily habit tracking with Apple Watch progress, Live Activities, challenges, achievements, Apple Health, iCloud sync, and private insights.",
     siteName: "Ritualist",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ritualist habit tracker for iPhone and Apple Watch",
+        alt: "Ritualist app on iPhone and Apple Watch",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ritualist - Private Habit Tracking for iPhone and Apple Watch",
-    description: "Fast logging, challenges, achievements, Live Activities, Apple Watch support, and private on-device insights.",
+    title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
+    description: "Track habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities, and private insights.",
     images: ["/og-image.png"],
     creator: "@ritualistapp",
   },
