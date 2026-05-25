@@ -177,15 +177,15 @@ const proPlanPrices = [
   },
   {
     name: 'Monthly',
-    price: '$9.99',
+    price: '$4.99',
     cadence: '/ month',
     note: 'Best for building momentum',
   },
   {
     name: 'Annual',
-    price: '$49.99',
+    price: '$19.99',
     cadence: '/ year',
-    note: 'Most popular',
+    note: '1 week free trial',
     featured: true,
   },
 ];
@@ -239,7 +239,7 @@ const faqItems = [
   {
     question: 'How much does Ritualist Pro cost?',
     answer:
-      'Ritualist Pro supports weekly, monthly, and annual plans. Final plan amounts can be shown once they are confirmed.',
+      'Ritualist Pro supports weekly, monthly, and annual plans: $2.99 per week, $4.99 per month, or $19.99 per year. The annual plan includes a 1 week free trial.',
   },
   {
     question: 'Do I need Pro for Apple Health or location reminders?',
@@ -1389,7 +1389,7 @@ export default function Home() {
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#075cb5] dark:text-[#7bdcff]">Ritualist Pro</p>
                 <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Unlock the full system</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Old plan prices are shown here as placeholders until the App Store plans are finalized.
+                  Choose the rhythm that fits you. Annual starts with a 1 week free trial.
                 </p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-3">
                   {proPlanPrices.map((plan) => (
