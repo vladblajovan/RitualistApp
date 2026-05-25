@@ -194,17 +194,14 @@ const socialProofs = [
   {
     quote: 'Ritualist makes habit tracking feel fast instead of heavy. The Watch flow is exactly what I wanted.',
     name: 'Alex M.',
-    handle: '@alexbuilds',
   },
   {
     quote: 'The progress view helped me understand which routines were actually sticking, not just what I hoped was working.',
     name: 'Maya R.',
-    handle: '@mayaroutines',
   },
   {
     quote: 'I came for simple tracking and stayed for the challenges, achievements, and the way the app fits into my day.',
     name: 'Chris L.',
-    handle: '@dailyrituals',
   },
 ];
 
@@ -950,7 +947,7 @@ function SocialProofSection() {
           <div className="grid gap-4 md:grid-cols-3">
             {socialProofs.map((proof) => (
               <figure
-                key={proof.handle}
+                key={proof.name}
                 className="rounded-[8px] border border-slate-300 bg-white p-5 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a]"
               >
                 <div className="mb-4 flex text-[#ffd54f]" aria-label="5 star placeholder review">
@@ -961,7 +958,6 @@ function SocialProofSection() {
                 </blockquote>
                 <figcaption className="mt-5">
                   <p className="text-sm font-bold text-[#15181c] dark:text-white">{proof.name}</p>
-                  <p className="text-xs font-medium text-[#075cb5] dark:text-[#7bdcff]">{proof.handle}</p>
                 </figcaption>
               </figure>
             ))}
