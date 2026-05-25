@@ -1398,12 +1398,12 @@ export default function Home() {
                       className={cn(
                         'relative rounded-[8px] border p-4',
                         plan.featured
-                          ? 'border-[#075cb5] bg-[#edf6ff] shadow-[0_14px_34px_rgba(13,110,253,0.14)] dark:border-[#7bdcff] dark:bg-[#102a43]'
+                          ? 'border-[#075cb5] bg-[#edf6ff] pb-8 shadow-[0_14px_34px_rgba(13,110,253,0.14)] dark:border-[#7bdcff] dark:bg-[#102a43]'
                           : 'border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/5',
                       )}
                     >
                       {plan.featured && (
-                        <span className="absolute -top-3 left-4 rounded-full bg-[#075cb5] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white dark:bg-[#7bdcff] dark:text-[#061523]">
+                        <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#075cb5] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white dark:bg-[#7bdcff] dark:text-[#061523]">
                           {plan.note}
                         </span>
                       )}
