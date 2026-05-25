@@ -716,10 +716,10 @@ function FeatureMoment({
     >
       <div className={cn('relative min-w-0 px-2 sm:px-0', reverse && 'lg:order-2')}>{visual}</div>
       <motion.div
-        initial={{ opacity: 0, x: reverse ? -34 : 34 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.45, margin: '-80px' }}
-        transition={{ duration: 0.55, ease: 'easeOut' }}
+        initial={{ x: reverse ? -18 : 18 }}
+        whileInView={{ x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
         className={cn(
           'min-w-0 rounded-[8px] border border-slate-300 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:p-8',
           reverse && 'lg:order-1',
@@ -733,16 +733,12 @@ function FeatureMoment({
         </h3>
         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700 dark:text-slate-200">{body}</p>
         <div className="mt-7 grid gap-3 sm:grid-cols-2">
-          {features.map((feature, index) => {
+          {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
-              <motion.div
+              <div
                 key={feature.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.55 }}
-                transition={{ delay: 0.08 + index * 0.06, duration: 0.42 }}
                 className="rounded-[8px] border border-slate-200 bg-white/90 p-4 shadow-[0_12px_34px_rgba(15,23,42,0.055)] dark:border-white/10 dark:bg-[#111d2c]"
               >
                 <div className="flex items-center gap-3">
@@ -752,7 +748,7 @@ function FeatureMoment({
                   <h4 className="text-base font-semibold text-[#15181c] dark:text-white">{feature.title}</h4>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{feature.body}</p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -783,9 +779,9 @@ function LensMomentCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.45, margin: '-80px' }}
+      initial={{ y: 18 }}
+      whileInView={{ y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
       className={cn(
         'overflow-hidden rounded-[8px] border border-slate-600 bg-[#1d2b3d] shadow-[0_20px_50px_rgba(0,0,0,0.28)]',
