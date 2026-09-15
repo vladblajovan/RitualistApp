@@ -26,13 +26,13 @@ export default function PrivacyPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <h1 className="text-3xl font-bold mb-1">Privacy Policy</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: May 10, 2026</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: September 15, 2026</p>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Introduction</h2>
           <p className="mb-3 text-zinc-700 dark:text-zinc-300">Ritualist (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our iOS application.</p>
           <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg px-4 py-3 text-sm text-zinc-700 dark:text-zinc-300">
-            <strong>Key Point:</strong> Ritualist is designed with privacy first. Your habit data stays on your device and in your personal iCloud account. We do not have access to your data.
+            <strong>Key Point:</strong> Ritualist is designed with privacy first. Your habit data stays on your device and in your personal iCloud account. We do not have access to your data. The only exception is minimal, non-identifying timing data for fasting Live Activities, described below.
           </div>
         </section>
 
@@ -47,12 +47,14 @@ export default function PrivacyPage() {
           <h3 className="font-semibold mb-2">Data Collected Automatically</h3>
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Location Data:</strong> Only when you enable location-based reminders for specific habits. We use geofencing to trigger reminders when you arrive at or leave designated locations.</li>
+            <li><strong>Fasting Live Activity Timing:</strong> When a fasting Live Activity is running, the app sends a Live Activity push token and the fast&apos;s start and goal times to our backend so the Lock Screen, Dynamic Island, and Apple Watch update on time. See &ldquo;Live Activity Updates&rdquo; below.</li>
             <li><strong>Anonymous Usage Data:</strong> We collect anonymous product interaction data (such as which screens are visited and which features are used) to understand how the app is used and improve the experience. This data is not linked to your identity. See the &ldquo;Analytics&rdquo; section below for details.</li>
           </ul>
           <h3 className="font-semibold mb-2">Data We Do NOT Collect</h3>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>We do not use advertising or cross-app tracking SDKs</li>
             <li>We do not collect device identifiers for tracking or advertising purposes</li>
+            <li>We do not send habit names, notes, moods, or pep-talk messages to our backend</li>
             <li>We do not sell or share your data with third parties</li>
           </ul>
         </section>
@@ -91,6 +93,29 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
+          <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Live Activity Updates</h2>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">Fasting Live Activities show your progress on the Lock Screen, in the Dynamic Island, and in the Apple Watch Smart Stack. To update them at each stage of a fast while the app is closed, Ritualist schedules push updates through our backend on Google Cloud (Firebase).</p>
+          <h3 className="font-semibold mb-2">What Is Sent</h3>
+          <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
+            <li>The Live Activity push token issued by Apple for that activity</li>
+            <li>The fast&apos;s start time and goal time, and the times of its upcoming stage changes</li>
+            <li>A random session identifier and a revision number, so updates can be replaced or cancelled</li>
+          </ul>
+          <h3 className="font-semibold mb-2">What Is Not Sent</h3>
+          <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
+            <li>Your name, Apple ID, habit names, notes, moods, or the motivational messages shown in the activity (these stay on your device)</li>
+            <li>Any health, location, or analytics data</li>
+          </ul>
+          <h3 className="font-semibold mb-2">Retention and Control</h3>
+          <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
+            <li>This data is not linked to your identity and is not used for tracking, advertising, or analytics</li>
+            <li>We do not store it in a database. Each scheduled update is deleted once it is sent, and remaining updates are deleted when you end, discard, or change the fast</li>
+            <li>Push updates are delivered by Apple Push Notification Service</li>
+            <li>You can turn off Live Activities for Ritualist at any time in iOS Settings &gt; Ritualist &gt; Live Activities; no Live Activity data is sent while they are off</li>
+          </ul>
+        </section>
+
+        <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Data Retention</h2>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Active Data:</strong> Your data is retained as long as you use the app</li>
@@ -115,10 +140,20 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>iCloud/CloudKit:</strong> For data synchronization across your devices</li>
             <li><strong>StoreKit:</strong> For processing in-app purchases and subscriptions</li>
-            <li><strong>Apple Push Notification Service:</strong> For habit reminders</li>
+            <li><strong>Apple Push Notification Service:</strong> For delivering Live Activity updates</li>
             <li><strong>WatchConnectivity:</strong> For peer-to-peer sync between your iPhone and paired Apple Watch. Habit data flows directly between your devices over Bluetooth/Wi-Fi without going through any server, so the watch app works even when iCloud sync is off.</li>
           </ul>
           <p className="mb-4 text-zinc-700 dark:text-zinc-300">These services are provided by Apple and governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Apple&apos;s Privacy Policy</a>.</p>
+          <h3 className="font-semibold mb-2">Google Firebase</h3>
+          <p className="mb-2 text-zinc-700 dark:text-zinc-300">We use <a href="https://firebase.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Google Firebase</a> for the following, without Firebase Analytics or advertising features:</p>
+          <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
+            <li><strong>Remote Config and Hosting:</strong> To deliver app settings and content catalogs (such as habit suggestions and challenges). Firebase processes technical information needed for delivery, such as an app instance identifier, app version, device language, country, and time zone.</li>
+            <li><strong>App Check:</strong> To verify that requests to our backend come from the genuine Ritualist app, using Apple&apos;s App Attest.</li>
+            <li><strong>Cloud Functions and Cloud Tasks:</strong> To schedule Live Activity updates, as described in &ldquo;Live Activity Updates&rdquo;.</li>
+          </ul>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">Firebase processing is governed by <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Firebase&apos;s privacy and security terms</a>.</p>
+          <h3 className="font-semibold mb-2">Subscriptions (RevenueCat)</h3>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">We use <a href="https://www.revenuecat.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">RevenueCat</a> to manage subscription status. RevenueCat receives an anonymous app user identifier and your App Store purchase information to confirm access to Pro features. It does not receive your habit data. See <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">RevenueCat&apos;s Privacy Policy</a>.</p>
           <h3 className="font-semibold mb-2">Analytics (PostHog)</h3>
           <p className="mb-2 text-zinc-700 dark:text-zinc-300">We use <a href="https://posthog.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">PostHog</a>, an open-source product analytics platform hosted in the EU, to understand how features are used and improve the app. This includes:</p>
           <ul className="list-disc pl-5 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
