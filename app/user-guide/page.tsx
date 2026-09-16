@@ -15,6 +15,7 @@ const LANG_LABELS: Record<Lang, string> = {
 };
 
 interface GuideItem {
+  key: string;
   emoji: string;
   title: string;
   subtitle: string;
@@ -75,6 +76,11 @@ const ACCENT_CLASSES: Record<string, { dot: string; border: string; title: strin
     dot: 'bg-pink-500',
     border: 'border-pink-500',
     title: 'text-pink-600 dark:text-pink-400',
+  },
+  indigo: {
+    dot: 'bg-indigo-500',
+    border: 'border-indigo-500',
+    title: 'text-indigo-600 dark:text-indigo-400',
   },
   purple: {
     dot: 'bg-purple-500',
@@ -221,9 +227,10 @@ export default function UserGuidePage() {
                   </h2>
 
                   <div className="space-y-3">
-                    {section.items.map((item, idx) => (
+                    {section.items.map((item) => (
                       <details
-                        key={`${section.key}-${idx}`}
+                        key={`${section.key}-${item.key}`}
+                        id={item.key}
                         className={`group bg-zinc-50 dark:bg-zinc-900 border-l-4 ${accent.border} rounded-r-lg`}
                         open={searchTerm.trim().length > 0}
                       >

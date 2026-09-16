@@ -45,6 +45,7 @@ This project uses Next.js **App Router** (not Pages Router):
   - `privacy/` - Privacy policy page
   - `support/` - Support page
   - `terms/` - Terms of service page
+  - `user-guide/` - User Guide shown inside the iOS app (5 languages in `content.json`)
 - `public/` - Static assets (images, videos, fonts)
 - `tailwind.config.ts` - Tailwind configuration
 - `next.config.ts` - Next.js configuration
@@ -70,3 +71,10 @@ This project uses Next.js **App Router** (not Pages Router):
 **Inspiration Reference:**
 - Target aesthetic: winston.cafe
 - Features to implement: hero section, feature showcase with videos/images, smooth scrolling, animations
+
+## User Guide
+
+The iOS app has no bundled copy of the guide; it always loads `/user-guide/`.
+When the app changes, update `app/user-guide/content.json` in all five
+languages, add a dated entry to `app/user-guide/CHANGELOG.md` (internal
+revision history, never shown to users), and run `npm run check:user-guide`.

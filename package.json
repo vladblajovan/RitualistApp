@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:user-guide": "node scripts/check-user-guide.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.23.24",
