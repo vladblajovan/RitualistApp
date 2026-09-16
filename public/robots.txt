@@ -1,11 +1,11 @@
 # robots.txt for Ritualist
-# https://ritualist.app
+# https://vladblajovan.github.io/RitualistApp/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://ritualist.app/sitemap.xml
+Sitemap: https://vladblajovan.github.io/RitualistApp/sitemap.xml
 
 # Block specific paths (if needed in future)
 # Disallow: /api/
