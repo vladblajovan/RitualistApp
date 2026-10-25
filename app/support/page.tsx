@@ -60,7 +60,7 @@ export default function SupportPage() {
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
               <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Is my data private?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes. Your habit data stays on your device and in your personal iCloud account. Personality insights are processed entirely on-device. We never have access to your information.</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes. Your habit data stays on your device and in your personal iCloud account. Personality insights are processed entirely on-device. We never have access to your habits or personal information; we only receive anonymous usage analytics, described in the <Link href="/privacy" className="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</Link>.</p>
             </div>
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
@@ -90,7 +90,7 @@ export default function SupportPage() {
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
               <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Does Ritualist work with Apple Health?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist can read and write health data like mindful minutes, steps, and water intake. Health integration is optional, disabled by default, and your health data never leaves your device.</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist can read and write health data like mindful minutes, steps, and water intake. Health integration is optional, disabled by default, and your health data stays on your device and in your personal iCloud account, and is never sent to us or to analytics.</p>
             </div>
 
             <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">

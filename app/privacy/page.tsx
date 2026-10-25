@@ -26,13 +26,13 @@ export default function PrivacyPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <h1 className="text-3xl font-bold mb-1">Privacy Policy</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: September 15, 2026</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: October 25, 2026</p>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Introduction</h2>
           <p className="mb-3 text-zinc-700 dark:text-zinc-300">Ritualist (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our iOS application.</p>
           <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg px-4 py-3 text-sm text-zinc-700 dark:text-zinc-300">
-            <strong>Key Point:</strong> Ritualist is designed with privacy first. Your habit data stays on your device and in your personal iCloud account. We do not have access to your data. The only exception is minimal, non-identifying timing data for fasting Live Activities, described below.
+            <strong>Key Point:</strong> Ritualist is designed with privacy first. Your habit data stays on your device and in your personal iCloud account. We do not have access to your data. The only exceptions are anonymous usage analytics, which never include anything you write, and minimal, non-identifying timing data for fasting Live Activities, both described below.
           </div>
         </section>
 
@@ -48,13 +48,14 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Location Data:</strong> Only when you enable location-based reminders for specific habits. We use geofencing to trigger reminders when you arrive at or leave designated locations.</li>
             <li><strong>Fasting Live Activity Timing:</strong> When a fasting Live Activity is running, the app sends a Live Activity push token and the fast&apos;s start and goal times to our backend so the Lock Screen, Dynamic Island, and Apple Watch update on time. See &ldquo;Live Activity Updates&rdquo; below.</li>
-            <li><strong>Anonymous Usage Data:</strong> We collect anonymous product interaction data (such as which screens are visited and which features are used) to understand how the app is used and improve the experience. This data is not linked to your identity. See the &ldquo;Analytics&rdquo; section below for details.</li>
+            <li><strong>Anonymous Usage Data:</strong> We collect anonymous product interaction data (such as which screens are visited and which features are used), app performance and diagnostics, subscription and purchase events, and an approximate location (country and city) derived from your IP address, to understand how the app is used and improve the experience. This data is not linked to your identity. See the &ldquo;Analytics&rdquo; section below for details.</li>
           </ul>
           <h3 className="font-semibold mb-2">Data We Do NOT Collect</h3>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>We do not use advertising or cross-app tracking SDKs</li>
             <li>We do not collect device identifiers for tracking or advertising purposes</li>
-            <li>We do not send habit names, notes, moods, or pep-talk messages to our backend</li>
+            <li>We do not send habit or category names, notes, moods, pep-talk messages, or Apple Health values to our backend or to analytics</li>
+            <li>We do not collect your precise location</li>
             <li>We do not sell or share your data with third parties</li>
           </ul>
         </section>
@@ -82,7 +83,8 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>To send you habit reminders when you arrive at or leave specific locations</li>
             <li>Location monitoring happens entirely on-device using Apple&apos;s geofencing APIs</li>
-            <li>Location data is not transmitted to any servers</li>
+            <li>Your saved places and location reminders are never sent to us or to third parties. Like the rest of your data, they sync only through your personal iCloud account</li>
+            <li>Analytics may record an approximate location (country and city) derived from your IP address, never your precise location; see &ldquo;Analytics&rdquo; below</li>
           </ul>
           <h3 className="font-semibold mb-2">Your Control</h3>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
@@ -158,8 +160,13 @@ export default function PrivacyPage() {
           <p className="mb-2 text-zinc-700 dark:text-zinc-300">We use <a href="https://posthog.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">PostHog</a>, an open-source product analytics platform hosted in the EU, to understand how features are used and improve the app. This includes:</p>
           <ul className="list-disc pl-5 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>Feature interactions (e.g., which screens are visited, which actions are taken)</li>
+            <li>App performance and diagnostics (e.g., load times and the type of an error)</li>
+            <li>Subscription and purchase events (e.g., which plan was viewed or purchased, whether it began with a free trial, and your current plan)</li>
+            <li>Technical information: app version, device model, iOS version, language, time zone, and screen size</li>
+            <li>An approximate location (country and city) derived from your IP address; the IP address itself is not stored</li>
             <li>An anonymous device identifier (not linked to your identity)</li>
           </ul>
+          <p className="mb-2 text-zinc-700 dark:text-zinc-300">Analytics never include habit or category names, notes, moods, Apple Health values, or anything else you write.</p>
           <p className="mb-2 text-zinc-700 dark:text-zinc-300">Analytics data is:</p>
           <ul className="list-disc pl-5 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li>Not linked to your personal identity</li>
@@ -167,7 +174,9 @@ export default function PrivacyPage() {
             <li>Not shared with third parties for marketing</li>
             <li>Processed and stored in the European Union</li>
           </ul>
-          <p className="text-zinc-700 dark:text-zinc-300">We do not use any advertising networks, data brokers, or crash reporting services.</p>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">We do not use any advertising networks, data brokers, or crash reporting services.</p>
+          <h3 className="font-semibold mb-2">Feature Roadmap (Sidetrack)</h3>
+          <p className="text-zinc-700 dark:text-zinc-300">The in-app roadmap is provided by <a href="https://sidetrack.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Sidetrack</a>. Opening it loads the list of planned features and their vote counts; voting for a feature sends an anonymous vote for that feature. No identifier or personal data is sent with it.</p>
         </section>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
