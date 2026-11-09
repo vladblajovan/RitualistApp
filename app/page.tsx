@@ -367,8 +367,8 @@ function Feature({
   children?: ReactNode;
 }) {
   return (
-    <section id={id} className={cn('relative scroll-mt-16 overflow-hidden px-4 py-20 sm:px-6 lg:py-28', className)}>
-      <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+    <section id={id} className={cn('relative scroll-mt-16 overflow-hidden px-4 py-12 sm:px-6 lg:py-16', className)}>
+      <div className="relative mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
         <div className={cn('min-w-0', reverse && 'lg:order-2')}>{visual}</div>
         <motion.div {...reveal} className={cn('min-w-0', reverse && 'lg:order-1')}>
           <div className="flex flex-wrap items-center gap-2">
@@ -569,18 +569,34 @@ function Hero() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden px-4 pb-16 pt-20 sm:px-6 sm:pt-28 lg:pb-24">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-12 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-16">
+      <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_15%_15%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_85%_90%,rgba(255,138,61,0.30),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.22),transparent_60%)]" aria-hidden />
       <motion.div
         className="absolute inset-0 -z-10"
-        animate={{ background: `radial-gradient(ellipse at 75% 35%, ${scene.accent}33, transparent 55%), radial-gradient(ellipse at 15% 0%, rgba(13,110,253,0.16), transparent 55%)` }}
+        animate={{ background: `radial-gradient(ellipse at 72% 40%, ${scene.accent}40, transparent 50%)` }}
         transition={{ duration: 0.8 }}
         aria-hidden
       />
       <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
-          <h1 className="text-[2.4rem] font-extrabold leading-[1.02] tracking-tight text-[#15181c] dark:text-white sm:mt-5 sm:text-6xl lg:text-7xl">
+          <div className="flex flex-col items-center gap-3 sm:flex-row lg:items-center">
+            <div className="flex -space-x-2.5">
+              {coaches.map((coach, coachIndex) => (
+                <motion.span
+                  key={coach.name}
+                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 + coachIndex * 0.07 }}
+                >
+                  <Image src={shot(coach.file)} alt="" width={160} height={147} priority className="h-11 w-11 rounded-full object-cover ring-[3px] ring-[#0b1220] sm:h-12 sm:w-12" />
+                </motion.span>
+              ))}
+            </div>
+            <p className="text-sm font-bold text-white/85">The best day to start is today.</p>
+          </div>
+          <h1 className="mt-5 text-[2.4rem] font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
             Get to know yourself,{' '}
-            <span className="bg-gradient-to-r from-[#0d6efd] via-[#bf5af2] to-[#ff8a3d] bg-clip-text text-transparent">one habit at a time.</span>
+            <span className="bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
           <div className="mx-auto mt-5 h-16 max-w-xl sm:h-14 lg:mx-0" aria-live="polite">
             <AnimatePresence mode="wait">
@@ -590,17 +606,17 @@ function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-lg leading-7 text-slate-700 dark:text-slate-200 sm:text-xl sm:leading-8"
+                className="text-lg leading-7 text-white/85 sm:text-xl sm:leading-8"
               >
                 {scene.line}
               </motion.p>
             </AnimatePresence>
           </div>
           <div className="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:gap-3 lg:justify-start">
-            <AppStoreBadge placement="hero" />
-            <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Free to start. Pro free for a week.</p>
+            <AppStoreBadge placement="hero" tone="light" />
+            <p className="text-sm font-semibold text-white/75">Free to start. Pro free for a week.</p>
           </div>
-          <SceneTabs index={index} onChoose={choose} className="mt-8 hidden lg:flex" />
+          <SceneTabs index={index} onChoose={choose} className="mt-7 hidden lg:flex" />
         </motion.div>
 
         <div className="relative mx-auto h-[520px] w-full max-w-[420px] sm:h-[640px] lg:h-[680px] lg:max-w-[480px]">
@@ -642,7 +658,7 @@ function SceneTabs({ index, onChoose, className }: { index: number; onChoose: (i
               'relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border px-3 py-1.5 text-[13px] font-semibold transition',
               selected
                 ? 'border-transparent text-white shadow-md'
-                : 'border-slate-300 bg-white/80 text-slate-700 hover:border-slate-400 dark:border-white/20 dark:bg-white/5 dark:text-slate-200',
+                : 'border-white/20 bg-white/10 text-white/85 hover:bg-white/15',
             )}
             style={selected ? { background: item.accent } : undefined}
           >
@@ -659,7 +675,7 @@ function SceneTabs({ index, onChoose, className }: { index: number; onChoose: (i
 
 function CoachesStrip() {
   return (
-    <motion.div {...reveal} className="mx-auto mt-16 max-w-6xl rounded-[28px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur sm:p-8">
+    <motion.div {...reveal} className="mx-auto mt-8 max-w-6xl rounded-[28px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur sm:p-8">
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div>
           <h3 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Pick the coach that gets you through.</h3>
@@ -697,7 +713,7 @@ function MedalsSection() {
   ];
 
   return (
-    <section id="medals" className="relative scroll-mt-16 overflow-hidden bg-white px-4 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-28">
+    <section id="medals" className="relative scroll-mt-16 overflow-hidden bg-white px-4 py-12 dark:bg-[#0a1522] sm:px-6 lg:py-16">
       <div className="mx-auto max-w-6xl">
         <motion.div {...reveal} className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#b07a00] dark:text-[#ffd54f]">Challenges and medals</p>
@@ -707,7 +723,7 @@ function MedalsSection() {
           </p>
         </motion.div>
 
-        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 md:mx-0 md:mt-14 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 md:mx-0 md:mt-10 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
           {items.map((item, index) => (
             <motion.figure
               key={item.caption}
@@ -723,7 +739,7 @@ function MedalsSection() {
           ))}
         </div>
 
-        <motion.p {...reveal} className="mx-auto mt-10 max-w-2xl text-center text-base leading-7 text-slate-700 dark:text-slate-200">
+        <motion.p {...reveal} className="mx-auto mt-6 max-w-2xl text-center text-base leading-7 text-slate-700 dark:text-slate-200">
           <FreeTag className="mr-1.5 align-middle" /> Bronze and every achievement. <ProTag className="mx-1.5 align-middle" /> Silver and Gold, and the days you&apos;ve done already count.
         </motion.p>
       </div>
@@ -742,13 +758,13 @@ function EverywhereSection() {
   ];
 
   return (
-    <section className="bg-[#f8fbff] px-4 py-20 dark:bg-[#07111c] sm:px-6 lg:py-28">
+    <section className="bg-[#f8fbff] px-4 py-12 dark:bg-[#07111c] sm:px-6 lg:py-16">
       <div className="mx-auto max-w-6xl">
         <motion.div {...reveal} className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#075cb5] dark:text-[#7bdcff]">Wherever you are</p>
           <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Built into your iPhone.</h2>
         </motion.div>
-        <div className="mt-12 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div className="relative mx-auto h-[330px] w-full max-w-[360px]">
             <motion.div className="absolute left-2 top-0" initial={{ opacity: 0, rotate: -14, y: 30 }} whileInView={{ opacity: 1, rotate: -6, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ type: 'spring', stiffness: 95, damping: 15 }}>
               <WatchShot src={shot('watch-today')} alt="Apple Watch: today's habits with a fast running" />
@@ -779,14 +795,14 @@ function EverywhereSection() {
 
 function PricingSection() {
   return (
-    <section id="pricing" className="scroll-mt-16 bg-white px-4 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-28">
+    <section id="pricing" className="scroll-mt-16 bg-white px-4 py-12 dark:bg-[#0a1522] sm:px-6 lg:py-16">
       <div className="mx-auto max-w-5xl">
         <motion.div {...reveal} className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#075cb5] dark:text-[#7bdcff]">Pricing</p>
           <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Start free. Try Pro for a week.</h2>
         </motion.div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
           <motion.div {...reveal} className="rounded-[28px] border border-slate-200 bg-[#f8fbff] p-6 dark:border-white/10 dark:bg-[#0d1928] sm:p-8">
             <h3 className="text-2xl font-extrabold text-[#15181c] dark:text-white">Free</h3>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">A complete habit tracker, not a demo.</p>
@@ -861,7 +877,7 @@ function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="scroll-mt-16 bg-[#f8fbff] px-4 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
+    <section id="faq" className="scroll-mt-16 bg-[#f8fbff] px-4 py-12 dark:bg-[#07111c] sm:px-6 lg:py-16">
       <div className="mx-auto max-w-3xl">
         <h2 className="text-center text-4xl font-extrabold tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Questions, answered.</h2>
         <div className="mt-10">
@@ -910,10 +926,14 @@ function FaqSection() {
 
 function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-24 text-center text-white sm:px-6">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-16 text-center text-white sm:px-6">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_20%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.25),transparent_60%)]" aria-hidden />
       <motion.div {...reveal} className="mx-auto max-w-3xl">
-        <Image src="/brand-icon-128.png" alt="" width={80} height={80} className="mx-auto rounded-[20px] shadow-[0_20px_50px_rgba(13,110,253,0.45)]" />
+        <div className="mx-auto flex w-fit -space-x-3">
+          {coaches.map((coach) => (
+            <Image key={coach.name} src={shot(coach.file)} alt="" width={160} height={147} className="h-14 w-14 rounded-full object-cover ring-4 ring-[#0b1220] sm:h-16 sm:w-16" />
+          ))}
+        </div>
         <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">The best day to start is today.</h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/80">Pick a habit, tap it once, and watch your first day turn green.</p>
         <div className="mt-8 flex flex-col items-center gap-3">
@@ -1053,7 +1073,7 @@ export default function Home() {
           <Feature
             id="fasting-intro"
             dark
-            className="py-20 lg:py-28 lg:pb-12"
+            className="py-12 lg:py-16 lg:pb-8"
             eyebrow="Fasting"
             tag={<FreeTag />}
             accent="#ffb27a"
@@ -1073,7 +1093,7 @@ export default function Home() {
               </div>
             }
           />
-          <div className="relative px-4 pb-20 sm:px-6 lg:pb-28">
+          <div className="relative px-4 pb-12 sm:px-6 lg:pb-16">
             <CoachesStrip />
           </div>
         </section>
