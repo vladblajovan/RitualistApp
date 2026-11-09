@@ -430,24 +430,10 @@ function Seam({ from, to, fromDark, toDark }: { from: string; to: string; fromDa
   const darkFrom = fromDark ?? from;
   const darkTo = toDark ?? to;
   return (
-    <div aria-hidden className="pointer-events-none relative z-10 -my-12 h-24">
+    <div aria-hidden className="pointer-events-none relative z-10 -my-1.5 h-3">
       <div className={cn('absolute inset-0', (fromDark || toDark) && 'dark:hidden')} style={{ background: blend(from, to) }} />
       {(fromDark || toDark) && <div className="absolute inset-0 hidden dark:block" style={{ background: blend(darkFrom, darkTo) }} />}
     </div>
-  );
-}
-
-/** A soft fade where a dark section meets its neighbour, so sections blend rather than meet at a hard line. */
-function EdgeFade({ edge, color }: { edge: 'top' | 'bottom'; color: string }) {
-  return (
-    <div
-      aria-hidden
-      className={cn(
-        'pointer-events-none absolute inset-x-0 z-[-5] h-20',
-        edge === 'top' ? 'top-0 bg-gradient-to-b to-transparent' : 'bottom-0 bg-gradient-to-t to-transparent',
-        color,
-      )}
-    />
   );
 }
 
@@ -807,7 +793,6 @@ function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-40 lg:pt-40">
-      <EdgeFade edge="bottom" color="from-[#0b1220]" />
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_15%_15%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_85%_90%,rgba(255,138,61,0.30),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.22),transparent_60%)]" aria-hidden />
       <motion.div
         className="absolute inset-0 -z-10"
@@ -1214,8 +1199,6 @@ function FaqSection() {
 function FinalCta() {
   return (
     <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-24 text-center text-white sm:px-6">
-      <EdgeFade edge="top" color="from-[#0b1220]" />
-      <EdgeFade edge="bottom" color="from-[#0b1220]" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_20%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.25),transparent_60%)]" aria-hidden />
       <motion.div {...reveal} className="mx-auto max-w-3xl">
         <div className="mx-auto flex w-fit -space-x-3">
@@ -1237,7 +1220,7 @@ function FinalCta() {
 function Footer() {
   const linkClass = 'block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]';
   return (
-    <footer className="bg-white px-4 py-12 dark:bg-[#07111c] sm:px-6">
+    <footer className="border-t border-slate-200 bg-white px-4 py-12 dark:border-white/10 dark:bg-[#07111c] sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_auto]">
         <div>
           <div className="flex items-center gap-3">
@@ -1373,8 +1356,6 @@ export default function Home() {
 
         <Seam from="#f8fbff" to="#140b05" fromDark="#07111c" toDark="#140b05" />
         <section id="fasting" className="relative isolate scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
-          <EdgeFade edge="top" color="from-[#140b05]" />
-          <EdgeFade edge="bottom" color="from-[#140b05]" />
           <div className="absolute inset-0 z-[-10] bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
           <Feature
             id="fasting-intro"
@@ -1421,7 +1402,7 @@ export default function Home() {
           id="breathing"
           reverse
           dark
-          className="bg-[linear-gradient(180deg,#0b3b4a_0%,#245d7a_50%,#c98a5a_100%)] text-white"
+          className="bg-[linear-gradient(160deg,#0b3b4a_0%,#245d7a_45%,#c98a5a_100%)] text-white"
           eyebrow="Breathing"
           accent="#a8f0ff"
           title="Breathing you can see, and feel."
