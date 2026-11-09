@@ -6,16 +6,19 @@ import {
   HiBell,
   HiCheck,
   HiChevronDown,
+  HiChevronLeft,
+  HiChevronRight,
   HiCloud,
   HiCollection,
   HiDeviceMobile,
   HiHeart,
   HiLocationMarker,
   HiLightningBolt,
-  HiLockClosed,
   HiMenu,
   HiMicrophone,
   HiMoon,
+  HiPause,
+  HiPlay,
   HiSparkles,
   HiSun,
   HiTemplate,
@@ -497,23 +500,39 @@ const sceneDurationMs = 4800;
 
 type Chip = { key: string; text: string; icon?: IconType; image?: string; round?: boolean; color: string };
 
-// Small notes that drift around the hero's phone, three at a time, each about something real in the app.
-const chips: Chip[] = [
-  { key: 'streak', text: '30-day streak', image: 'medal-silver', round: true, color: '#8a8f98' },
-  { key: 'taisu', text: 'Taisu: one phase at a time', image: 'coach-taisu', color: '#ff8a3d' },
-  { key: 'gym', text: 'Water as you reach the gym', icon: HiLocationMarker, color: '#e5484d' },
-  { key: 'box', text: 'Box breathing, 4 rounds', icon: HiSun, color: '#2bb6d6' },
-  { key: 'gallery', text: '150+ ready-made habits', icon: HiCollection, color: '#7b3fe4' },
-  { key: 'health', text: 'Steps fill in from Apple Health', icon: HiHeart, color: '#ff375f' },
-  { key: 'siri', text: '“Log a habit” with Siri', icon: HiMicrophone, color: '#5e5ce6' },
-  { key: 'watch', text: 'Log from your Apple Watch', icon: HiDeviceMobile, color: '#0a84ff' },
-  { key: 'traits', text: 'Your Big Five, from your habits', icon: HiSparkles, color: '#bf5af2' },
-  { key: 'lock', text: 'Your fast on the Lock Screen', icon: HiMoon, color: '#ff9f0a' },
-  { key: 'pip', text: 'Six coaches, six voices', image: 'coach-pip', color: '#34c759' },
-  { key: 'perfect', text: 'Perfect day: all done', icon: HiCheck, color: '#2a9d4b' },
-  { key: 'widgets', text: 'Widgets for Home and Lock Screen', icon: HiTemplate, color: '#0d6efd' },
-  { key: 'private', text: 'No account needed', icon: HiLockClosed, color: '#636366' },
-];
+// Small notes around the hero's phone, three for each scene, each about what that scene shows.
+const sceneChips: Record<string, Chip[]> = {
+  habits: [
+    { key: 'streak', text: '30-day streak', image: 'medal-silver', round: true, color: '#8a8f98' },
+    { key: 'tap', text: 'One tap to log', icon: HiCheck, color: '#2a9d4b' },
+    { key: 'health', text: 'Steps fill in from Apple Health', icon: HiHeart, color: '#ff375f' },
+  ],
+  fasting: [
+    { key: 'taisu', text: 'Taisu: one phase at a time', image: 'coach-taisu', color: '#ff8a3d' },
+    { key: 'phase', text: 'Metabolic switch, hour 12 to 16', icon: HiMoon, color: '#0a84ff' },
+    { key: 'lock', text: 'Your fast on the Lock Screen', icon: HiDeviceMobile, color: '#ff9f0a' },
+  ],
+  breathing: [
+    { key: 'box', text: 'Box breathing: in, hold, out, hold', icon: HiSun, color: '#2bb6d6' },
+    { key: 'haptics', text: 'Your iPhone taps every breath', icon: HiSparkles, color: '#5e5ce6' },
+    { key: 'mindful', text: 'Mindful minutes in Apple Health', icon: HiHeart, color: '#ff375f' },
+  ],
+  places: [
+    { key: 'gym', text: 'Water as you reach the gym', icon: HiLocationMarker, color: '#e5484d' },
+    { key: 'arrive', text: 'As you arrive, leave, or both', icon: HiBell, color: '#0d6efd' },
+    { key: 'three', text: '3 places free', icon: HiCheck, color: '#2a9d4b' },
+  ],
+  gallery: [
+    { key: 'count', text: '150+ ready-made habits', icon: HiCollection, color: '#7b3fe4' },
+    { key: 'foryou', text: 'For You: picked for your goals', icon: HiSparkles, color: '#bf5af2' },
+    { key: 'own', text: 'Or make your own', icon: HiTemplate, color: '#0d6efd' },
+  ],
+  reminders: [
+    { key: 'card', text: 'Reminds you to drink water', icon: HiBell, color: '#0d6efd' },
+    { key: 'when', text: 'At a time or at a place', icon: HiLocationMarker, color: '#e5484d' },
+    { key: 'siri', text: '“Log a habit” with Siri', icon: HiMicrophone, color: '#5e5ce6' },
+  ],
+};
 
 const chipSlots = [
   'right-0 top-[14%] sm:-right-2',
@@ -521,31 +540,12 @@ const chipSlots = [
   'right-0 bottom-[16%] sm:-right-4',
 ];
 
-function FloatingChips() {
-  const reduceMotion = useReducedMotion();
-  const [shown, setShown] = useState([0, 1, 2]);
-  const [step, setStep] = useState(0);
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const timer = window.setTimeout(() => {
-      setShown((current) => {
-        const next = [...current];
-        const slot = step % next.length;
-        next[slot] = (Math.max(...current) + 1) % chips.length;
-        // Wrapping around, skip any chip that is still on screen.
-        while (current.includes(next[slot]) && next[slot] !== current[slot]) next[slot] = (next[slot] + 1) % chips.length;
-        return next;
-      });
-      setStep((value) => value + 1);
-    }, 2200);
-    return () => window.clearTimeout(timer);
-  }, [step, reduceMotion]);
+function FloatingChips({ sceneKey }: { sceneKey: string }) {
+  const chips = sceneChips[sceneKey] ?? [];
 
   return (
     <>
-      {shown.map((chipIndex, slot) => {
-        const chip = chips[chipIndex];
+      {chips.slice(0, chipSlots.length).map((chip, slot) => {
         const Icon = chip.icon;
         return (
           <div key={slot} className={cn('absolute z-10', chipSlots[slot])}>
@@ -554,8 +554,8 @@ function FloatingChips() {
                 key={chip.key}
                 initial={{ opacity: 0, y: 12, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.4, delay: 0.25 + slot * 0.18 }}
                 className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur dark:bg-[#132233]/95 dark:ring-white/10"
               >
                 {chip.image ? (
@@ -577,14 +577,15 @@ function FloatingChips() {
 
 function Hero() {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const scene = scenes[index];
 
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion || paused) return;
     const timer = window.setTimeout(() => setIndex((current) => (current + 1) % scenes.length), sceneDurationMs);
     return () => window.clearTimeout(timer);
-  }, [index, reduceMotion]);
+  }, [index, paused, reduceMotion]);
 
   const choose = (next: number) => {
     const wrapped = (next + scenes.length) % scenes.length;
@@ -622,7 +623,7 @@ function Hero() {
             Get to know yourself,{' '}
             <span className="bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
-          <div className="mx-auto mt-5 h-16 max-w-xl sm:h-14 lg:mx-0" aria-live="polite">
+          <div className="mx-auto mt-5 h-16 max-w-xl lg:mx-0" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.p
                 key={scene.key}
@@ -641,7 +642,7 @@ function Hero() {
           </div>
         </motion.div>
 
-        <div className="mx-auto w-full max-w-[420px] lg:max-w-[480px]">
+        <div className="mx-auto w-full max-w-[420px] pt-6 lg:max-w-[480px] lg:pt-14">
         <div className="relative h-[470px] w-full sm:h-[560px] lg:h-[580px]">
           <div className="absolute inset-x-0 top-0 mx-auto w-[66%] sm:w-[62%]">
             <AnimatePresence mode="popLayout" initial={false}>
@@ -656,9 +657,9 @@ function Hero() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <FloatingChips />
+          <FloatingChips sceneKey={scene.key} />
         </div>
-        <SceneCarousel index={index} onChoose={choose} />
+        <SceneCarousel index={index} onChoose={choose} paused={paused || !!reduceMotion} onTogglePause={() => setPaused((value) => !value)} />
         </div>
       </div>
     </section>
@@ -668,13 +669,29 @@ function Hero() {
 /** The scenes as a carousel under the phone: one track of cards that slides, the current one centred and its neighbours faded. */
 const carouselCardWidth = 150;
 
-function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: number) => void }) {
+function SceneCarousel({
+  index,
+  onChoose,
+  paused,
+  onTogglePause,
+}: {
+  index: number;
+  onChoose: (index: number) => void;
+  paused: boolean;
+  onTogglePause: () => void;
+}) {
   const wheelLock = useRef(false);
   const count = scenes.length;
+  const control =
+    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
+    <div className="mx-auto mt-8 flex w-full max-w-[480px] items-center gap-1.5">
+      <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
+        <HiChevronLeft className="h-5 w-5" aria-hidden />
+      </button>
     <motion.div
-      className="relative mx-auto mt-5 h-12 w-full max-w-[440px] cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+      className="relative h-12 min-w-0 flex-1 cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
       role="tablist"
       aria-label="What Ritualist does"
       onPanEnd={(_, info) => {
@@ -729,6 +746,13 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
         );
       })}
     </motion.div>
+      <button type="button" onClick={() => onChoose(index + 1)} className={control} aria-label="Next">
+        <HiChevronRight className="h-5 w-5" aria-hidden />
+      </button>
+      <button type="button" onClick={onTogglePause} className={cn(control, 'ml-1')} aria-label={paused ? 'Play' : 'Pause'} aria-pressed={paused}>
+        {paused ? <HiPlay className="h-4 w-4" aria-hidden /> : <HiPause className="h-4 w-4" aria-hidden />}
+      </button>
+    </div>
   );
 }
 
