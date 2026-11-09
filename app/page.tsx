@@ -585,6 +585,77 @@ function FloatingChips({ sceneKey }: { sceneKey: string }) {
   );
 }
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const list = window.matchMedia(query);
+    const update = () => setMatches(list.matches);
+    update();
+    list.addEventListener('change', update);
+    return () => list.removeEventListener('change', update);
+  }, [query]);
+  return matches;
+}
+
+/**
+ * The hero's phone, with a pause button in its middle: it shows while the pointer is over the phone and
+ * fades as it leaves; on a touch screen a tap shows it for a few seconds.
+ */
+function PausableShot({ paused, onToggle, children }: { paused: boolean; onToggle: () => void; children: ReactNode }) {
+  const [visible, setVisible] = useState(false);
+  const hideTimer = useRef<number | null>(null);
+
+  const showFor = (ms: number) => {
+    setVisible(true);
+    if (hideTimer.current) window.clearTimeout(hideTimer.current);
+    hideTimer.current = window.setTimeout(() => setVisible(false), ms);
+  };
+
+  useEffect(() => () => {
+    if (hideTimer.current) window.clearTimeout(hideTimer.current);
+  }, []);
+
+  return (
+    <div
+      className="relative mx-auto w-[66%] sm:w-[62%]"
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') {
+          if (hideTimer.current) window.clearTimeout(hideTimer.current);
+          setVisible(true);
+        }
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === 'mouse') setVisible(false);
+      }}
+      onPointerUp={(event) => {
+        if (event.pointerType !== 'mouse') showFor(2500);
+      }}
+    >
+      {children}
+      <AnimatePresence>
+        {visible && (
+          <motion.button
+            type="button"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            onPointerUp={(event) => event.stopPropagation()}
+            onClick={() => {
+              onToggle();
+              showFor(1500);
+            }}
+            className="absolute left-1/2 top-1/2 z-20 -ml-8 -mt-8 flex h-16 w-16 items-center justify-center rounded-full bg-black/55 text-white shadow-2xl ring-1 ring-white/30 backdrop-blur-md"
+            aria-label={paused ? 'Play the tour' : 'Pause the tour'}
+          >
+            {paused ? <HiPlay className="h-8 w-8" aria-hidden /> : <HiPause className="h-8 w-8" aria-hidden />}
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -653,8 +724,8 @@ function Hero() {
         </motion.div>
 
         <div className="mx-auto w-full max-w-[420px] pt-6 lg:max-w-[480px] lg:pt-14">
-        <div className="relative h-[470px] w-full sm:h-[560px] lg:h-[580px]">
-          <div className="absolute inset-x-0 top-0 mx-auto w-[66%] sm:w-[62%]">
+        <div className="relative w-full">
+          <PausableShot paused={paused} onToggle={() => setPaused((value) => !value)}>
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={scene.key}
@@ -666,10 +737,10 @@ function Hero() {
                 <PhoneShot src={shot(scene.screen)} alt={scene.alt} priority={index === 0} />
               </motion.div>
             </AnimatePresence>
-          </div>
+          </PausableShot>
           <FloatingChips sceneKey={scene.key} />
         </div>
-        <SceneCarousel index={index} onChoose={choose} paused={paused || !!reduceMotion} onTogglePause={() => setPaused((value) => !value)} />
+        <SceneCarousel index={index} onChoose={choose} />
         </div>
       </div>
     </section>
@@ -680,17 +751,8 @@ function Hero() {
 const carouselGap = 6;
 const carouselFallbackWidth = 120;
 
-function SceneCarousel({
-  index,
-  onChoose,
-  paused,
-  onTogglePause,
-}: {
-  index: number;
-  onChoose: (index: number) => void;
-  paused: boolean;
-  onTogglePause: () => void;
-}) {
+function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: number) => void }) {
+  const showsNeighbours = useMediaQuery('(min-width: 640px)');
   const wheelLock = useRef(false);
   const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [widths, setWidths] = useState<number[]>(() => scenes.map(() => carouselFallbackWidth));
@@ -717,7 +779,7 @@ function SceneCarousel({
     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
-    <div className="relative left-1/2 mt-8 flex w-[min(100vw-2rem,640px)] -translate-x-1/2 items-center gap-1.5">
+    <div className="mx-auto mt-8 flex w-full max-w-[440px] items-center gap-1.5">
       <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
         <HiChevronLeft className="h-5 w-5" aria-hidden />
       </button>
@@ -747,7 +809,7 @@ function SceneCarousel({
         if (distance > count / 2) distance -= count;
         if (distance < -count / 2) distance += count;
         const isCurrent = distance === 0;
-        const isVisible = Math.abs(distance) <= 2;
+        const isVisible = isCurrent || (showsNeighbours && Math.abs(distance) === 1);
         const Icon = item.icon;
         return (
           <motion.button
@@ -758,7 +820,7 @@ function SceneCarousel({
             tabIndex={isVisible ? 0 : -1}
             onClick={() => onChoose(index + distance)}
             initial={false}
-            animate={{ x: centerOffset(distance) - widths[itemIndex] / 2, opacity: isCurrent ? 1 : Math.abs(distance) === 1 ? 0.55 : isVisible ? 0.3 : 0 }}
+            animate={{ x: centerOffset(distance) - widths[itemIndex] / 2, opacity: isCurrent ? 1 : isVisible ? 0.45 : 0 }}
             transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9, opacity: { duration: 0.3 } }}
             ref={(element) => {
               cardRefs.current[itemIndex] = element;
@@ -782,9 +844,6 @@ function SceneCarousel({
     </motion.div>
       <button type="button" onClick={() => onChoose(index + 1)} className={control} aria-label="Next">
         <HiChevronRight className="h-5 w-5" aria-hidden />
-      </button>
-      <button type="button" onClick={onTogglePause} className={cn(control, 'ml-1')} aria-label={paused ? 'Play' : 'Pause'} aria-pressed={paused}>
-        {paused ? <HiPlay className="h-4 w-4" aria-hidden /> : <HiPause className="h-4 w-4" aria-hidden />}
       </button>
     </div>
   );
