@@ -799,9 +799,9 @@ function Hero() {
             </div>
             <p className="text-sm font-bold text-white/85">The best day to start is today.</p>
           </div>
-          <h1 className="text-[2.4rem] lg:mt-5 font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2rem] font-extrabold leading-[1.05] tracking-tight text-white min-[400px]:text-[2.2rem] sm:text-5xl lg:mt-5 lg:text-[3.5rem] xl:text-[3.75rem]">
             Get to know yourself,{' '}
-            <span className="bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
+            <span className="block bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
           <div className="mx-auto mt-5 h-16 max-w-xl lg:mx-0" aria-live="polite">
             <AnimatePresence mode="wait">
