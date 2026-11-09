@@ -750,7 +750,7 @@ const sceneQuotes: Record<string, { coach: string; file: string; quote: string }
   reminders: { coach: 'Bruno', file: 'coach-bruno', quote: 'Right time, right place. I’ll remind you.' },
 };
 
-function CoachQuote({ sceneKey, className }: { sceneKey: string; className?: string }) {
+function CoachQuote({ sceneKey, className, align = 'center' }: { sceneKey: string; className?: string; align?: 'center' | 'start' }) {
   const item = sceneQuotes[sceneKey];
   if (!item) return null;
   return (
@@ -762,7 +762,7 @@ function CoachQuote({ sceneKey, className }: { sceneKey: string; className?: str
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center gap-3 text-left"
+          className={cn('flex items-center gap-3 text-left', align === 'start' ? 'justify-start' : 'justify-center')}
         >
           <Image src={shot(item.file)} alt="" width={96} height={88} className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-white/20" />
           <span className="min-w-0">
@@ -770,25 +770,6 @@ function CoachQuote({ sceneKey, className }: { sceneKey: string; className?: str
             <figcaption className="mt-1 text-xs font-bold text-white/60">{item.coach}</figcaption>
           </span>
         </motion.figure>
-      </AnimatePresence>
-    </div>
-  );
-}
-
-function SceneLine({ line, sceneKey, className }: { line: string; sceneKey: string; className?: string }) {
-  return (
-    <div className={className} aria-live="polite">
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={sceneKey}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-          className="text-lg leading-7 text-white/85 sm:text-xl sm:leading-8"
-        >
-          {line}
-        </motion.p>
       </AnimatePresence>
     </div>
   );
@@ -842,7 +823,7 @@ function Hero() {
             <span className="block text-[0.82em]">Get to know yourself,</span>
             <span className="block bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
-          <SceneLine line={scene.line} sceneKey={scene.key} className="mx-auto mt-5 hidden h-16 max-w-xl lg:mx-0 lg:block" />
+          <CoachQuote sceneKey={scene.key} align="start" className="mt-6 hidden h-16 max-w-xl lg:block" />
           <div className="mt-4 hidden flex-col items-start lg:flex">
             <AppStoreBadge placement="hero" tone="light" />
           </div>
