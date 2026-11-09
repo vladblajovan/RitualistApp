@@ -532,9 +532,7 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden sm:block">
-            <AppStoreBadge placement="nav" size="small" />
-          </div>
+          <AppStoreBadge placement="nav" size="small" />
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
@@ -1277,29 +1275,12 @@ function Footer() {
   );
 }
 
-function MobileAppStoreBar() {
-  return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2.5 shadow-[0_-12px_32px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]/95 sm:hidden">
-      <div className="mx-auto flex max-w-md items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-2.5">
-          <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
-          <div className="min-w-0">
-            <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
-            <p className="truncate text-xs text-slate-600 dark:text-slate-300">New to Pro? 1 week free</p>
-          </div>
-        </div>
-        <AppStoreBadge placement="sticky_mobile" size="small" />
-      </div>
-    </div>
-  );
-}
-
 // MARK: - Page
 
 export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
-      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] pb-16 text-[#15181c] dark:bg-[#07111c] dark:text-white sm:pb-0">
+      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] text-[#15181c] dark:bg-[#07111c] dark:text-white">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
@@ -1445,7 +1426,6 @@ export default function Home() {
         <FaqSection />
         <FinalCta />
         <Footer />
-        <MobileAppStoreBar />
       </main>
     </MotionConfig>
   );
