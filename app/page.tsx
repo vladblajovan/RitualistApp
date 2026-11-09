@@ -1113,12 +1113,12 @@ function PricingSection() {
               ))}
             </ul>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <div className="mt-8 grid gap-2.5 sm:grid-cols-3 sm:gap-3">
               {plans.map((plan) => (
                 <div
                   key={plan.name}
                   className={cn(
-                    'relative rounded-2xl border p-4',
+                    'relative flex items-center justify-between gap-3 rounded-2xl border px-4 py-3 sm:block sm:p-4',
                     plan.featured ? 'border-[#c98a12] bg-white shadow-[0_14px_34px_rgba(201,138,18,0.22)] dark:border-[#ffd54f] dark:bg-[#1d1708]' : 'border-slate-200 bg-white/70 dark:border-white/10 dark:bg-white/5',
                   )}
                 >
@@ -1127,17 +1127,20 @@ function PricingSection() {
                       Best value
                     </span>
                   )}
-                  <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
-                  <p className="mt-2">
-                    <span className="text-2xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>{' '}
+                  <div className="min-w-0 sm:contents">
+                    <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
+                    <p className={cn('mt-0.5 text-xs font-semibold sm:hidden', plan.featured ? 'text-[#8a5a00] dark:text-[#ffd54f]' : 'text-slate-600 dark:text-slate-300')}>{plan.note}</p>
+                  </div>
+                  <p className="shrink-0 text-right sm:mt-2 sm:text-left">
+                    <span className="text-xl font-extrabold tracking-tight text-[#15181c] dark:text-white sm:text-2xl">{plan.price}</span>{' '}
                     <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{plan.cadence}</span>
                   </p>
-                  <p className={cn('mt-1.5 text-xs font-semibold', plan.featured ? 'text-[#8a5a00] dark:text-[#ffd54f]' : 'text-slate-600 dark:text-slate-300')}>{plan.note}</p>
+                  <p className={cn('mt-1.5 hidden text-xs font-semibold sm:block', plan.featured ? 'text-[#8a5a00] dark:text-[#ffd54f]' : 'text-slate-600 dark:text-slate-300')}>{plan.note}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
               <AppStoreBadge placement="pricing_pro" />
               <p className="text-xs leading-5 text-slate-600 dark:text-slate-300">
                 Download free, then start your free week in the app. Prices in US dollars; the App Store shows yours. Monthly and Annual renew until cancelled.
