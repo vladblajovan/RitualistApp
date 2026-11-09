@@ -291,7 +291,54 @@ function WatchShot({ src, alt, className }: { src: string; alt: string; classNam
   );
 }
 
-function PhonePair({ back, front, tint }: { back: { src: string; alt: string }; front: { src: string; alt: string }; tint: string }) {
+type Shot = { src: string; alt: string };
+
+/** A phone that steps through several screens on its own, with the hero's hover or tap pause. */
+function CyclingPhone({ shots, intervalMs = 3600 }: { shots: Shot[]; intervalMs?: number }) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const multiple = shots.length > 1;
+
+  useEffect(() => {
+    if (!multiple || paused || reduceMotion) return;
+    const timer = window.setTimeout(() => setIndex((current) => (current + 1) % shots.length), intervalMs);
+    return () => window.clearTimeout(timer);
+  }, [index, paused, reduceMotion, multiple, shots.length, intervalMs]);
+
+  const current = shots[index];
+  const phone = (
+    <div className="relative">
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.div
+          key={current.src}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -24 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+        >
+          <PhoneShot src={current.src} alt={current.alt} />
+        </motion.div>
+      </AnimatePresence>
+      {multiple && (
+        <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-1.5" aria-hidden>
+          {shots.map((item, dotIndex) => (
+            <span key={item.src} className={cn('h-1.5 rounded-full transition-all duration-300', dotIndex === index ? 'w-5 bg-current opacity-70' : 'w-1.5 bg-current opacity-25')} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
+  if (!multiple) return phone;
+  return (
+    <PausableShot paused={paused} onToggle={() => setPaused((value) => !value)} className="relative w-full">
+      {phone}
+    </PausableShot>
+  );
+}
+
+function PhonePair({ back, front, tint }: { back: Shot; front: Shot | Shot[]; tint: string }) {
   return (
     <div className="relative mx-auto h-[470px] w-full max-w-[420px] sm:h-[600px] sm:max-w-[460px]">
       <div className={cn('absolute inset-x-6 top-16 bottom-10 rounded-full blur-3xl', tint)} aria-hidden />
@@ -311,7 +358,7 @@ function PhonePair({ back, front, tint }: { back: { src: string; alt: string }; 
         viewport={{ once: true, amount: 0.3 }}
         transition={{ type: 'spring', stiffness: 90, damping: 15, delay: 0.12 }}
       >
-        <PhoneShot src={front.src} alt={front.alt} />
+        <CyclingPhone shots={Array.isArray(front) ? front : [front]} />
       </motion.div>
     </div>
   );
@@ -642,7 +689,17 @@ function useMediaQuery(query: string) {
  * The hero's phone, with a pause button in its middle: it shows while the pointer is over the phone and
  * fades as it leaves; on a touch screen a tap shows it for a few seconds.
  */
-function PausableShot({ paused, onToggle, children }: { paused: boolean; onToggle: () => void; children: ReactNode }) {
+function PausableShot({
+  paused,
+  onToggle,
+  children,
+  className = 'relative mx-auto w-[66%] sm:w-[62%]',
+}: {
+  paused: boolean;
+  onToggle: () => void;
+  children: ReactNode;
+  className?: string;
+}) {
   const [visible, setVisible] = useState(false);
   const hideTimer = useRef<number | null>(null);
 
@@ -658,7 +715,7 @@ function PausableShot({ paused, onToggle, children }: { paused: boolean; onToggl
 
   return (
     <div
-      className="relative mx-auto w-[66%] sm:w-[62%]"
+      className={className}
       onPointerEnter={(event) => {
         if (event.pointerType === 'mouse') {
           if (hideTimer.current) window.clearTimeout(hideTimer.current);
@@ -1285,7 +1342,12 @@ export default function Home() {
           visual={
             <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
               <div className="absolute inset-x-0 top-16 bottom-10 rounded-full bg-[#e5484d]/20 blur-3xl" aria-hidden />
-              <PhoneShot src={shot('remind-gym')} alt="The Gym reminds you about Drink Water the first time you arrive each day" className="w-full" />
+              <CyclingPhone
+                shots={[
+                  { src: shot('remind-gym'), alt: 'The Gym reminds you about Drink Water the first time you arrive each day' },
+                  { src: shot('add-place'), alt: 'Adding a place: tap the map, then pick Home, Work, School or Gym' },
+                ]}
+              />
               <PlaceReminderNotification />
             </motion.div>
           }
@@ -1311,7 +1373,10 @@ export default function Home() {
                 <PhonePair
                   tint="bg-[#ff8a3d]/30"
                   back={{ src: shot('guide'), alt: 'The Fasting Guide: the phase you are in and what comes next' }}
-                  front={{ src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and help for hunger or headaches' }}
+                  front={[
+                    { src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and help for hunger or headaches' },
+                    { src: shot('coach-picker'), alt: 'Choosing your coach: Taisu, warm and loyal' },
+                  ]}
                 />
                 <motion.div {...reveal} className="absolute -bottom-4 left-0 w-[70%] drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)] sm:w-[60%]">
                   <Image src={shot('live-activity-lock')} alt="The fast on the Lock Screen, with a pep talk from the coach" width={900} height={375} className="h-auto w-full" />
@@ -1347,11 +1412,17 @@ export default function Home() {
           points={['Box breathing, 4-7-8, cyclic sighing and more', 'Note how you feel before and after', 'Counts as mindful minutes in Apple Health']}
           visual={
             <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
-              <PhoneShot src={shot('breath-lotus')} alt="Choosing a breathing shape: Lotus, one of nine flowers" className="w-full" />
+              <CyclingPhone
+                shots={[
+                  { src: shot('breath-lotus'), alt: 'Choosing a breathing shape: Lotus, one of nine flowers' },
+                  { src: shot('breath-star'), alt: 'The Star breathing shape' },
+                  { src: shot('breath-clover'), alt: 'The Clover breathing shape' },
+                ]}
+              />
             </motion.div>
           }
         >
-          <ProList dark items={['Nine flowers that open with each breath, like Lotus here', 'Breathing patterns of your own', 'See which breathing and time of day calm you most']} />
+          <ProList dark items={['Nine flowers that open with each breath, like these', 'Breathing patterns of your own', 'See which breathing and time of day calm you most']} />
         </Feature>
 
         <MedalsSection />
@@ -1369,7 +1440,10 @@ export default function Home() {
             <PhonePair
               tint="bg-[#bf5af2]/25"
               back={{ src: shot('foryou'), alt: 'For You: About You, Streaks, Patterns and History' }}
-              front={{ src: shot('aboutyou'), alt: 'About You: your dominant trait and what stands out' }}
+              front={[
+                { src: shot('aboutyou'), alt: 'About You: your dominant trait and what stands out' },
+                { src: shot('aboutyou-traits'), alt: 'About You: why we think so, and your rhythm' },
+              ]}
             />
           }
         >
