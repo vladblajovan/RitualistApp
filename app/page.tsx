@@ -25,7 +25,7 @@ import { AnimatePresence, MotionConfig, motion, useReducedMotion } from 'framer-
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CookieSettingsButton from './components/CookieSettingsButton';
 import { trackEvent } from './lib/analytics';
 
@@ -552,20 +552,19 @@ function FloatingChips() {
 
 function Hero() {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const scene = scenes[index];
 
   useEffect(() => {
-    if (paused || reduceMotion) return;
+    if (reduceMotion) return;
     const timer = window.setTimeout(() => setIndex((current) => (current + 1) % scenes.length), sceneDurationMs);
     return () => window.clearTimeout(timer);
-  }, [index, paused, reduceMotion]);
+  }, [index, reduceMotion]);
 
   const choose = (next: number) => {
-    setIndex(next);
-    setPaused(true);
-    track('hero_scene_select', 'engagement', scenes[next].key);
+    const wrapped = (next + scenes.length) % scenes.length;
+    setIndex(wrapped);
+    track('hero_scene_select', 'engagement', scenes[wrapped].key);
   };
 
   return (
@@ -616,10 +615,10 @@ function Hero() {
             <AppStoreBadge placement="hero" tone="light" />
             <p className="text-sm font-semibold text-white/75">Free to start. Pro free for a week.</p>
           </div>
-          <SceneTabs index={index} onChoose={choose} className="mt-7 hidden lg:flex" />
         </motion.div>
 
-        <div className="relative mx-auto h-[520px] w-full max-w-[420px] sm:h-[640px] lg:h-[680px] lg:max-w-[480px]">
+        <div className="mx-auto w-full max-w-[420px] lg:max-w-[480px]">
+        <div className="relative h-[470px] w-full sm:h-[560px] lg:h-[580px]">
           <div className="absolute inset-x-0 top-0 mx-auto w-[66%] sm:w-[62%]">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
@@ -635,39 +634,69 @@ function Hero() {
           </div>
           <FloatingChips />
         </div>
-        <SceneTabs index={index} onChoose={choose} className="flex lg:hidden" />
+        <SceneCarousel index={index} onChoose={choose} />
+        </div>
       </div>
     </section>
   );
 }
 
-function SceneTabs({ index, onChoose, className }: { index: number; onChoose: (index: number) => void; className?: string }) {
+/** The scenes as a carousel under the phone: the current one in full, its neighbours faded either side. */
+function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: number) => void }) {
+  const wheelLock = useRef(false);
+  const offsets = [-1, 0, 1];
+
   return (
-    <div className={cn('flex-wrap justify-center gap-2 lg:justify-start', className)} role="tablist" aria-label="What Ritualist does">
-      {scenes.map((item, itemIndex) => {
+    <motion.div
+      className="relative mx-auto mt-4 flex h-12 w-full max-w-[400px] cursor-grab touch-pan-y select-none items-center justify-center active:cursor-grabbing"
+      role="tablist"
+      aria-label="What Ritualist does"
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.25}
+      onDragEnd={(_, info) => {
+        if (info.offset.x < -40) onChoose(index + 1);
+        else if (info.offset.x > 40) onChoose(index - 1);
+      }}
+      onWheel={(event) => {
+        if (Math.abs(event.deltaX) < 20 || wheelLock.current) return;
+        wheelLock.current = true;
+        onChoose(index + (event.deltaX > 0 ? 1 : -1));
+        window.setTimeout(() => (wheelLock.current = false), 500);
+      }}
+      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent)' }}
+      onKeyDown={(event) => {
+        if (event.key === 'ArrowRight') onChoose(index + 1);
+        if (event.key === 'ArrowLeft') onChoose(index - 1);
+      }}
+    >
+      {offsets.map((offset) => {
+        const itemIndex = (index + offset + scenes.length) % scenes.length;
+        const item = scenes[itemIndex];
         const Icon = item.icon;
-        const selected = itemIndex === index;
+        const isCurrent = offset === 0;
         return (
-          <button
-            key={item.key}
+          <motion.button
+            key={`${offset}-${item.key}`}
             type="button"
             role="tab"
-            aria-selected={selected}
-            onClick={() => onChoose(itemIndex)}
+            aria-selected={isCurrent}
+            onClick={() => onChoose(index + offset)}
+            initial={{ opacity: 0, x: offset * 40 }}
+            animate={{ opacity: isCurrent ? 1 : 0.35, x: 0, scale: isCurrent ? 1 : 0.88 }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
             className={cn(
-              'relative inline-flex items-center gap-1.5 overflow-hidden rounded-full border px-3 py-1.5 text-[13px] font-semibold transition',
-              selected
-                ? 'border-transparent text-white shadow-md'
-                : 'border-white/20 bg-white/10 text-white/85 hover:bg-white/15',
+              'mx-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm font-semibold',
+              isCurrent ? 'border-transparent text-white shadow-lg' : 'border-white/20 bg-white/10 text-white/85',
             )}
-            style={selected ? { background: item.accent } : undefined}
+            style={isCurrent ? { background: item.accent } : undefined}
           >
             <Icon className="h-4 w-4" aria-hidden />
             {item.label}
-          </button>
+          </motion.button>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
 
