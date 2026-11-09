@@ -343,26 +343,36 @@ function FreeTag({ className }: { className?: string }) {
   );
 }
 
-function ProNote({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
+/** What Pro adds to a section, shown in the section so visitors see it where it matters. */
+function ProList({ items, dark = false }: { items: string[]; dark?: boolean }) {
   return (
-    <p
+    <div
       className={cn(
-        'mt-6 flex items-start gap-3 rounded-2xl border p-4 text-sm leading-6',
-        dark ? 'border-white/15 bg-white/[0.06] text-white/85' : 'border-[#f3d48a] bg-[#fff8e6] text-[#5a3d00] dark:border-[#5a4513] dark:bg-[#2a2210] dark:text-[#ffe19a]',
+        'mt-6 rounded-2xl border p-4',
+        dark ? 'border-[#ffcf4d]/40 bg-[#ffcf4d]/[0.08]' : 'border-[#f3d48a] bg-[#fff8e6] dark:border-[#5a4513] dark:bg-[#2a2210]',
       )}
     >
-      <ProTag className="mt-0.5" />
-      <span>
-        {children}{' '}
+      <div className="flex items-center justify-between gap-3">
+        <span className={cn('flex items-center gap-2 text-sm font-extrabold', dark ? 'text-white' : 'text-[#5a3d00] dark:text-[#ffe19a]')}>
+          <ProTag /> With Pro
+        </span>
         <a
           href="#pricing"
-          onClick={() => track('pro_note_click', 'conversion', 'section')}
-          className={cn('font-bold underline-offset-4 hover:underline', dark ? 'text-white' : 'text-[#7a4b00] dark:text-[#ffd54f]')}
+          onClick={() => track('pro_list_click', 'conversion', items[0])}
+          className={cn('text-sm font-bold underline-offset-4 hover:underline', dark ? 'text-[#ffd27a]' : 'text-[#7a4b00] dark:text-[#ffd54f]')}
         >
-          See the Pro plans
+          See the plans
         </a>
-      </span>
-    </p>
+      </div>
+      <ul className="mt-3 space-y-1.5">
+        {items.map((item) => (
+          <li key={item} className={cn('flex gap-2 text-sm leading-6', dark ? 'text-white/90' : 'text-[#5a3d00] dark:text-[#ffe19a]')}>
+            <HiSparkles className={cn('mt-1 h-4 w-4 shrink-0', dark ? 'text-[#ffcf4d]' : 'text-[#c98a12] dark:text-[#ffd54f]')} aria-hidden />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -849,7 +859,7 @@ function MedalsSection() {
         </div>
 
         <motion.p {...reveal} className="mx-auto mt-6 max-w-2xl text-center text-base leading-7 text-slate-700 dark:text-slate-200">
-          <FreeTag className="mr-1.5 align-middle" /> Bronze and every achievement. <ProTag className="mx-1.5 align-middle" /> Silver and Gold, and the days you&apos;ve done already count.
+          Bronze in every challenge and every achievement come with the app. <ProTag className="mx-1.5 align-middle" /> Silver and Gold, and the days you&apos;ve done already count.
         </motion.p>
       </div>
     </section>
@@ -1145,7 +1155,6 @@ export default function Home() {
           id="habits"
           className="bg-white dark:bg-[#0a1522]"
           eyebrow="Every day"
-          tag={<FreeTag />}
           accent="#2a9d4b"
           title="One tap, and your day turns green."
           body="Pick from 150+ ready-made habits or make your own. Tap to log, and watch the month fill with color."
@@ -1157,14 +1166,15 @@ export default function Home() {
               front={{ src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' }}
             />
           }
-        />
+        >
+          <ProList items={['As many habits as you like (5 on the free plan)', 'Smart Scheduling: reminders at the times you actually follow through', 'Restore your history from a backup on any device']} />
+        </Feature>
 
         <Feature
           id="places"
           reverse
           className="bg-[linear-gradient(180deg,#fff5f5_0%,#f8fbff_100%)] dark:bg-[linear-gradient(180deg,#1f0f12_0%,#07111c_100%)]"
           eyebrow="My Places"
-          tag={<FreeTag />}
           accent="#e5484d"
           title="Reminders that know where you are."
           body="Save the places that matter and tell Ritualist what to remind you of there. Water as you walk into the gym, a walk as you leave home."
@@ -1175,7 +1185,9 @@ export default function Home() {
               <PhoneShot src={shot('remind-gym')} alt="The Gym reminds you about Drink Water the first time you arrive each day" className="w-full" />
             </motion.div>
           }
-        />
+        >
+          <ProList items={['Every place you go (3 on the free plan)']} />
+        </Feature>
 
         <section id="fasting" className="relative scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
@@ -1184,11 +1196,10 @@ export default function Home() {
             dark
             className="py-12 lg:py-16 lg:pb-8"
             eyebrow="Fasting"
-            tag={<FreeTag />}
-            accent="#ffb27a"
+              accent="#ffb27a"
             title="A fast feels shorter with a friend."
             body="Tap Start and Ritualist shows which phase your body is likely in, hour by hour, and what helps right now."
-            points={['On your Lock Screen and in the Dynamic Island', 'Quick help for hunger, headaches or low energy', 'A report at the end, and how to break your fast']}
+            points={['The Fasting Guide, phase by phase, with its sources', 'Quick help for hunger, headaches or low energy', 'On your Lock Screen and in the Dynamic Island', 'A report at the end, and how to break your fast']}
             visual={
               <div className="relative">
                 <PhonePair
@@ -1197,11 +1208,21 @@ export default function Home() {
                   front={{ src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and help for hunger or headaches' }}
                 />
                 <motion.div {...reveal} className="absolute -bottom-4 left-0 w-[70%] drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)] sm:w-[60%]">
-                  <Image src={shot('live-activity-lock')} alt="The fast on the Lock Screen" width={900} height={375} className="h-auto w-full" />
+                  <Image src={shot('live-activity-lock')} alt="The fast on the Lock Screen, with a pep talk from the coach" width={900} height={375} className="h-auto w-full" />
                 </motion.div>
               </div>
             }
-          />
+          >
+            <ProList
+              dark
+              items={[
+                'A coach who talks you through every stage, in the tone you choose',
+                'Pep talks on your Lock Screen and in fasting alerts',
+                'Notes written from your own fasts',
+                'All six coaches (Taisu is free)',
+              ]}
+            />
+          </Feature>
           <div className="relative px-4 pb-12 sm:px-6 lg:pb-16">
             <CoachesStrip />
           </div>
@@ -1213,7 +1234,6 @@ export default function Home() {
           dark
           className="bg-[linear-gradient(160deg,#0b3b4a_0%,#245d7a_45%,#c98a5a_100%)] text-white"
           eyebrow="Breathing"
-          tag={<FreeTag />}
           accent="#a8f0ff"
           title="Breathing you can see, and feel."
           body="Follow the shape as it swells and settles, while your iPhone taps along with every breath. It works with your eyes closed."
@@ -1224,7 +1244,7 @@ export default function Home() {
             </motion.div>
           }
         >
-          <ProNote dark>Nine flowers that open with each breath, like Lotus here, and patterns of your own.</ProNote>
+          <ProList dark items={['Nine flowers that open with each breath, like Lotus here', 'Breathing patterns of your own', 'See which breathing and time of day calm you most']} />
         </Feature>
 
         <MedalsSection />
@@ -1246,7 +1266,8 @@ export default function Home() {
             />
           }
         >
-          <ProNote>A reflection for fun and self-knowledge, not a diagnosis.</ProNote>
+          <p className="mt-5 text-sm leading-6 text-slate-600 dark:text-slate-300">A reflection for fun and self-knowledge, not a diagnosis.</p>
+          <ProList items={['Your Big Five profile, with the reasons behind each trait', 'What stands out about you and activities that suit you', 'How you change over time']} />
         </Feature>
 
         <EverywhereSection />
