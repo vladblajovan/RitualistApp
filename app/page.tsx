@@ -666,22 +666,21 @@ function Hero() {
   );
 }
 
-/** The scenes as a carousel under the phone: the current one in full, its neighbours faded either side. */
+/** The scenes as a carousel under the phone: one track of cards that slides, the current one centred and its neighbours faded. */
+const carouselCardWidth = 150;
+
 function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: number) => void }) {
   const wheelLock = useRef(false);
-  const offsets = [-1, 0, 1];
+  const count = scenes.length;
 
   return (
     <motion.div
-      className="relative mx-auto mt-4 flex h-12 w-full max-w-[400px] cursor-grab touch-pan-y select-none items-center justify-center active:cursor-grabbing"
+      className="relative mx-auto mt-10 h-12 w-full max-w-[440px] cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing sm:mt-12"
       role="tablist"
       aria-label="What Ritualist does"
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.25}
-      onDragEnd={(_, info) => {
-        if (info.offset.x < -40) onChoose(index + 1);
-        else if (info.offset.x > 40) onChoose(index - 1);
+      onPanEnd={(_, info) => {
+        if (info.offset.x < -30) onChoose(index + 1);
+        else if (info.offset.x > 30) onChoose(index - 1);
       }}
       onWheel={(event) => {
         if (Math.abs(event.deltaX) < 20 || wheelLock.current) return;
@@ -689,35 +688,44 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
         onChoose(index + (event.deltaX > 0 ? 1 : -1));
         window.setTimeout(() => (wheelLock.current = false), 500);
       }}
-      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent)' }}
+      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)' }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowRight') onChoose(index + 1);
         if (event.key === 'ArrowLeft') onChoose(index - 1);
       }}
     >
-      {offsets.map((offset) => {
-        const itemIndex = (index + offset + scenes.length) % scenes.length;
-        const item = scenes[itemIndex];
+      {scenes.map((item, itemIndex) => {
+        // Shortest way round the loop, so the cards slide the near way.
+        let distance = itemIndex - index;
+        if (distance > count / 2) distance -= count;
+        if (distance < -count / 2) distance += count;
+        const isCurrent = distance === 0;
+        const isVisible = Math.abs(distance) <= 1;
         const Icon = item.icon;
-        const isCurrent = offset === 0;
         return (
           <motion.button
-            key={`${offset}-${item.key}`}
+            key={item.key}
             type="button"
             role="tab"
             aria-selected={isCurrent}
-            onClick={() => onChoose(index + offset)}
-            initial={{ opacity: 0, x: offset * 40 }}
-            animate={{ opacity: isCurrent ? 1 : 0.35, x: 0, scale: isCurrent ? 1 : 0.88 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className={cn(
-              'mx-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3.5 py-2 text-sm font-semibold',
-              isCurrent ? 'border-transparent text-white shadow-lg' : 'border-white/20 bg-white/10 text-white/85',
-            )}
-            style={isCurrent ? { background: item.accent } : undefined}
+            tabIndex={isVisible ? 0 : -1}
+            onClick={() => onChoose(index + distance)}
+            initial={false}
+            animate={{ x: distance * carouselCardWidth, opacity: isCurrent ? 1 : isVisible ? 0.4 : 0, scale: isCurrent ? 1 : 0.9 }}
+            transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9, opacity: { duration: 0.3 } }}
+            className="absolute left-1/2 top-0 flex h-12 items-center justify-center"
+            style={{ width: carouselCardWidth, marginLeft: -carouselCardWidth / 2, pointerEvents: isVisible ? 'auto' : 'none' }}
           >
-            <Icon className="h-4 w-4" aria-hidden />
-            {item.label}
+            <span
+              className={cn(
+                'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-semibold transition-colors duration-300',
+                isCurrent ? 'border-transparent text-white shadow-lg' : 'border-white/20 bg-white/10 text-white/85',
+              )}
+              style={isCurrent ? { background: item.accent } : undefined}
+            >
+              <Icon className="h-4 w-4" aria-hidden />
+              {item.label}
+            </span>
           </motion.button>
         );
       })}
