@@ -990,44 +990,30 @@ function CoachesStrip() {
 }
 
 function MedalsSection() {
-  const items = [
-    { src: shot('challenges'), alt: 'The Challenges tab: active challenges and ones to join', caption: 'A new challenge every month' },
-    { src: shot('achievement'), alt: 'A silver medal for a 30-day streak, just unlocked', caption: 'Struck the moment you earn it' },
-    { src: shot('achievements'), alt: 'The Achievements grid with bronze and silver medals', caption: '42 to collect' },
-  ];
-
   return (
-    <section id="medals" className="relative scroll-mt-16 overflow-hidden bg-white px-4 py-12 dark:bg-[#0a1522] sm:px-6 lg:py-16">
-      <div className="mx-auto max-w-6xl">
-        <motion.div {...reveal} className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#b07a00] dark:text-[#ffd54f]">Challenges and medals</p>
-          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Medals worth showing off.</h2>
-          <p className="mt-5 text-lg leading-8 text-slate-700 dark:text-slate-200">
-            Real-looking coins, drawn live on your iPhone. Swipe one and it spins and catches the light.
-          </p>
-        </motion.div>
-
-        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 md:mx-0 md:mt-10 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
-          {items.map((item, index) => (
-            <motion.figure
-              key={item.caption}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55, delay: index * 0.1 }}
-              className={cn('w-[70%] shrink-0 snap-center text-center md:w-auto', index === 1 && 'md:-mt-6')}
-            >
-              <PhoneShot src={item.src} alt={item.alt} className="mx-auto w-full max-w-[260px] md:w-[78%] md:max-w-[300px]" />
-              <figcaption className="mt-5 text-lg font-extrabold text-[#15181c] dark:text-white">{item.caption}</figcaption>
-            </motion.figure>
-          ))}
-        </div>
-
-        <motion.p {...reveal} className="mx-auto mt-6 max-w-2xl text-center text-base leading-7 text-slate-700 dark:text-slate-200">
-          Bronze in every challenge and every achievement come with the app. <ProTag className="mx-1.5 align-middle" /> Silver and Gold, and the days you&apos;ve done already count.
-        </motion.p>
-      </div>
-    </section>
+    <Feature
+      id="medals"
+      reverse
+      className="bg-white dark:bg-[#0a1522]"
+      eyebrow="Challenges and medals"
+      accent="#b07a00"
+      title="Medals worth showing off."
+      body="Real-looking coins, drawn live on your iPhone. Swipe one and it spins and catches the light."
+      points={['A new challenge every month, and seasons to chase', '42 achievements for streaks, perfect days and fasts', 'Bronze in every challenge comes with the app']}
+      visual={
+        <PhonePair
+          tint="bg-[#ffcf4d]/25"
+          back={{ src: shot('challenges'), alt: 'The Challenges tab: active challenges and ones to join' }}
+          front={[
+            { src: shot('achievement'), alt: 'A silver medal for a 30-day streak, just unlocked' },
+            { src: shot('achievements'), alt: 'The Achievements grid with bronze and silver medals' },
+            { src: shot('challenge'), alt: 'Streak Master: a challenge with milestones from 7 to 365 days' },
+          ]}
+        />
+      }
+    >
+      <ProList items={['Silver and Gold in every challenge', 'The days you have done already count toward them']} />
+    </Feature>
   );
 }
 
