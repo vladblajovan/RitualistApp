@@ -1249,7 +1249,7 @@ function Footer() {
           </p>
           <p className="mt-5 text-xs text-slate-600 dark:text-slate-300">Copyright 2026 Vlad Blajovan. All rights reserved.</p>
         </div>
-        <div className="grid gap-8 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-6 sm:gap-8">
           <div>
             <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Ritualist</p>
             <div className="space-y-2 text-sm">
