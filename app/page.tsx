@@ -740,6 +740,41 @@ function PausableShot({
   );
 }
 
+// On small screens each scene's line is said by one of the coaches, in its own voice.
+const sceneQuotes: Record<string, { coach: string; file: string; quote: string }> = {
+  habits: { coach: 'Taisu', file: 'coach-taisu', quote: 'One tap and today counts. I’ll cheer every single one.' },
+  fasting: { coach: 'Wren', file: 'coach-wren', quote: 'I’ll walk you through every phase of your fast.' },
+  breathing: { coach: 'Moss', file: 'coach-moss', quote: 'Breathe with me. There’s never a rush.' },
+  places: { coach: 'Pip', file: 'coach-pip', quote: 'Walk into the gym and I’ll remind you to drink water!' },
+  gallery: { coach: 'Luna', file: 'coach-luna', quote: 'Pick any of 150+ habits. Starting small is fine.' },
+  reminders: { coach: 'Bruno', file: 'coach-bruno', quote: 'Right time, right place. I’ll remind you.' },
+};
+
+function CoachQuote({ sceneKey, className }: { sceneKey: string; className?: string }) {
+  const item = sceneQuotes[sceneKey];
+  if (!item) return null;
+  return (
+    <div className={className} aria-live="polite">
+      <AnimatePresence mode="wait">
+        <motion.figure
+          key={sceneKey}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center justify-center gap-3 text-left"
+        >
+          <Image src={shot(item.file)} alt="" width={96} height={88} className="h-11 w-11 shrink-0 rounded-full object-cover ring-2 ring-white/20" />
+          <span className="min-w-0">
+            <blockquote className="text-[15px] font-medium italic leading-5 text-white/90">“{item.quote}”</blockquote>
+            <figcaption className="mt-1 text-xs font-bold text-white/60">{item.coach}</figcaption>
+          </span>
+        </motion.figure>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function SceneLine({ line, sceneKey, className }: { line: string; sceneKey: string; className?: string }) {
   return (
     <div className={className} aria-live="polite">
@@ -786,8 +821,8 @@ function Hero() {
         transition={{ duration: 0.8 }}
         aria-hidden
       />
-      <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:-mt-12 lg:text-left">
+      <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
           <div className="hidden items-center gap-3 lg:flex">
             <div className="flex -space-x-2.5">
               {coaches.map((coach, coachIndex) => (
@@ -830,7 +865,7 @@ function Hero() {
           </PausableShot>
           <FloatingChips sceneKey={scene.key} />
         </div>
-        <SceneLine line={scene.line} sceneKey={scene.key} className="mx-auto mt-8 h-14 max-w-sm text-center lg:hidden" />
+        <CoachQuote sceneKey={scene.key} className="mx-auto mt-8 h-16 w-full max-w-sm lg:hidden" />
         <SceneCarousel index={index} onChoose={choose} />
         </div>
       </div>
