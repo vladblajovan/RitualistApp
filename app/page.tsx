@@ -401,7 +401,7 @@ function ProList({ items, dark = false }: { items: string[]; dark?: boolean }) {
     >
       <div className="flex items-center justify-between gap-3">
         <span className={cn('flex items-center gap-2 text-sm font-extrabold', dark ? 'text-white' : 'text-[#5a3d00] dark:text-[#ffe19a]')}>
-          <ProTag /> With Pro
+          <ProTag />
         </span>
         <a
           href="#pricing"
@@ -1012,7 +1012,7 @@ function MedalsSection() {
         />
       }
     >
-      <ProList items={['Silver and Gold in every challenge', 'The days you have done already count toward them']} />
+      <ProList items={['Go for Silver and Gold in every challenge', 'Every day you have already done counts']} />
     </Feature>
   );
 }
@@ -1323,7 +1323,7 @@ export default function Home() {
             />
           }
         >
-          <ProList items={['As many habits as you like (5 on the free plan)', 'Smart Scheduling: reminders at the times you actually follow through', 'Restore your history from a backup on any device']} />
+          <ProList items={['No limit on habits (5 on the free plan)', 'Reminders that learn when you actually follow through', 'Your history back on any device, from a backup']} />
         </Feature>
 
         <Feature
@@ -1348,7 +1348,7 @@ export default function Home() {
             </motion.div>
           }
         >
-          <ProList items={['Every place you go (3 on the free plan)']} />
+          <ProList items={['No limit on places (3 on the free plan)']} />
         </Feature>
 
         <section id="fasting" className="relative isolate scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
@@ -1383,10 +1383,10 @@ export default function Home() {
             <ProList
               dark
               items={[
-                'A coach who talks you through every stage, in the tone you choose',
-                'Pep talks on your Lock Screen and in fasting alerts',
+                'A pep talk at every stage, in your coach’s voice',
+                'Encouragement on your Lock Screen and in alerts',
                 'Notes written from your own fasts',
-                'All six coaches (Taisu is free)',
+                'Five more coaches to choose from',
               ]}
             />
           </Feature>
@@ -1418,7 +1418,7 @@ export default function Home() {
             </motion.div>
           }
         >
-          <ProList dark items={['Nine flowers that open with each breath, like these', 'Breathing patterns of your own', 'See which breathing and time of day calm you most']} />
+          <ProList dark items={['Nine flowers that open with each breath', 'Breathing patterns of your own', 'Which breathing, and which hour, calms you most']} />
         </Feature>
 
         <MedalsSection />
@@ -1444,7 +1444,7 @@ export default function Home() {
           }
         >
           <p className="mt-5 text-sm leading-6 text-slate-600 dark:text-slate-300">A reflection for fun and self-knowledge, not a diagnosis.</p>
-          <ProList items={['Your Big Five profile, with the reasons behind each trait', 'What stands out about you and activities that suit you', 'How you change over time']} />
+          <ProList items={['Your Big Five traits, and why', 'What stands out, and activities that suit you', 'How you change over time']} />
         </Feature>
 
         <EverywhereSection />
