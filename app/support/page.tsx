@@ -61,7 +61,7 @@ const faqs: Faq[] = [
   },
   {
     question: 'Who are the fasting coaches?',
-    answer: 'Your fasting coach is a hero who speaks in your alerts, Live Activity, and guide: Taisu, Wren, Moss, Pip, Luna, or Bruno, each with its own tone. Taisu is free, and the others come with Pro. The guide\'s advice is the same whichever you choose.',
+    answer: 'Your fasting coach is one of six plush heroes who speak in your alerts, Live Activity, and guide: Taisu (loyal, warm), Wren (clear, practical), Moss (patient, calm), Pip (lively, playful), Luna (gentle, caring), or Bruno (steady, brief). Swipe through them on the Fasting Coach page and each introduces itself. Taisu is free. The other coaches come with Pro. The guide\'s advice is the same whichever you choose.',
   },
   {
     question: 'Can I use Siri?',

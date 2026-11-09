@@ -26,6 +26,15 @@ Versioning:
 Item `key`s are stable identifiers. Keep a key when an item is reworded; use a
 new key when an item is replaced by something different.
 
+## [3.1.0] - 2026-11-09
+
+Checked against Ritualist 2.0 (main, the hero picker's speech bubbles).
+
+### Changed
+
+- `timedHabits/fastingGuide`: the Fasting Guide has two tabs, Now (with Around Now) and The Whole Fast; What to Expect previews The Whole Fast.
+- `timedHabits/fastingCoach`: the six coaches are plush toys with their three traits each, introduce themselves in a speech bubble as you swipe; "Taisu is free. The other coaches come with Pro."
+
 ## [3.0.0] - 2026-11-09
 
 Checked against Ritualist 2.0 as it ships (Ritualist main at c32b4631, with
