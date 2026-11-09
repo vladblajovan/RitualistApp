@@ -243,6 +243,31 @@ function AppStoreBadge({ placement, size = 'large', tone = 'dark' }: { placement
   );
 }
 
+/** The three Pro plans in a line, Annual leading with its free week; links to the pricing section. */
+function PlanStrip({ placement }: { placement: string }) {
+  return (
+    <a
+      href="#pricing"
+      onClick={() => track('plan_strip_click', 'conversion', placement)}
+      className="group flex flex-wrap items-stretch justify-center gap-2 lg:justify-start"
+      aria-label="Ritualist is free to download. Pro: Annual $49.99 a year with 1 week free, Monthly $9.99, or Lifetime $99.99. See the plans."
+    >
+      <span className="flex flex-col rounded-2xl bg-gradient-to-br from-[#ffcf4d] to-[#ff9f0a] px-3.5 py-2 text-left text-[#2a1800] shadow-[0_10px_30px_rgba(255,159,10,0.35)] transition group-hover:-translate-y-0.5">
+        <span className="text-[10px] font-extrabold uppercase tracking-wider">Annual · 1 week free</span>
+        <span className="text-base font-extrabold leading-tight">$49.99<span className="text-xs font-bold"> /year</span></span>
+      </span>
+      <span className="flex flex-col rounded-2xl border border-white/20 bg-white/10 px-3.5 py-2 text-left text-white transition group-hover:-translate-y-0.5">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">Monthly</span>
+        <span className="text-base font-extrabold leading-tight">$9.99<span className="text-xs font-bold text-white/70"> /month</span></span>
+      </span>
+      <span className="flex flex-col rounded-2xl border border-white/20 bg-white/10 px-3.5 py-2 text-left text-white transition group-hover:-translate-y-0.5">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">Lifetime</span>
+        <span className="text-base font-extrabold leading-tight">$99.99<span className="text-xs font-bold text-white/70"> once</span></span>
+      </span>
+    </a>
+  );
+}
+
 function PhoneShot({ src, alt, className, priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) {
   return (
     <div className={cn('iphone-frame', className)}>
@@ -331,7 +356,7 @@ function ProNote({ children, dark = false }: { children: ReactNode; dark?: boole
           onClick={() => track('pro_note_click', 'conversion', 'section')}
           className={cn('font-bold underline-offset-4 hover:underline', dark ? 'text-white' : 'text-[#7a4b00] dark:text-[#ffd54f]')}
         >
-          Try it free for a week
+          See the Pro plans
         </a>
       </span>
     </p>
@@ -611,9 +636,9 @@ function Hero() {
               </motion.p>
             </AnimatePresence>
           </div>
-          <div className="mt-4 flex flex-col items-center gap-2 sm:flex-row sm:gap-3 lg:justify-start">
+          <div className="mt-4 flex flex-col items-center gap-4 lg:items-start">
             <AppStoreBadge placement="hero" tone="light" />
-            <p className="text-sm font-semibold text-white/75">Free to start. Pro free for a week.</p>
+            <PlanStrip placement="hero" />
           </div>
         </motion.div>
 
@@ -828,7 +853,7 @@ function PricingSection() {
       <div className="mx-auto max-w-5xl">
         <motion.div {...reveal} className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#075cb5] dark:text-[#7bdcff]">Pricing</p>
-          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Start free. Try Pro for a week.</h2>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Free to download. Pro when you want it all.</h2>
         </motion.div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
@@ -967,7 +992,7 @@ function FinalCta() {
         <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/80">Pick a habit, tap it once, and watch your first day turn green.</p>
         <div className="mt-8 flex flex-col items-center gap-3">
           <AppStoreBadge placement="bottom_cta" tone="light" />
-          <p className="text-sm font-semibold text-white/70">Free to start. Pro free for a week.</p>
+          <PlanStrip placement="bottom_cta" />
         </div>
       </motion.div>
     </section>
@@ -1040,7 +1065,7 @@ function MobileAppStoreBar() {
           <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
-            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Free. Pro free for a week.</p>
+            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Free download. Annual Pro: 1 week free.</p>
           </div>
         </div>
         <AppStoreBadge placement="sticky_mobile" size="small" />
