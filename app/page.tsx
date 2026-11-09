@@ -808,7 +808,7 @@ function Hero() {
             <span className="block bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
           <SceneLine line={scene.line} sceneKey={scene.key} className="mx-auto mt-5 hidden h-16 max-w-xl lg:mx-0 lg:block" />
-          <div className="mt-6 flex flex-col items-center lg:mt-4 lg:items-start">
+          <div className="mt-4 hidden flex-col items-start lg:flex">
             <AppStoreBadge placement="hero" tone="light" />
           </div>
         </motion.div>
