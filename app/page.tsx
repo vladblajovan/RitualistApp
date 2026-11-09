@@ -566,7 +566,7 @@ function FloatingChips({ sceneKey }: { sceneKey: string }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.4, delay: 0.25 + slot * 0.18 }}
-                className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur dark:bg-[#132233]/95 dark:ring-white/10"
+                className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/80 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur-md dark:bg-[#132233]/80 dark:ring-white/10"
               >
                 {chip.image ? (
                   <Image src={shot(chip.image)} alt="" width={64} height={64} className={cn('h-7 w-7 shrink-0 object-cover', chip.round ? 'rounded-full' : 'rounded-lg')} />
