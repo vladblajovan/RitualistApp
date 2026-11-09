@@ -792,7 +792,7 @@ function Hero() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-36 lg:pt-28">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-40 lg:pt-40">
       <EdgeFade edge="bottom" color="from-white dark:from-[#0a1522]" />
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_15%_15%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_85%_90%,rgba(255,138,61,0.30),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.22),transparent_60%)]" aria-hidden />
       <motion.div
@@ -802,7 +802,7 @@ function Hero() {
         aria-hidden
       />
       <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:-mt-12 lg:text-left">
           <div className="hidden items-center gap-3 lg:flex">
             <div className="flex -space-x-2.5">
               {coaches.map((coach, coachIndex) => (
@@ -1319,7 +1319,11 @@ export default function Home() {
             <PhonePair
               tint="bg-[#34c759]/25"
               back={{ src: shot('month'), alt: 'A month of finished days in green and orange' }}
-              front={{ src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' }}
+              front={[
+                { src: shot('log-water'), alt: 'Logging water: 6 of 8 glasses, with +1 and Complete' },
+                { src: shot('habit-stats'), alt: "A habit's stats: progress trend and a month of completed days" },
+                { src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' },
+              ]}
             />
           }
         >
