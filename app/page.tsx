@@ -11,6 +11,7 @@ import {
   HiDeviceMobile,
   HiHeart,
   HiLocationMarker,
+  HiLightningBolt,
   HiLockClosed,
   HiMenu,
   HiMicrophone,
@@ -106,8 +107,8 @@ const scenes: Scene[] = [
     icon: HiBell,
     accent: '#0d6efd',
     line: 'Reminders at the right time, or the right place.',
-    screen: 'remind-gym',
-    alt: 'Setting a reminder: the Gym reminds you about Drink Water the first time you arrive each day',
+    screen: 'home-places',
+    alt: "Home's My Places card: the Gym reminds you to drink water",
   },
 ];
 
@@ -147,11 +148,6 @@ const plans = [
 
 const faqItems = [
   {
-    question: 'Is Ritualist free?',
-    answer:
-      'Yes. The free plan keeps up to 5 habits and 3 places, with fasting, breathing, every chart, Bronze medals, Apple Health, Apple Watch, widgets and iCloud. Pro removes the limits and adds the fasting coach, About You and Silver and Gold. Annual starts with a week free.',
-  },
-  {
     question: 'What can I track?',
     answer:
       'Anything you check off, count, measure or time: water, pages, steps, your weight, fasts and breathing. Habits repeat on your schedule, can aim for a total each week or month, fill in from Apple Health, and remind you at a time or a place.',
@@ -172,9 +168,9 @@ const faqItems = [
       'Your habits stay on your iPhone and in your own iCloud, with no account to create. About You is worked out on your device and can sit behind Face ID. The app sends anonymous usage counts so we can improve it; the privacy policy lists exactly what.',
   },
   {
-    question: 'How much is Pro, and how do I cancel?',
+    question: 'How do I cancel Pro?',
     answer:
-      'Annual is $49.99 a year with a 1 week free trial, Monthly is $9.99 a month, and Lifetime is $99.99 once. Prices vary by country; the App Store shows yours. Cancel anytime in your App Store account settings, and cancelling during the free week costs nothing.',
+      'In your App Store account settings, under Subscriptions, anytime. Cancel during the free week and you pay nothing. Lifetime is paid once and never renews.',
   },
 ];
 
@@ -667,7 +663,7 @@ function CoachesStrip() {
       <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div>
           <h3 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Pick the coach that gets you through.</h3>
-          <p className="mt-2 text-base leading-7 text-white/80">Six plush coaches, each with its own voice. The advice stays the same.</p>
+          <p className="mt-2 text-base leading-7 text-white/80">Six plush coaches, each with its own voice. Taisu is free; pep talks at every stage and the other five come with Pro.</p>
         </div>
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
           {coaches.map((coach, index) => (
@@ -742,7 +738,7 @@ function EverywhereSection() {
     { icon: HiMicrophone, title: 'Siri', body: '“Log a habit”, or start a fast, hands free.' },
     { icon: HiHeart, title: 'Apple Health', body: 'Steps, water and workouts fill in by themselves.' },
     { icon: HiCloud, title: 'iCloud', body: 'iPhone, iPad and Watch stay in step.' },
-    { icon: HiLockClosed, title: 'Private', body: 'No account. Your data stays in your iCloud.' },
+    { icon: HiLightningBolt, title: 'Control Center', body: 'Start a fast from Control Center or the Action button.' },
   ];
 
   return (
@@ -917,11 +913,7 @@ function FinalCta() {
     <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-24 text-center text-white sm:px-6">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_20%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.25),transparent_60%)]" aria-hidden />
       <motion.div {...reveal} className="mx-auto max-w-3xl">
-        <div className="mx-auto flex w-fit -space-x-3">
-          {coaches.map((coach) => (
-            <Image key={coach.name} src={shot(coach.file)} alt="" width={160} height={147} className="h-14 w-14 rounded-full object-cover ring-4 ring-[#0b1220] sm:h-16 sm:w-16" />
-          ))}
-        </div>
+        <Image src="/brand-icon-128.png" alt="" width={80} height={80} className="mx-auto rounded-[20px] shadow-[0_20px_50px_rgba(13,110,253,0.45)]" />
         <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">The best day to start is today.</h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/80">Pick a habit, tap it once, and watch your first day turn green.</p>
         <div className="mt-8 flex flex-col items-center gap-3">
@@ -1032,8 +1024,8 @@ export default function Home() {
           visual={
             <PhonePair
               tint="bg-[#34c759]/25"
-              back={{ src: shot('gallery'), alt: 'The Habits Gallery: Drink Water, Exercise, Eat Fruits and more' }}
-              front={{ src: shot('home'), alt: "Today's habits: a fast, a walk, water and reading" }}
+              back={{ src: shot('month'), alt: 'A month of finished days in green and orange' }}
+              front={{ src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' }}
             />
           }
         />
@@ -1049,17 +1041,12 @@ export default function Home() {
           body="Save the places that matter and tell Ritualist what to remind you of there. Water as you walk into the gym, a walk as you leave home."
           points={['As you arrive, as you leave, or both', 'Only on the days and at the times you choose', 'Or simply at a time, like any reminder']}
           visual={
-            <PhonePair
-              tint="bg-[#e5484d]/20"
-              back={{ src: shot('remind-gym'), alt: 'The Gym reminds you about Drink Water the first time you arrive each day' }}
-              front={{ src: shot('my-places'), alt: 'My Places: Home, Work and the Gym on a map' }}
-            />
+            <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
+              <div className="absolute inset-x-0 top-16 bottom-10 rounded-full bg-[#e5484d]/20 blur-3xl" aria-hidden />
+              <PhoneShot src={shot('remind-gym')} alt="The Gym reminds you about Drink Water the first time you arrive each day" className="w-full" />
+            </motion.div>
           }
-        >
-          <p className="mt-6 text-sm leading-6 text-slate-600 dark:text-slate-300">
-            3 places free. <ProTag className="mx-1 align-middle" /> Every place you go.
-          </p>
-        </Feature>
+        />
 
         <section id="fasting" className="relative scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
@@ -1077,8 +1064,8 @@ export default function Home() {
               <div className="relative">
                 <PhonePair
                   tint="bg-[#ff8a3d]/30"
-                  back={{ src: shot('fast'), alt: 'A running 16:8 fast: the ring, time remaining and the current phase' }}
-                  front={{ src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach' }}
+                  back={{ src: shot('guide'), alt: 'The Fasting Guide: the phase you are in and what comes next' }}
+                  front={{ src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and help for hunger or headaches' }}
                 />
                 <motion.div {...reveal} className="absolute -bottom-4 left-0 w-[70%] drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)] sm:w-[60%]">
                   <Image src={shot('live-activity-lock')} alt="The fast on the Lock Screen" width={900} height={375} className="h-auto w-full" />
@@ -1088,9 +1075,6 @@ export default function Home() {
           />
           <div className="relative px-4 pb-20 sm:px-6 lg:pb-28">
             <CoachesStrip />
-            <div className="mx-auto max-w-6xl">
-              <ProNote dark>Taisu is free. Pep talks at every stage and the other five coaches come with Pro.</ProNote>
-            </div>
           </div>
         </section>
 
@@ -1107,11 +1091,11 @@ export default function Home() {
           points={['Box breathing, 4-7-8, cyclic sighing and more', 'Note how you feel before and after', 'Counts as mindful minutes in Apple Health']}
           visual={
             <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
-              <PhoneShot src={shot('breath1')} alt="A breathing session: a flower in a ring of the breath's phases" className="w-full" />
+              <PhoneShot src={shot('breath-lotus')} alt="Choosing a breathing shape: Lotus, one of nine flowers" className="w-full" />
             </motion.div>
           }
         >
-          <ProNote dark>Nine flowers that open with each breath, like this one, and patterns of your own.</ProNote>
+          <ProNote dark>Nine flowers that open with each breath, like Lotus here, and patterns of your own.</ProNote>
         </Feature>
 
         <MedalsSection />
