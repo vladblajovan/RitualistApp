@@ -129,7 +129,7 @@ const freeBenefits = [
   'Up to 5 habits and 3 saved places',
   'Fasting and breathing, with the full Fasting Guide',
   'Taisu, your first fasting coach',
-  'Bronze medals and every achievement',
+  'Bronze in every challenge, and achievements',
   'Every progress chart',
   'Apple Health, Apple Watch, widgets, Siri and iCloud',
 ];
@@ -144,7 +144,7 @@ const proBenefits = [
 ];
 
 const plans = [
-  { name: 'Annual', price: '$49.99', cadence: 'a year', note: 'Starts with 1 week free', featured: true },
+  { name: 'Annual', price: '$49.99', cadence: 'a year', note: '1 week free for new subscribers', featured: true },
   { name: 'Monthly', price: '$9.99', cadence: 'a month', note: 'Cancel anytime' },
   { name: 'Lifetime', price: '$99.99', cadence: 'once', note: 'Pay once, Pro for good' },
 ];
@@ -173,7 +173,7 @@ const faqItems = [
   {
     question: 'How do I cancel Pro?',
     answer:
-      'In your App Store account settings, under Subscriptions, anytime. Cancel during the free week and you pay nothing. Lifetime is paid once and never renews.',
+      'In your App Store account settings, under Subscriptions, anytime. If you’re new to Pro, Annual starts with a free week, and cancelling during it costs nothing. Lifetime is paid once and never renews.',
   },
 ];
 
@@ -253,10 +253,10 @@ function PlanStrip({ placement }: { placement: string }) {
       href="#pricing"
       onClick={() => track('plan_strip_click', 'conversion', placement)}
       className="group flex flex-wrap items-stretch justify-center gap-2 lg:justify-start"
-      aria-label="Ritualist is free to download. Pro: Annual $49.99 a year with 1 week free, Monthly $9.99, or Lifetime $99.99. See the plans."
+      aria-label="Ritualist is free to download. Pro: Annual $49.99 a year, with 1 week free for new subscribers, Monthly $9.99, or Lifetime $99.99. See the plans."
     >
       <span className="flex flex-col rounded-2xl bg-gradient-to-br from-[#ffcf4d] to-[#ff9f0a] px-3.5 py-2 text-left text-[#2a1800] shadow-[0_10px_30px_rgba(255,159,10,0.35)] transition group-hover:-translate-y-0.5">
-        <span className="text-[10px] font-extrabold uppercase tracking-wider">Annual · 1 week free</span>
+        <span className="text-[10px] font-extrabold uppercase tracking-wider">Annual · new? 1 week free</span>
         <span className="text-base font-extrabold leading-tight">$49.99<span className="text-xs font-bold"> /year</span></span>
       </span>
       <span className="flex flex-col rounded-2xl border border-white/20 bg-white/10 px-3.5 py-2 text-left text-white transition group-hover:-translate-y-0.5">
@@ -742,12 +742,12 @@ function PausableShot({
 
 // On small screens each scene's line is said by one of the coaches, in its own voice.
 const sceneQuotes: Record<string, { coach: string; file: string; quote: string }> = {
-  habits: { coach: 'Taisu', file: 'coach-taisu', quote: 'One tap and today counts. I’ll cheer every single one.' },
+  habits: { coach: 'Taisu', file: 'coach-taisu', quote: 'One tap and today counts. Every single one!' },
   fasting: { coach: 'Wren', file: 'coach-wren', quote: 'I’ll walk you through every phase of your fast.' },
-  breathing: { coach: 'Moss', file: 'coach-moss', quote: 'Breathe with me. There’s never a rush.' },
-  places: { coach: 'Pip', file: 'coach-pip', quote: 'Walk into the gym and I’ll remind you to drink water!' },
+  breathing: { coach: 'Moss', file: 'coach-moss', quote: 'Breathe slowly. There’s never a rush.' },
+  places: { coach: 'Pip', file: 'coach-pip', quote: 'Save the gym, and water reminds you as you walk in!' },
   gallery: { coach: 'Luna', file: 'coach-luna', quote: 'Pick any of 150+ habits. Starting small is fine.' },
-  reminders: { coach: 'Bruno', file: 'coach-bruno', quote: 'Right time, right place. I’ll remind you.' },
+  reminders: { coach: 'Bruno', file: 'coach-bruno', quote: 'Right time, right place. You’ll be reminded.' },
 };
 
 function CoachQuote({ sceneKey, className, align = 'center' }: { sceneKey: string; className?: string; align?: 'center' | 'start' }) {
@@ -1137,7 +1137,7 @@ function PricingSection() {
             <div className="mt-8 flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
               <AppStoreBadge placement="pricing_pro" />
               <p className="text-xs leading-5 text-slate-600 dark:text-slate-300">
-                Download free, then start your free week in the app. Prices in US dollars; the App Store shows yours. Monthly and Annual renew until cancelled.
+                Download free; new subscribers start Annual with a free week in the app. Prices in US dollars; the App Store shows yours. Monthly and Annual renew until cancelled.
               </p>
             </div>
           </motion.div>
@@ -1285,7 +1285,7 @@ function MobileAppStoreBar() {
           <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
-            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Annual Pro: 1 week free</p>
+            <p className="truncate text-xs text-slate-600 dark:text-slate-300">New to Pro? 1 week free</p>
           </div>
         </div>
         <AppStoreBadge placement="sticky_mobile" size="small" />
@@ -1318,7 +1318,6 @@ export default function Home() {
               tint="bg-[#34c759]/25"
               back={{ src: shot('month'), alt: 'A month of finished days in green and orange' }}
               front={[
-                { src: shot('log-water'), alt: 'Logging water: 6 of 8 glasses, with +1 and Complete' },
                 { src: shot('habit-stats'), alt: "A habit's stats: progress trend and a month of completed days" },
                 { src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' },
               ]}
@@ -1369,7 +1368,7 @@ export default function Home() {
                   back={{ src: shot('guide'), alt: 'The Fasting Guide: the phase you are in and what comes next' }}
                   front={[
                     { src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and help for hunger or headaches' },
-                    { src: shot('coach-picker'), alt: 'Choosing your coach: Taisu, warm and loyal' },
+                    { src: shot('coach-picker'), alt: 'Choosing your coach: Taisu, loyal and warm, introduces itself' },
                   ]}
                 />
                 <motion.div {...reveal} className="absolute -bottom-4 left-0 w-[70%] drop-shadow-[0_24px_30px_rgba(0,0,0,0.5)] sm:w-[60%]">
@@ -1401,7 +1400,7 @@ export default function Home() {
           accent="#a8f0ff"
           title="Breathing you can see, and feel."
           body="Follow the shape as it swells and settles, while your iPhone taps along with every breath. It works with your eyes closed."
-          points={['Box breathing, 4-7-8, cyclic sighing and more', 'Note how you feel before and after', 'Counts as mindful minutes in Apple Health']}
+          points={['Box breathing, 4-7-8, cyclic sighing and more', 'Note how each session felt', 'Counts as mindful minutes in Apple Health']}
           visual={
             <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
               <CyclingPhone
