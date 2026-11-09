@@ -1,250 +1,140 @@
 'use client';
 
 import type { IconType } from 'react-icons';
-import { FaApple, FaGithub, FaInstagram } from 'react-icons/fa';
+import { FaApple, FaInstagram } from 'react-icons/fa';
 import {
-  HiBadgeCheck,
-  HiCalendar,
-  HiChartBar,
-  HiCheckCircle,
+  HiCheck,
   HiChevronDown,
   HiChevronRight,
-  HiClock,
   HiCloud,
-  HiCollection,
   HiDeviceMobile,
-  HiFlag,
+  HiFingerPrint,
   HiHeart,
   HiLightningBolt,
+  HiLocationMarker,
+  HiLockClosed,
   HiMenu,
+  HiMicrophone,
   HiSparkles,
+  HiTemplate,
   HiX,
 } from 'react-icons/hi';
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import CookieSettingsButton from './components/CookieSettingsButton';
 import { trackEvent } from './lib/analytics';
 
 const appStoreUrl = 'https://apps.apple.com/app/id6755661147';
-const testFlightUrl = 'https://testflight.apple.com/join/RVMZXfse';
 const instagramUrl = 'https://instagram.com/ritualist.app';
-const githubUrl = 'https://github.com/vladblajovan/Ritualist';
 
-const screenshots = {
-  home: '/screenshots/website/iphone-home.jpg',
-  swipe: '/screenshots/website/iphone-swipe-actions.jpg',
-  progress: '/screenshots/website/iphone-progress-sheet.jpg',
-  insights: '/screenshots/website/iphone-insights.jpg',
-  you: '/screenshots/website/iphone-you.jpg',
-  challenge: '/screenshots/website/iphone-challenge-detail.jpg',
-  achievements: '/screenshots/website/iphone-achievements.jpg',
-  watch: '/screenshots/website/watch-today.jpg',
-  watchProgress: '/screenshots/website/watch-progress.jpg',
-};
-
-const motivationLines = [
-  'Master your habits. Master yourself.',
-  'Your habits shape who you become',
-  'Build habits that build you',
-  'Track habits. Unlock potential.',
-  "Every habit tells a story. What's yours?",
-  'Smart habits for a smarter you',
-  'Your habits. Your insights. Your transformation.',
-  'Build rituals, not just habits',
-  'Where habits meet intelligence',
-];
-
-const motivationTypingDelayMs = 700;
-const motivationCycleMs = 60000;
+const shot = (name: string) => `/screenshots/v2/${name}.webp`;
 
 const navItems = [
-  { href: '#features', label: 'Features' },
-  { href: '#progress', label: 'Progress' },
-  { href: '#watch', label: 'Watch' },
-  { href: '#pricing', label: 'Pro' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '#habits', label: 'Habits' },
+  { href: '#fasting', label: 'Fasting' },
+  { href: '#breathing', label: 'Breathing' },
+  { href: '#medals', label: 'Medals' },
+  { href: '#about-you', label: 'About You' },
+  { href: '#pricing', label: 'Pricing' },
 ];
 
-const productPillars = [
-  {
-    icon: HiLightningBolt,
-    title: 'Fast daily logging',
-    body: 'Complete, reset, edit, or review habits from the day view with swipe actions and quick controls.',
-  },
-  {
-    icon: HiClock,
-    title: 'Timed rituals',
-    body: 'Run fasting and breathing sessions with focused timers and Live Activity support.',
-  },
-  {
-    icon: HiBadgeCheck,
-    title: 'Achievements',
-    body: 'Earn milestones, perfect days, streak goals, and progress paths that make consistency visible.',
-  },
-  {
-    icon: HiFlag,
-    title: 'Challenges',
-    body: 'Follow guided challenges that turn good intentions into concrete routines.',
-  },
-  {
-    icon: HiChartBar,
-    title: 'Personal insights',
-    body: 'Read trends, completion calendars, habit patterns, and on-device personality signals.',
-  },
-  {
-    icon: HiDeviceMobile,
-    title: 'Apple Watch',
-    body: 'Check today, log habits, and adjust numeric progress without reaching for your phone.',
-  },
+const whyChips = [
+  { href: '#habits', label: 'Build habits that stick' },
+  { href: '#fasting', label: 'Fast with a coach' },
+  { href: '#breathing', label: 'Breathe and calm down' },
+  { href: '#about-you', label: 'Get to know myself' },
 ];
 
-const lensMoments = [
-  {
-    title: 'Log without opening a sheet',
-    body: 'Quick-add and complete controls stay attached to the habit row, so small progress takes one tap.',
-    image: screenshots.home,
-    focusPosition: '50% 55%',
-    lensBackgroundPosition: 'right 54%',
-    lensBackgroundSize: '500px auto',
-    lensClassName: 'left-1/2 top-8 h-36 w-36 -translate-x-1/2 rounded-full',
-  },
-  {
-    title: 'Ask from anywhere',
-    body: 'The assistant sits within reach when you want help planning, reflecting, or turning intention into a habit.',
-    image: screenshots.home,
-    focusPosition: '100% 100%',
-    lensBackgroundPosition: 'right 42px bottom 34px',
-    lensBackgroundSize: '340px auto',
-    lensClassName: 'right-7 top-8 h-36 w-36 rounded-full',
-  },
-  {
-    title: 'Adjust progress in context',
-    body: 'Progress sheets keep targets, step controls, quick adds, and complete-all actions close to the habit.',
-    image: screenshots.progress,
-    focusPosition: '50% 80%',
-    lensBackgroundPosition: 'center 70%',
-    lensBackgroundSize: '255px auto',
-    lensClassName: 'left-1/2 top-8 h-36 w-36 -translate-x-1/2 rounded-full',
-  },
+const facts = [
+  { value: '150+', label: 'ready-made habits' },
+  { value: '6', label: 'plush fasting coaches' },
+  { value: '42', label: 'medals to earn' },
+  { value: '5', label: 'languages' },
+  { value: '0', label: 'accounts to create' },
 ];
 
+const coaches = [
+  { name: 'Taisu', file: 'coach-taisu', tone: 'Warm and loyal, always on your side.', free: true },
+  { name: 'Wren', file: 'coach-wren', tone: 'Plain and practical, in the colors of each phase.' },
+  { name: 'Moss', file: 'coach-moss', tone: "Unhurried and reassuring. There's never a rush." },
+  { name: 'Pip', file: 'coach-pip', tone: 'Bright and playful, with something to do.' },
+  { name: 'Luna', file: 'coach-luna', tone: 'Warm and kind, and always fine with stopping.' },
+  { name: 'Bruno', file: 'coach-bruno', tone: 'Short and practical, in as few words as it takes.' },
+];
+
+// One list of what each plan includes, rendered everywhere the site says it.
 const freeBenefits = [
-  'Check, count, measure, and timed habits',
-  'Up to 5 active habits and 3 places',
-  'Fasting and breathing guides',
-  'Streaks, achievements, and Bronze challenges',
-  'Time and place reminders',
-  'Apple Health, widgets, and Siri',
-  'iCloud sync and Apple Watch',
+  'Up to 5 habits and 3 saved places',
+  'Check, count, measure and timed habits',
+  'Fasting and breathing timers, with the full Fasting Guide',
+  'Taisu, your first fasting coach',
+  'Bronze in every challenge, and every achievement',
+  'Every progress chart: Patterns, History and Streaks',
+  'Reminders at a time or at a place',
+  'Apple Health, Apple Watch, widgets, Siri and iCloud',
+  'Saving a backup of your data',
 ];
 
 const proBenefits = [
-  'Unlimited habits and places',
-  'About You: what your habits say about you',
-  'Silver and Gold in every challenge',
-  'Every fasting coach, with a pep talk at every stage',
-  'Breathing flowers, your own patterns, and What Calms You',
-  'Smart Scheduling and restoring backups',
+  { title: 'A coach who knows your fasts', body: 'A pep talk at every stage in the tone you choose, notes from your own fasts, and all six coaches.' },
+  { title: 'What your habits say about you', body: 'Your Big Five traits, what keeps you going, and activities that suit you.' },
+  { title: 'Every habit you want', body: 'No cap on habits. Each keeps its own reminders, streaks and history.' },
+  { title: 'Every place you go', body: 'Save every place that matters and get the right reminder as you arrive or leave.' },
+  { title: 'Silver and Gold medals', body: 'Claim the higher tiers of every monthly challenge. The days you have done already count.' },
+  { title: 'Breathe your way', body: 'Nine flowers that open as you breathe, patterns of your own, and what calms you most.' },
+  { title: 'Reminders that fit your day', body: 'Smart Scheduling learns the days and times you actually follow through.' },
+  { title: 'Bring your history back', body: 'Restore your habits and logs from a backup, on any device.' },
 ];
 
-const ritualStyleOptions = [
-  {
-    title: 'I want the fastest daily logging',
-    result: 'Start with quick actions, Apple Watch logging, widgets, Health, and location reminders. Go Pro when you want unlimited active habits and more history.',
-    pro: 'Best Pro fit: unlimited active habits and power-user progress tools.',
-  },
-  {
-    title: 'I want to understand my patterns',
-    result: 'Ritualist gives you trends, calendars, streak context, and a personal place to review progress. Pro is strongest when you want deeper analysis.',
-    pro: 'Best Pro fit: advanced analytics, heatmaps, and personality insights.',
-  },
-  {
-    title: 'I want guided momentum',
-    result: 'Challenges, achievements, and streaks turn vague goals into visible progress. Pro helps when your habit system grows beyond the basics.',
-    pro: 'Best Pro fit: richer challenge review, achievements, backup, restore, and export tools.',
-  },
-];
-
-const proPlanPrices = [
-  {
-    name: 'Monthly',
-    price: '$9.99',
-    cadence: '/ month',
-    note: 'Cancel anytime',
-  },
-  {
-    name: 'Annual',
-    price: '$49.99',
-    cadence: '/ year',
-    note: '1 week free trial',
-    featured: true,
-  },
-  {
-    name: 'Lifetime',
-    price: '$99.99',
-    cadence: 'once',
-    note: 'Pay once, Pro for good',
-  },
-];
-
-const socialProofs = [
-  {
-    quote: 'Ritualist makes habit tracking feel fast instead of heavy. The Watch flow is exactly what I wanted.',
-    name: 'Alex M.',
-  },
-  {
-    quote: 'The progress view helped me understand which routines were actually sticking, not just what I hoped was working.',
-    name: 'Maya R.',
-  },
-  {
-    quote: 'I came for simple tracking and stayed for the challenges, achievements, and the way the app fits into my day.',
-    name: 'Chris L.',
-  },
+const plans = [
+  { name: 'Annual', price: '$49.99', cadence: 'a year', note: 'Starts with 1 week free', featured: true },
+  { name: 'Monthly', price: '$9.99', cadence: 'a month', note: 'Cancel anytime' },
+  { name: 'Lifetime', price: '$99.99', cadence: 'once', note: 'Pay once, Pro for good' },
 ];
 
 const faqItems = [
   {
-    question: 'What can Ritualist track?',
+    question: 'Is Ritualist free?',
     answer:
-      'Ritualist has four kinds of habits: ones you check off, count, measure (like your weight), or time (fasting and breathing). Habits can repeat on your own schedule, aim for a number of days or a total each week or month, link to Apple Health, and remind you at a time or a place.',
+      'Yes. Download it free and keep up to 5 habits and 3 places, with fasting and breathing timers, the Fasting Guide, every progress chart, Bronze medals, Apple Health, Apple Watch, widgets and iCloud. Pro removes the limits and adds the fasting coach, About You, Silver and Gold medals and more. Annual starts with a week free.',
   },
   {
-    question: 'Does Ritualist work on Apple Watch?',
+    question: 'What can I track?',
     answer:
-      'Yes. The Apple Watch companion shows today, completion progress, and habit cards so you can log habits or adjust numeric progress from your wrist.',
+      'Four kinds of habits: ones you check off, count (glasses, pages, steps), measure (your weight, your waist) or time (fasts and breathing). A habit can repeat on chosen days, every few days or weeks, aim for a number of days or a total each week or month, link to Apple Health, and remind you at a time or as you arrive at or leave a place.',
   },
   {
-    question: 'What are Live Activities for?',
+    question: 'How does fasting work?',
     answer:
-      'Live Activities follow a running fast on the Lock Screen and in the Dynamic Island: your time, your body\'s phase, and a short pep talk, up to date while the app is closed.',
+      'Pick a protocol such as 16:8 or 18:6 and tap Start, or tell Ritualist when your last bite was. The ring and the Fasting Guide show which phase your body is likely in, hour by hour, and a Live Activity follows the fast on your Lock Screen and in the Dynamic Island. When it ends, a report shows how far you got and how to break the fast gently. The guide is written carefully and cites its health sources; it is not medical advice.',
   },
   {
-    question: 'What is the For You tab?',
+    question: 'Who are the fasting coaches?',
     answer:
-      'For You brings together your streaks, About You, Patterns, and History, so your progress has one clear place to live. Challenges and achievements have a tab of their own.',
+      'Six plush characters, each with its own tone: Taisu, Wren, Moss, Pip, Luna and Bruno. Your coach sets the tone and color of its messages, alerts and notes; the guide\'s advice stays the same. Taisu is free. The pep talks at every stage and the other five coaches come with Pro.',
+  },
+  {
+    question: 'Does it work on Apple Watch?',
+    answer:
+      'Yes. The Watch app shows today, logs habits with a tap or the Digital Crown, and follows a running fast. Widgets, Siri ("Log a habit"), Control Center and the Action button work too.',
   },
   {
     question: 'Is my data private?',
     answer:
-      'Ritualist is built around local ownership, optional iCloud sync through your own account, and on-device insight generation wherever possible.',
+      'Your habits stay on your iPhone and in your own iCloud. There is no account to create. About You is worked out on your device and can sit behind Face ID. The app sends anonymous usage counts so we can improve it; the privacy policy lists exactly what.',
   },
   {
-    question: 'Which devices are supported?',
+    question: 'How much is Pro, and how do I cancel?',
     answer:
-      'Ritualist is built for iPhone, iPad, and Apple Watch, with widgets and system integrations for faster day-to-day logging.',
+      'Annual is $49.99 a year and starts with a 1 week free trial. Monthly is $9.99 a month. Lifetime is $99.99, paid once. Prices are in US dollars and vary by country; the App Store shows yours. Subscriptions renew until you cancel them in your App Store account settings, and cancelling during the free week costs nothing.',
   },
   {
-    question: 'How much does Ritualist Pro cost?',
+    question: 'I changed phones. Are my habits gone?',
     answer:
-      'Ritualist Pro comes three ways: Monthly at $9.99 a month, Annual at $49.99 a year with a 1 week free trial, or Lifetime at $99.99, paid once with no renewals. Prices may vary by region.',
-  },
-  {
-    question: 'Do I need Pro for Apple Health or location reminders?',
-    answer:
-      'No. Apple Health and time and place reminders are free. Pro adds unlimited habits and places, About You, Silver and Gold challenge tiers, every fasting coach, breathing flowers, and restoring backups.',
+      'No. With iCloud on, your habits, history and places come back on their own when you sign in on a new iPhone; Ritualist welcomes you back and shows them arriving. A Pro plan comes back with Restore Purchases.',
   },
 ];
 
@@ -252,15 +142,17 @@ const softwareApplicationLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'Ritualist',
-  applicationCategory: 'LifestyleApplication',
+  applicationCategory: 'HealthApplication',
   operatingSystem: 'iOS, iPadOS, watchOS',
   description:
-    'Ritualist is a private habit tracker for iPhone, iPad, and Apple Watch with Live Activities, challenges, achievements, progress sheets, Apple Health support, iCloud sync, and on-device insights.',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-  },
+    'Ritualist is a habit tracker for iPhone, iPad and Apple Watch with fasting and breathing timers, a fasting coach, challenges with struck medals, and About You, a portrait of what your habits say about you.',
+  screenshot: 'https://vladblajovan.github.io/RitualistApp/screenshots/v2/home.webp',
+  offers: [
+    { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro Annual', price: '49.99', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro Monthly', price: '9.99', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Pro Lifetime', price: '99.99', priceCurrency: 'USD' },
+  ],
 };
 
 const faqLd = {
@@ -269,10 +161,7 @@ const faqLd = {
   mainEntity: faqItems.map((item) => ({
     '@type': 'Question',
     name: item.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: item.answer,
-    },
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
   })),
 };
 
@@ -284,84 +173,165 @@ function track(action: string, category: string, label: string) {
   trackEvent({ action, category, label });
 }
 
-function pickMotivationIndex(currentIndex: number) {
-  let nextIndex = currentIndex;
+const reveal = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { duration: 0.55, ease: 'easeOut' as const },
+};
 
-  while (nextIndex === currentIndex && motivationLines.length > 1) {
-    nextIndex = Math.floor(Math.random() * motivationLines.length);
-  }
+// MARK: - Building blocks
 
-  localStorage.setItem('lastMotivationIndex', String(nextIndex));
-  return nextIndex;
-}
-
-function getNextMotivationIndex(currentIndex: number | null) {
-  const storedIndex = Number.parseInt(localStorage.getItem('lastMotivationIndex') ?? '-1', 10);
-  const fallbackIndex = currentIndex ?? (Number.isNaN(storedIndex) ? -1 : storedIndex);
-
-  return pickMotivationIndex(fallbackIndex);
-}
-
-function useMediaQuery(query: string) {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(query);
-    const updateMatch = () => setMatches(mediaQuery.matches);
-
-    updateMatch();
-    mediaQuery.addEventListener('change', updateMatch);
-
-    return () => mediaQuery.removeEventListener('change', updateMatch);
-  }, [query]);
-
-  return matches;
-}
-
-function TypingDots() {
-  const [dotCount, setDotCount] = useState(1);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setDotCount((currentCount) => (currentCount % 3) + 1);
-    }, 260);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
+function AppStoreBadge({ placement, size = 'large', tone = 'dark' }: { placement: string; size?: 'large' | 'small'; tone?: 'dark' | 'light' }) {
   return (
-    <span className="inline-block min-w-8 text-left" aria-label="Writing motivation">
-      {'.'.repeat(dotCount)}
+    <a
+      href={appStoreUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => track('app_store_click', 'conversion', placement)}
+      aria-label="Download Ritualist on the App Store"
+      className={cn(
+        'inline-flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-[14px] border transition hover:-translate-y-0.5',
+        tone === 'dark'
+          ? 'border-black bg-black text-white shadow-[0_10px_30px_rgba(0,0,0,0.25)] hover:bg-[#111] dark:border-white/30'
+          : 'border-white bg-white text-black shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:bg-slate-100',
+        size === 'large' ? 'h-14 px-5' : 'h-10 px-3.5',
+      )}
+    >
+      <FaApple className={size === 'large' ? 'h-7 w-7' : 'h-5 w-5'} aria-hidden />
+      <span className="flex flex-col text-left leading-none">
+        <span className={size === 'large' ? 'text-[11px] font-medium' : 'text-[9px] font-medium'}>Download on the</span>
+        <span className={size === 'large' ? 'mt-0.5 text-[22px] font-semibold tracking-tight' : 'mt-0.5 text-[15px] font-semibold tracking-tight'}>App Store</span>
+      </span>
+    </a>
+  );
+}
+
+function PhoneShot({ src, alt, className, priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) {
+  return (
+    <div className={cn('iphone-frame', className)}>
+      <div className="iphone-screen">
+        <Image src={src} alt={alt} fill priority={priority} sizes="330px" className="object-cover" />
+      </div>
+    </div>
+  );
+}
+
+function WatchShot({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  return (
+    <div className={cn('watch-frame', className)}>
+      <div className="watch-screen">
+        <Image src={src} alt={alt} fill sizes="200px" className="object-cover" />
+      </div>
+    </div>
+  );
+}
+
+function Floating({ children, className, delay = 0, amplitude = 10 }: { children: ReactNode; className?: string; delay?: number; amplitude?: number }) {
+  return (
+    <motion.div
+      className={className}
+      animate={{ y: [0, -amplitude, 0] }}
+      transition={{ duration: 6 + delay, repeat: Infinity, ease: 'easeInOut', delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function PhonePair({ back, front, tint }: { back: { src: string; alt: string }; front: { src: string; alt: string }; tint: string }) {
+  return (
+    <div className="relative mx-auto h-[470px] w-full max-w-[420px] sm:h-[600px] sm:max-w-[460px]">
+      <div className={cn('absolute inset-x-6 top-16 bottom-10 rounded-full blur-3xl', tint)} aria-hidden />
+      <motion.div
+        className="absolute left-0 top-0 w-[56%] sm:w-[52%]"
+        initial={{ opacity: 0, rotate: -12, y: 40 }}
+        whileInView={{ opacity: 1, rotate: -5, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ type: 'spring', stiffness: 90, damping: 15 }}
+      >
+        <PhoneShot src={back.src} alt={back.alt} />
+      </motion.div>
+      <motion.div
+        className="absolute bottom-0 right-0 w-[56%] sm:w-[52%]"
+        initial={{ opacity: 0, rotate: 12, y: 60 }}
+        whileInView={{ opacity: 1, rotate: 4, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ type: 'spring', stiffness: 90, damping: 15, delay: 0.12 }}
+      >
+        <PhoneShot src={front.src} alt={front.alt} />
+      </motion.div>
+    </div>
+  );
+}
+
+function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+  return <p className={cn('mb-3 text-xs font-bold uppercase tracking-[0.22em]', className)}>{children}</p>;
+}
+
+function Check({ children, className, iconClassName }: { children: ReactNode; className?: string; iconClassName?: string }) {
+  return (
+    <li className={cn('flex gap-3 text-base leading-7', className)}>
+      <HiCheck className={cn('mt-1 h-5 w-5 shrink-0', iconClassName)} aria-hidden />
+      <span>{children}</span>
+    </li>
+  );
+}
+
+function ProTag({ className }: { className?: string }) {
+  return (
+    <span className={cn('inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#ffcf4d] to-[#ff9f0a] px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-[#3d2300]', className)}>
+      <HiSparkles className="h-3 w-3" aria-hidden />
+      Pro
     </span>
   );
 }
+
+function FreeTag({ className }: { className?: string }) {
+  return (
+    <span className={cn('inline-flex items-center rounded-full bg-[#dff6e6] px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-[#14632f] dark:bg-[#143524] dark:text-[#7ee2a0]', className)}>
+      Free
+    </span>
+  );
+}
+
+function ProNote({ children, dark = false }: { children: ReactNode; dark?: boolean }) {
+  return (
+    <div
+      className={cn(
+        'mt-8 flex items-start gap-3 rounded-2xl border p-4 text-sm leading-6',
+        dark ? 'border-white/15 bg-white/[0.06] text-white/85' : 'border-[#f3d48a] bg-[#fff8e6] text-[#5a3d00] dark:border-[#5a4513] dark:bg-[#2a2210] dark:text-[#ffe19a]',
+      )}
+    >
+      <ProTag className="mt-0.5 shrink-0" />
+      <p>
+        {children}{' '}
+        <a
+          href="#pricing"
+          onClick={() => track('pro_note_click', 'conversion', 'section')}
+          className={cn('font-bold underline-offset-4 hover:underline', dark ? 'text-white' : 'text-[#7a4b00] dark:text-[#ffd54f]')}
+        >
+          Try it free for a week
+        </a>
+      </p>
+    </div>
+  );
+}
+
+// MARK: - Header
 
 function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-300 bg-[#f8fbff]/95 backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-3 sm:px-6" aria-label="Primary">
-        <a
-          href="#top"
-          onClick={() => track('nav_click', 'navigation', 'logo')}
-          className="flex items-center gap-3"
-        >
-          <Image src="/brand-icon.png" alt="Ritualist" width={40} height={40} className="rounded-[8px]" />
-          <span className="text-xl font-extrabold tracking-tight text-[#15181c] dark:text-white">Ritualist</span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]/85">
+      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2.5 sm:px-6" aria-label="Primary">
+        <a href="#top" onClick={() => track('nav_click', 'navigation', 'logo')} className="flex items-center gap-2.5">
+          <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" priority />
+          <span className="text-lg font-extrabold tracking-tight text-[#15181c] dark:text-white">Ritualist</span>
         </a>
 
-        <button
-          type="button"
-          onClick={() => setOpen((value) => !value)}
-          className="ml-3 flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-900 dark:border-white/20 dark:bg-white/10 dark:text-white md:hidden"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-        >
-          {open ? <HiX className="h-5 w-5" aria-hidden /> : <HiMenu className="h-5 w-5" aria-hidden />}
-        </button>
-
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -374,10 +344,20 @@ function Header() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <AppStoreButton label="nav" compact />
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:block">
+            <AppStoreBadge placement="nav" size="small" />
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-900 dark:border-white/20 dark:bg-white/10 dark:text-white lg:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            {open ? <HiX className="h-5 w-5" aria-hidden /> : <HiMenu className="h-5 w-5" aria-hidden />}
+          </button>
         </div>
-
       </nav>
 
       <AnimatePresence>
@@ -387,9 +367,9 @@ function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-t border-slate-300 bg-[#f8fbff] dark:border-white/10 dark:bg-[#07111c] md:hidden"
+            className="overflow-hidden border-t border-slate-200 bg-white dark:border-white/10 dark:bg-[#07111c] lg:hidden"
           >
-            <div className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
+            <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -398,23 +378,11 @@ function Header() {
                     setOpen(false);
                     track('nav_click', 'navigation', item.label.toLowerCase());
                   }}
-                  className="rounded-[8px] px-3 py-3 text-sm font-semibold text-slate-800 hover:bg-white dark:text-slate-100 dark:hover:bg-white/10"
+                  className="rounded-xl px-3 py-3 text-base font-semibold text-slate-800 hover:bg-slate-100 dark:text-slate-100 dark:hover:bg-white/10"
                 >
                   {item.label}
                 </a>
               ))}
-              <a
-                href={testFlightUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  setOpen(false);
-                  track('testflight_click', 'conversion', 'mobile_nav');
-                }}
-                className="rounded-[8px] px-3 py-3 text-sm font-semibold text-slate-800 hover:bg-white dark:text-slate-100 dark:hover:bg-white/10"
-              >
-                TestFlight
-              </a>
             </div>
           </motion.div>
         )}
@@ -423,1136 +391,771 @@ function Header() {
   );
 }
 
-function AppStoreButton({ label, compact = false }: { label: string; compact?: boolean }) {
+// MARK: - Sections
+
+function WhyChips({ className }: { className?: string }) {
   return (
-    <a
-      href={appStoreUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={() => track('app_store_click', 'conversion', label)}
-      className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-full bg-[#15181c] font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-black dark:bg-white dark:text-[#10151c] dark:hover:bg-slate-100',
-        compact ? 'px-4 py-2 text-sm' : 'min-h-12 px-5 text-sm sm:px-6 sm:text-base',
-      )}
-      aria-label="Download Ritualist on the App Store"
-    >
-      <FaApple className={compact ? 'h-4 w-4' : 'h-5 w-5'} aria-hidden />
-      App Store
-    </a>
-  );
-}
-
-function OutlineButton({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      onClick={() => track('nav_click', 'navigation', label)}
-      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-400 bg-white px-5 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/25 dark:bg-[#122236] dark:text-slate-100 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff] sm:px-6 sm:text-base"
-    >
-      {children}
-      <HiChevronRight className="h-4 w-4" aria-hidden />
-    </a>
-  );
-}
-
-function PhoneShot({
-  src,
-  alt,
-  className,
-  priority = false,
-  sizes = '(min-width: 1024px) 320px, 72vw',
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  priority?: boolean;
-  sizes?: string;
-}) {
-  return (
-    <div className={cn('iphone-17-pro-max-frame', className)}>
-      <div className="iphone-17-pro-max-screen">
-        <Image src={src} alt={alt} fill priority={priority} sizes={sizes} className="object-cover" />
-      </div>
-    </div>
-  );
-}
-
-function StackedPhoneShots({
-  items,
-  className,
-  compact = false,
-}: {
-  items: { src: string; alt: string }[];
-  className?: string;
-  compact?: boolean;
-}) {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const placements = [
-    {
-      frame: 'left-6 top-3 z-20 w-[58%] sm:left-5 sm:top-0 sm:w-[56%]',
-      baseRotate: -4,
-      swingFrom: -14,
-      idleRotate: [-4, -2, -4],
-      desktopIdleRotate: [-4, -0.5, -4],
-      y: [0, -8, 0],
-      desktopY: [0, -16, 0],
-    },
-    {
-      frame: 'bottom-3 right-6 z-10 w-[58%] sm:bottom-0 sm:right-5 sm:w-[56%]',
-      baseRotate: 5,
-      swingFrom: 15,
-      idleRotate: [5, 3, 5],
-      desktopIdleRotate: [5, 1.5, 5],
-      y: [0, 10, 0],
-      desktopY: [0, 18, 0],
-    },
-  ];
-
-  return (
-    <div
-      className={cn(
-        'relative mx-auto h-[560px] w-full max-w-[390px] sm:h-[570px] sm:max-w-[560px]',
-        compact ? 'lg:h-[560px]' : 'lg:h-[620px]',
-        className,
-      )}
-    >
-      {items.map((item, index) => (
-        <motion.div
-          key={item.src}
-          className={cn('absolute', placements[index].frame)}
-          initial={{ opacity: 0, y: 46, rotate: placements[index].swingFrom, scale: 0.94 }}
-          whileInView={{ opacity: 1, y: 0, rotate: placements[index].baseRotate, scale: 1 }}
-          viewport={{ once: true, amount: 0.42, margin: '-80px' }}
-          transition={{
-            type: 'spring',
-            stiffness: 95,
-            damping: 14,
-            mass: 0.9,
-            delay: index * 0.14,
-          }}
-        >
-          <motion.div
-            animate={{
-              rotate: isDesktop ? placements[index].desktopIdleRotate : placements[index].idleRotate,
-              y: isDesktop ? placements[index].desktopY : placements[index].y,
-            }}
-            transition={{
-              duration: (isDesktop ? 6.2 : 7) + index,
-              repeat: Infinity,
-              repeatType: 'mirror',
-              ease: 'easeInOut',
-              delay: 0.65 + index * 0.35,
-            }}
-          >
-            <PhoneShot src={item.src} alt={item.alt} className="w-full" />
-          </motion.div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
-function HeroDeviceStack() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-
-  return (
-    <div className="relative mx-auto h-[560px] w-full max-w-[560px] sm:h-[640px]">
-      <motion.div
-        className="absolute right-[3%] top-4 z-30 sm:right-[6%] sm:top-2"
-        initial={{ opacity: 0, y: 24, rotate: 10, scale: 0.96 }}
-        animate={{
-          opacity: 1,
-          scale: 1,
-          rotate: isDesktop ? [4, 0.5, 4] : [4, 2.2, 4],
-          y: isDesktop ? [0, -17, 0] : [0, -9, 0],
-        }}
-        transition={{
-          opacity: { duration: 0.45 },
-          scale: { duration: 0.45 },
-          y: { duration: isDesktop ? 6.8 : 7.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.45 },
-          rotate: { duration: isDesktop ? 6.8 : 7.5, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.45 },
-        }}
-      >
-        <PhoneShot
-          src={screenshots.home}
-          alt="Ritualist Home screen with habit logging"
-          priority
-          sizes="(min-width: 1024px) 320px, 68vw"
-          className="w-[min(72vw,330px)] sm:w-[330px]"
-        />
-      </motion.div>
-      <motion.div
-        className="absolute left-[1%] top-[42%] z-40 sm:left-[3%] sm:top-[40%]"
-        initial={{ opacity: 0, y: 26, rotate: -14, scale: 0.9 }}
-        animate={{
-          opacity: 1,
-          y: isDesktop ? [0, 12, 0] : [0, 7, 0],
-          rotate: isDesktop ? [-9, -4.5, -9] : [-9, -6, -9],
-          scale: 1,
-        }}
-        transition={{
-          opacity: { duration: 0.45, delay: 0.35 },
-          scale: { duration: 0.45, delay: 0.35 },
-          y: { duration: isDesktop ? 7.2 : 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
-          rotate: { duration: isDesktop ? 7.2 : 8, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.7 },
-        }}
-      >
-        <WatchShot className="w-[min(34vw,170px)]" />
-      </motion.div>
-    </div>
-  );
-}
-
-function WatchShot({
-  src = screenshots.watch,
-  alt = 'Ritualist Apple Watch Today screen',
-  className,
-}: {
-  src?: string;
-  alt?: string;
-  className?: string;
-}) {
-  return (
-    <div className={cn('watch-ultra-3-frame', className)}>
-      <div className="watch-ultra-3-screen">
-        <Image src={src} alt={alt} fill sizes="260px" className="object-cover" />
-      </div>
-    </div>
-  );
-}
-
-function StackedWatchShots() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
-
-  return (
-    <div className="relative mx-auto h-[360px] w-full max-w-[390px] sm:h-[390px]">
-      <motion.div
-        className="absolute left-4 top-4 z-20"
-        initial={{ opacity: 0, y: 28, rotate: -15, scale: 0.94 }}
-        whileInView={{ opacity: 1, y: 0, rotate: -5, scale: 1 }}
-        viewport={{ once: true, amount: 0.45, margin: '-80px' }}
-        transition={{ type: 'spring', stiffness: 105, damping: 15 }}
-      >
-        <motion.div
-          animate={{
-            rotate: isDesktop ? [-5, -1.5, -5] : [-5, -3, -5],
-            y: isDesktop ? [0, -14, 0] : [0, -7, 0],
-          }}
-          transition={{ duration: isDesktop ? 6.4 : 7.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.65 }}
-        >
-          <WatchShot />
-        </motion.div>
-      </motion.div>
-      <motion.div
-        className="absolute bottom-0 right-4 z-10"
-        initial={{ opacity: 0, y: 32, rotate: 17, scale: 0.94 }}
-        whileInView={{ opacity: 1, y: 0, rotate: 7, scale: 1 }}
-        viewport={{ once: true, amount: 0.45, margin: '-80px' }}
-        transition={{ type: 'spring', stiffness: 105, damping: 15, delay: 0.12 }}
-      >
-        <motion.div
-          animate={{
-            rotate: isDesktop ? [7, 2.5, 7] : [7, 4.5, 7],
-            y: isDesktop ? [0, 16, 0] : [0, 8, 0],
-          }}
-          transition={{ duration: isDesktop ? 7 : 8.2, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 0.8 }}
-        >
-          <WatchShot
-            src={screenshots.watchProgress}
-            alt="Ritualist Apple Watch progress logging screen"
-          />
-        </motion.div>
-      </motion.div>
-    </div>
-  );
-}
-
-function SectionIntro({
-  eyebrow,
-  title,
-  body,
-  align = 'center',
-}: {
-  eyebrow: string;
-  title: string;
-  body: string;
-  align?: 'center' | 'left';
-}) {
-  return (
-    <div className={cn('mx-auto max-w-3xl', align === 'center' ? 'text-center' : 'text-left')}>
-      <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">{eyebrow}</p>
-      <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#15181c] dark:text-white sm:text-4xl md:text-5xl">{title}</h2>
-      <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-200 sm:text-lg">{body}</p>
-    </div>
-  );
-}
-
-function FeatureMoment({
-  visual,
-  eyebrow,
-  title,
-  body,
-  features,
-  reverse = false,
-  children,
-}: {
-  visual: ReactNode;
-  eyebrow: string;
-  title: string;
-  body: string;
-  features: { icon: IconType; title: string; body: string }[];
-  reverse?: boolean;
-  children?: ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        'grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center',
-        reverse && 'lg:grid-cols-[1.08fr_0.92fr]',
-      )}
-    >
-      <div className={cn('relative min-w-0 px-2 sm:px-0', reverse && 'lg:order-2')}>{visual}</div>
-      <motion.div
-        initial={{ x: reverse ? -18 : 18 }}
-        whileInView={{ x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
-        className={cn(
-          'min-w-0 rounded-[8px] border border-slate-300 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:p-8',
-          reverse && 'lg:order-1',
-        )}
-      >
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">
-          {eyebrow}
-        </p>
-        <h3 className="text-3xl font-bold leading-tight tracking-tight text-[#15181c] dark:text-white sm:text-4xl">
-          {title}
-        </h3>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700 dark:text-slate-200">{body}</p>
-        <div className="mt-7 grid gap-3 sm:grid-cols-2">
-          {features.map((feature) => {
-            const Icon = feature.icon;
-
-            return (
-              <div
-                key={feature.title}
-                className="rounded-[8px] border border-slate-200 bg-white/90 p-4 shadow-[0_12px_34px_rgba(15,23,42,0.055)] dark:border-white/10 dark:bg-[#111d2c]"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px] bg-[#dcebff] text-[#075cb5] dark:bg-[#15304c] dark:text-[#7bdcff]">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </div>
-                  <h4 className="text-base font-semibold text-[#15181c] dark:text-white">{feature.title}</h4>
-                </div>
-                <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{feature.body}</p>
-              </div>
-            );
-          })}
-        </div>
-        {children}
-      </motion.div>
-    </div>
-  );
-}
-
-function LensMomentCard({
-  title,
-  body,
-  image,
-  focusPosition,
-  lensBackgroundPosition,
-  lensBackgroundSize,
-  lensClassName,
-  index,
-}: {
-  title: string;
-  body: string;
-  image: string;
-  focusPosition: string;
-  lensBackgroundPosition: string;
-  lensBackgroundSize: string;
-  lensClassName: string;
-  index: number;
-}) {
-  return (
-    <motion.div
-      initial={{ y: 18 }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: 'easeOut' }}
-      className={cn(
-        'overflow-hidden rounded-[8px] border border-slate-600 bg-[#1d2b3d] shadow-[0_20px_50px_rgba(0,0,0,0.28)]',
-        index === 1 && 'sm:translate-y-5',
-        index === 2 && 'sm:translate-y-10',
-      )}
-    >
-      <div className="relative h-56 overflow-hidden">
-        <Image
-          src={image}
-          alt=""
-          fill
-          sizes="(min-width: 1024px) 220px, 90vw"
-          className="scale-110 object-cover opacity-55 blur-[6px]"
-          style={{ objectPosition: focusPosition }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-[#0b111a]/35" aria-hidden />
-        <div
-          className={cn(
-            'absolute overflow-hidden rounded-[8px] border border-white/45 bg-white shadow-[0_18px_45px_rgba(0,0,0,0.36)] ring-1 ring-black/10',
-            lensClassName,
-          )}
-          style={{
-            backgroundImage: `url(/RitualistApp${image})`,
-            backgroundPosition: lensBackgroundPosition,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: lensBackgroundSize,
-          }}
-          aria-hidden
-        />
-      </div>
-      <div className="p-5">
-        <h3 className="text-base font-semibold">{title}</h3>
-        <p className="mt-2 text-sm leading-6 text-slate-200">{body}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-function BulletList({ items, icon = 'check' }: { items: string[]; icon?: 'check' | 'sparkle' }) {
-  const Icon = icon === 'sparkle' ? HiSparkles : HiCheckCircle;
-
-  return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700 dark:text-slate-200">
-          <Icon className={cn('mt-0.5 h-5 w-5 shrink-0', icon === 'sparkle' ? 'text-[#b96500] dark:text-[#ffd54f]' : 'text-[#075cb5] dark:text-[#7bdcff]')} aria-hidden />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function ProNudge({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="mt-7 rounded-[8px] border border-[#b8d7ff] bg-[#f1f7ff] p-4 dark:border-[#2d6cae] dark:bg-[#0d2238]">
-      <div className="flex items-start gap-3">
-        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#075cb5] dark:bg-[#15304c] dark:text-[#7bdcff]">
-          <HiSparkles className="h-5 w-5" aria-hidden />
-        </span>
-        <div>
-          <p className="text-sm font-bold text-[#15181c] dark:text-white">{title}</p>
-          <p className="mt-1 text-sm leading-6 text-slate-700 dark:text-slate-200">{body}</p>
+    <div className={className}>
+      <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">I want to</p>
+      <div className="mt-3 flex flex-wrap justify-center gap-2 lg:justify-start">
+        {whyChips.map((chip) => (
           <a
-            href="#pricing"
-            onClick={() => track('pro_nudge_click', 'conversion', title)}
-            className="mt-3 inline-flex text-sm font-bold text-[#075cb5] hover:text-[#064a93] dark:text-[#7bdcff] dark:hover:text-white"
+            key={chip.href}
+            href={chip.href}
+            onClick={() => track('why_chip_click', 'engagement', chip.label)}
+            className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/20 dark:bg-white/5 dark:text-slate-100 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff]"
           >
-            Compare Free and Pro
+            {chip.label}
+            <HiChevronRight className="h-4 w-4" aria-hidden />
           </a>
-        </div>
+        ))}
       </div>
     </div>
   );
 }
 
-function RitualStyleQuiz() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selected = ritualStyleOptions[selectedIndex];
-
+function Hero() {
   return (
-    <section className="bg-white px-5 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-24">
-      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">Find your fit</p>
-          <h2 className="text-3xl font-bold tracking-tight text-[#15181c] dark:text-white sm:text-4xl md:text-5xl">
-            Pick the way you want Ritualist to help.
-          </h2>
-          <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-200 sm:text-lg">
-            A quick path helps visitors understand the app before they download, and shows where Pro becomes useful.
+    <section className="relative isolate overflow-hidden px-4 pb-14 pt-20 sm:px-6 sm:pt-32 lg:pb-24">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_0%,rgba(13,110,253,0.18),transparent_55%),radial-gradient(ellipse_at_90%_30%,rgba(255,138,61,0.20),transparent_50%),radial-gradient(ellipse_at_50%_100%,rgba(191,90,242,0.14),transparent_55%)] dark:bg-[radial-gradient(ellipse_at_20%_0%,rgba(13,110,253,0.32),transparent_55%),radial-gradient(ellipse_at_90%_30%,rgba(255,138,61,0.22),transparent_50%),radial-gradient(ellipse_at_50%_100%,rgba(191,90,242,0.2),transparent_55%)]" />
+      <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
+          <p className="mx-auto hidden items-center gap-2 rounded-full border border-[#b8d7ff] sm:inline-flex bg-white/80 px-3.5 py-1.5 text-xs font-bold text-[#075cb5] shadow-sm dark:border-[#2d6cae] dark:bg-[#102033]/80 dark:text-[#7bdcff] lg:mx-0">
+            <HiSparkles className="h-4 w-4" aria-hidden />
+            New in 2.0: fasting coaches, struck medals and About You
           </p>
+          <h1 className="text-[2.4rem] sm:mt-5 font-extrabold leading-[1.02] tracking-tight text-[#15181c] dark:text-white sm:text-6xl lg:text-7xl">
+            Get to know yourself,{' '}
+            <span className="bg-gradient-to-r from-[#0d6efd] via-[#bf5af2] to-[#ff8a3d] bg-clip-text text-transparent">one habit at a time.</span>
+          </h1>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-slate-700 dark:text-slate-200 sm:mt-5 sm:text-xl sm:leading-8 lg:mx-0">
+            Habits, fasts and breathing on iPhone and Apple Watch. Log in one tap, fast with a coach in your corner,
+            earn medals you can spin, and see what your habits say about you.
+          </p>
+          <div className="mt-6 flex flex-col items-center gap-2 sm:mt-7 sm:flex-row sm:gap-3 sm:justify-center lg:justify-start">
+            <AppStoreBadge placement="hero" />
+            <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">
+              Free to start. Pro free for a week.
+            </p>
+          </div>
+          <WhyChips className="mt-8 hidden lg:block" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="relative mx-auto h-[540px] w-full max-w-[440px] sm:h-[640px] lg:h-[700px] lg:max-w-[500px]"
+        >
+          <Floating className="absolute inset-x-0 top-0 mx-auto w-[68%] sm:w-[64%]" amplitude={8}>
+            <PhoneShot src={shot('home')} alt="Ritualist Home: today's habits with a fast running" priority />
+          </Floating>
+          <Floating className="absolute -left-1 bottom-24 w-[64%] sm:-left-6 sm:bottom-28" delay={0.8} amplitude={7}>
+            <div className="drop-shadow-[0_24px_30px_rgba(0,0,0,0.35)]">
+              <Image src={shot('live-activity-lock')} alt="A running fast on the Lock Screen: phase, time left and a pep talk" width={900} height={375} priority className="h-auto w-full" />
+            </div>
+          </Floating>
+          <Floating className="absolute -right-1 top-24 sm:-right-4" delay={1.4} amplitude={12}>
+            <div className="flex w-[170px] items-center gap-2 rounded-2xl bg-white/95 p-2.5 shadow-[0_18px_44px_rgba(15,23,42,0.22)] ring-1 ring-black/5 dark:bg-[#132233]/95 dark:ring-white/10 sm:w-[200px]">
+              <Image src={shot('coach-taisu')} alt="" width={160} height={147} className="h-12 w-12 shrink-0 rounded-xl object-cover" priority />
+              <p className="text-[12px] font-semibold leading-4 text-slate-800 dark:text-slate-100">“Look what&apos;s ahead! We&apos;ll take it one phase at a time.”</p>
+            </div>
+          </Floating>
+          <Floating className="absolute bottom-0 right-2 sm:right-0" delay={2} amplitude={9}>
+            <div className="flex items-center gap-2 rounded-full bg-white/95 py-2 pl-2 pr-4 shadow-[0_16px_40px_rgba(15,23,42,0.2)] ring-1 ring-black/5 dark:bg-[#132233]/95 dark:ring-white/10">
+              <Image src={shot('medal-silver')} alt="" width={120} height={120} className="h-9 w-9" priority />
+              <span className="text-sm font-bold text-slate-800 dark:text-slate-100">30-day streak</span>
+            </div>
+          </Floating>
+        </motion.div>
+        <WhyChips className="text-center lg:hidden" />
+      </div>
+
+      <motion.dl {...reveal} className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-5">
+        {facts.map((fact) => (
+          <div key={fact.label} className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-4 text-center backdrop-blur dark:border-white/10 dark:bg-white/[0.04]">
+            <dt className="sr-only">{fact.label}</dt>
+            <dd>
+              <span className="block text-3xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{fact.value}</span>
+              <span className="mt-1 block text-xs font-semibold text-slate-600 dark:text-slate-300">{fact.label}</span>
+            </dd>
+          </div>
+        ))}
+      </motion.dl>
+    </section>
+  );
+}
+
+function FeatureSection({
+  id,
+  eyebrow,
+  eyebrowClass,
+  title,
+  body,
+  points,
+  checkClass,
+  visual,
+  reverse = false,
+  tag,
+  children,
+  className,
+}: {
+  id: string;
+  eyebrow: string;
+  eyebrowClass: string;
+  title: ReactNode;
+  body: string;
+  points: ReactNode[];
+  checkClass: string;
+  visual: ReactNode;
+  reverse?: boolean;
+  tag?: ReactNode;
+  children?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <section id={id} className={cn('scroll-mt-16 px-4 py-20 sm:px-6 lg:py-28', className)}>
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+        <div className={cn('min-w-0', reverse && 'lg:order-2')}>{visual}</div>
+        <motion.div {...reveal} className={cn('min-w-0', reverse && 'lg:order-1')}>
+          <div className="flex flex-wrap items-center gap-2">
+            <Eyebrow className={cn('mb-0', eyebrowClass)}>{eyebrow}</Eyebrow>
+            {tag}
+          </div>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">{title}</h2>
+          <p className="mt-5 text-lg leading-8 opacity-85">{body}</p>
+          <ul className="mt-7 space-y-3">
+            {points.map((point, index) => (
+              <Check key={index} iconClassName={checkClass}>
+                {point}
+              </Check>
+            ))}
+          </ul>
+          {children}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function FastingSection() {
+  return (
+    <section id="fasting" className="relative scroll-mt-16 overflow-hidden bg-[#140b05] px-4 py-20 text-white sm:px-6 lg:py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
+      <div className="relative mx-auto max-w-6xl">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <motion.div {...reveal}>
+            <div className="flex flex-wrap items-center gap-2">
+              <Eyebrow className="mb-0 text-[#ffb27a]">Fasting</Eyebrow>
+              <FreeTag />
+            </div>
+            <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
+              A fast feels shorter with a friend in your corner.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-white/85">
+              Pick 16:8, 18:6 or your own protocol and tap Start. Ritualist shows which phase your body is likely in,
+              hour by hour, from blood sugar settling to the metabolic switch, and tells you what helps right now.
+            </p>
+            <ul className="mt-7 space-y-3 text-white/90">
+              <Check iconClassName="text-[#ffb27a]">The Fasting Guide: every phase, what you may feel and what helps, with its health sources</Check>
+              <Check iconClassName="text-[#ffb27a]">Feeling off? Tap hunger, headache or low energy for ways to ease it</Check>
+              <Check iconClassName="text-[#ffb27a]">On your Lock Screen and in the Dynamic Island, without opening the app</Check>
+              <Check iconClassName="text-[#ffb27a]">A report when you stop: how far you got and how to break your fast gently</Check>
+            </ul>
+          </motion.div>
+          <PhonePair
+            tint="bg-[#ff8a3d]/30"
+            back={{ src: shot('fast'), alt: 'A running 16:8 fast: the ring, time remaining and the current phase' }}
+            front={{ src: shot('guide-coach'), alt: 'The Fasting Guide with Taisu the coach and the Feeling Off? tips' }}
+          />
         </div>
 
-        <div className="rounded-[8px] border border-slate-300 bg-[#f8fbff] p-5 shadow-[0_18px_55px_rgba(15,23,42,0.08)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_22px_70px_rgba(0,0,0,0.3)] sm:p-6">
-          <div className="grid gap-3 sm:grid-cols-3">
-            {ritualStyleOptions.map((option, index) => (
-              <button
-                key={option.title}
-                type="button"
-                onClick={() => {
-                  setSelectedIndex(index);
-                  track('ritual_style_select', 'engagement', option.title);
-                }}
-                className={cn(
-                  'rounded-[8px] border p-4 text-left text-sm font-semibold transition',
-                  selectedIndex === index
-                    ? 'border-[#075cb5] bg-white text-[#075cb5] shadow-[0_12px_30px_rgba(13,110,253,0.13)] dark:border-[#7bdcff] dark:bg-[#102a43] dark:text-[#7bdcff]'
-                    : 'border-slate-300 bg-white/70 text-slate-800 hover:border-[#81b9ff] dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:border-[#2d6cae]',
-                )}
+        <motion.div {...reveal} className="mt-20 rounded-[28px] border border-white/10 bg-white/[0.05] p-6 backdrop-blur sm:p-10">
+          <div className="flex flex-wrap items-center gap-2">
+            <Eyebrow className="mb-0 text-[#ffb27a]">Meet your coaches</Eyebrow>
+          </div>
+          <h3 className="mt-3 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+            Six plush coaches. Pick the voice that gets you through.
+          </h3>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/80">
+            Each one talks you through your fast in its own tone, with a pep talk at every stage and notes written
+            from your own fasts. The advice stays the same; only the voice changes.
+          </p>
+          <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4 lg:grid-cols-6">
+            {coaches.map((coach, index) => (
+              <motion.figure
+                key={coach.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.45, delay: index * 0.07 }}
+                className="group rounded-2xl border border-white/10 bg-black/20 p-2 text-center sm:p-3"
               >
-                {option.title}
-              </button>
+                <motion.div whileHover={{ rotate: [0, -6, 6, 0], scale: 1.06 }} transition={{ duration: 0.5 }}>
+                  <Image src={shot(coach.file)} alt={`${coach.name}, a plush fasting coach`} width={320} height={293} className="mx-auto h-auto w-full rounded-xl" />
+                </motion.div>
+                <figcaption className="mt-3">
+                  <span className="flex flex-col items-center justify-center gap-1 text-sm font-extrabold sm:flex-row sm:gap-1.5 sm:text-base">
+                    {coach.name}
+                    {coach.free ? <FreeTag /> : <ProTag />}
+                  </span>
+                  <span className="mt-1 hidden text-xs leading-5 text-white/70 sm:block">{coach.tone}</span>
+                </figcaption>
+              </motion.figure>
             ))}
           </div>
+          <ProNote dark>Taisu is free. The pep talks at every stage, notes from your own fasts and the other five coaches come with Pro.</ProNote>
+        </motion.div>
 
-          <div className="mt-5 rounded-[8px] border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-[#0d1b2b]">
-            <p className="text-sm font-bold text-[#15181c] dark:text-white">Your Ritualist path</p>
-            <p className="mt-3 text-sm leading-6 text-slate-700 dark:text-slate-200">{selected.result}</p>
-            <p className="mt-4 rounded-[8px] bg-[#fff7df] px-4 py-3 text-sm font-semibold leading-6 text-[#6c4300] dark:bg-[#2c230f] dark:text-[#ffd54f]">
-              {selected.pro}
+        <div className="mt-16 grid gap-6 md:grid-cols-2 md:items-center">
+          <motion.div {...reveal}>
+            <h3 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Your fast, right on the Lock Screen.</h3>
+            <p className="mt-3 text-base leading-7 text-white/80">
+              The time left, the phase you&apos;re in and the track to your goal stay live on the Lock Screen and in the
+              Dynamic Island, and a Start Fast control sits in Control Center or on the Action button.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <AppStoreButton label="ritual-style" compact />
-              <OutlineButton href="#pricing" label="ritual-style-pricing">
-                See Pro benefits
-              </OutlineButton>
-            </div>
+          </motion.div>
+          <div className="space-y-4">
+            <motion.div {...reveal} className="drop-shadow-[0_24px_40px_rgba(0,0,0,0.55)]">
+              <Image src={shot('live-activity-island')} alt="The fast in the expanded Dynamic Island" width={900} height={348} className="h-auto w-full" />
+            </motion.div>
+            <motion.div {...reveal} className="drop-shadow-[0_24px_40px_rgba(0,0,0,0.55)]">
+              <Image src={shot('live-activity-lock')} alt="The fast on the Lock Screen" width={900} height={375} className="h-auto w-full" />
+            </motion.div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function BreathingSection() {
+  return (
+    <section id="breathing" className="relative scroll-mt-16 overflow-hidden bg-[linear-gradient(160deg,#0b3b4a_0%,#245d7a_45%,#c98a5a_100%)] px-4 py-20 text-white sm:px-6 lg:py-28">
+      <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[340px]">
+          <motion.div
+            className="absolute inset-x-0 top-[22%] mx-auto h-72 w-72 rounded-full bg-[#9fa8ff]/40 blur-3xl"
+            animate={{ scale: [0.8, 1.15, 1.15, 0.8, 0.8], opacity: [0.5, 0.9, 0.9, 0.5, 0.5] }}
+            transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut', times: [0, 0.25, 0.5, 0.75, 1] }}
+            aria-hidden
+          />
+          <motion.div {...reveal} className="relative">
+            <PhoneShot src={shot('breath1')} alt="A breathing session: a flower that opens as you breathe, inside a ring of the breath's phases" className="w-full" />
+          </motion.div>
+        </div>
+        <motion.div {...reveal}>
+          <div className="flex flex-wrap items-center gap-2">
+            <Eyebrow className="mb-0 text-[#a8f0ff]">Breathing</Eyebrow>
+            <FreeTag />
+          </div>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">Breathing you can see, and feel.</h2>
+          <p className="mt-5 text-lg leading-8 text-white/85">
+            A glowing orb swells as you breathe in and settles as you let go, while your iPhone ticks and swells
+            under your thumb in time with each breath. You can follow a session with your eyes closed.
+          </p>
+          <ul className="mt-7 space-y-3 text-white/90">
+            <Check iconClassName="text-[#a8f0ff]">Box breathing, 4-7-8, cyclic sighing, coherent breathing and more</Check>
+            <Check iconClassName="text-[#a8f0ff]">Log how you feel before and after, and watch the difference</Check>
+            <Check iconClassName="text-[#a8f0ff]">Counts as mindful minutes in Apple Health</Check>
+          </ul>
+          <ProNote dark>Breathe with nine flowers that open petal by petal, like the one here, make patterns of your own, and see which breathing and which time of day calm you most.</ProNote>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function MedalsSection() {
+  return (
+    <section id="medals" className="relative scroll-mt-16 overflow-hidden bg-white px-4 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-28">
+      <div className="mx-auto max-w-6xl">
+        <motion.div {...reveal} className="mx-auto max-w-3xl text-center">
+          <div className="flex items-center justify-center gap-2">
+            <Eyebrow className="mb-0 text-[#b07a00] dark:text-[#ffd54f]">Challenges and achievements</Eyebrow>
+          </div>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">
+            Medals worth showing off.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-700 dark:text-slate-200">
+            Every medal is a struck coin in its own metal, ray-traced live on your iPhone. Swipe one and it spins,
+            catches the light and ticks under your finger. Join a new challenge every month, chase seasons, and earn 42 achievements as
+            you go.
+          </p>
+        </motion.div>
+
+        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-4 md:mx-0 md:mt-14 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
+          {[
+            { src: shot('challenges'), alt: 'The Challenges tab: active challenges and ones to join', caption: 'A challenge every month', body: 'November Reflection, December Wrap, seasons and lifetime paths.' },
+            { src: shot('achievement'), alt: 'A silver medal for a 30-day streak, just unlocked', caption: 'Struck the moment you earn it', body: 'Bronze, Silver, Gold and Platinum, each in its own metal.' },
+            { src: shot('achievements'), alt: 'The Achievements grid with bronze and silver streak medals', caption: 'A collection that grows', body: 'Streaks, perfect days, consistency and fasting milestones.' },
+          ].map((item, index) => (
+            <motion.figure
+              key={item.caption}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.55, delay: index * 0.1 }}
+              className={cn('w-[70%] shrink-0 snap-center text-center md:w-auto', index === 1 && 'md:-mt-6')}
+            >
+              <PhoneShot src={item.src} alt={item.alt} className="mx-auto w-full max-w-[260px] md:w-[78%] md:max-w-[300px]" />
+              <figcaption className="mt-5">
+                <span className="block text-lg font-extrabold text-[#15181c] dark:text-white">{item.caption}</span>
+                <span className="mt-1 block text-sm leading-6 text-slate-600 dark:text-slate-300">{item.body}</span>
+              </figcaption>
+            </motion.figure>
+          ))}
+        </div>
+
+        <motion.div {...reveal} className="mx-auto mt-12 grid max-w-3xl gap-3 sm:grid-cols-2">
+          <div className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-[#fbf6ee] p-4 dark:border-white/10 dark:bg-[#1b1710]">
+            <span className="mt-0.5 h-7 w-7 shrink-0 rounded-full bg-gradient-to-br from-[#e8a46b] to-[#8a4f20]" aria-hidden />
+            <p className="text-sm leading-6 text-slate-700 dark:text-slate-200">
+              <strong className="text-[#15181c] dark:text-white">Bronze is free</strong> in every challenge, and so is every achievement.
+            </p>
+          </div>
+          <div className="flex items-start gap-3 rounded-2xl border border-[#f3d48a] bg-[#fff8e6] p-4 dark:border-[#5a4513] dark:bg-[#2a2210]">
+            <span className="mt-0.5 h-7 w-7 shrink-0 rounded-full bg-gradient-to-br from-[#fff1b8] to-[#c99a1a]" aria-hidden />
+            <p className="text-sm leading-6 text-[#5a3d00] dark:text-[#ffe19a]">
+              <strong>Silver and Gold come with Pro</strong>, and the days you&apos;ve already done count toward them.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function AboutYouSection() {
+  return (
+    <section id="about-you" className="relative scroll-mt-16 overflow-hidden bg-[linear-gradient(180deg,#f7f0ff_0%,#fdf2f8_100%)] px-4 py-20 dark:bg-[linear-gradient(180deg,#1a1030_0%,#200f22_100%)] sm:px-6 lg:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:items-center">
+        <motion.div {...reveal}>
+          <div className="flex flex-wrap items-center gap-2">
+            <Eyebrow className="mb-0 text-[#9b3fd4] dark:text-[#e0a8ff]">About You</Eyebrow>
+            <ProTag />
+          </div>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">
+            Your habits say a lot about you. Now you can read it.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-700 dark:text-slate-200">
+            Ritualist reads the habits you keep, and how you keep them, and draws your Big Five personality traits,
+            with the reasons behind each one. Then it tells you what keeps you going and suggests activities that suit
+            who you are.
+          </p>
+          <ul className="mt-7 space-y-3 text-slate-800 dark:text-slate-100">
+            <Check iconClassName="text-[#9b3fd4] dark:text-[#e0a8ff]">“Why we think so” under every trait, from your own days</Check>
+            <Check iconClassName="text-[#9b3fd4] dark:text-[#e0a8ff]">What stands out, written privately on your device</Check>
+            <Check iconClassName="text-[#9b3fd4] dark:text-[#e0a8ff]">Your strongest day, your rhythm, and how you change over time</Check>
+            <Check iconClassName="text-[#9b3fd4] dark:text-[#e0a8ff]">Locked behind Face ID if you like</Check>
+          </ul>
+          <p className="mt-6 text-sm leading-6 text-slate-600 dark:text-slate-300">
+            A reflection for fun and self-knowledge, not a diagnosis. It needs three habits to start, and it&apos;s worked out on your iPhone.
+          </p>
+          <ProNote>About You comes with Pro.</ProNote>
+        </motion.div>
+        <PhonePair
+          tint="bg-[#bf5af2]/25"
+          back={{ src: shot('foryou'), alt: 'For You: About You, Streaks, Patterns and History' }}
+          front={{ src: shot('aboutyou'), alt: 'About You: your dominant trait and what stands out' }}
+        />
+      </div>
+    </section>
+  );
+}
+
+function EverywhereSection() {
+  const tiles: { icon: IconType; title: string; body: string }[] = [
+    { icon: HiDeviceMobile, title: 'Apple Watch', body: 'Today on your wrist. Log with a tap or the Digital Crown, and follow your fast.' },
+    { icon: HiTemplate, title: 'Widgets', body: 'Today, streaks, your calendar and a running fast on the Home and Lock Screens.' },
+    { icon: HiMicrophone, title: 'Siri and Shortcuts', body: '“Log a habit”, start or stop a fast, or breathe, without opening the app.' },
+    { icon: HiHeart, title: 'Apple Health', body: 'Steps, water, workouts and weigh-ins fill your habits in by themselves.' },
+    { icon: HiLocationMarker, title: 'Place reminders', body: 'A walk as you leave home, water at the gym, a chapter at the library.' },
+    { icon: HiCloud, title: 'iCloud sync', body: 'iPhone, iPad and Watch stay in step, through your own iCloud.' },
+  ];
+
+  return (
+    <section className="bg-[#f8fbff] px-4 py-20 dark:bg-[#07111c] sm:px-6 lg:py-28">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="relative mx-auto h-[360px] w-full max-w-[380px]">
+          <motion.div
+            className="absolute left-2 top-0"
+            initial={{ opacity: 0, rotate: -14, y: 30 }}
+            whileInView={{ opacity: 1, rotate: -6, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ type: 'spring', stiffness: 95, damping: 15 }}
+          >
+            <WatchShot src={shot('watch-today')} alt="Apple Watch: today's habits with a fast running" />
+          </motion.div>
+          <motion.div
+            className="absolute bottom-0 right-2"
+            initial={{ opacity: 0, rotate: 16, y: 40 }}
+            whileInView={{ opacity: 1, rotate: 6, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ type: 'spring', stiffness: 95, damping: 15, delay: 0.12 }}
+          >
+            <WatchShot src={shot('watch-water')} alt="Apple Watch: adding a glass of water" />
+          </motion.div>
+        </div>
+        <motion.div {...reveal}>
+          <div className="flex flex-wrap items-center gap-2">
+            <Eyebrow className="mb-0 text-[#075cb5] dark:text-[#7bdcff]">Wherever you are</Eyebrow>
+            <FreeTag />
+          </div>
+          <h2 className="mt-3 text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">
+            Built into your iPhone, not just onto it.
+          </h2>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {tiles.map((tile) => {
+              const Icon = tile.icon;
+              return (
+                <div key={tile.title} className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-[#101b2a]">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#dcebff] text-[#075cb5] dark:bg-[#15304c] dark:text-[#7bdcff]">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <h3 className="text-base font-bold text-[#15181c] dark:text-white">{tile.title}</h3>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{tile.body}</p>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function PrivacyBand() {
+  return (
+    <section className="bg-[#10151c] px-4 py-16 text-white sm:px-6">
+      <motion.div {...reveal} className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+        {[
+          { icon: HiLockClosed, title: 'Your habits stay yours', body: 'On your iPhone and in your own iCloud. No account, no sign-up, no ads.' },
+          { icon: HiFingerPrint, title: 'Private by design', body: 'About You and the coach\'s words are worked out on your device.' },
+          { icon: HiLightningBolt, title: 'Works offline', body: 'Log, fast and breathe anywhere. Sync catches up when you\'re back.' },
+        ].map((item) => {
+          const Icon = item.icon;
+          return (
+            <div key={item.title} className="flex gap-4">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/10 text-[#7bdcff]">
+                <Icon className="h-6 w-6" aria-hidden />
+              </span>
+              <div>
+                <h3 className="text-lg font-bold">{item.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-white/75">{item.body}</p>
+              </div>
+            </div>
+          );
+        })}
+      </motion.div>
+    </section>
+  );
+}
+
+function PricingSection() {
+  return (
+    <section id="pricing" className="scroll-mt-16 bg-white px-4 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-28">
+      <div className="mx-auto max-w-6xl">
+        <motion.div {...reveal} className="mx-auto max-w-3xl text-center">
+          <Eyebrow className="text-[#075cb5] dark:text-[#7bdcff]">Pricing</Eyebrow>
+          <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-[#15181c] dark:text-white sm:text-5xl">
+            Start free. Try everything for a week.
+          </h2>
+          <p className="mt-5 text-lg leading-8 text-slate-700 dark:text-slate-200">
+            The free plan is a complete habit tracker, not a demo. Pro is for when you want the coach, the medals, the
+            insight into you and no limits.
+          </p>
+        </motion.div>
+
+        <div className="mt-14 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+          <motion.div {...reveal} className="rounded-[28px] border border-slate-200 bg-[#f8fbff] p-6 dark:border-white/10 dark:bg-[#0d1928] sm:p-8">
+            <div className="flex items-center gap-2">
+              <h3 className="text-2xl font-extrabold text-[#15181c] dark:text-white">Free</h3>
+              <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">forever</span>
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Everything you need to build your first habits.</p>
+            <ul className="mt-6 space-y-2.5">
+              {freeBenefits.map((item) => (
+                <Check key={item} className="text-sm leading-6 text-slate-700 dark:text-slate-200" iconClassName="mt-0.5 h-5 w-5 text-[#2a9d4b] dark:text-[#7ee2a0]">
+                  {item}
+                </Check>
+              ))}
+            </ul>
+            <div className="mt-8">
+              <AppStoreBadge placement="pricing_free" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            {...reveal}
+            className="relative overflow-hidden rounded-[28px] border border-[#f3c95a] bg-[linear-gradient(160deg,#fffaf0_0%,#ffffff_45%,#f3f0ff_100%)] p-6 shadow-[0_30px_80px_rgba(201,138,18,0.18)] dark:border-[#6b5216] dark:bg-[linear-gradient(160deg,#241b0a_0%,#101b2a_50%,#1a1230_100%)] sm:p-8"
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-2xl font-extrabold text-[#15181c] dark:text-white">Ritualist Pro</h3>
+              <ProTag />
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">Everything in Free, and:</p>
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+              {proBenefits.map((benefit) => (
+                <li key={benefit.title} className="flex gap-3">
+                  <HiSparkles className="mt-0.5 h-5 w-5 shrink-0 text-[#c98a12] dark:text-[#ffd54f]" aria-hidden />
+                  <span>
+                    <span className="block text-sm font-bold text-[#15181c] dark:text-white">{benefit.title}</span>
+                    <span className="mt-0.5 block text-sm leading-6 text-slate-600 dark:text-slate-300">{benefit.body}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {plans.map((plan) => (
+                <div
+                  key={plan.name}
+                  className={cn(
+                    'relative rounded-2xl border p-4',
+                    plan.featured
+                      ? 'border-[#c98a12] bg-white shadow-[0_14px_34px_rgba(201,138,18,0.22)] dark:border-[#ffd54f] dark:bg-[#1d1708]'
+                      : 'border-slate-200 bg-white/70 dark:border-white/10 dark:bg-white/5',
+                  )}
+                >
+                  {plan.featured && (
+                    <span className="absolute -top-2.5 left-4 rounded-full bg-[#c98a12] px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-white dark:bg-[#ffd54f] dark:text-[#2a1d00]">
+                      Best value
+                    </span>
+                  )}
+                  <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
+                  <p className="mt-2">
+                    <span className="text-2xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>{' '}
+                    <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{plan.cadence}</span>
+                  </p>
+                  <p className={cn('mt-1.5 text-xs font-semibold', plan.featured ? 'text-[#8a5a00] dark:text-[#ffd54f]' : 'text-slate-600 dark:text-slate-300')}>{plan.note}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <AppStoreBadge placement="pricing_pro" />
+              <p className="text-xs leading-5 text-slate-600 dark:text-slate-300">
+                Download free, then start your week of Pro in the app. Prices in US dollars; the App Store shows yours.
+                Monthly and Annual renew until cancelled. Lifetime never renews.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  return (
+    <section id="faq" className="scroll-mt-16 bg-[#f8fbff] px-4 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="text-center text-4xl font-extrabold tracking-tight text-[#15181c] dark:text-white sm:text-5xl">Questions, answered.</h2>
+        <div className="mt-10">
+          {faqItems.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div key={item.question} className="border-b border-slate-200 py-5 dark:border-white/10">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpenIndex(isOpen ? -1 : index);
+                    if (!isOpen) track('faq_expand', 'engagement', item.question);
+                  }}
+                  className="flex w-full items-center justify-between gap-6 text-left"
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-lg font-bold text-[#15181c] dark:text-white">{item.question}</span>
+                  <HiChevronDown className={cn('h-5 w-5 shrink-0 text-[#075cb5] transition-transform dark:text-[#7bdcff]', isOpen && 'rotate-180')} aria-hidden />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pt-3 text-base leading-7 text-slate-700 dark:text-slate-200">{item.answer}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+        <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-300">
+          More in the{' '}
+          <Link href="/user-guide" className="font-bold text-[#075cb5] hover:underline dark:text-[#7bdcff]">
+            User Guide
+          </Link>{' '}
+          and on{' '}
+          <Link href="/support" className="font-bold text-[#075cb5] hover:underline dark:text-[#7bdcff]">
+            Support
+          </Link>
+          .
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function FinalCta() {
+  return (
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-24 text-center text-white sm:px-6">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_20%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.25),transparent_60%)]" aria-hidden />
+      <motion.div {...reveal} className="mx-auto max-w-3xl">
+        <div className="mx-auto flex w-fit -space-x-3">
+          {coaches.map((coach) => (
+            <Image key={coach.name} src={shot(coach.file)} alt="" width={160} height={147} className="h-14 w-14 rounded-full object-cover ring-4 ring-[#0b1220] sm:h-16 sm:w-16" />
+          ))}
+        </div>
+        <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+          The best day to start a habit is today.
+        </h2>
+        <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/80">
+          Pick one from the gallery, tap it once, and watch your first day turn green. Your coaches are waiting.
+        </p>
+        <div className="mt-8 flex flex-col items-center gap-3">
+          <AppStoreBadge placement="bottom_cta" tone="light" />
+          <p className="text-sm font-semibold text-white/70">Free to start. Pro free for a week. iPhone, iPad and Apple Watch.</p>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
+function Footer() {
+  const linkClass = 'block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]';
+  return (
+    <footer className="border-t border-slate-200 bg-white px-4 py-12 dark:border-white/10 dark:bg-[#07111c] sm:px-6">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_auto]">
+        <div>
+          <div className="flex items-center gap-3">
+            <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
+            <span className="text-lg font-extrabold text-[#15181c] dark:text-white">Ritualist</span>
+          </div>
+          <p className="mt-4 max-w-md text-sm leading-6 text-slate-700 dark:text-slate-200">
+            Habits, fasts and breathing for iPhone, iPad and Apple Watch. Get to know yourself, one habit at a time.
+          </p>
+          <p className="mt-5 text-xs text-slate-600 dark:text-slate-300">Copyright 2026 Vlad Blajovan. All rights reserved.</p>
+        </div>
+        <div className="grid gap-8 sm:grid-cols-3">
+          <div>
+            <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Ritualist</p>
+            <div className="space-y-2 text-sm">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className={linkClass}>
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Help</p>
+            <div className="space-y-2 text-sm">
+              <Link href="/user-guide" className={linkClass}>User Guide</Link>
+              <Link href="/support" className={linkClass}>Support</Link>
+              <Link href="/roadmap" className={linkClass}>Roadmap</Link>
+              <Link href="/privacy" className={linkClass}>Privacy</Link>
+              <Link href="/terms" className={linkClass}>Terms</Link>
+            </div>
+          </div>
+          <div>
+            <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Follow</p>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('outbound_click', 'engagement', 'instagram')}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/20 dark:text-slate-200 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff]"
+              aria-label="Ritualist on Instagram"
+            >
+              <FaInstagram className="h-5 w-5" aria-hidden />
+            </a>
+            <div className="mt-4">
+              <CookieSettingsButton />
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
 
 function MobileAppStoreBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-slate-300 bg-white/95 px-4 py-3 shadow-[0_-16px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]/95 md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2.5 shadow-[0_-12px_32px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-[#07111c]/95 sm:hidden">
       <div className="mx-auto flex max-w-md items-center justify-between gap-3">
-        <div>
-          <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
-          <p className="text-xs text-slate-600 dark:text-slate-300">Free to start. Pro when the system grows.</p>
+        <div className="flex min-w-0 items-center gap-2.5">
+          <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
+          <div className="min-w-0">
+            <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
+            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Free. Pro free for a week.</p>
+          </div>
         </div>
-        <AppStoreButton label="sticky-mobile" compact />
+        <AppStoreBadge placement="sticky_mobile" size="small" />
       </div>
     </div>
   );
 }
 
-function SocialProofSection() {
-  return (
-    <section className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-          <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">Social proof</p>
-            <h2 className="text-3xl font-bold tracking-tight text-[#15181c] dark:text-white sm:text-4xl">
-              Built for people who want habits to fit real life.
-            </h2>
-            <p className="mt-5 text-base leading-8 text-slate-700 dark:text-slate-200">
-              Replace these draft quotes with real App Store reviews, social posts, or customer notes once you have them.
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {socialProofs.map((proof) => (
-              <figure
-                key={proof.name}
-                className="rounded-[8px] border border-slate-300 bg-white p-5 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a]"
-              >
-                <div className="mb-4 flex text-[#ffd54f]" aria-label="5 star placeholder review">
-                  {'★★★★★'}
-                </div>
-                <blockquote className="text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  “{proof.quote}”
-                </blockquote>
-                <figcaption className="mt-5">
-                  <p className="text-sm font-bold text-[#15181c] dark:text-white">{proof.name}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FaqItem({
-  item,
-  isOpen,
-  onToggle,
-}: {
-  item: (typeof faqItems)[number];
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <div className="border-b border-slate-200 py-6 dark:border-white/10">
-      <button
-        type="button"
-        onClick={() => {
-          onToggle();
-          if (!isOpen) track('faq_expand', 'engagement', item.question);
-        }}
-        className="flex w-full items-center justify-between gap-6 text-left"
-        aria-expanded={isOpen}
-      >
-        <span className="text-lg font-semibold text-[#15181c] dark:text-white">{item.question}</span>
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-slate-300 bg-white text-[#075cb5] dark:border-white/20 dark:bg-[#122236] dark:text-[#7bdcff]">
-          <HiChevronDown className={cn('h-5 w-5 transition-transform', isOpen && 'rotate-180')} aria-hidden />
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <p className="max-w-3xl pt-4 text-base leading-7 text-slate-700 dark:text-slate-200">{item.answer}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
+// MARK: - Page
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState(0);
-  const [motivationIndex, setMotivationIndex] = useState<number | null>(null);
-  const [isMotivationWriting, setIsMotivationWriting] = useState(true);
-  const motivationTimeoutRef = useRef<number | null>(null);
-  const motivationCycleRef = useRef<number | null>(null);
-
-  const showNextMotivation = useCallback(() => {
-    if (motivationTimeoutRef.current) {
-      window.clearTimeout(motivationTimeoutRef.current);
-    }
-
-    setIsMotivationWriting(true);
-    motivationTimeoutRef.current = window.setTimeout(() => {
-      setMotivationIndex((currentIndex) => getNextMotivationIndex(currentIndex));
-      setIsMotivationWriting(false);
-      motivationTimeoutRef.current = null;
-    }, motivationTypingDelayMs);
-  }, []);
-
-  const startMotivationCycle = useCallback(() => {
-    if (motivationCycleRef.current) {
-      window.clearInterval(motivationCycleRef.current);
-    }
-
-    motivationCycleRef.current = window.setInterval(showNextMotivation, motivationCycleMs);
-  }, [showNextMotivation]);
-
-  useEffect(() => {
-    motivationTimeoutRef.current = window.setTimeout(() => {
-      setMotivationIndex(getNextMotivationIndex(null));
-      setIsMotivationWriting(false);
-      motivationTimeoutRef.current = null;
-      startMotivationCycle();
-    }, motivationTypingDelayMs);
-
-    return () => {
-      if (motivationTimeoutRef.current) {
-        window.clearTimeout(motivationTimeoutRef.current);
-      }
-
-      if (motivationCycleRef.current) {
-        window.clearInterval(motivationCycleRef.current);
-      }
-    };
-  }, [startMotivationCycle]);
-
-  const handleMotivationTap = () => {
-    showNextMotivation();
-    startMotivationCycle();
-  };
-
   return (
     <MotionConfig reducedMotion="user">
-      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] pb-20 text-[#15181c] dark:bg-[#07111c] dark:text-white md:pb-0">
+      <main id="top" className="min-h-screen overflow-hidden bg-[#f8fbff] pb-16 text-[#15181c] dark:bg-[#07111c] dark:text-white sm:pb-0">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
         <Header />
+        <Hero />
 
-        <section className="relative isolate bg-[linear-gradient(180deg,#f1f8ff_0%,#f8fbff_74%,#ffffff_100%)] px-5 pb-16 pt-28 dark:bg-[linear-gradient(180deg,#07111c_0%,#0b1726_74%,#0a1522_100%)] sm:px-6 sm:pt-32 lg:pb-24">
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(115deg,rgba(13,110,253,0.16),rgba(23,162,184,0.09),rgba(255,213,79,0.16))] dark:bg-[linear-gradient(115deg,rgba(13,110,253,0.26),rgba(23,162,184,0.14),rgba(255,149,0,0.14))]" />
-          <div className="mx-auto grid w-full max-w-6xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center lg:text-left"
-            >
-              <button
-                type="button"
-                onClick={handleMotivationTap}
-                className="relative mx-auto mb-5 inline-flex min-h-11 translate-x-8 items-center gap-2 rounded-full border border-[#b8d7ff] bg-white px-4 py-2 text-sm font-bold text-[#075cb5] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#f8fbff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#075cb5] dark:border-[#2d6cae] dark:bg-[#102033] dark:text-[#7bdcff] dark:hover:bg-[#13283f] sm:translate-x-12 lg:mx-0"
-                aria-label="Show another Ritualist motivation"
-                title="Tap for another motivation"
-              >
-                <span className="pointer-events-none absolute -bottom-2 -left-4 h-3.5 w-3.5 rounded-full border border-[#b8d7ff] bg-white shadow-sm dark:border-[#2d6cae] dark:bg-[#102033]" aria-hidden />
-                <span className="pointer-events-none absolute -bottom-4 -left-8 h-2.5 w-2.5 rounded-full border border-[#b8d7ff] bg-white shadow-sm dark:border-[#2d6cae] dark:bg-[#102033]" aria-hidden />
-                <HiSparkles className="relative z-10 h-4 w-4 shrink-0" aria-hidden />
-                <span className="relative z-10 inline-flex min-w-[14.5rem] justify-start text-left sm:min-w-[18rem]">
-                  <AnimatePresence mode="wait" initial={false}>
-                    {isMotivationWriting || motivationIndex === null ? (
-                      <motion.span
-                        key="typing"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.16 }}
-                      >
-                        <TypingDots />
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key={motivationIndex}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.18 }}
-                      >
-                        {motivationLines[motivationIndex]}
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </span>
-              </button>
-              <h1 className="text-5xl font-extrabold leading-none tracking-tight text-[#15181c] dark:text-white sm:text-7xl lg:text-8xl">
-                Ritualist
-              </h1>
-              <p className="mx-auto mt-5 max-w-[23rem] text-xl font-semibold leading-tight text-slate-700 dark:text-slate-200 sm:max-w-2xl sm:text-3xl lg:mx-0">
-                Build rituals that keep up with real life.
-              </p>
-              <p className="mx-auto mt-6 max-w-[23rem] text-base leading-8 text-slate-700 dark:text-slate-200 sm:max-w-2xl sm:text-lg lg:mx-0">
-                Track daily habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities,
-                and private insights in one focused app.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
-                <AppStoreButton label="hero" />
-                <OutlineButton href="#pricing" label="hero-pro">
-                  See Pro benefits
-                </OutlineButton>
-              </div>
-              <p className="mx-auto mt-4 max-w-[25rem] text-sm font-medium leading-6 text-slate-600 dark:text-slate-300 lg:mx-0">
-                Free to start with Health, location reminders, iCloud, and Apple Watch basics. Pro unlocks unlimited habits,
-                deeper insights, and power-user data tools.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.65, delay: 0.15 }}
-              className="mx-auto w-full min-w-0 max-w-[520px]"
-            >
-              <HeroDeviceStack />
-            </motion.div>
-          </div>
-        </section>
-
-        <section id="features" className="border-t border-slate-300 bg-white px-5 py-20 dark:border-white/10 dark:bg-[#0a1522] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Daily flow"
-              title="Everything you need for today is close."
-              body="Home brings the calendar, habit list, quick logging, swipe actions, and progress sheets into a single view that is fast enough to use several times a day."
+        <FeatureSection
+          id="habits"
+          className="bg-white text-[#15181c] dark:bg-[#0a1522] dark:text-white"
+          eyebrow="Every day"
+          eyebrowClass="text-[#2a9d4b] dark:text-[#7ee2a0]"
+          tag={<FreeTag />}
+          title="One tap, and your day turns green."
+          body="Tap + to add a glass, a check to mark a walk done, or swipe a habit for more. Every day you finish fills the calendar with color, and your streaks count themselves."
+          checkClass="text-[#2a9d4b] dark:text-[#7ee2a0]"
+          points={[
+            'Check, count, measure or time anything: water, pages, steps, weight, fasts',
+            'Your schedule: chosen days, every few days, or 3 times a week',
+            'Goals per week or month, like 70,000 steps or 100 km of running',
+            'Reminders at a time, or the moment you arrive at a place',
+            '150+ ready-made habits, each one tap away',
+          ]}
+          visual={
+            <PhonePair
+              tint="bg-[#34c759]/25"
+              back={{ src: shot('month'), alt: 'A month of finished days in green and orange' }}
+              front={{ src: shot('home'), alt: "Today's habits: a fast, a walk, water and reading" }}
             />
+          }
+        />
 
-            <div className="mt-14">
-              <FeatureMoment
-                visual={
-                  <StackedPhoneShots
-                    compact
-                    items={[
-                      { src: screenshots.swipe, alt: 'Ritualist swipe quick actions' },
-                      { src: screenshots.progress, alt: 'Ritualist progress sheet' },
-                    ]}
-                  />
-                }
-                eyebrow="Swipe, tap, adjust"
-                title="Fast enough for the moments between things."
-                body="Screenshots lead the story, with the everyday controls close beside them: quick swipes, habit sheets, timers, achievements, and challenge paths are all easy to scan."
-                features={productPillars.slice(0, 4)}
-              >
-                <ProNudge
-                  title="When your system grows"
-                  body="Pro removes the active-habit ceiling and adds deeper progress tools, while Health, location reminders, iCloud, and Apple Watch basics stay available free."
-                />
-              </FeatureMoment>
-            </div>
-          </div>
-        </section>
-
-        <section id="progress" className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Progress"
-              title="The habit loop goes beyond checkmarks."
-              body="Achievements, challenges, streaks, trend charts, and personal insights give your routines shape without turning them into noise."
-            />
-
-            <div className="mt-14">
-              <FeatureMoment
-                reverse
-                visual={
-                  <StackedPhoneShots
-                    compact
-                    items={[
-                      { src: screenshots.achievements, alt: 'Ritualist Achievements screen' },
-                      { src: screenshots.challenge, alt: 'Ritualist challenge detail screen' },
-                    ]}
-                  />
-                }
-                eyebrow="Challenges, achievements, history"
-                title="Progress has a place to collect."
-                body="Achievements, challenges, trends, and calendars live as a connected loop, giving the page a clearer product story with less card clutter."
-                features={[
-                  {
-                    icon: HiBadgeCheck,
-                    title: 'Achievements',
-                    body: 'Milestones, perfect days, and streak goals make consistent effort visible.',
-                  },
-                  {
-                    icon: HiFlag,
-                    title: 'Challenges',
-                    body: 'Guided challenge paths turn a broad goal into a clear set of daily actions.',
-                  },
-                  {
-                    icon: HiCalendar,
-                    title: 'Readable history',
-                    body: 'Completion calendars separate full days from partial progress so momentum is easier to understand.',
-                  },
-                  {
-                    icon: HiCollection,
-                    title: 'Weekly recaps',
-                    body: 'Recaps and streak summaries keep the bigger pattern easy to review.',
-                  },
-                ]}
-              >
-                <ProNudge
-                  title="For deeper review"
-                  body="Pro is strongest when you want advanced analytics, heatmaps, personality insights, and better tools for reviewing a growing routine."
-                />
-              </FeatureMoment>
-            </div>
-
-            <div className="mt-24 grid gap-10 sm:mt-28 lg:mt-32 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <StackedPhoneShots
-                items={[
-                  { src: screenshots.insights, alt: 'Ritualist Insights screen' },
-                  { src: screenshots.you, alt: 'Ritualist You tab with personal insights' },
-                ]}
-              />
-              <div className="rounded-[8px] border border-slate-300 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:p-8">
-                <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#128596] dark:text-[#7cecff]">Insights</p>
-                <h3 className="text-2xl font-bold leading-tight tracking-tight text-[#15181c] dark:text-white sm:text-3xl">See what your routine is actually doing.</h3>
-                <p className="mt-4 text-base leading-7 text-slate-700 dark:text-slate-200">
-                  Trend charts, completion calendars, streaks, and personality patterns help you understand what is
-                  working and where a ritual needs support.
-                </p>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                  {[
-                    {
-                      icon: HiChartBar,
-                      title: 'Trend lines',
-                      body: 'Track completion over time and spot the days where consistency starts to drift.',
-                    },
-                    {
-                      icon: HiCalendar,
-                      title: 'Completion calendar',
-                      body: 'Scan daily history by habit, period, and completion rate without digging through logs.',
-                    },
-                    {
-                      icon: HiSparkles,
-                      title: 'Personal context',
-                      body: 'Pair streaks, achievements, and personality insights with the habits that shape them.',
-                    },
-                    {
-                      icon: HiHeart,
-                      title: 'Habit patterns',
-                      body: 'Compare habits side by side to see which routines need a lighter target or better timing.',
-                    },
-                  ].map((detail) => {
-                    const Icon = detail.icon;
-
-                    return (
-                      <div
-                        key={detail.title}
-                        className="rounded-[8px] border border-slate-200 bg-[#f8fbff] p-4 dark:border-white/10 dark:bg-[#122236]"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px] bg-[#dcebff] text-[#075cb5] dark:bg-[#15304c] dark:text-[#7bdcff]">
-                            <Icon className="h-5 w-5" aria-hidden />
-                          </div>
-                          <h4 className="text-sm font-semibold text-[#15181c] dark:text-white">{detail.title}</h4>
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-200">{detail.body}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="watch" className="bg-white px-5 py-20 dark:bg-[#0a1522] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Apple system"
-              title="Ritualist fits the devices you already use."
-              body="Apple Watch, Live Activities, widgets, Health, location reminders, and iCloud keep the app close to real daily context."
-            />
-
-            <div className="mt-14">
-              <FeatureMoment
-                visual={<StackedWatchShots />}
-                eyebrow="Watch, Health, widgets"
-                title="The system surfaces do useful work."
-                body="Watch logging, widgets, Health, iCloud, and location reminders are presented together because they all reduce the distance between intention and action."
-                features={[
-                  {
-                    icon: HiDeviceMobile,
-                    title: 'Apple Watch',
-                    body: 'Log habits and adjust numeric progress from your wrist.',
-                  },
-                  {
-                    icon: HiCollection,
-                    title: 'Widgets',
-                    body: 'Keep streaks, calendars, and progress visible from the Home Screen.',
-                  },
-                  {
-                    icon: HiHeart,
-                    title: 'Apple Health',
-                    body: 'Connect mindful minutes, steps, water, and other health signals.',
-                  },
-                  {
-                    icon: HiCloud,
-                    title: 'iCloud sync',
-                    body: 'Sync progress across Apple devices through your own iCloud account.',
-                  },
-                ]}
-              >
-                <ProNudge
-                  title="System features start free"
-                  body="Apple Health, location reminders, iCloud, and Apple Watch basics are included free. Pro is for scale: unlimited habits, deeper insights, and data tools."
-                />
-              </FeatureMoment>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#10151c] px-5 py-20 text-white sm:px-6 lg:py-24">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#7bdcff]">Designed for rhythm</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-                Calm when planning. Bright when progress lands.
-              </h2>
-              <p className="mt-5 text-base leading-8 text-slate-200 sm:text-lg">
-                Ritualist balances a quiet daily workspace with warm moments of recognition. The interface stays easy
-                to scan, while completed habits, streaks, challenges, and achievements still feel rewarding.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {lensMoments.map((moment, index) => (
-                <LensMomentCard key={moment.title} {...moment} index={index} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <RitualStyleQuiz />
-
-        <SocialProofSection />
-
-        <section id="pricing" className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Plans"
-              title="Start free. Go Pro when the ritual grows."
-              body="Ritualist includes Health, location reminders, iCloud, and Apple Watch basics for free. Pro is for people who want more scale, deeper review, and stronger data ownership tools."
-            />
-
-            <div className="mt-14 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-[8px] border border-slate-300 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.07)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_18px_50px_rgba(0,0,0,0.24)] sm:p-8">
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-slate-800 dark:text-slate-200">Free</p>
-                <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Build the habit loop</h3>
-                <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Core tracking plus Apple system features for getting started without friction.
-                </p>
-                <div className="mt-8">
-                  <BulletList items={freeBenefits} />
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-[8px] border border-[#81b9ff] bg-white p-6 shadow-[0_20px_70px_rgba(13,110,253,0.16)] dark:border-[#2d6cae] dark:bg-[#0f1d2f] dark:shadow-[0_22px_70px_rgba(0,0,0,0.34)] sm:p-8">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0d6efd] via-[#17a2b8] to-[#ffd54f]" />
-                <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#075cb5] dark:text-[#7bdcff]">Ritualist Pro</p>
-                <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Unlock the full system</h3>
-                <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Choose the rhythm that fits you. Annual starts with a 1 week free trial, and Lifetime is paid once.
-                </p>
-                <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                  {proPlanPrices.map((plan) => (
-                    <div
-                      key={plan.name}
-                      className={cn(
-                        'relative rounded-[8px] border p-4',
-                        plan.featured
-                          ? 'border-[#075cb5] bg-[#edf6ff] pb-8 shadow-[0_14px_34px_rgba(13,110,253,0.14)] dark:border-[#7bdcff] dark:bg-[#102a43]'
-                          : 'border-slate-200 bg-white/80 dark:border-white/10 dark:bg-white/5',
-                      )}
-                    >
-                      {plan.featured && (
-                        <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#075cb5] px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-white dark:bg-[#7bdcff] dark:text-[#061523]">
-                          {plan.note}
-                        </span>
-                      )}
-                      <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
-                      <div className="mt-3 flex flex-wrap items-baseline gap-x-1">
-                        <span className="text-2xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>
-                        <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{plan.cadence}</span>
-                      </div>
-                      {!plan.featured && (
-                        <p className="mt-2 text-xs font-medium text-slate-600 dark:text-slate-300">{plan.note}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8">
-                  <BulletList items={proBenefits} icon="sparkle" />
-                </div>
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <p className="text-xs font-medium leading-5 text-slate-600 dark:text-slate-300">
-                    Buy and manage plans through your App Store account. Monthly and Annual renew until cancelled; Lifetime never renews.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="faq" className="border-y border-slate-300 bg-white px-5 py-20 dark:border-white/10 dark:bg-[#0a1522] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-4xl">
-            <SectionIntro
-              eyebrow="FAQ"
-              title="Questions, answered."
-              body="A quick look at devices, Live Activities, privacy, the For You tab, and Ritualist Pro."
-            />
-            <div className="mt-10">
-              {faqItems.map((item, index) => (
-                <FaqItem
-                  key={item.question}
-                  item={item}
-                  isOpen={openFaq === index}
-                  onToggle={() => setOpenFaq(openFaq === index ? -1 : index)}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[#f8fbff] px-5 py-20 dark:bg-[#07111c] sm:px-6 lg:py-24">
-          <div className="mx-auto max-w-6xl rounded-[8px] border border-slate-300 bg-white p-8 text-center shadow-[0_20px_60px_rgba(15,23,42,0.09)] dark:border-white/20 dark:bg-[#101b2a] dark:shadow-[0_22px_70px_rgba(0,0,0,0.32)] sm:p-12">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#075cb5] dark:text-[#7bdcff]">Try Ritualist</p>
-            <h2 className="text-3xl font-bold tracking-tight text-[#15181c] dark:text-white sm:text-4xl md:text-5xl">
-              Bring Ritualist to your day.
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-700 dark:text-slate-200 sm:text-lg">
-              Download Ritualist or join TestFlight to help shape Apple Watch, Live Activity, challenge, and insight
-              improvements.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <AppStoreButton label="bottom_cta" />
-              <a
-                href={testFlightUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => track('testflight_click', 'conversion', 'bottom_cta')}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-400 bg-white px-5 text-sm font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/25 dark:bg-[#122236] dark:text-slate-100 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff] sm:px-6 sm:text-base"
-              >
-                <HiCollection className="h-5 w-5" aria-hidden />
-                TestFlight
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <footer className="border-t border-slate-300 bg-white px-5 py-12 dark:border-white/10 dark:bg-[#07111c] sm:px-6">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_auto]">
-            <div>
-              <div className="flex items-center gap-3">
-                <Image src="/brand-icon.png" alt="" width={40} height={40} className="rounded-[8px]" />
-                <span className="text-lg font-extrabold text-[#15181c] dark:text-white">Ritualist</span>
-              </div>
-              <p className="mt-4 max-w-md text-sm leading-6 text-slate-700 dark:text-slate-200">
-                Private habit tracking for iPhone, iPad, Apple Watch, widgets, Live Activities, and daily rituals that
-                deserve attention.
-              </p>
-              <p className="mt-5 text-xs text-slate-600 dark:text-slate-300">Copyright 2026 Vlad Blajovan. All rights reserved.</p>
-            </div>
-
-            <div className="grid gap-8 sm:grid-cols-3">
-              <div>
-                <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Product</p>
-                <div className="space-y-2 text-sm">
-                  {navItems.map((item) => (
-                    <a key={item.href} href={item.href} className="block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]">
-                      {item.label}
-                    </a>
-                  ))}
-                  <Link href="/roadmap" className="block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]">
-                    Roadmap
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Company</p>
-                <div className="space-y-2 text-sm">
-                  <Link href="/support" className="block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]">
-                    Support
-                  </Link>
-                  <Link href="/privacy" className="block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]">
-                    Privacy
-                  </Link>
-                  <Link href="/terms" className="block text-slate-700 hover:text-[#075cb5] dark:text-slate-200 dark:hover:text-[#7bdcff]">
-                    Terms
-                  </Link>
-                </div>
-              </div>
-              <div>
-                <p className="mb-3 text-sm font-semibold text-[#15181c] dark:text-white">Follow</p>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => track('outbound_click', 'engagement', 'instagram')}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/20 dark:text-slate-200 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff]"
-                    aria-label="Ritualist on Instagram"
-                  >
-                    <FaInstagram className="h-5 w-5" aria-hidden />
-                  </a>
-                  <a
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => track('outbound_click', 'engagement', 'github')}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-slate-700 hover:border-[#075cb5] hover:text-[#075cb5] dark:border-white/20 dark:text-slate-200 dark:hover:border-[#7bdcff] dark:hover:text-[#7bdcff]"
-                    aria-label="Ritualist on GitHub"
-                  >
-                    <FaGithub className="h-5 w-5" aria-hidden />
-                  </a>
-                </div>
-                <div className="mt-4">
-                  <CookieSettingsButton />
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-
+        <FastingSection />
+        <BreathingSection />
+        <MedalsSection />
+        <AboutYouSection />
+        <EverywhereSection />
+        <PrivacyBand />
+        <PricingSection />
+        <FaqSection />
+        <FinalCta />
+        <Footer />
         <MobileAppStoreBar />
       </main>
     </MotionConfig>
   );
 }
+

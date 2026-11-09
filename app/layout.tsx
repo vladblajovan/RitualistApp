@@ -14,11 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = "https://vladblajovan.github.io/RitualistApp";
-const socialPreviewImageUrl = `${siteUrl}/og-image-20260524.png`;
+const socialPreviewImageUrl = `${siteUrl}/og-image-20261109.png`;
 
 export const metadata: Metadata = {
-  title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
-  description: "Track daily habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities, and private insights in one focused app.",
+  title: "Ritualist: Habits, Fasting and Breathing for iPhone",
+  description: "Get to know yourself, one habit at a time. Log habits in one tap, fast with a coach in your corner, breathe with a guide you can feel, earn medals you can spin, and see what your habits say about you. Free to start.",
+  itunes: {
+    appId: "6755661147",
+  },
   metadataBase: new URL(siteUrl),
   keywords: ["habit tracker", "Apple Watch habit tracker", "iOS app", "iPad app", "Live Activities", "achievements", "challenges", "personality insights", "privacy-first", "Apple Health", "fasting tracker", "breathing exercises", "wellness", "iCloud sync", "habit analytics"],
   authors: [{ name: "Vlad Blajovan" }],
@@ -39,24 +42,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
-    description: "Daily habit tracking with Apple Watch progress, Live Activities, challenges, achievements, Apple Health, iCloud sync, and private insights.",
+    title: "Ritualist: Get to know yourself, one habit at a time",
+    description: "Habits, fasts and breathing on iPhone and Apple Watch. A fasting coach, medals you can spin, and a portrait of what your habits say about you. Free to start.",
     siteName: "Ritualist",
     images: [
       {
         url: socialPreviewImageUrl,
         width: 1200,
         height: 630,
-        alt: "Ritualist app on iPhone and Apple Watch",
+        alt: "Ritualist on iPhone: habits, a fasting coach and struck medals",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ritualist - Habit Tracker for iPhone and Apple Watch",
-    description: "Track habits, timed rituals, challenges, achievements, Apple Watch progress, Live Activities, and private insights.",
+    title: "Ritualist: Get to know yourself, one habit at a time",
+    description: "Habits, fasts and breathing on iPhone and Apple Watch. A fasting coach, medals you can spin, and a portrait of what your habits say about you.",
     images: [socialPreviewImageUrl],
-    creator: "@ritualistapp",
   },
   alternates: {
     canonical: siteUrl,
