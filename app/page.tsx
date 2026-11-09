@@ -429,7 +429,7 @@ function EdgeFade({ edge, color }: { edge: 'top' | 'bottom'; color: string }) {
     <div
       aria-hidden
       className={cn(
-        'pointer-events-none absolute inset-x-0 z-[-5] h-24 sm:h-32',
+        'pointer-events-none absolute inset-x-0 z-[-5] h-10 sm:h-14',
         edge === 'top' ? 'top-0 bg-gradient-to-b to-transparent' : 'bottom-0 bg-gradient-to-t to-transparent',
         color,
       )}
@@ -792,7 +792,7 @@ function Hero() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-24">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-36 lg:pt-28">
       <EdgeFade edge="bottom" color="from-white dark:from-[#0a1522]" />
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_15%_15%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_85%_90%,rgba(255,138,61,0.30),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.22),transparent_60%)]" aria-hidden />
       <motion.div
@@ -828,7 +828,7 @@ function Hero() {
           </div>
         </motion.div>
 
-        <div className="mx-auto w-full max-w-[420px] pt-6 lg:max-w-[480px] lg:pt-14">
+        <div className="relative mx-auto w-full max-w-[420px] pt-6 lg:max-w-[480px] lg:pt-0">
         <div className="relative w-full">
           <PausableShot paused={paused} onToggle={() => setPaused((value) => !value)}>
             <AnimatePresence mode="popLayout" initial={false}>
@@ -885,7 +885,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
-    <div className="mx-auto mt-2 flex w-full max-w-[440px] items-center justify-center gap-1.5 lg:mt-8">
+    <div className="mx-auto mt-2 flex w-full max-w-[440px] items-center justify-center gap-1.5 lg:absolute lg:inset-x-0 lg:top-full lg:mt-8">
       <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
         <HiChevronLeft className="h-5 w-5" aria-hidden />
       </button>
