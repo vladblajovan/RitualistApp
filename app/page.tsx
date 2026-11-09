@@ -754,6 +754,25 @@ function PausableShot({
   );
 }
 
+function SceneLine({ line, sceneKey, className }: { line: string; sceneKey: string; className?: string }) {
+  return (
+    <div className={className} aria-live="polite">
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={sceneKey}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="text-lg leading-7 text-white/85 sm:text-xl sm:leading-8"
+        >
+          {line}
+        </motion.p>
+      </AnimatePresence>
+    </div>
+  );
+}
+
 function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -803,21 +822,8 @@ function Hero() {
             Get to know yourself,{' '}
             <span className="block bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
-          <div className="mx-auto mt-5 h-16 max-w-xl lg:mx-0" aria-live="polite">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={scene.key}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="text-lg leading-7 text-white/85 sm:text-xl sm:leading-8"
-              >
-                {scene.line}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-          <div className="mt-4 flex flex-col items-center lg:items-start">
+          <SceneLine line={scene.line} sceneKey={scene.key} className="mx-auto mt-5 hidden h-16 max-w-xl lg:mx-0 lg:block" />
+          <div className="mt-6 flex flex-col items-center lg:mt-4 lg:items-start">
             <AppStoreBadge placement="hero" tone="light" />
           </div>
         </motion.div>
@@ -839,6 +845,7 @@ function Hero() {
           </PausableShot>
           <FloatingChips sceneKey={scene.key} />
         </div>
+        <SceneLine line={scene.line} sceneKey={scene.key} className="mx-auto mt-8 h-14 max-w-sm text-center lg:hidden" />
         <SceneCarousel index={index} onChoose={choose} />
         </div>
       </div>
@@ -878,7 +885,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
-    <div className="mx-auto mt-8 flex w-full max-w-[440px] items-center justify-center gap-1.5">
+    <div className="mx-auto mt-2 flex w-full max-w-[440px] items-center justify-center gap-1.5 lg:mt-8">
       <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
         <HiChevronLeft className="h-5 w-5" aria-hidden />
       </button>
