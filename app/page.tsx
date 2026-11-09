@@ -376,6 +376,20 @@ function ProList({ items, dark = false }: { items: string[]; dark?: boolean }) {
   );
 }
 
+/** A soft fade where a dark section meets its neighbour, so sections blend rather than meet at a hard line. */
+function EdgeFade({ edge, color }: { edge: 'top' | 'bottom'; color: string }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        'pointer-events-none absolute inset-x-0 z-[-5] h-24 sm:h-32',
+        edge === 'top' ? 'top-0 bg-gradient-to-b to-transparent' : 'bottom-0 bg-gradient-to-t to-transparent',
+        color,
+      )}
+    />
+  );
+}
+
 /** Every feature section shares one shape: a short title, one paragraph, three points and its screens. */
 function Feature({
   id,
@@ -389,8 +403,10 @@ function Feature({
   reverse = false,
   dark = false,
   className,
+  fades,
   children,
 }: {
+  fades?: ReactNode;
   id: string;
   eyebrow: string;
   tag?: ReactNode;
@@ -405,7 +421,8 @@ function Feature({
   children?: ReactNode;
 }) {
   return (
-    <section id={id} className={cn('relative scroll-mt-16 overflow-hidden px-4 py-12 sm:px-6 lg:py-16', className)}>
+    <section id={id} className={cn('relative isolate scroll-mt-16 overflow-hidden px-4 py-12 sm:px-6 lg:py-16', className)}>
+      {fades}
       <div className="relative mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
         <div className={cn('min-w-0', reverse && 'lg:order-2')}>{visual}</div>
         <motion.div {...reveal} className={cn('min-w-0', reverse && 'lg:order-1')}>
@@ -675,7 +692,8 @@ function Hero() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-12 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-16">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 pb-16 pt-20 text-white sm:px-6 sm:pt-24 lg:pb-24">
+      <EdgeFade edge="bottom" color="from-white dark:from-[#0a1522]" />
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_15%_15%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_85%_90%,rgba(255,138,61,0.30),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.22),transparent_60%)]" aria-hidden />
       <motion.div
         className="absolute inset-0 -z-10"
@@ -797,7 +815,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
         onChoose(index + (event.deltaX > 0 ? 1 : -1));
         window.setTimeout(() => (wheelLock.current = false), 500);
       }}
-      style={showsNeighbours ? { maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' } : { width: widthAt(0) + 8 }}
+      style={showsNeighbours ? { maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' } : { width: widthAt(0) + 16 }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowRight') onChoose(index + 1);
         if (event.key === 'ArrowLeft') onChoose(index - 1);
@@ -1104,7 +1122,9 @@ function FaqSection() {
 
 function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-16 text-center text-white sm:px-6">
+    <section className="relative isolate overflow-hidden bg-[#0b1220] px-4 py-24 text-center text-white sm:px-6">
+      <EdgeFade edge="top" color="from-[#f8fbff] dark:from-[#07111c]" />
+      <EdgeFade edge="bottom" color="from-white dark:from-[#07111c]" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_20%_20%,rgba(13,110,253,0.45),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_50%_50%,rgba(191,90,242,0.25),transparent_60%)]" aria-hidden />
       <motion.div {...reveal} className="mx-auto max-w-3xl">
         <div className="mx-auto flex w-fit -space-x-3">
@@ -1248,8 +1268,10 @@ export default function Home() {
           <ProList items={['Every place you go (3 on the free plan)']} />
         </Feature>
 
-        <section id="fasting" className="relative scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
+        <section id="fasting" className="relative isolate scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
+          <EdgeFade edge="top" color="from-[#f8fbff] dark:from-[#07111c]" />
+          <EdgeFade edge="bottom" color="from-[#0b3b4a]" />
+          <div className="absolute inset-0 z-[-10] bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
           <Feature
             id="fasting-intro"
             dark
@@ -1289,6 +1311,7 @@ export default function Home() {
 
         <Feature
           id="breathing"
+          fades={<EdgeFade edge="bottom" color="from-white dark:from-[#0a1522]" />}
           reverse
           dark
           className="bg-[linear-gradient(160deg,#0b3b4a_0%,#245d7a_45%,#c98a5a_100%)] text-white"
