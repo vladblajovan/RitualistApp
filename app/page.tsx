@@ -390,6 +390,30 @@ function EdgeFade({ edge, color }: { edge: 'top' | 'bottom'; color: string }) {
   );
 }
 
+/** The notification a place reminder sends, in the app's own words (HabitReminderWording): the habit as the title, then where you are and what to do. */
+function PlaceReminderNotification() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -24, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.6 }}
+      transition={{ type: 'spring', stiffness: 140, damping: 16, delay: 0.5 }}
+      className="absolute -left-6 top-[38%] z-10 w-[118%] sm:-left-16 sm:w-[130%]"
+    >
+      <div className="flex items-start gap-3 rounded-[22px] bg-white/75 p-3.5 shadow-[0_24px_50px_rgba(15,23,42,0.28)] ring-1 ring-black/5 backdrop-blur-xl dark:bg-[#1c2430]/80 dark:ring-white/10">
+        <Image src="/brand-icon-128.png" alt="" width={40} height={40} className="h-10 w-10 shrink-0 rounded-[10px]" />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-2">
+            <p className="truncate text-[15px] font-semibold text-[#15181c] dark:text-white">Drink Water</p>
+            <p className="shrink-0 text-xs text-slate-500 dark:text-slate-400">now</p>
+          </div>
+          <p className="text-[15px] leading-5 text-[#15181c] dark:text-slate-100">You’re at the gym. Time to drink water.</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 /** Every feature section shares one shape: a short title, one paragraph, three points and its screens. */
 function Feature({
   id,
@@ -1262,6 +1286,7 @@ export default function Home() {
             <motion.div {...reveal} className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px]">
               <div className="absolute inset-x-0 top-16 bottom-10 rounded-full bg-[#e5484d]/20 blur-3xl" aria-hidden />
               <PhoneShot src={shot('remind-gym')} alt="The Gym reminds you about Drink Water the first time you arrive each day" className="w-full" />
+              <PlaceReminderNotification />
             </motion.div>
           }
         >
