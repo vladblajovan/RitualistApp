@@ -423,20 +423,6 @@ function ProList({ items, dark = false }: { items: string[]; dark?: boolean }) {
   );
 }
 
-/** A soft, eased blend between two sections' colours, laid over the line where they meet. */
-function Seam({ from, to, fromDark, toDark }: { from: string; to: string; fromDark?: string; toDark?: string }) {
-  const blend = (a: string, b: string) =>
-    `linear-gradient(to bottom, ${a} 0%, color-mix(in oklab, ${a} 92%, ${b}) 18%, color-mix(in oklab, ${a} 70%, ${b}) 36%, color-mix(in oklab, ${a} 50%, ${b}) 50%, color-mix(in oklab, ${a} 30%, ${b}) 64%, color-mix(in oklab, ${a} 8%, ${b}) 82%, ${b} 100%)`;
-  const darkFrom = fromDark ?? from;
-  const darkTo = toDark ?? to;
-  return (
-    <div aria-hidden className="pointer-events-none relative z-10 -my-1.5 h-3">
-      <div className={cn('absolute inset-0', (fromDark || toDark) && 'dark:hidden')} style={{ background: blend(from, to) }} />
-      {(fromDark || toDark) && <div className="absolute inset-0 hidden dark:block" style={{ background: blend(darkFrom, darkTo) }} />}
-    </div>
-  );
-}
-
 /** The notification a place reminder sends, in the app's own words (HabitReminderWording): the habit as the title, then where you are and what to do. */
 function PlaceReminderNotification() {
   return (
@@ -1303,8 +1289,6 @@ export default function Home() {
 
         <Header />
         <Hero />
-
-        <Seam from="#0b1220" to="#ffffff" toDark="#0a1522" />
         <Feature
           id="habits"
           className="bg-white dark:bg-[#0a1522]"
@@ -1327,8 +1311,6 @@ export default function Home() {
         >
           <ProList items={['No limit on habits (5 on the free plan)', 'Reminders that learn when you actually follow through', 'Your history back on any device, from a backup']} />
         </Feature>
-
-        <Seam from="#ffffff" to="#fff5f5" fromDark="#0a1522" toDark="#1f0f12" />
         <Feature
           id="places"
           reverse
@@ -1353,8 +1335,6 @@ export default function Home() {
         >
           <ProList items={['No limit on places (3 on the free plan)']} />
         </Feature>
-
-        <Seam from="#f8fbff" to="#140b05" fromDark="#07111c" toDark="#140b05" />
         <section id="fasting" className="relative isolate scroll-mt-16 overflow-hidden bg-[#140b05] text-white">
           <div className="absolute inset-0 z-[-10] bg-[radial-gradient(ellipse_at_30%_10%,rgba(255,138,61,0.35),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(10,132,255,0.25),transparent_55%)]" aria-hidden />
           <Feature
@@ -1396,8 +1376,6 @@ export default function Home() {
             <CoachesStrip />
           </div>
         </section>
-
-        <Seam from="#140b05" to="#0b3b4a" />
         <Feature
           id="breathing"
           reverse
@@ -1422,11 +1400,7 @@ export default function Home() {
         >
           <ProList dark items={['Nine flowers that open with each breath', 'Breathing patterns of your own', 'Which breathing, and which hour, calms you most']} />
         </Feature>
-
-        <Seam from="#c98a5a" to="#ffffff" toDark="#0a1522" />
         <MedalsSection />
-
-        <Seam from="#ffffff" to="#f7f0ff" fromDark="#0a1522" toDark="#1a1030" />
         <Feature
           id="about-you"
           className="bg-[linear-gradient(180deg,#f7f0ff_0%,#fdf2f8_100%)] dark:bg-[linear-gradient(180deg,#1a1030_0%,#200f22_100%)]"
@@ -1450,16 +1424,10 @@ export default function Home() {
           <p className="mt-5 text-sm leading-6 text-slate-600 dark:text-slate-300">A reflection for fun and self-knowledge, not a diagnosis.</p>
           <ProList items={['Your Big Five traits, and why', 'What stands out, and activities that suit you', 'How you change over time']} />
         </Feature>
-
-        <Seam from="#fdf2f8" to="#f8fbff" fromDark="#200f22" toDark="#07111c" />
         <EverywhereSection />
-        <Seam from="#f8fbff" to="#ffffff" fromDark="#07111c" toDark="#0a1522" />
         <PricingSection />
-        <Seam from="#ffffff" to="#f8fbff" fromDark="#0a1522" toDark="#07111c" />
         <FaqSection />
-        <Seam from="#f8fbff" to="#0b1220" fromDark="#07111c" toDark="#0b1220" />
         <FinalCta />
-        <Seam from="#0b1220" to="#ffffff" toDark="#07111c" />
         <Footer />
         <MobileAppStoreBar />
       </main>
