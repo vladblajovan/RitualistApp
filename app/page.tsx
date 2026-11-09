@@ -1318,6 +1318,7 @@ export default function Home() {
               tint="bg-[#34c759]/25"
               back={{ src: shot('month'), alt: 'A month of finished days in green and orange' }}
               front={[
+                { src: shot('log-water'), alt: 'Logging water: 6 of 8 glasses, with +1 and Complete' },
                 { src: shot('habit-stats'), alt: "A habit's stats: progress trend and a month of completed days" },
                 { src: shot('patterns'), alt: 'Patterns: categories and your weekly rhythm, Tuesday the best day' },
               ]}
