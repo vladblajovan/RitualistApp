@@ -896,7 +896,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
         onChoose(index + (event.deltaX > 0 ? 1 : -1));
         window.setTimeout(() => (wheelLock.current = false), 500);
       }}
-      style={showsNeighbours ? { maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' } : { width: widthAt(0) + 16 }}
+      style={showsNeighbours ? { maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' } : { width: widthAt(0) + 56, maskImage: 'linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 28px, #000 calc(100% - 28px), transparent)' }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowRight') onChoose(index + 1);
         if (event.key === 'ArrowLeft') onChoose(index - 1);
@@ -919,8 +919,8 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
             tabIndex={isVisible ? 0 : -1}
             onClick={() => onChoose(index + distance)}
             initial={false}
-            animate={{ x: centerOffset(distance) - widths[itemIndex] / 2, opacity: isCurrent ? 1 : isVisible ? 0.45 : 0 }}
-            transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9, opacity: { duration: 0.3 } }}
+            animate={{ x: centerOffset(distance) - widths[itemIndex] / 2, opacity: isCurrent ? 1 : isVisible ? 0.45 : 0, filter: isCurrent || isVisible ? 'blur(0px)' : 'blur(4px)' }}
+            transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9, opacity: { duration: 0.5, ease: 'easeInOut' }, filter: { duration: 0.5 } }}
             ref={(element) => {
               cardRefs.current[itemIndex] = element;
             }}
