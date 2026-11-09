@@ -685,7 +685,7 @@ function Hero() {
       />
       <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
-          <div className="flex flex-col items-center gap-3 sm:flex-row lg:items-center">
+          <div className="hidden items-center gap-3 lg:flex">
             <div className="flex -space-x-2.5">
               {coaches.map((coach, coachIndex) => (
                 <motion.span
@@ -700,7 +700,7 @@ function Hero() {
             </div>
             <p className="text-sm font-bold text-white/85">The best day to start is today.</p>
           </div>
-          <h1 className="mt-5 text-[2.4rem] font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.4rem] lg:mt-5 font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-7xl">
             Get to know yourself,{' '}
             <span className="bg-gradient-to-r from-[#6fb1ff] via-[#d08cff] to-[#ffb27a] bg-clip-text text-transparent">one habit at a time.</span>
           </h1>
