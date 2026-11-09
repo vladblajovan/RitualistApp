@@ -51,7 +51,6 @@ type Scene = {
   line: string;
   screen: string;
   alt: string;
-  card: { image?: string; imageClass?: string; title: string; body: string };
 };
 
 // The hero's rotating scenes: one screen and one moment each, all real.
@@ -64,7 +63,6 @@ const scenes: Scene[] = [
     line: 'Log a habit in one tap and watch your day turn green.',
     screen: 'home',
     alt: "Ritualist Home: today's habits with a fast running",
-    card: { image: 'medal-silver', imageClass: 'rounded-full', title: '30-day streak', body: 'Monthly Momentum, unlocked' },
   },
   {
     key: 'fasting',
@@ -74,7 +72,6 @@ const scenes: Scene[] = [
     line: 'Fast with a coach who walks you through every phase.',
     screen: 'fast',
     alt: 'A running 16:8 fast: time remaining and the current phase',
-    card: { image: 'coach-taisu', imageClass: 'rounded-xl', title: 'Taisu', body: 'We are near the end of the fast. Think about water first.' },
   },
   {
     key: 'breathing',
@@ -84,7 +81,6 @@ const scenes: Scene[] = [
     line: 'Breathe in time with a guide you can see and feel.',
     screen: 'breath1',
     alt: 'A box breathing session with its ring of phases',
-    card: { title: 'Hold · 4', body: 'Round 1 of 15. Your iPhone ticks with every breath.' },
   },
   {
     key: 'places',
@@ -94,7 +90,6 @@ const scenes: Scene[] = [
     line: 'Save your places and get reminded the moment you arrive.',
     screen: 'my-places',
     alt: 'My Places: Home, Work and the Gym on a map, with Drink Water reminding at the Gym',
-    card: { title: 'At the gym', body: 'Time to drink water.' },
   },
   {
     key: 'gallery',
@@ -104,7 +99,6 @@ const scenes: Scene[] = [
     line: 'Start from 150+ ready-made habits, one tap each.',
     screen: 'gallery',
     alt: 'The Habits Gallery: Drink Water, Exercise, Eat Fruits and more',
-    card: { title: '150+ habits', body: 'Picked for your goals, ready in one tap.' },
   },
   {
     key: 'reminders',
@@ -114,7 +108,6 @@ const scenes: Scene[] = [
     line: 'Reminders at the right time, or the right place.',
     screen: 'remind-gym',
     alt: 'Setting a reminder: the Gym reminds you about Drink Water the first time you arrive each day',
-    card: { title: 'Arriving, leaving, or both', body: 'Every day, weekdays, or the days you choose.' },
   },
 ];
 
@@ -481,6 +474,86 @@ function Header() {
 
 const sceneDurationMs = 4800;
 
+type Chip = { key: string; text: string; icon?: IconType; image?: string; round?: boolean; color: string };
+
+// Small notes that drift around the hero's phone, three at a time, each about something real in the app.
+const chips: Chip[] = [
+  { key: 'streak', text: '30-day streak', image: 'medal-silver', round: true, color: '#8a8f98' },
+  { key: 'taisu', text: 'Taisu: one phase at a time', image: 'coach-taisu', color: '#ff8a3d' },
+  { key: 'gym', text: 'Water as you reach the gym', icon: HiLocationMarker, color: '#e5484d' },
+  { key: 'box', text: 'Box breathing, 4 rounds', icon: HiSun, color: '#2bb6d6' },
+  { key: 'gallery', text: '150+ ready-made habits', icon: HiCollection, color: '#7b3fe4' },
+  { key: 'health', text: 'Steps fill in from Apple Health', icon: HiHeart, color: '#ff375f' },
+  { key: 'siri', text: '“Log a habit” with Siri', icon: HiMicrophone, color: '#5e5ce6' },
+  { key: 'watch', text: 'Log from your Apple Watch', icon: HiDeviceMobile, color: '#0a84ff' },
+  { key: 'traits', text: 'Your Big Five, from your habits', icon: HiSparkles, color: '#bf5af2' },
+  { key: 'lock', text: 'Your fast on the Lock Screen', icon: HiMoon, color: '#ff9f0a' },
+  { key: 'pip', text: 'Six coaches, six voices', image: 'coach-pip', color: '#34c759' },
+  { key: 'perfect', text: 'Perfect day: all done', icon: HiCheck, color: '#2a9d4b' },
+  { key: 'widgets', text: 'Widgets for Home and Lock Screen', icon: HiTemplate, color: '#0d6efd' },
+  { key: 'private', text: 'No account needed', icon: HiLockClosed, color: '#636366' },
+];
+
+const chipSlots = [
+  'right-0 top-[14%] sm:-right-2',
+  'left-0 top-[44%] sm:-left-4',
+  'right-0 bottom-[16%] sm:-right-4',
+];
+
+function FloatingChips() {
+  const reduceMotion = useReducedMotion();
+  const [shown, setShown] = useState([0, 1, 2]);
+  const [step, setStep] = useState(0);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const timer = window.setTimeout(() => {
+      setShown((current) => {
+        const next = [...current];
+        const slot = step % next.length;
+        next[slot] = (Math.max(...current) + 1) % chips.length;
+        // Wrapping around, skip any chip that is still on screen.
+        while (current.includes(next[slot]) && next[slot] !== current[slot]) next[slot] = (next[slot] + 1) % chips.length;
+        return next;
+      });
+      setStep((value) => value + 1);
+    }, 2200);
+    return () => window.clearTimeout(timer);
+  }, [step, reduceMotion]);
+
+  return (
+    <>
+      {shown.map((chipIndex, slot) => {
+        const chip = chips[chipIndex];
+        const Icon = chip.icon;
+        return (
+          <div key={slot} className={cn('absolute z-10', chipSlots[slot])}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={chip.key}
+                initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/95 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur dark:bg-[#132233]/95 dark:ring-white/10"
+              >
+                {chip.image ? (
+                  <Image src={shot(chip.image)} alt="" width={64} height={64} className={cn('h-7 w-7 shrink-0 object-cover', chip.round ? 'rounded-full' : 'rounded-lg')} />
+                ) : (
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white" style={{ background: chip.color }}>
+                    {Icon && <Icon className="h-4 w-4" aria-hidden />}
+                  </span>
+                )}
+                <span className="text-[12px] font-bold text-[#15181c] dark:text-white">{chip.text}</span>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
 function Hero() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -548,30 +621,7 @@ function Hero() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center sm:bottom-10 lg:justify-start">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={scene.key}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.97 }}
-                transition={{ duration: 0.35, delay: 0.15 }}
-                className="flex max-w-[290px] items-center gap-3 rounded-2xl bg-white/95 p-3 shadow-[0_18px_44px_rgba(15,23,42,0.22)] ring-1 ring-black/5 backdrop-blur dark:bg-[#132233]/95 dark:ring-white/10"
-              >
-                {scene.card.image ? (
-                  <Image src={shot(scene.card.image)} alt="" width={120} height={120} className={cn('h-11 w-11 shrink-0 object-cover', scene.card.imageClass)} />
-                ) : (
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white" style={{ background: scene.accent }}>
-                    <scene.icon className="h-5 w-5" aria-hidden />
-                  </span>
-                )}
-                <span className="min-w-0">
-                  <span className="block text-sm font-extrabold text-[#15181c] dark:text-white">{scene.card.title}</span>
-                  <span className="block text-[13px] leading-5 text-slate-600 dark:text-slate-300">{scene.card.body}</span>
-                </span>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          <FloatingChips />
         </div>
         <SceneTabs index={index} onChoose={choose} className="flex lg:hidden" />
       </div>
