@@ -84,18 +84,21 @@ export default function TermsPage() {
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Monthly</strong> — an auto-renewing subscription billed every month</li>
             <li><strong>Annual</strong> — an auto-renewing subscription billed every year, which may begin with a free trial for eligible new subscribers</li>
-            <li><strong>Lifetime</strong> — a one-time, non-renewing purchase that unlocks Pro with no further payments</li>
+            <li><strong>Lifetime</strong> — a one-time, non-renewing purchase that unlocks Pro with no further payments (see 4.5)</li>
           </ul>
           <p className="mb-4 text-zinc-700 dark:text-zinc-300">Current prices are shown in the App before you buy and may vary by region and currency. We may offer limited-time discounts on a plan&apos;s first period.</p>
           <h3 className="font-semibold mb-2">4.4 Payment Terms</h3>
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
-            <li>All payments are processed through Apple&apos;s App Store and charged to your Apple ID</li>
+            <li>All payments are processed through Apple&apos;s App Store and charged to your Apple Account</li>
             <li>Monthly and Annual subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period, and your account is charged for the next period within 24 hours before it begins</li>
             <li>If a free trial is offered, you are charged when it ends unless you cancel at least 24 hours before; any unused part of a trial ends when you buy a plan</li>
             <li>You can manage and cancel subscriptions in your App Store account settings. Cancelling stops future renewals; Pro stays available until the end of the period you paid for</li>
-            <li>Lifetime is paid once and never renews or charges again. It covers Pro for as long as the App is offered, for the Apple ID that bought it, and can be restored on your other devices with Restore Purchases</li>
           </ul>
-          <h3 className="font-semibold mb-2">4.5 Refunds</h3>
+          <h3 className="font-semibold mb-2">4.5 Lifetime</h3>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">Ritualist Pro Lifetime is a one-time, non-renewing purchase that unlocks Pro with no further payments: there&apos;s nothing to cancel. &ldquo;Lifetime&rdquo; means for as long as Ritualist is offered and supported, not a person&apos;s lifetime. It includes every Pro feature, including ones added later. It belongs to the Apple Account that bought it and can be restored on your other devices with Restore Purchases. If we ever stop offering Ritualist, we&apos;ll say so in the App at least 90 days ahead, and Pro stays unlocked in the App on your device for as long as iOS runs it. Refunds are handled by Apple.</p>
+          <h3 className="font-semibold mb-2">4.6 Price Changes</h3>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">We may change the prices of our plans. Existing subscribers keep the price they subscribed at for as long as their subscription stays active.</p>
+          <h3 className="font-semibold mb-2">4.7 Refunds</h3>
           <p className="text-zinc-700 dark:text-zinc-300">All purchases are processed by Apple. For refund requests, please contact <a href="https://support.apple.com/en-us/HT204084" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Apple Support</a>.</p>
         </section>
 

@@ -21,19 +21,23 @@ const faqs: Faq[] = [
   },
   {
     question: 'What is Lifetime?',
-    answer: 'Lifetime is a one-time purchase: you pay once and keep Pro, with no renewals and nothing more to pay. It belongs to the Apple ID that bought it, so you can restore it on your other devices.',
+    answer: 'Lifetime is a one-time, non-renewing purchase that unlocks Pro with no further payments: there\'s nothing to cancel. "Lifetime" means for as long as Ritualist is offered and supported, not a person\'s lifetime, and it includes every Pro feature, including ones added later. It belongs to the Apple Account that bought it and can be restored on your other devices with Restore Purchases. If we ever stop offering Ritualist, we\'ll say so in the app at least 90 days ahead, and Pro stays unlocked on your device for as long as iOS runs it.',
   },
   {
     question: 'Can I switch from a subscription to Lifetime?',
-    answer: 'Yes. Buy Lifetime from the Pro page, then cancel your subscription in your Apple ID settings so it doesn\'t renew. Your subscription stays active until the end of the period you already paid for.',
+    answer: 'Yes. Buy Lifetime from the Pro page, then cancel your subscription in your Apple Account settings so it doesn\'t renew. Your subscription stays active until the end of the period you already paid for.',
+  },
+  {
+    question: 'Will my subscription price change?',
+    answer: 'No. If you already subscribe, you keep the price you subscribed at for as long as your subscription stays active.',
   },
   {
     question: 'How do I restore my purchases?',
-    answer: 'Open the Pro page in Ritualist, for example from Settings, and tap Restore Purchases. Your subscription or Lifetime purchase comes back on any device signed in with the same Apple ID.',
+    answer: 'Open the Pro page in Ritualist, for example from Settings, and tap Restore Purchases. Your subscription or Lifetime purchase comes back on any device signed in with the same Apple Account.',
   },
   {
     question: 'How do I cancel my subscription?',
-    answer: 'Subscriptions are managed through your Apple ID: open the Settings app, tap your name, then Subscriptions. Cancel at least 24 hours before the end of the current period to stop the next renewal. Lifetime has nothing to cancel.',
+    answer: 'Subscriptions are managed through your Apple Account: open the Settings app, tap your name, then Subscriptions. Cancel at least 24 hours before the end of the current period to stop the next renewal. Lifetime has nothing to cancel.',
   },
   {
     question: 'What happens to my habits if my subscription ends?',
