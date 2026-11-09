@@ -26,7 +26,7 @@ export default function TermsPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <h1 className="text-3xl font-bold mb-1">Terms of Service</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: April 2, 2026</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: November 9, 2026</p>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">1. Acceptance of Terms</h2>
@@ -37,7 +37,7 @@ export default function TermsPage() {
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">2. Description of Service</h2>
           <p className="mb-3 text-zinc-700 dark:text-zinc-300">Ritualist is a habit tracking application that helps you build and maintain positive habits. The App allows you to:</p>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
-            <li>Create and track daily habits (binary, numeric, and timed)</li>
+            <li>Create and track habits you check off, count, measure, or time</li>
             <li>Track timed activities including fasting and breathing exercises</li>
             <li>Set reminders and location-based notifications</li>
             <li>Integrate with Apple Health to read and write health data</li>
@@ -60,30 +60,42 @@ export default function TermsPage() {
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">4. Subscriptions and Payments</h2>
           <h3 className="font-semibold mb-2">4.1 Free Features</h3>
-          <p className="mb-2 text-zinc-700 dark:text-zinc-300">The free version of Ritualist includes:</p>
+          <p className="mb-2 text-zinc-700 dark:text-zinc-300">The free version of Ritualist includes, among other features:</p>
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
-            <li>Up to 5 habits</li>
-            <li>Daily tracking</li>
-            <li>Basic notifications</li>
-            <li>Tips and insights</li>
-            <li>iCloud sync across all your devices</li>
+            <li>Up to 5 active habits and 3 saved places</li>
+            <li>Check, count, measure, and timed habits, including fasting and breathing with their guides</li>
+            <li>Time and place reminders, Apple Health, widgets, Siri, and Apple Watch</li>
+            <li>Streaks, achievements, progress charts, and the Bronze tier of challenges</li>
+            <li>iCloud sync across all your devices, and saving backups</li>
           </ul>
-          <h3 className="font-semibold mb-2">4.2 Pro Subscription</h3>
-          <p className="mb-2 text-zinc-700 dark:text-zinc-300">Ritualist Pro unlocks additional features:</p>
+          <h3 className="font-semibold mb-2">4.2 Ritualist Pro</h3>
+          <p className="mb-2 text-zinc-700 dark:text-zinc-300">Ritualist Pro unlocks additional features, including:</p>
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
-            <li>Unlimited habits</li>
-            <li>Advanced analytics</li>
-            <li>Custom reminders</li>
-            <li>Data export</li>
+            <li>Unlimited habits and places</li>
+            <li>About You personality insights</li>
+            <li>The Silver and Gold tiers of challenges</li>
+            <li>Every fasting coach and its pep talks</li>
+            <li>Breathing shapes, your own breathing patterns, and breathing insights</li>
+            <li>Smart Scheduling shortcuts and restoring backups</li>
           </ul>
-          <h3 className="font-semibold mb-2">4.3 Payment Terms</h3>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">The features included in Pro may change as the App evolves. If you go over the free limits, for example after a subscription ends, habits and places beyond them are paused, not deleted.</p>
+          <h3 className="font-semibold mb-2">4.3 Plans</h3>
+          <p className="mb-2 text-zinc-700 dark:text-zinc-300">Ritualist Pro is available as:</p>
           <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
-            <li>All payments are processed through Apple&apos;s App Store</li>
-            <li>Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current period</li>
-            <li>You can manage and cancel subscriptions in your App Store account settings</li>
-            <li>Prices are in USD and may vary by region</li>
+            <li><strong>Monthly</strong> — an auto-renewing subscription billed every month</li>
+            <li><strong>Annual</strong> — an auto-renewing subscription billed every year, which may begin with a free trial for eligible new subscribers</li>
+            <li><strong>Lifetime</strong> — a one-time, non-renewing purchase that unlocks Pro with no further payments</li>
           </ul>
-          <h3 className="font-semibold mb-2">4.4 Refunds</h3>
+          <p className="mb-4 text-zinc-700 dark:text-zinc-300">Current prices are shown in the App before you buy and may vary by region and currency. We may offer limited-time discounts on a plan&apos;s first period.</p>
+          <h3 className="font-semibold mb-2">4.4 Payment Terms</h3>
+          <ul className="list-disc pl-5 mb-4 space-y-1 text-zinc-700 dark:text-zinc-300">
+            <li>All payments are processed through Apple&apos;s App Store and charged to your Apple ID</li>
+            <li>Monthly and Annual subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period, and your account is charged for the next period within 24 hours before it begins</li>
+            <li>If a free trial is offered, you are charged when it ends unless you cancel at least 24 hours before; any unused part of a trial ends when you buy a plan</li>
+            <li>You can manage and cancel subscriptions in your App Store account settings. Cancelling stops future renewals; Pro stays available until the end of the period you paid for</li>
+            <li>Lifetime is paid once and never renews or charges again. It covers Pro for as long as the App is offered, for the Apple ID that bought it, and can be restored on your other devices with Restore Purchases</li>
+          </ul>
+          <h3 className="font-semibold mb-2">4.5 Refunds</h3>
           <p className="text-zinc-700 dark:text-zinc-300">All purchases are processed by Apple. For refund requests, please contact <a href="https://support.apple.com/en-us/HT204084" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Apple Support</a>.</p>
         </section>
 
@@ -172,7 +184,7 @@ export default function TermsPage() {
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">13. Termination</h2>
           <p className="mb-3 text-zinc-700 dark:text-zinc-300">We reserve the right to terminate or suspend your access to the App at any time, without notice, for conduct that we believe violates these Terms or is harmful to other users or us.</p>
-          <p className="text-zinc-700 dark:text-zinc-300">Upon termination, you may lose access to your data. You can export your data before termination if you have a Pro subscription.</p>
+          <p className="text-zinc-700 dark:text-zinc-300">Upon termination, you may lose access to your data. You can save a backup of your data from the App before termination.</p>
         </section>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">

@@ -67,6 +67,11 @@ const ACCENT_CLASSES: Record<string, { dot: string; border: string; title: strin
     border: 'border-orange-500',
     title: 'text-orange-600 dark:text-orange-400',
   },
+  amber: {
+    dot: 'bg-amber-500',
+    border: 'border-amber-500',
+    title: 'text-amber-600 dark:text-amber-400',
+  },
   blue: {
     dot: 'bg-blue-500',
     border: 'border-blue-500',

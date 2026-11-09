@@ -26,6 +26,52 @@ Versioning:
 Item `key`s are stable identifiers. Keep a key when an item is reworded; use a
 new key when an item is replaced by something different.
 
+## [3.0.0] - 2026-11-09
+
+Checked against Ritualist 2.0 as it ships (Ritualist main at c32b4631, with
+the Taisu hero and the Lifetime plan from their threads). Sections reorganized
+around the four tabs, French now uses "tu" as the app does, and every button
+name is the app's own in each language.
+
+### Added
+
+- `challenges` section (amber): `challenges/challenges` (moved from `insights`,
+  rewritten for the Challenges tab, Bronze/Silver/Gold and lifetime paths),
+  `challenges/achievements` and `challenges/shareCards` (moved from `insights`).
+- `gettingStarted/firstSteps` (onboarding), `gettingStarted/measureHabits`,
+  `gettingStarted/timeOfDay`.
+- `timedHabits/fastingGuide`, `timedHabits/fastingCoach` (the six heroes, Taisu free).
+- `reminders/myPlaces`.
+- `insights/aboutYouPrivacy` (consent, on-device, the lock).
+- `healthAndConnectivity/siriShortcuts` (Siri phrases, Shortcuts, Spotlight, controls).
+- `personalize/quickAccess`, `personalize/assistants`.
+
+### Changed
+
+- `gettingStarted/appTour`: four tabs (Home, Challenges, For You, Settings) and ✦.
+- `gettingStarted/trackingTypes`: Check, Count, Measure, Timer.
+- `gettingStarted/scheduling`: Custom schedules, repeats, and goals per week or month.
+- `gettingStarted/freeAndPro`: the current Free/Pro split; Monthly $9.99, Annual
+  $49.99 with a 1-week trial, Lifetime $99.99 once; Weekly removed.
+- `gettingStarted/habitsGallery`, `createHabit`, `categories`: current gallery and editor.
+- All of `trackingHabits`: row controls with undo, Log and Stats pages, customizable
+  swipe actions, period streaks, Manage Habits and pausing.
+- All of `timedHabits`: Last bite, Stop/Finish, phase alerts, breathing shapes and
+  past-target sessions, Live Activities without Finish, reports and moods.
+- `reminders` renamed "Reminders & Places"; `locationReminders` covers days, time of
+  day, and how often.
+- `insights` renamed "For You & Insights"; `youTab`, `patterns`, `history`, `aboutYou`
+  rewritten for 2.0.
+- `healthAndConnectivity/appleHealth`: any habit links to a measure; regional units.
+- `healthAndConnectivity/icloudSync`, `appleWatch`, `widgets`, `dataManagement`.
+- `personalize` renamed "Make It Yours"; `preferences` is now General; `customizeHome`,
+  `profile` (with Your Goals) and `timezone` follow the new Settings.
+- `tips/twoMinRule`, `tips/helpAndFeedback`.
+
+### Removed
+
+- `personalize/labs`: Ritualist Labs isn't in release builds.
+
 ## [2.0.0] - 2026-09-16
 
 Checked against Ritualist 2.0.1. Full rewrite: the previous guide predated the

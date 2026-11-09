@@ -132,22 +132,22 @@ const lensMoments = [
 ];
 
 const freeBenefits = [
-  'Core habit tracking',
-  'Up to 5 active habits',
-  'Streaks and basic progress',
-  'iCloud sync',
-  'Apple Watch companion basics',
-  'Apple Health integration',
-  'Location reminders',
+  'Check, count, measure, and timed habits',
+  'Up to 5 active habits and 3 places',
+  'Fasting and breathing guides',
+  'Streaks, achievements, and Bronze challenges',
+  'Time and place reminders',
+  'Apple Health, widgets, and Siri',
+  'iCloud sync and Apple Watch',
 ];
 
 const proBenefits = [
-  'Unlimited active habits',
-  'Advanced analytics and heatmaps',
-  'Personality insights and assistant features',
-  'Richer challenge and achievement review',
-  'Power-user history and progress tools',
-  'Backup, restore, import, and export tools',
+  'Unlimited habits and places',
+  'About You: what your habits say about you',
+  'Silver and Gold in every challenge',
+  'Every fasting coach, with a pep talk at every stage',
+  'Breathing flowers, your own patterns, and What Calms You',
+  'Smart Scheduling and restoring backups',
 ];
 
 const ritualStyleOptions = [
@@ -170,23 +170,23 @@ const ritualStyleOptions = [
 
 const proPlanPrices = [
   {
-    name: 'Weekly',
-    price: '$2.99',
-    cadence: '/ week',
-    note: 'Flexible access',
-  },
-  {
     name: 'Monthly',
-    price: '$4.99',
+    price: '$9.99',
     cadence: '/ month',
-    note: 'Best for building momentum',
+    note: 'Cancel anytime',
   },
   {
     name: 'Annual',
-    price: '$19.99',
+    price: '$49.99',
     cadence: '/ year',
     note: '1 week free trial',
     featured: true,
+  },
+  {
+    name: 'Lifetime',
+    price: '$99.99',
+    cadence: 'once',
+    note: 'Pay once, Pro for good',
   },
 ];
 
@@ -209,7 +209,7 @@ const faqItems = [
   {
     question: 'What can Ritualist track?',
     answer:
-      'Ritualist supports simple habits, numeric habits, timed habits like fasting and breathing, Apple Health-connected habits, and routines that need reminders or location context.',
+      'Ritualist has four kinds of habits: ones you check off, count, measure (like your weight), or time (fasting and breathing). Habits can repeat on your own schedule, aim for a number of days or a total each week or month, link to Apple Health, and remind you at a time or a place.',
   },
   {
     question: 'Does Ritualist work on Apple Watch?',
@@ -219,12 +219,12 @@ const faqItems = [
   {
     question: 'What are Live Activities for?',
     answer:
-      'Live Activities are designed for timed habits. They keep active fasting or breathing sessions visible on supported system surfaces while the session runs.',
+      'Live Activities follow a running fast on the Lock Screen and in the Dynamic Island: your time, your body\'s phase, and a short pep talk, up to date while the app is closed.',
   },
   {
-    question: 'What is the You tab?',
+    question: 'What is the For You tab?',
     answer:
-      'The You tab brings together achievements, challenges, streaks, and personal insights so progress has one clear place to live.',
+      'For You brings together your streaks, About You, Patterns, and History, so your progress has one clear place to live. Challenges and achievements have a tab of their own.',
   },
   {
     question: 'Is my data private?',
@@ -239,12 +239,12 @@ const faqItems = [
   {
     question: 'How much does Ritualist Pro cost?',
     answer:
-      'Ritualist Pro supports weekly, monthly, and annual plans: $2.99 per week, $4.99 per month, or $19.99 per year. The annual plan includes a 1 week free trial.',
+      'Ritualist Pro comes three ways: Monthly at $9.99 a month, Annual at $49.99 a year with a 1 week free trial, or Lifetime at $99.99, paid once with no renewals. Prices may vary by region.',
   },
   {
     question: 'Do I need Pro for Apple Health or location reminders?',
     answer:
-      'No. Apple Health integration and location reminders are available in the free version. Pro is focused on unlimited active habits, deeper insights, and power-user data tools.',
+      'No. Apple Health and time and place reminders are free. Pro adds unlimited habits and places, About You, Silver and Gold challenge tiers, every fasting coach, breathing flowers, and restoring backups.',
   },
 ];
 
@@ -1389,7 +1389,7 @@ export default function Home() {
                 <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#075cb5] dark:text-[#7bdcff]">Ritualist Pro</p>
                 <h3 className="mt-2 text-3xl font-bold text-[#15181c] dark:text-white">Unlock the full system</h3>
                 <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-200">
-                  Choose the rhythm that fits you. Annual starts with a 1 week free trial.
+                  Choose the rhythm that fits you. Annual starts with a 1 week free trial, and Lifetime is paid once.
                 </p>
                 <div className="mt-6 grid gap-3 sm:grid-cols-3">
                   {proPlanPrices.map((plan) => (
@@ -1408,8 +1408,8 @@ export default function Home() {
                         </span>
                       )}
                       <p className="text-sm font-bold text-[#15181c] dark:text-white">{plan.name}</p>
-                      <div className="mt-3 flex items-baseline gap-1">
-                        <span className="text-3xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>
+                      <div className="mt-3 flex flex-wrap items-baseline gap-x-1">
+                        <span className="text-2xl font-extrabold tracking-tight text-[#15181c] dark:text-white">{plan.price}</span>
                         <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">{plan.cadence}</span>
                       </div>
                       {!plan.featured && (
@@ -1423,7 +1423,7 @@ export default function Home() {
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <p className="text-xs font-medium leading-5 text-slate-600 dark:text-slate-300">
-                    Subscribe and manage plans through your App Store account.
+                    Buy and manage plans through your App Store account. Monthly and Annual renew until cancelled; Lifetime never renews.
                   </p>
                 </div>
               </div>
@@ -1436,7 +1436,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="FAQ"
               title="Questions, answered."
-              body="A quick look at devices, Live Activities, privacy, the You tab, and Ritualist Pro."
+              body="A quick look at devices, Live Activities, privacy, the For You tab, and Ritualist Pro."
             />
             <div className="mt-10">
               {faqItems.map((item, index) => (

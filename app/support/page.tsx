@@ -1,11 +1,101 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import CookieSettingsButton from '../components/CookieSettingsButton';
 
 export const metadata: Metadata = {
   title: 'Support - Ritualist',
   description: 'Get help and support for Ritualist habit tracker.',
 };
+
+type Faq = { question: string; answer: ReactNode };
+
+const faqs: Faq[] = [
+  {
+    question: 'Is Ritualist free to use?',
+    answer: 'Yes. The free version includes all four kinds of habits (check, count, measure, and timed), up to 5 active habits and 3 places, fasting and breathing with their guides, reminders, Apple Health, widgets, Siri, iCloud sync, Apple Watch, and the Bronze tier of every challenge. Ritualist Pro adds unlimited habits and places, About You, Silver and Gold challenge tiers, every fasting coach, breathing flowers and your own patterns, Smart Scheduling, and restoring backups.',
+  },
+  {
+    question: 'How much does Ritualist Pro cost?',
+    answer: 'Pro comes three ways: Monthly at $9.99 a month, Annual at $49.99 a year with a 1-week free trial, or Lifetime at $99.99, paid once. Prices may vary by region, and the app shows the price in your currency before you buy.',
+  },
+  {
+    question: 'What is Lifetime?',
+    answer: 'Lifetime is a one-time purchase: you pay once and keep Pro, with no renewals and nothing more to pay. It belongs to the Apple ID that bought it, so you can restore it on your other devices.',
+  },
+  {
+    question: 'Can I switch from a subscription to Lifetime?',
+    answer: 'Yes. Buy Lifetime from the Pro page, then cancel your subscription in your Apple ID settings so it doesn\'t renew. Your subscription stays active until the end of the period you already paid for.',
+  },
+  {
+    question: 'How do I restore my purchases?',
+    answer: 'Open the Pro page in Ritualist, for example from Settings, and tap Restore Purchases. Your subscription or Lifetime purchase comes back on any device signed in with the same Apple ID.',
+  },
+  {
+    question: 'How do I cancel my subscription?',
+    answer: 'Subscriptions are managed through your Apple ID: open the Settings app, tap your name, then Subscriptions. Cancel at least 24 hours before the end of the current period to stop the next renewal. Lifetime has nothing to cancel.',
+  },
+  {
+    question: 'What happens to my habits if my subscription ends?',
+    answer: 'Nothing is deleted. If you have more than the free limits, the habits and places beyond them are paused, keeping their history, until you upgrade again or remove some.',
+  },
+  {
+    question: 'Which devices are supported?',
+    answer: 'Ritualist runs on iPhone and iPad with iOS 18 or later, with a companion Apple Watch app. Your data syncs across iPhone and iPad through iCloud, and the watch stays in sync with your iPhone even when iCloud sync is off.',
+  },
+  {
+    question: 'What can I do on Apple Watch?',
+    answer: 'See today\'s habits and progress, check off habits, change amounts, set a Measure habit\'s reading with the Digital Crown, and start or stop fasts and breathing sessions.',
+  },
+  {
+    question: 'What are Measure habits and weekly goals?',
+    answer: 'A Measure habit records a reading, like your weight or waist, and shows its trend. Any habit can also repeat on a schedule of its own (every few days, weeks, months, or years) or aim for a number of days or a total each week or month, such as 3 workouts a week or 70,000 steps a week.',
+  },
+  {
+    question: 'How do fasting and breathing work?',
+    answer: 'Fasting follows your fast phase by phase, with a guide, alerts as each phase begins, a Live Activity, and a report at the end. Breathing paces every breath with a shape that opens and closes and haptics you can follow with your eyes closed. Both keep a history of your sessions and moods.',
+  },
+  {
+    question: 'Who are the fasting coaches?',
+    answer: 'Your fasting coach is a hero who speaks in your alerts, Live Activity, and guide: Taisu, Wren, Moss, Pip, Luna, or Bruno, each with its own tone. Taisu is free, and the others come with Pro. The guide\'s advice is the same whichever you choose.',
+  },
+  {
+    question: 'Can I use Siri?',
+    answer: 'Yes. Say "Start a fast in Ritualist", "Stop my fast in Ritualist", "How long have I been fasting in Ritualist", or "Breathe with Ritualist". The same actions are in the Shortcuts app and Spotlight, and Start Fast and Breathe can go in Control Center, on the Lock Screen, or on the Action button.',
+  },
+  {
+    question: 'What are challenges?',
+    answer: 'Every month brings a new challenge, with seasonal ones and lifetime paths too. Reach Bronze, then Silver and Gold, each a medal. Bronze is free; Silver and Gold come with Pro, and days you\'ve already done count when you upgrade.',
+  },
+  {
+    question: 'How does About You work?',
+    answer: 'About You reads the habits you keep to estimate your Big Five personality traits, suggests activities that suit you, and shows how your traits change over time. It runs only with your consent, entirely on your device, can be locked with Face ID, and is guidance, not a psychological assessment. It\'s part of Pro.',
+  },
+  {
+    question: 'Is my data private?',
+    answer: <>Yes. Your habits stay on your device and in your own iCloud account. About You and the fasting coach&apos;s pep talks are worked out on your device. We never see your habits or personal information; we only receive anonymous usage analytics, described in the <Link href="/privacy" className="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</Link>.</>,
+  },
+  {
+    question: 'Is my data synced across devices?',
+    answer: 'Yes. Your habits, progress, places, and profile sync through iCloud automatically. On a new device or after reinstalling, Ritualist brings your habits back from iCloud.',
+  },
+  {
+    question: 'Does Ritualist work with Apple Health?',
+    answer: 'Yes, for free. Link any habit except a fast to a Health measure, such as steps, water, sleep, mindful minutes, or weight, and let Health fill it in, send your logs to Health, or both. Your Health data is never sent to us or to analytics.',
+  },
+  {
+    question: 'How do I back up my data?',
+    answer: 'Open Settings › iCloud & Backups and tap Save Backup to save your habits, logs, and profile to a file. Restoring a backup is part of Pro.',
+  },
+  {
+    question: 'Which languages does Ritualist support?',
+    answer: 'English, German, Spanish, French, and Romanian.',
+  },
+  {
+    question: 'Can I share my progress?',
+    answer: 'Yes. Earned achievements can be shared as cards with your streak, a perfect day, or your weekly recap, and so can a fast\'s report and your About You archetype. Cards carry a QR code to Ritualist and nothing private.',
+  },
+];
 
 export default function SupportPage() {
   return (
@@ -43,71 +133,15 @@ export default function SupportPage() {
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-4">Frequently Asked Questions</h2>
 
           <div className="space-y-3">
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Is Ritualist free to use?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Ritualist offers a free version with core features. Premium features like advanced analytics and unlimited habits are available through a subscription.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Which devices are supported?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Ritualist is available for iPhone, iPad, and Apple Watch. Your data syncs seamlessly across iPhone and iPad via iCloud, and the watch app stays in sync with your iPhone over WatchConnectivity even when iCloud sync is off.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Does Ritualist work with Apple Watch?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist ships with a companion Apple Watch app that stays in sync with your iPhone over WatchConnectivity. See today&apos;s habits at a glance, log binary and numeric ones from your wrist, and check your progress without reaching for your phone — even when iCloud sync is off.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Is my data private?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes. Your habit data stays on your device and in your personal iCloud account. Personality insights are processed entirely on-device. We never have access to your habits or personal information; we only receive anonymous usage analytics, described in the <Link href="/privacy" className="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</Link>.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">How does the personality analysis work?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Our on-device ML model analyzes your habit patterns to generate insights about your Big Five personality traits. All processing happens locally on your device for complete privacy.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Is my data synced across devices?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist uses iCloud to sync your habits, progress, and settings across all your Apple devices automatically.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">How do I export my data?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Go to Settings &gt; Export Data to download a backup of all your habits and progress in standard formats like CSV and JSON.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">How do I restore my purchases?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Go to Settings &gt; tap &ldquo;Restore Purchases&rdquo; to restore any previous subscriptions on your current device.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">How do I cancel my subscription?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Subscriptions are managed through your Apple ID. Go to Settings &gt; Apple ID &gt; Subscriptions to manage or cancel.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Does Ritualist work with Apple Health?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist can read and write health data like mindful minutes, steps, and water intake. Health integration is optional, disabled by default, and your health data stays on your device and in your personal iCloud account, and is never sent to us or to analytics.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">What are timed habits?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Timed habits let you track fasting and breathing exercises with built-in protocols. Start a fasting timer, follow guided breathing patterns, log your mood during sessions, and view your history.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Which languages does Ritualist support?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Ritualist is available in English, German, Spanish, French, and Romanian.</p>
-            </div>
-
-            <div className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
-              <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">Can I share my achievements?</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">Yes! Ritualist generates shareable snapshot cards for streak milestones, perfect days, and weekly recaps. Share them directly from the app to celebrate your progress.</p>
-            </div>
+            {faqs.map((faq) => (
+              <div key={faq.question} className="bg-zinc-50 dark:bg-zinc-900 border-l-4 border-blue-500 rounded-r-lg px-4 py-4">
+                <h3 className="font-semibold text-blue-600 dark:text-blue-400 mb-1">{faq.question}</h3>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">{faq.answer}</p>
+              </div>
+            ))}
           </div>
+
+          <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">For step-by-step help with every feature, see the <Link href="/user-guide" className="text-blue-600 dark:text-blue-400 hover:underline">User Guide</Link>.</p>
         </section>
 
         <div className="text-center pb-8 border-t border-zinc-200 dark:border-zinc-800 pt-8">
