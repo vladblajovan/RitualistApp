@@ -779,12 +779,12 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
-    <div className="mx-auto mt-8 flex w-full max-w-[440px] items-center gap-1.5">
+    <div className="mx-auto mt-8 flex w-full max-w-[440px] items-center justify-center gap-1.5">
       <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
         <HiChevronLeft className="h-5 w-5" aria-hidden />
       </button>
     <motion.div
-      className="relative h-12 min-w-0 flex-1 cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+      className={cn('relative h-12 min-w-0 cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing', showsNeighbours && 'flex-1')}
       role="tablist"
       aria-label="What Ritualist does"
       onPanEnd={(_, info) => {
@@ -797,7 +797,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
         onChoose(index + (event.deltaX > 0 ? 1 : -1));
         window.setTimeout(() => (wheelLock.current = false), 500);
       }}
-      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' }}
+      style={showsNeighbours ? { maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' } : { width: widthAt(0) + 8 }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowRight') onChoose(index + 1);
         if (event.key === 'ArrowLeft') onChoose(index - 1);
@@ -1189,7 +1189,7 @@ function MobileAppStoreBar() {
           <Image src="/brand-icon-128.png" alt="" width={36} height={36} className="rounded-[9px]" />
           <div className="min-w-0">
             <p className="text-sm font-bold text-[#15181c] dark:text-white">Ritualist</p>
-            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Free download. Annual Pro: 1 week free.</p>
+            <p className="truncate text-xs text-slate-600 dark:text-slate-300">Annual Pro: 1 week free</p>
           </div>
         </div>
         <AppStoreBadge placement="sticky_mobile" size="small" />
