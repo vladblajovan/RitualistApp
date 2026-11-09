@@ -636,9 +636,8 @@ function Hero() {
               </motion.p>
             </AnimatePresence>
           </div>
-          <div className="mt-4 flex flex-col items-center gap-4 lg:items-start">
+          <div className="mt-4 flex flex-col items-center lg:items-start">
             <AppStoreBadge placement="hero" tone="light" />
-            <PlanStrip placement="hero" />
           </div>
         </motion.div>
 
@@ -675,7 +674,7 @@ function SceneCarousel({ index, onChoose }: { index: number; onChoose: (index: n
 
   return (
     <motion.div
-      className="relative mx-auto mt-10 h-12 w-full max-w-[440px] cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing sm:mt-12"
+      className="relative mx-auto mt-5 h-12 w-full max-w-[440px] cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
       role="tablist"
       aria-label="What Ritualist does"
       onPanEnd={(_, info) => {
