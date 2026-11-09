@@ -667,7 +667,8 @@ function Hero() {
 }
 
 /** The scenes as a carousel under the phone: one track of cards that slides, the current one centred and its neighbours faded. */
-const carouselCardWidth = 150;
+const carouselGap = 6;
+const carouselFallbackWidth = 120;
 
 function SceneCarousel({
   index,
@@ -681,12 +682,32 @@ function SceneCarousel({
   onTogglePause: () => void;
 }) {
   const wheelLock = useRef(false);
+  const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [widths, setWidths] = useState<number[]>(() => scenes.map(() => carouselFallbackWidth));
   const count = scenes.length;
+
+  // Cards keep their own width, so the track packs them with an even gap.
+  useEffect(() => {
+    const measure = () => setWidths(scenes.map((_, i) => cardRefs.current[i]?.offsetWidth ?? carouselFallbackWidth));
+    measure();
+    document.fonts?.ready.then(measure);
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  const widthAt = (offset: number) => widths[(index + offset + count * 2) % count];
+  const centerOffset = (distance: number) => {
+    if (distance === 0) return 0;
+    const sign = Math.sign(distance);
+    let x = widthAt(0) / 2;
+    for (let step = 1; step < Math.abs(distance); step++) x += carouselGap + widthAt(step * sign);
+    return sign * (x + carouselGap + widthAt(distance) / 2);
+  };
   const control =
     'flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white/85 transition hover:bg-white/20 hover:text-white';
 
   return (
-    <div className="mx-auto mt-8 flex w-full max-w-[480px] items-center gap-1.5">
+    <div className="relative left-1/2 mt-8 flex w-[min(100vw-2rem,640px)] -translate-x-1/2 items-center gap-1.5">
       <button type="button" onClick={() => onChoose(index - 1)} className={control} aria-label="Previous">
         <HiChevronLeft className="h-5 w-5" aria-hidden />
       </button>
@@ -704,7 +725,7 @@ function SceneCarousel({
         onChoose(index + (event.deltaX > 0 ? 1 : -1));
         window.setTimeout(() => (wheelLock.current = false), 500);
       }}
-      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 25%, #000 75%, transparent)' }}
+      style={{ maskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)', WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent)' }}
       onKeyDown={(event) => {
         if (event.key === 'ArrowRight') onChoose(index + 1);
         if (event.key === 'ArrowLeft') onChoose(index - 1);
@@ -716,7 +737,7 @@ function SceneCarousel({
         if (distance > count / 2) distance -= count;
         if (distance < -count / 2) distance += count;
         const isCurrent = distance === 0;
-        const isVisible = Math.abs(distance) <= 1;
+        const isVisible = Math.abs(distance) <= 2;
         const Icon = item.icon;
         return (
           <motion.button
@@ -727,14 +748,17 @@ function SceneCarousel({
             tabIndex={isVisible ? 0 : -1}
             onClick={() => onChoose(index + distance)}
             initial={false}
-            animate={{ x: distance * carouselCardWidth, opacity: isCurrent ? 1 : isVisible ? 0.4 : 0, scale: isCurrent ? 1 : 0.9 }}
+            animate={{ x: centerOffset(distance) - widths[itemIndex] / 2, opacity: isCurrent ? 1 : Math.abs(distance) === 1 ? 0.55 : isVisible ? 0.3 : 0 }}
             transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9, opacity: { duration: 0.3 } }}
-            className="absolute left-1/2 top-0 flex h-12 items-center justify-center"
-            style={{ width: carouselCardWidth, marginLeft: -carouselCardWidth / 2, pointerEvents: isVisible ? 'auto' : 'none' }}
+            ref={(element) => {
+              cardRefs.current[itemIndex] = element;
+            }}
+            className="absolute left-1/2 top-0 flex h-12 items-center"
+            style={{ pointerEvents: isVisible ? 'auto' : 'none' }}
           >
             <span
               className={cn(
-                'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-sm font-semibold transition-colors duration-300',
+                'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors duration-300',
                 isCurrent ? 'border-transparent text-white shadow-lg' : 'border-white/20 bg-white/10 text-white/85',
               )}
               style={isCurrent ? { background: item.accent } : undefined}
