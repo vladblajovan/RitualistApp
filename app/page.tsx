@@ -246,31 +246,6 @@ function AppStoreBadge({ placement, size = 'large', tone = 'dark' }: { placement
   );
 }
 
-/** The three Pro plans in a line, Annual leading with its free week; links to the pricing section. */
-function PlanStrip({ placement }: { placement: string }) {
-  return (
-    <a
-      href="#pricing"
-      onClick={() => track('plan_strip_click', 'conversion', placement)}
-      className="group flex flex-wrap items-stretch justify-center gap-2 lg:justify-start"
-      aria-label="Ritualist is free to download. Pro: Annual $49.99 a year, with 1 week free for new subscribers, Monthly $9.99, or Lifetime $99.99. See the plans."
-    >
-      <span className="flex flex-col rounded-2xl bg-gradient-to-br from-[#ffcf4d] to-[#ff9f0a] px-3.5 py-2 text-left text-[#2a1800] shadow-[0_10px_30px_rgba(255,159,10,0.35)] transition group-hover:-translate-y-0.5">
-        <span className="text-[10px] font-extrabold uppercase tracking-wider">Annual · new? 1 week free</span>
-        <span className="text-base font-extrabold leading-tight">$49.99<span className="text-xs font-bold"> /year</span></span>
-      </span>
-      <span className="flex flex-col rounded-2xl border border-white/20 bg-white/10 px-3.5 py-2 text-left text-white transition group-hover:-translate-y-0.5">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">Monthly</span>
-        <span className="text-base font-extrabold leading-tight">$9.99<span className="text-xs font-bold text-white/70"> /month</span></span>
-      </span>
-      <span className="flex flex-col rounded-2xl border border-white/20 bg-white/10 px-3.5 py-2 text-left text-white transition group-hover:-translate-y-0.5">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-white/70">Lifetime</span>
-        <span className="text-base font-extrabold leading-tight">$99.99<span className="text-xs font-bold text-white/70"> once</span></span>
-      </span>
-    </a>
-  );
-}
-
 function PhoneShot({ src, alt, className, priority = false }: { src: string; alt: string; className?: string; priority?: boolean }) {
   return (
     <div className={cn('iphone-frame', className)}>
@@ -638,7 +613,7 @@ function FloatingChips({ sceneKey }: { sceneKey: string }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.95, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.4, delay: 0.25 + slot * 0.18 }}
-                className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/80 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur-md dark:bg-[#132233]/80 dark:ring-white/10"
+                className="flex max-w-[8.5rem] items-center gap-2 rounded-2xl bg-white/80 py-1.5 pl-1.5 pr-3 shadow-[0_10px_28px_rgba(15,23,42,0.18)] ring-1 ring-black/5 backdrop-blur-md dark:bg-[#132233]/80 dark:ring-white/10"
               >
                 {chip.image ? (
                   <Image src={shot(chip.image)} alt="" width={64} height={64} className={cn('h-7 w-7 shrink-0 object-cover', chip.round ? 'rounded-full' : 'rounded-lg')} />
@@ -647,7 +622,7 @@ function FloatingChips({ sceneKey }: { sceneKey: string }) {
                     {Icon && <Icon className="h-4 w-4" aria-hidden />}
                   </span>
                 )}
-                <span className="text-[12px] font-bold text-[#15181c] dark:text-white">{chip.text}</span>
+                <span className="text-[12px] font-bold leading-tight text-[#15181c] dark:text-white">{chip.text}</span>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -1132,11 +1107,8 @@ function PricingSection() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-col items-center gap-3 text-center sm:flex-row sm:text-left">
+            <div className="mt-8 flex justify-center sm:justify-start">
               <AppStoreBadge placement="pricing_pro" />
-              <p className="text-xs leading-5 text-slate-600 dark:text-slate-300">
-                Download free; new subscribers start Annual with a free week in the app. Prices in US dollars; the App Store shows yours. Monthly and Annual renew until cancelled.
-              </p>
             </div>
           </motion.div>
         </div>
@@ -1208,10 +1180,6 @@ function FinalCta() {
         </div>
         <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">The best day to start is today.</h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/80">Pick a habit, tap it once, and watch your first day turn green.</p>
-        <div className="mt-8 flex flex-col items-center gap-3">
-          <AppStoreBadge placement="bottom_cta" tone="light" />
-          <PlanStrip placement="bottom_cta" />
-        </div>
       </motion.div>
     </section>
   );
