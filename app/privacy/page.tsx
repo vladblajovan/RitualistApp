@@ -26,7 +26,7 @@ export default function PrivacyPage() {
 
       <main className="mx-auto max-w-3xl px-6 py-12">
         <h1 className="text-3xl font-bold mb-1">Privacy Policy</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: October 25, 2026</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-10">Last updated: November 10, 2026</p>
 
         <section className="mb-8 pb-8 border-b border-zinc-200 dark:border-zinc-800">
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Introduction</h2>
@@ -122,7 +122,7 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Active Data:</strong> Your data is retained as long as you use the app</li>
             <li><strong>Deleted Habits:</strong> When you delete a habit, it is removed from your device and iCloud within 30 days</li>
-            <li><strong>Account Deletion:</strong> You can delete all your data at any time from Settings &gt; Data Management &gt; Delete All Data</li>
+            <li><strong>Account Deletion:</strong> You can delete all your data at any time from Settings &gt; iCloud &amp; Backups &gt; Delete All Data</li>
           </ul>
         </section>
 
@@ -130,8 +130,10 @@ export default function PrivacyPage() {
           <h2 className="text-lg font-semibold text-blue-600 dark:text-blue-400 mb-3">Your Rights</h2>
           <ul className="list-disc pl-5 space-y-1 text-zinc-700 dark:text-zinc-300">
             <li><strong>Access:</strong> View all your data within the app</li>
-            <li><strong>Export:</strong> Export your habit data (available with Pro subscription)</li>
+            <li><strong>Export:</strong> Export your habit data from Settings &gt; iCloud &amp; Backups &gt; Export; importing it again is part of Ritualist Pro</li>
             <li><strong>Deletion:</strong> Delete all your data from Settings at any time</li>
+            <li><strong>Analytics:</strong> Turn off anonymous usage analytics in Settings &gt; Privacy &amp; Data &gt; Share Usage Analytics (Ritualist 2.1 and later); nothing more is sent from that device</li>
+            <li><strong>All your choices:</strong> <Link href="/privacy-choices" className="text-blue-600 dark:text-blue-400 hover:underline">Your Privacy Choices</Link> lists each one and where to make it</li>
             <li><strong>Portability:</strong> Your data syncs via iCloud and can be accessed on any of your Apple devices</li>
           </ul>
         </section>
@@ -174,6 +176,7 @@ export default function PrivacyPage() {
             <li>Not shared with third parties for marketing</li>
             <li>Processed and stored in the European Union</li>
           </ul>
+          <p className="mb-3 text-zinc-700 dark:text-zinc-300">You can turn analytics off in Settings &gt; Privacy &amp; Data &gt; Share Usage Analytics (Ritualist 2.1 and later). Delete All Data also gives the app a new anonymous identifier.</p>
           <p className="mb-4 text-zinc-700 dark:text-zinc-300">We do not use any advertising networks, data brokers, or crash reporting services.</p>
           <h3 className="font-semibold mb-2">Feature Roadmap (Sidetrack)</h3>
           <p className="text-zinc-700 dark:text-zinc-300">The in-app roadmap is provided by <a href="https://sidetrack.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Sidetrack</a>. Opening it loads the list of planned features and their vote counts; voting for a feature sends an anonymous vote for that feature. No identifier or personal data is sent with it.</p>

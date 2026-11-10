@@ -10,6 +10,7 @@ const pages: { path: string; changeFrequency: MetadataRoute.Sitemap[number]['cha
   { path: '/roadmap/', changeFrequency: 'weekly', priority: 0.6 },
   { path: '/support/', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/privacy/', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/privacy-choices/', changeFrequency: 'yearly', priority: 0.3 },
   { path: '/terms/', changeFrequency: 'yearly', priority: 0.3 },
 ]
 
