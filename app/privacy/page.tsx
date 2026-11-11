@@ -132,7 +132,7 @@ export default function PrivacyPage() {
             <li><strong>Access:</strong> View all your data within the app</li>
             <li><strong>Export:</strong> Export your habit data from Settings &gt; iCloud &amp; Backups &gt; Export; importing it again is part of Ritualist Pro</li>
             <li><strong>Deletion:</strong> Delete all your data from Settings at any time</li>
-            <li><strong>Analytics:</strong> Turn off anonymous usage analytics in Settings &gt; Privacy &amp; Data &gt; Share Usage Analytics (Ritualist 2.1 and later); nothing more is sent from that device</li>
+            <li><strong>Analytics:</strong> Turn off anonymous usage analytics in Settings &gt; iCloud &amp; Backups &gt; Share Usage Analytics (Ritualist 2.1 and later); nothing more is sent from that device</li>
             <li><strong>All your choices:</strong> <Link href="/privacy-choices" className="text-blue-600 dark:text-blue-400 hover:underline">Your Privacy Choices</Link> lists each one and where to make it</li>
             <li><strong>Portability:</strong> Your data syncs via iCloud and can be accessed on any of your Apple devices</li>
           </ul>
@@ -176,7 +176,7 @@ export default function PrivacyPage() {
             <li>Not shared with third parties for marketing</li>
             <li>Processed and stored in the European Union</li>
           </ul>
-          <p className="mb-3 text-zinc-700 dark:text-zinc-300">You can turn analytics off in Settings &gt; Privacy &amp; Data &gt; Share Usage Analytics (Ritualist 2.1 and later). Delete All Data also gives the app a new anonymous identifier.</p>
+          <p className="mb-3 text-zinc-700 dark:text-zinc-300">You can turn analytics off in Settings &gt; iCloud &amp; Backups &gt; Share Usage Analytics (Ritualist 2.1 and later). Delete All Data also gives the app a new anonymous identifier.</p>
           <p className="mb-4 text-zinc-700 dark:text-zinc-300">We do not use any advertising networks, data brokers, or crash reporting services.</p>
           <h3 className="font-semibold mb-2">Feature Roadmap (Sidetrack)</h3>
           <p className="text-zinc-700 dark:text-zinc-300">The in-app roadmap is provided by <a href="https://sidetrack.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Sidetrack</a>. Opening it loads the list of planned features and their vote counts; voting for a feature sends an anonymous vote for that feature. No identifier or personal data is sent with it.</p>

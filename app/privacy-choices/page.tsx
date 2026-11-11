@@ -75,7 +75,7 @@ export default function PrivacyChoicesPage() {
 
         <section className={section}>
           <h2 className={heading}>How Your Data Is Used</h2>
-          <Choice title="Anonymous usage analytics" where={<>Settings › Privacy &amp; Data › Share Usage Analytics (Ritualist 2.1 and later).</>}>
+          <Choice title="Anonymous usage analytics" where={<>Settings › iCloud &amp; Backups › Share Usage Analytics (Ritualist 2.1 and later).</>}>
             Ritualist sends anonymous data on how the app is used, never your habits or anything you write. Turn it off and nothing more is sent from that device. See the <Link href="/privacy" className={link}>Privacy Policy</Link> for exactly what it includes.
           </Choice>
           <Choice title="About You" where={<>Settings › About You, then its privacy details › Withdraw Consent.</>}>
