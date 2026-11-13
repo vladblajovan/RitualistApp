@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { trackEvent } from '../lib/analytics';
+import type { RoadmapCopy } from '../i18n/roadmap';
 
-export default function SuggestFeatureForm() {
+export default function SuggestFeatureForm({ copy }: { copy: RoadmapCopy }) {
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -11,10 +12,10 @@ export default function SuggestFeatureForm() {
   const canSubmit = title.trim().length > 0;
 
   function handleSubmit() {
-    const subject = encodeURIComponent('Ritualist - New Feature Request');
-    let body = `Feature: ${title.trim()}`;
+    const subject = encodeURIComponent(copy.mailSubject);
+    let body = `${copy.mailFeature}: ${title.trim()}`;
     if (description.trim()) {
-      body += `\n\nDescription:\n${description.trim()}`;
+      body += `\n\n${copy.mailDescription}:\n${description.trim()}`;
     }
     const encodedBody = encodeURIComponent(body);
     trackEvent({ action: 'feature_request_submit', category: 'engagement', label: title.trim() });
@@ -31,10 +32,10 @@ export default function SuggestFeatureForm() {
         <span className="text-2xl">💡</span>
         <div className="text-left flex-1">
           <p className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-            Suggest a Feature
+            {copy.suggestTitle}
           </p>
           <p className="text-xs text-blue-600 dark:text-blue-400">
-            Have an idea? Let us know and we&apos;ll consider it for the roadmap.
+            {copy.suggestLead}
           </p>
         </div>
         <svg
@@ -58,13 +59,13 @@ export default function SuggestFeatureForm() {
           <div className="space-y-3 mb-4">
             <input
               type="text"
-              placeholder="Feature title"
+              placeholder={copy.featureTitle}
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               className="w-full rounded-lg border border-blue-200 dark:border-blue-700 bg-white dark:bg-zinc-900 px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <textarea
-              placeholder="Describe your idea (optional)"
+              placeholder={copy.featureDescription}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={5}
@@ -81,11 +82,11 @@ export default function SuggestFeatureForm() {
                 : 'bg-blue-300 dark:bg-blue-800 cursor-not-allowed'
             }`}
           >
-            Send Feature Request
+            {copy.send}
           </button>
 
           <p className="mt-3 text-xs text-center text-blue-500 dark:text-blue-400">
-            This will open your email client with the details pre-filled.
+            {copy.sendNote}
           </p>
         </div>
       </div>

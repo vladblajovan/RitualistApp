@@ -3,10 +3,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { getConsent, setConsent, removeGACookies } from '../lib/analytics';
+import { localePath, splitPathname } from '../i18n/locales';
+import { siteCopy } from '../i18n/site';
 
 export default function ConsentBanner({ onConsent }: { onConsent: (granted: boolean) => void }) {
   const [visible, setVisible] = useState(false);
+  const { locale } = splitPathname(usePathname() ?? '/');
+  const copy = siteCopy[locale];
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -43,9 +48,9 @@ export default function ConsentBanner({ onConsent }: { onConsent: (granted: bool
         >
           <div className="mx-auto max-w-xl rounded-[8px] border border-slate-300 bg-white p-5 shadow-[0_18px_55px_rgba(15,23,42,0.18)] dark:border-white/20 dark:bg-[#101b2a]">
             <p className="mb-4 text-sm text-slate-700 dark:text-slate-200">
-              We use cookies for anonymous site analytics to understand how visitors interact with our site.{' '}
-              <Link href="/privacy" className="underline underline-offset-2 hover:text-black dark:hover:text-white">
-                Privacy Policy
+              {copy.cookieNotice}{' '}
+              <Link href={localePath(locale, '/privacy')} className="underline underline-offset-2 hover:text-black dark:hover:text-white">
+                {copy.privacyPolicy}
               </Link>
             </p>
             <div className="flex gap-3">
@@ -53,13 +58,13 @@ export default function ConsentBanner({ onConsent }: { onConsent: (granted: bool
                 onClick={handleAccept}
                 className="flex-1 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-black dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
-                Accept
+                {copy.accept}
               </button>
               <button
                 onClick={handleDecline}
                 className="flex-1 rounded-lg border border-slate-400 px-4 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:border-white/25 dark:text-slate-100 dark:hover:bg-white/10"
               >
-                Decline
+                {copy.decline}
               </button>
             </div>
           </div>
