@@ -386,7 +386,7 @@
             "emoji": "🎛️",
             "title": "General",
             "subtitle": "Appearance, haptics, and language",
-            "content": "Open Settings → General to:\n\n• Choose System, Light, or Dark appearance.\n• Turn Haptic Feedback on or off.\n• Pick a language: English, German, Spanish, French, or Romanian. Restart Ritualist for the change to take effect.\n\nUnder Advanced you'll find the time zone, Show App Logo, and Reset Settings, which returns your preferences and Home to their defaults. Your habits stay."
+            "content": "Open Settings → General to:\n\n• Choose System, Light, or Dark appearance.\n• Turn Haptic Feedback on or off.\n• Pick a language: English, German, Spanish, French, Italian, or Romanian. Restart Ritualist for the change to take effect.\n\nUnder Advanced you'll find the time zone, Show App Logo, and Reset Settings, which returns your preferences and Home to their defaults. Your habits stay."
           },
           {
             "key": "profile",
@@ -828,7 +828,7 @@
             "emoji": "🎛️",
             "title": "Allgemein",
             "subtitle": "Erscheinungsbild, Haptik und Sprache",
-            "content": "Öffne Einstellungen → Allgemein, um:\n\n• Das Erscheinungsbild System, Hell oder Dunkel zu wählen.\n• Haptisches Feedback ein- oder auszuschalten.\n• Eine Sprache zu wählen: Englisch, Deutsch, Spanisch, Französisch oder Rumänisch. Starte Ritualist neu, damit die Änderung wirkt.\n\nUnter Erweitert findest du die Zeitzone, App-Logo anzeigen und Einstellungen zurücksetzen, das deine Einstellungen und Home auf die Standardwerte zurücksetzt. Deine Gewohnheiten bleiben."
+            "content": "Öffne Einstellungen → Allgemein, um:\n\n• Das Erscheinungsbild System, Hell oder Dunkel zu wählen.\n• Haptisches Feedback ein- oder auszuschalten.\n• Eine Sprache zu wählen: Englisch, Deutsch, Spanisch, Französisch, Italienisch oder Rumänisch. Starte Ritualist neu, damit die Änderung wirkt.\n\nUnter Erweitert findest du die Zeitzone, App-Logo anzeigen und Einstellungen zurücksetzen, das deine Einstellungen und Home auf die Standardwerte zurücksetzt. Deine Gewohnheiten bleiben."
           },
           {
             "key": "profile",
@@ -1270,7 +1270,7 @@
             "emoji": "🎛️",
             "title": "General",
             "subtitle": "Apariencia, vibraciones e idioma",
-            "content": "Abre Ajustes → General para:\n\n• Elegir la apariencia Sistema, Claro u Oscuro.\n• Activar o desactivar la respuesta háptica.\n• Elegir un idioma: inglés, alemán, español, francés o rumano. Reinicia Ritualist para que el cambio surta efecto.\n\nEn Avanzado encontrarás la zona horaria, Mostrar logotipo y Restablecer ajustes, que devuelve tus preferencias e Inicio a sus valores por defecto. Tus hábitos se quedan."
+            "content": "Abre Ajustes → General para:\n\n• Elegir la apariencia Sistema, Claro u Oscuro.\n• Activar o desactivar la respuesta háptica.\n• Elegir un idioma: inglés, alemán, español, francés, italiano o rumano. Reinicia Ritualist para que el cambio surta efecto.\n\nEn Avanzado encontrarás la zona horaria, Mostrar logotipo y Restablecer ajustes, que devuelve tus preferencias e Inicio a sus valores por defecto. Tus hábitos se quedan."
           },
           {
             "key": "profile",
@@ -1712,7 +1712,7 @@
             "emoji": "🎛️",
             "title": "Général",
             "subtitle": "Apparence, vibrations et langue",
-            "content": "Ouvre Réglages → Général pour :\n\n• Choisir l'apparence Système, Clair ou Sombre.\n• Activer ou désactiver le retour haptique.\n• Choisir une langue : anglais, allemand, espagnol, français ou roumain. Redémarre Ritualist pour que le changement prenne effet.\n\nSous Avancé se trouvent le fuseau horaire, Afficher le logo et Réinitialiser les réglages, qui remet tes préférences et l'accueil par défaut. Tes habitudes restent."
+            "content": "Ouvre Réglages → Général pour :\n\n• Choisir l'apparence Système, Clair ou Sombre.\n• Activer ou désactiver le retour haptique.\n• Choisir une langue : anglais, allemand, espagnol, français, italien ou roumain. Redémarre Ritualist pour que le changement prenne effet.\n\nSous Avancé se trouvent le fuseau horaire, Afficher le logo et Réinitialiser les réglages, qui remet tes préférences et l'accueil par défaut. Tes habitudes restent."
           },
           {
             "key": "profile",
@@ -1762,6 +1762,448 @@
             "title": "Aide, avis et la suite",
             "subtitle": "Trouve des réponses et façonne Ritualist",
             "content": "Dans les Réglages, sous À propos :\n\n• Aide : ce Guide d'utilisation, la FAQ et l'Assistance, pour écrire à l'équipe Ritualist.\n• Nouveautés : les temps forts de chaque version.\n• Demander une fonctionnalité : vois ce qui est prévu, vote pour ce que tu veux le plus ou propose ta propre idée."
+          }
+        ]
+      }
+    ]
+  },
+  "it": {
+    "ui": {
+      "pageTitle": "Guida",
+      "subtitle": "Tutto ciò che ti serve per sfruttare al meglio Ritualist.",
+      "searchPlaceholder": "Cerca nella guida…",
+      "noResults": "Nessun risultato. Prova un'altra ricerca.",
+      "home": "Home",
+      "privacy": "Privacy",
+      "terms": "Termini",
+      "language": "Lingua",
+      "jumpToTop": "Torna su"
+    },
+    "sections": [
+      {
+        "key": "gettingStarted",
+        "color": "yellow",
+        "title": "Per iniziare",
+        "items": [
+          {
+            "key": "appTour",
+            "emoji": "🧭",
+            "title": "Orientati nell'app",
+            "subtitle": "Home, Sfide, Per te, Impostazioni e il pulsante ✦",
+            "content": "Ritualist ha quattro pannelli e una scorciatoia:\n\n• Home — le abitudini del giorno, la riga della settimana o il calendario del mese, e le schede su ciò che succede ora.\n• Sfide — le sfide mensili, stagionali e permanenti, e i tuoi traguardi.\n• Per te — le tue serie, Su di te, Schemi e Cronologia.\n• Impostazioni — il tuo profilo, le abitudini, gli assistenti, le notifiche, la sincronizzazione e l'aiuto.\n• Il pulsante ✦ accanto ai pannelli apre la Galleria delle abitudini, dove aggiungi le abitudini.\n\nPuoi anche tenere premuta l'icona dell'app Ritualist per le scorciatoie, come aggiungere un'abitudine."
+          },
+          {
+            "key": "firstSteps",
+            "emoji": "👋",
+            "title": "I tuoi primi minuti",
+            "subtitle": "Obiettivi, abitudini iniziali e un breve tour",
+            "content": "La prima volta che apri Ritualist, una breve configurazione di circa due minuti ti fa partire:\n\n1. Racconta qualcosa di te. Nome, genere e fascia d'età sono facoltativi; servono solo a personalizzare i suggerimenti e i consigli sul digiuno.\n2. Scegli fino a tre obiettivi, come dormire meglio o ritrovare la calma, e il ritmo con cui vuoi iniziare.\n3. Ritualist suggerisce tre abitudini iniziali per quegli obiettivi. Tieni quelle che ti piacciono.\n4. Un tour mostra cosa sa fare Ritualist, e Provalo ti fa esercitare a registrare su abitudini di esempio. Niente di ciò che fai lì viene salvato.\n5. Scegli promemoria a un orario o in un luogo, e consenti le notifiche.\n\nOgni pagina ha Salta in alto a destra, che passa alla pagina successiva. Puoi cambiare i tuoi obiettivi quando vuoi in Impostazioni → I tuoi obiettivi."
+          },
+          {
+            "key": "habitsGallery",
+            "emoji": "✨",
+            "title": "Galleria delle abitudini",
+            "subtitle": "Aggiungi abitudini pronte con un tocco",
+            "content": "Tocca il pulsante ✦ per aprire la Galleria delle abitudini. Offre ben oltre cento abitudini pronte, ognuna con icona, colore, pianificazione e obiettivo già impostati.\n\n• Sfoglia per categoria con i chip in alto. Per te mostra le abitudini per gli obiettivi che hai scelto, Nuove mostra le aggiunte recenti e Aggiunte mostra quelle che hai già.\n• Cerca dal campo in basso. Se non trovi nulla, tocca Crea \"…\" per iniziare un'abitudine tua con quel nome.\n• Tocca + su un suggerimento per aggiungerlo.\n\nLa galleria include protocolli di digiuno, esercizi di respirazione, abitudini di tipo Misura come Pesarsi, abitudini con obiettivi settimanali o mensili come Passi a settimana, e abitudini che Apple Health può compilare per te. Un'abitudine che hai già appare come Aggiunta, anche se l'hai creata tu."
+          },
+          {
+            "key": "createHabit",
+            "emoji": "➕",
+            "title": "Crea un'abitudine tua",
+            "subtitle": "Costruisci un'abitudine da zero",
+            "content": "Apri la Galleria delle abitudini con il pulsante ✦ e tocca + in alto.\n\n1. Scegli un'icona, scrivi un nome e scegli un colore.\n2. Scegli una categoria.\n3. In Tipo di abitudine, scegli Spunta, Conteggio, Misura o Timer.\n4. In Programma, scegli Ogni giorno, Giorni specifici o Personalizzata, e se vuoi un Momento della giornata.\n5. Aggiungi promemoria a un orario o in un luogo, e collega Apple Health se vuoi.\n6. Tocca Aggiungi abitudine.\n\nSe manca qualcosa, Ritualist scorre fino al campo che richiede la tua attenzione. Il piano gratuito ha fino a 5 abitudini attive; Pro non ha limiti."
+          },
+          {
+            "key": "trackingTypes",
+            "emoji": "🔢",
+            "title": "Spunta, Conteggio, Misura o Timer",
+            "subtitle": "Scegli come si registra un'abitudine",
+            "content": "Ogni abitudine si registra in uno di quattro modi:\n\n• Spunta — fatto o non fatto, una volta in ogni giorno previsto. Ottimo per \"Meditare\" o \"Prendere vitamine\".\n• Conteggio — una quantità verso un obiettivo, nell'unità che scegli, come \"8 bicchieri\" o \"10.000 passi\".\n• Misura — una misurazione, come il peso o il girovita. Ogni giorno tiene la misurazione più recente, e l'abitudine mostra il tuo andamento.\n• Timer — un digiuno o una sessione di respirazione, con timer e guida integrati.\n\nPuoi cambiare il tipo di un'abitudine più tardi nel suo editor. La sua cronologia resta."
+          },
+          {
+            "key": "measureHabits",
+            "emoji": "📏",
+            "title": "Abitudini di tipo Misura",
+            "subtitle": "Segui un numero nel tempo",
+            "content": "Un'abitudine di tipo Misura registra una misurazione invece di sommare: il peso, il girovita, un test di flessioni. Registrare una misurazione completa la giornata.\n\n• Tocca + sulla sua riga per aprire la scheda. Trascina il cursore o usa − e + per impostare il numero, oppure tocca il numero per scriverlo. Rimuovi cancella la misurazione del giorno.\n• Nell'editor imposta l'unità, quanti decimali mostrare e, se vuoi, un obiettivo: più basso è meglio o più alto è meglio.\n• La Home mostra la tua ultima misurazione e come è cambiata questa settimana, ad esempio \"72,4 kg · ↓0,6 questa settimana\".\n• Le statistiche mostrano le misurazioni come punti con una linea di andamento, il tuo obiettivo, il minimo e il massimo.\n\nPesarsi e Misurare il girovita nella Galleria delle abitudini sono abitudini di tipo Misura, e Apple Health può compilarle."
+          },
+          {
+            "key": "scheduling",
+            "emoji": "📅",
+            "title": "Pianificazioni, ripetizioni e obiettivi",
+            "subtitle": "Ogni giorno, giorni scelti o un piano flessibile",
+            "content": "In Programma, scegli:\n• Ogni giorno — tutti i giorni.\n• Giorni specifici — giorni della settimana scelti, come lunedì, mercoledì e venerdì.\n• Personalizzata — una pagina tutta sua per tutto il resto.\n\nIn Personalizzata, Si ripete stabilisce quando l'abitudine si presenta: ogni pochi giorni; giorni della settimana scelti ogni poche settimane; date o un giorno della settimana del mese (come l'ultimo giorno, o il primo lunedì) ogni pochi mesi; oppure date ogni pochi anni.\n\nObiettivo stabilisce cosa conta:\n• Ogni volta — fatto in ogni giorno in cui si ripete.\n• Giorni — un numero di giorni a settimana o al mese, nei giorni che preferisci, ad esempio 3 giorni a settimana.\n• Quantità — un totale per la settimana o il mese per le abitudini Conteggio e Timer, ad esempio 70.000 passi a settimana o 100 km al mese.\n\nCon un obiettivo settimanale o mensile, un giorno conta come mancato solo quando i giorni rimasti non bastano più a raggiungerlo. La Home mostra a che punto sei, ad esempio \"2 di 3 questa settimana\" o \"62 di 100 km questo mese\", e le serie contano settimane o mesi di fila.\n\nAttiva dal è il primo giorno in cui un'abitudine si può registrare, e \"ogni pochi\" si conta da lì."
+          },
+          {
+            "key": "timeOfDay",
+            "emoji": "🌅",
+            "title": "Momento della giornata",
+            "subtitle": "Mattina, pomeriggio, sera o notte",
+            "content": "Un'abitudine può appartenere a un momento della giornata: Mattina (dalle 5:00), Pomeriggio (da mezzogiorno), Sera (dalle 17:00), Notte (dalle 21:00 alle 5:00) o Tutto il giorno. Impostalo nell'editor in Programma → Momento della giornata. Automatico la colloca in base agli orari dei suoi promemoria.\n\nNella Home, le abitudini del giorno sono raggruppate per momento. Nella pagina di oggi il momento in cui ti trovi viene prima, segnato con Ora. Per disattivare il raggruppamento, vai in Impostazioni → Personalizza Home → Raggruppa per momento."
+          },
+          {
+            "key": "categories",
+            "emoji": "🏷️",
+            "title": "Categorie",
+            "subtitle": "Raggruppa le abitudini affini",
+            "content": "Ogni abitudine appartiene a una categoria, come Salute, Carriera o Finanze. Le categorie alimentano i chip delle categorie nella Home e il Rendimento per categoria in Schemi.\n\nPer aggiungere, rinominare o rimuovere categorie, tocca il pulsante dei filtri accanto ai chip nella Home e scegli Gestisci categorie, oppure vai in Impostazioni → Personalizza Home → Gestisci categorie. Disattiva lì i Filtri di categoria se preferisci non vedere i chip."
+          },
+          {
+            "key": "freeAndPro",
+            "emoji": "⭐",
+            "title": "Gratis e Pro",
+            "subtitle": "Cosa include ogni piano",
+            "content": "Il piano gratuito include tutti e quattro i tipi di abitudine, fino a 5 abitudini attive e 3 luoghi, digiuno e respirazione con le loro guide, Taisu come coach del digiuno, la sfera della respirazione, il Bronzo in ogni sfida, i traguardi, i grafici dei progressi, Apple Health, promemoria a orario e in un luogo, Siri, i widget, la sincronizzazione iCloud, Apple Watch e il salvataggio dei backup.\n\nRitualist Pro aggiunge:\n• Abitudini e luoghi illimitati\n• Su di te e il suo widget\n• Argento e Oro in ogni sfida\n• Tutti i coach del digiuno, un incoraggiamento in ogni fase e note dai tuoi digiuni\n• Nove fiori della respirazione, schemi di respirazione tuoi e Cosa ti calma\n• Le scorciatoie della Pianificazione intelligente\n• Il ripristino di un backup\n\nPro è disponibile in tre modi: Mensile a 9,99 $ al mese, Annuale a 49,99 $ all'anno con una settimana di prova gratuita, o A vita a 99,99 $, pagato una volta. I prezzi possono variare in base al paese. Mensile e Annuale si rinnovano finché non disdici; A vita non si rinnova mai. Ripristina acquisti è nella pagina Pro, e le Impostazioni mostrano il tuo piano.\n\nSe superi i limiti del piano gratuito, ad esempio quando un abbonamento finisce, le abitudini e i luoghi oltre il limite vengono messi in pausa finché non passi a Pro o ne rimuovi alcuni. Niente viene eliminato."
+          }
+        ]
+      },
+      {
+        "key": "trackingHabits",
+        "color": "green",
+        "title": "Seguire le abitudini",
+        "items": [
+          {
+            "key": "homeScreen",
+            "emoji": "🏠",
+            "title": "La tua Home",
+            "subtitle": "La tua giornata a colpo d'occhio",
+            "content": "La Home mostra le abitudini previste nel giorno che scegli.\n\n• Tocca un giorno nella riga della settimana, o scorri sulle tue abitudini, per cambiare giorno. Tocca il pulsante del calendario in alto per passare al calendario del mese.\n• Ogni giorno mostra i suoi progressi. I giorni completati del tutto sono evidenziati, e quelli parziali mostrano fin dove sei arrivato.\n• Le schede in alto mostrano ciò che succede ora: un digiuno in corso, una sfida a cui partecipare, i tuoi luoghi e altro. Scorrile, tocca ⌄ per ridurle a una riga ciascuna e − per raccoglierle in una fila di icone.\n• Tocca il chip di una categoria per vedere solo le sue abitudini, o In pausa per vedere quelle che hai messo in pausa.\n\nPuoi guardare i giorni futuri, ma si possono registrare solo oggi e i giorni passati."
+          },
+          {
+            "key": "logHabit",
+            "emoji": "✅",
+            "title": "Registra un'abitudine",
+            "subtitle": "Tocca un'abitudine per registrare i progressi",
+            "content": "La riga di ogni abitudine ha a destra un pulsante che la registra con un tocco: ✓ per un'abitudine Spunta, + per aggiungere un passo a un'abitudine Conteggio, + per aprire la scheda di un'abitudine Misura, e Inizia o Ferma per un Timer. Toccato per errore? Accanto compaiono per qualche secondo un − o una ✕ per annullare. Quando un'abitudine è completata, il pulsante apre il suo calendario.\n\nTocca l'abitudine stessa per aprire la sua scheda:\n• Spunta — segnala come fatta o non fatta.\n• Conteggio — usa − e +, le quantità rapide, o Completa per raggiungere l'obiettivo in un passo.\n• Misura — imposta la misurazione del giorno.\n• Timer — avvia e segui il tuo digiuno o la sessione di respirazione.\n\nLa barra in alto della scheda mostra il giorno, con le frecce per il giorno prima e dopo, una matita per modificare l'abitudine e un pulsante grafico che apre le sue Statistiche: andamento, calendario dei completamenti, serie migliori e ritmo settimanale."
+          },
+          {
+            "key": "quickActions",
+            "emoji": "⚡",
+            "title": "Azioni di scorrimento e menu Altro",
+            "subtitle": "Modi più rapidi per agire su un'abitudine",
+            "content": "Scorri la riga di un'abitudine a sinistra o a destra per scoprire le azioni rapide, come Completa, Registra, Inizia o Ferma, Statistiche, Modifica, Metti in pausa o Elimina. Scorri fino in fondo per eseguire la prima. Anche il pulsante ••• di una riga ha le azioni del giorno.\n\nScegli le tue azioni di scorrimento in Impostazioni → Personalizza Home → Avanzate → Azioni di scorrimento, separatamente per le abitudini Spunta, Conteggio, Misura e Timer: fino a due per lato, nell'ordine che preferisci."
+          },
+          {
+            "key": "pastDays",
+            "emoji": "📆",
+            "title": "Registra i giorni passati",
+            "subtitle": "Recupera le registrazioni mancate",
+            "content": "Hai dimenticato di registrare ieri? Scegli quel giorno nella Home, o usa le frecce nella scheda di un'abitudine, e registra come al solito. Puoi anche rimuovere una registrazione se hai sbagliato.\n\nPer le abitudini Timer, usa Registra un digiuno o Registra una sessione per aggiungerne una che non hai cronometrato dal vivo, con inizio e fine."
+          },
+          {
+            "key": "streaks",
+            "emoji": "🔥",
+            "title": "Serie",
+            "subtitle": "Costanza, giorno dopo giorno",
+            "content": "Completa un'abitudine ogni volta che è prevista per costruire una serie. I giorni in cui non è prevista non la interrompono. Un'abitudine con un obiettivo settimanale o mensile conta la serie in settimane o mesi raggiunti di fila, come \"4 sett.\", e un'abitudine che si ripete ogni pochi giorni conta le volte di fila.\n\nIn Per te, Serie mostra le tue serie attive più lunghe e quanto manca al livello successivo. Nella Home, un'abitudine può mostrare quando la sua serie è a rischio, cioè quando va ancora fatta oggi. Scegli quali indicatori compaiono in Impostazioni → Personalizza Home → Avanzate → Icone delle schede."
+          },
+          {
+            "key": "manageHabit",
+            "emoji": "✏️",
+            "title": "Modifica, metti in pausa o elimina un'abitudine",
+            "subtitle": "Cambia un'abitudine senza perderne la cronologia",
+            "content": "Per modificare un'abitudine, tocca la matita nella sua scheda, scorri la sua riga o scegli Modifica dal suo menu •••. Cambia ciò che serve, poi tocca Salva modifiche.\n\nImpostazioni → Gestisci abitudini elenca tutte le tue abitudini:\n• Tocca un'abitudine per modificarla.\n• Tienila premuta per spostarla. La Home segue questo ordine.\n• Scorri a destra per metterla in pausa o riprenderla, o a sinistra per eliminarla.\n\nUn'abitudine in pausa conserva la sua cronologia ma non invia promemoria, e compare solo sotto il chip In pausa della Home. Eliminare un'abitudine la rimuove con tutti i suoi dati, e non si può annullare."
+          }
+        ]
+      },
+      {
+        "key": "timedHabits",
+        "color": "cyan",
+        "title": "Digiuno e respirazione",
+        "items": [
+          {
+            "key": "fasting",
+            "emoji": "🍽️",
+            "title": "Digiuno",
+            "subtitle": "Digiuno intermittente e prolungato",
+            "content": "Aggiungi un protocollo di digiuno dalla Galleria delle abitudini, oppure crea un'abitudine Timer e scegli Digiuno. I protocolli vanno da 12:12, 14:10, 16:8, 18:6 e 24:0 a 36 h, 48 h, 72 h, 5 giorni e 7 giorni, e puoi crearne di tuoi.\n\n• Per iniziare, tocca Inizia. Sotto, Ultimo boccone ti fa indicare quando hai mangiato l'ultima volta: Ora, 30 min fa, 1 h fa o Altro.\n• L'anello mostra intorno le fasi del tuo digiuno. Tocca il centro per passare dal tempo di digiuno al tempo rimanente.\n• Tocca Ferma per terminare il digiuno e salvarlo. Dal tuo obiettivo in poi, il pulsante dice Termina. Un digiuno fermato nei primi due minuti si può invece rimuovere.\n• Hai dimenticato di cronometrarne uno? Usa Registra un digiuno.\n\nQuando un digiuno supera la mezzanotte, conta per il giorno in cui è iniziato. Per contarlo invece nel giorno in cui finisce, vai nella pagina del Coach del digiuno → Avanzate → Digiuni oltre la mezzanotte.\n\nLa prima volta che digiuni, ti viene chiesto di leggere e accettare un avviso sulla salute."
+          },
+          {
+            "key": "fastingGuide",
+            "emoji": "📖",
+            "title": "Guida al digiuno e resoconti",
+            "subtitle": "Segui il digiuno fase per fase",
+            "content": "Mentre digiuni, la scheda sotto l'anello dice in quale fase si trova probabilmente il tuo corpo e cosa viene dopo. Toccala, o tocca Guida, per aprire la Guida al digiuno. Ha due pannelli:\n\n• Ora — ciò che conta in questo momento del digiuno: la tua fase, Adesso con le fasi appena prima e dopo (e il tuo obiettivo dove cade), un check-in su fame ed energia con consigli adatti, il tuo coach, i tuoi stati d'animo, e Qualcosa non va? per un sollievo rapido.\n• Tutto il digiuno — ciò che vale per qualsiasi digiuno: il tuo protocollo, ogni fase, le note Per te, le bevande, come interrompere il digiuno con delicatezza e i segnali di allarme che indicano di fermarti.\n\nCon fascia d'età e genere nel profilo, la guida aggiunge note per te. Tocca (i) per vedere le fonti sanitarie dietro ogni riga. Prima di un digiuno, Cosa aspettarsi mostra un'anteprima di Tutto il digiuno.\n\nQuando un digiuno finisce, il suo resoconto mostra com'è andato: la durata rispetto all'obiettivo, le fasi raggiunte, i tuoi stati d'animo e come interrompere il digiuno. Puoi condividerlo come scheda. La guida offre informazioni generali, non consigli medici."
+          },
+          {
+            "key": "fastingCoach",
+            "emoji": "🐾",
+            "title": "Il tuo coach del digiuno",
+            "subtitle": "Scegli l'eroe che fa il tifo per te",
+            "content": "Il tuo coach del digiuno parla nell'Attività in tempo reale, negli Avvisi di digiuno e nella guida. Ci sono sei coach, peluche ognuno con una voce e un umore tutti suoi:\n\n• Taisu, un golden retriever — leale, affettuoso, fa il tifo per te.\n• Wren, un uccellino — chiaro, pratico, veloce.\n• Moss, una tartaruga — paziente, calmo, senza fretta.\n• Pip, una lepre — vivace, giocosa, piena di idee.\n• Luna, una gatta — dolce, premurosa, gentile.\n• Bruno, un orso — saldo, conciso, affidabile.\n\nScegli il tuo coach nella pagina del Coach del digiuno in Impostazioni, o con Cambia nella scheda Il tuo coach della guida. Scorri per conoscerli uno a uno: ognuno si presenta in un fumetto. Il tuo coach decide il tono e il colore dei suoi messaggi; i consigli della guida restano gli stessi. Taisu è gratuito. Gli altri coach arrivano con Pro."
+          },
+          {
+            "key": "fastingAlerts",
+            "emoji": "🔔",
+            "title": "Avvisi di digiuno",
+            "subtitle": "Aggiornamenti mentre il digiuno prosegue",
+            "content": "Mentre digiuni, Ritualist può avvisarti:\n• All'inizio di ogni fase, con il suo significato, fino al tuo obiettivo.\n• Al 25%, 50% e 75% del tuo obiettivo, se li attivi.\n• Negli ultimi minuti, quando raggiungi l'obiettivo e poco dopo averlo superato.\n• Un'ora dopo un digiuno più lungo, per chiederti com'è andata la ripresa.\n\nGli avvisi seguono il tuo digiuno e si spostano quando lo modifichi. Sceglili nella pagina del Coach del digiuno in Impostazioni, o in Impostazioni → Notifiche → Avvisi di digiuno."
+          },
+          {
+            "key": "breathing",
+            "emoji": "🫁",
+            "title": "Respirazione",
+            "subtitle": "Respirazione guidata con schemi collaudati",
+            "content": "Aggiungi un esercizio di respirazione dalla Galleria delle abitudini, oppure crea un'abitudine Timer e scegli Respirazione. Gli schemi integrati includono Respirazione quadrata, Rilassamento 4-7-8, Sospiro ciclico, Respirazione coerente, Respiro calmante, Respirazione potente e Respiro energizzante. Imposta quanti cicli in Cicli obiettivo nell'editor.\n\nDurante una sessione la Guida al respiro respira con te: una forma si apre mentre inspiri, si ferma e si chiude mentre espiri, con vibrazioni da seguire anche a occhi chiusi. L'anello mostra a che punto sei di ogni respiro.\n\n• Raggiungere l'obiettivo non termina la sessione. Continua a respirare quanto vuoi, poi tocca Ferma per salvare tutto.\n• Puoi mettere in pausa e riprendere.\n• Attenua lo schermo lo porta al nero dopo due cicli; tocca per farlo tornare.\n\nLa sfera è gratuita. Con Pro, respira come uno di nove fiori, crea schemi tuoi e scopri Cosa ti calma."
+          },
+          {
+            "key": "liveActivities",
+            "emoji": "📱",
+            "title": "Attività in tempo reale",
+            "subtitle": "Segui il digiuno dalla schermata di blocco",
+            "content": "Quando inizia un digiuno, un'Attività in tempo reale compare sulla schermata di blocco e nella Dynamic Island. Mostra il tempo, la fase del tuo corpo nel suo colore, le fasi successive e un breve incoraggiamento, e resta aggiornata anche con Ritualist chiuso, pure per digiuni più lunghi di otto ore.\n\nToccala per aprire il tuo digiuno. Per terminarlo, tocca Ferma nell'app o chiedilo a Siri. Se scorri via l'Attività in tempo reale, non torna per quel digiuno.\n\nSugli iPhone con Apple Intelligence, gli incoraggiamenti sono scritti in privato sul tuo dispositivo. Le Attività in tempo reale sono solo per il digiuno."
+          },
+          {
+            "key": "sessionHistory",
+            "emoji": "😊",
+            "title": "Sessioni, resoconti e stati d'animo",
+            "subtitle": "Scopri come ti fanno sentire le sessioni",
+            "content": "La scheda di un digiuno o di una respirazione elenca le sessioni che contano per il giorno che mostra, come Digiuni di oggi. Toccane una per aprire il suo resoconto. Usa ••• lì per modificarne gli orari o eliminarla; eliminare una sessione toglie solo il suo tempo da quel giorno.\n\nRegistra come ti senti durante una sessione o dopo, per l'intera sessione o, per un digiuno, per una delle sue fasi. Aggiungi una nota per ricordare cosa l'ha resa facile o difficile.\n\nCon Pro, Cosa ti calma confronta il tuo umore prima e dopo le sessioni di respirazione e mostra quali schemi e momenti della giornata ti calmano di più, dopo circa dieci sessioni."
+          }
+        ]
+      },
+      {
+        "key": "reminders",
+        "color": "orange",
+        "title": "Promemoria e luoghi",
+        "items": [
+          {
+            "key": "timeReminders",
+            "emoji": "⏰",
+            "title": "Promemoria a orario",
+            "subtitle": "Un promemoria al momento giusto",
+            "content": "Nell'editor dell'abitudine, apri Promemoria e aggiungi uno o più orari. I promemoria arrivano solo nei giorni in cui l'abitudine è prevista, e tacciono una volta completata. Le abitudini previste nello stesso minuto condividono una sola notifica.\n\nIl promemoria di un digiuno è la sua ora di inizio. Tieni premuta la notifica e tocca Inizia per avviare il digiuno direttamente da lì.\n\nSe un promemoria passa senza una registrazione, un promemoria di recupero può darti una spinta. Disattivalo in Impostazioni → Notifiche."
+          },
+          {
+            "key": "locationReminders",
+            "emoji": "📍",
+            "title": "Promemoria di luogo",
+            "subtitle": "Promemoria quando arrivi o te ne vai",
+            "content": "Nell'editor dell'abitudine, apri Promemoria e scegli Promemoria di luogo. Scegli uno dei tuoi luoghi, cercane uno, usa la tua posizione attuale o tocca la mappa. Poi scegli:\n\n• Quando: all'arrivo, all'uscita o entrambi.\n• Giorni: ogni giorno, nei giorni feriali, nel fine settimana o in giorni tuoi.\n• Momento della giornata: in qualsiasi momento, prima o dopo un orario, o tra due orari, ad esempio dopo le 21:00 a casa.\n• Frequenza: una volta al giorno, oppure a ogni visita, al massimo una volta all'ora.\n• Quanto vicino conta come essere lì.\n\nI promemoria di luogo sono gratuiti e richiedono l'accesso alla posizione Sempre, così funzionano anche con Ritualist chiuso. Se manca, Come consentire Sempre mostra i passaggi."
+          },
+          {
+            "key": "myPlaces",
+            "emoji": "🗺️",
+            "title": "I miei luoghi",
+            "subtitle": "I luoghi in cui le tue abitudini ti ricordano",
+            "content": "I miei luoghi mostra i tuoi luoghi su una mappa, con le abitudini che ti ricordano in ciascuno. Aprilo da Impostazioni → I miei luoghi, o dalla sua scheda nella Home.\n\n• Tocca + per aggiungere un luogo. Cerca o tocca la mappa, poi dagli un nome o scegli un suggerimento come Casa, Palestra o Parco. Scegli la sua icona e il colore.\n• Tocca Ricordamelo qui su un luogo per aggiungere lì il promemoria di un'abitudine.\n• Tocca Modifica su un luogo per rinominarlo, spostarlo, cambiarne l'aspetto o rimuoverne i promemoria.\n• Ogni promemoria ha il suo interruttore.\n\nIl piano gratuito salva fino a 3 luoghi. Con più luoghi, quelli dopo i primi tre vengono messi in pausa finché non passi a Pro o non ne elimini uno."
+          },
+          {
+            "key": "smartScheduling",
+            "emoji": "🪄",
+            "title": "Pianificazione intelligente",
+            "subtitle": "Suggerimenti dai tuoi stessi schemi",
+            "content": "Dopo che hai registrato un'abitudine per un po', il suo editor mostra la Pianificazione intelligente: l'orario in cui di solito la completi e i giorni in cui ti riesce meglio.\n\nCon Pro, tocca Aggiungi promemoria per aggiungere un promemoria al tuo orario abituale, o Usa i giorni migliori per mettere quei giorni nella sua pianificazione."
+          },
+          {
+            "key": "notificationSettings",
+            "emoji": "🔕",
+            "title": "Scegli le tue notifiche",
+            "subtitle": "Decidi cosa merita la tua attenzione",
+            "content": "Apri Impostazioni → Notifiche. In alto vedi se le notifiche sono consentite, con una scorciatoia per sistemarlo se non lo sono. Poi attiva o disattiva ogni tipo:\n\n• Abitudini — promemoria delle abitudini, promemoria di recupero, promemoria di luogo e completamenti automatici da Apple Health.\n• Digiuno e respirazione — promemoria di inizio digiuno, Avvisi di digiuno e promemoria di respirazione.\n• Progressi — traguardi delle serie, traguardi e sfide.\n• Su di te — aggiornamenti dell'analisi.\n\nDisattivare un tipo rimuove anche quelle già programmate."
+          }
+        ]
+      },
+      {
+        "key": "challenges",
+        "color": "amber",
+        "title": "Sfide e traguardi",
+        "items": [
+          {
+            "key": "challenges",
+            "emoji": "🗺️",
+            "title": "Sfide",
+            "subtitle": "Una nuova sfida ogni mese",
+            "content": "Il pannello Sfide elenca quelle a cui puoi partecipare:\n\n• Le sfide mensili e stagionali chiedono un numero di giornate complete nel loro mese o stagione. Raggiungi il Bronzo, poi l'Argento e l'Oro, ognuno una medaglia.\n• I percorsi permanenti, come Il percorso del principiante, sono tappe da completare con i tuoi tempi, con un premio alla fine.\n\nTocca una sfida per vederla, e Partecipa alla sfida per prenderne parte. Ogni sfida suggerisce un'abitudine adatta. La scheda Sfide nella Home propone la prossima a cui partecipare, con Partecipa proprio lì, e mostra quelle in cui sei.\n\nL'ingranaggio in alto in una sfida contiene le impostazioni valide per tutte: Partecipa ogni mese per unirti in automatico a ogni nuova sfida mensile, e le notifiche. C'è anche Lascia la sfida; le medaglie guadagnate restano.\n\nIl Bronzo è gratuito. Argento e Oro arrivano con Pro, e i giorni già fatti contano quando passi a Pro."
+          },
+          {
+            "key": "achievements",
+            "emoji": "🏆",
+            "title": "Traguardi",
+            "subtitle": "Medaglie per le tue tappe",
+            "content": "I traguardi si sbloccano strada facendo, senza configurare nulla. Ognuno è una medaglia di bronzo, argento, oro o platino:\n\n• Serie — da 3 giorni fino a un anno.\n• Giornate perfette — ogni abitudine prevista in un giorno completata.\n• Costanza — mantenere più abitudini, e tappe del digiuno come il tuo primo digiuno di 16 ore.\n• Riepiloghi settimanali — ripercorrere le tue settimane.\n• Premi delle sfide — completare una sfida.\n\nApri Traguardi dal pannello Sfide. Tocca una medaglia per vedere come si ottiene, scorrila per farla girare e tocca Condividi per inviare una scheda. Le medaglie guadagnate su un altro dispositivo appaiono con un badge finché non le hai viste."
+          },
+          {
+            "key": "shareCards",
+            "emoji": "🖼️",
+            "title": "Schede da condividere",
+            "subtitle": "Mostra una giornata o una settimana speciale",
+            "content": "Da un traguardo ottenuto, Condividi offre la sua scheda e il momento che c'è dietro:\n\n• Serie — la tua serie ancora in corso.\n• Giornata perfetta — quando oggi lo è.\n• Riepilogo settimanale — la settimana scorsa, con percentuale di completamento, giorno migliore e serie più lunga.\n\nAnche il resoconto di un digiuno e Su di te si possono condividere come schede. Ogni scheda ha un codice QR che porta a Ritualist sull'App Store, e niente di privato."
+          }
+        ]
+      },
+      {
+        "key": "insights",
+        "color": "blue",
+        "title": "Per te e analisi",
+        "items": [
+          {
+            "key": "youTab",
+            "emoji": "🙋",
+            "title": "Il pannello Per te",
+            "subtitle": "I tuoi progressi in un solo posto",
+            "content": "Per te riunisce i tuoi progressi:\n\n• Su di te — cosa dicono di te le tue abitudini.\n• Serie — le tue serie attive più lunghe.\n• Schemi — i tuoi giorni migliori e come vanno le tue categorie.\n• Cronologia — il tuo andamento, le serie migliori e il calendario dei completamenti.\n\nTocca una scheda per aprirla. Per una singola abitudine, apri la sua scheda e tocca il pulsante grafico per le sue Statistiche."
+          },
+          {
+            "key": "patterns",
+            "emoji": "📊",
+            "title": "Schemi",
+            "subtitle": "Quando e dove ti riesce meglio",
+            "content": "Apri Schemi in Per te e scegli un periodo dal menu in alto a destra: 7 giorni, 30 giorni, 6 mesi, 12 mesi o Da sempre.\n\n• Il tuo ritmo settimanale mostra il giorno migliore, quello più basso e la media, così puoi pianificare le abitudini più impegnative nei giorni in cui sei più forte.\n• Rendimento per categoria confronta le tue categorie. Toccane una per vedere le sue abitudini.\n\nTocca il pulsante informazioni su un grafico per sapere cosa mostra."
+          },
+          {
+            "key": "history",
+            "emoji": "📈",
+            "title": "Cronologia",
+            "subtitle": "Segui i tuoi progressi nel tempo",
+            "content": "Apri Cronologia in Per te e scegli un periodo dal menu in alto a destra.\n\n• Andamento traccia il tuo completamento nel tempo. Tocca e trascina il grafico per esplorarlo.\n• Le tue serie migliori mostra le tue giornate perfette (ogni abitudine prevista quel giorno completata), la serie più lunga di fila e quanto sei costante.\n• Completamento mostra in quali giorni è stata fatta ogni abitudine, per una sola abitudine o per tutte.\n\nOggi conta quando tutto ciò che è previsto oggi è fatto, così un giorno in corso non abbassa mai i tuoi numeri."
+          },
+          {
+            "key": "aboutYou",
+            "emoji": "🧠",
+            "title": "Su di te",
+            "subtitle": "Cosa dicono di te le tue abitudini",
+            "content": "Su di te legge le abitudini che mantieni per stimare i tuoi tratti di personalità Big Five. È una funzione Pro e per iniziare bastano tre abitudini attive.\n\nLa sua pagina mostra:\n• Il tuo tratto dominante e un archetipo per il tuo profilo.\n• Cosa spicca — qualche frase su ciò che suggeriscono le tue abitudini, e una piccola idea per questa settimana.\n• Cosa ti motiva e Attività adatte a te. Tocca un'attività per farla diventare un'abitudine tua.\n• Ogni tratto come una fascia, con Su cosa si basa che elenca gli elementi a sostegno.\n• Il tuo ritmo, e Nel tempo, che mostra come si sono mossi i tuoi tratti.\n\nAll'inizio una lettura resta vicina al centro; la sicurezza cresce da Prima lettura a Consolidata man mano che registri. Per un quadro più chiaro, fai il check-in facoltativo: venti brevi affermazioni, che contano più di qualsiasi abitudine. Tocca (i) in alto per sapere come funziona, e Condividi per inviare il tuo archetipo come scheda.\n\nScegli ogni quanto si aggiorna nelle impostazioni di Su di te. Su di te è un orientamento, non una valutazione psicologica."
+          },
+          {
+            "key": "aboutYouPrivacy",
+            "emoji": "🔒",
+            "title": "Su di te e la tua privacy",
+            "subtitle": "Privato per scelta, bloccato se vuoi",
+            "content": "Su di te funziona solo dopo il tuo consenso, e funziona interamente sul tuo dispositivo. I suoi risultati non vengono sincronizzati su iCloud né inviati altrove.\n\n• Bloccalo con Face ID, Touch ID o il codice nelle impostazioni di Su di te, alla voce Blocco. Su un dispositivo senza codice, imposta per lui un codice di sei cifre. Una volta bloccato, lo chiede ogni volta che lo apri, e il widget e le notifiche nascondono i tuoi risultati.\n• Elimina l'analisi, o ritira il consenso, quando vuoi. Così si eliminano tutti i profili su questo dispositivo, ma nessuna delle tue abitudini o registrazioni.\n\nApri le impostazioni di Su di te dall'ingranaggio in alto in Per te, o dalle Impostazioni."
+          }
+        ]
+      },
+      {
+        "key": "healthAndConnectivity",
+        "color": "pink",
+        "title": "Salute, sincronizzazione e dispositivi",
+        "items": [
+          {
+            "key": "appleHealth",
+            "emoji": "❤️",
+            "title": "Apple Health",
+            "subtitle": "Lascia che Apple Health compili le tue abitudini",
+            "content": "Qualsiasi abitudine tranne un digiuno può essere collegata a una misura di Apple Health, come passi, distanza, piani, minuti di esercizio, acqua, caffeina, sonno, minuti di consapevolezza, peso o girovita. Nell'editor dell'abitudine, apri Apple Health e scegli la misura. Se una misura richiede un altro tipo di abitudine, l'editor lo dice e la cambia per te.\n\nPoi scegli come si sincronizza:\n• Ricevi da Apple Health — Apple Health compila l'abitudine e la completa quando raggiungi l'obiettivo. La registrazione a mano è disattivata.\n• Invia ad Apple Health — ciò che registri viene salvato in Apple Health.\n• In entrambe le direzioni.\n\nLe unità seguono il tuo paese, come mL o fl oz per l'acqua. Un'abitudine di respirazione salva le sue sessioni in Apple Health come minuti di consapevolezza. Apple Health è gratuito, e Impostazioni → Apple Health mostra cosa è collegato."
+          },
+          {
+            "key": "siriShortcuts",
+            "emoji": "🎙️",
+            "title": "Siri, Comandi rapidi e controlli",
+            "subtitle": "Digiuna e respira senza mani",
+            "content": "Chiedi a Siri:\n• \"Avvia un digiuno su Ritualist\" — avvia il prossimo digiuno senza aprire l'app.\n• \"Ferma il mio digiuno su Ritualist\" — lo salva.\n• \"Da quanto sto digiunando su Ritualist\" — il tempo trascorso e quanto manca all'obiettivo.\n• \"Respira con Ritualist\", oppure nomina uno schema: \"Avvia Respirazione quadrata su Ritualist\".\n\nLe stesse azioni sono nell'app Comandi, per automazioni o la schermata Home, e in Spotlight. Inizia digiuno e Respira sono anche controlli da aggiungere al Centro di Controllo, alla schermata di blocco o al tasto Azione.\n\nImpostazioni → Siri e Comandi rapidi elenca ogni frase e mostra come configurare ogni controllo."
+          },
+          {
+            "key": "icloudSync",
+            "emoji": "☁️",
+            "title": "Sincronizzazione iCloud",
+            "subtitle": "Le tue abitudini su tutti i tuoi dispositivi",
+            "content": "Abitudini, categorie, progressi, luoghi e profilo si sincronizzano automaticamente tra i dispositivi collegati allo stesso account iCloud. Non c'è nulla da configurare, ed è gratuito.\n\nSu un nuovo dispositivo, o dopo una reinstallazione, Ritualist ti riaccoglie e ripristina le tue abitudini da iCloud. Puoi iniziare a usarlo mentre arrivano.\n\nImpostazioni → iCloud e backup mostra lo stato della sincronizzazione, con i passaggi per sistemare qualcosa che non va. Alcune cose restano su ogni dispositivo per scelta, come i risultati di Su di te e i consensi che hai dato."
+          },
+          {
+            "key": "appleWatch",
+            "emoji": "⌚",
+            "title": "Apple Watch",
+            "subtitle": "Segui le abitudini dal polso",
+            "content": "Apri Ritualist sul tuo Apple Watch per vedere le abitudini di oggi e i tuoi progressi.\n\n• Spunta le abitudini e cambia le quantità.\n• Imposta la misurazione di un'abitudine Misura con la Digital Crown.\n• Avvia e ferma digiuni e sessioni di respirazione. Prima accetta l'avviso sulla salute sull'iPhone.\n• Le abitudini compilate da Apple Health mostrano da dove arrivano i loro progressi.\n\nLe modifiche arrivano subito sull'iPhone quando sono collegati, e aspettano di poterlo fare quando non lo sono. Aggiungi nuove abitudini sull'iPhone."
+          },
+          {
+            "key": "widgets",
+            "emoji": "🧩",
+            "title": "Widget",
+            "subtitle": "I tuoi progressi a colpo d'occhio",
+            "content": "Aggiungi i widget di Ritualist alla schermata Home o alla schermata di blocco:\n\n• Oggi — spunta le abitudini di oggi con un tocco.\n• Digiuno — il tempo del tuo digiuno, la fase del corpo e cosa viene dopo.\n• Calendario abitudini — la cronologia dei completamenti.\n• Serie abitudini — le tue serie attuali.\n• Sfide — le tue sfide e cosa viene dopo.\n• Su di te — analisi dalle tue abitudini (Pro).\n\nTieni premuta un'area vuota della schermata Home, tocca Modifica → Aggiungi widget e cerca Ritualist."
+          },
+          {
+            "key": "dataManagement",
+            "emoji": "💾",
+            "title": "Backup e i tuoi dati",
+            "subtitle": "Salva, ripristina o elimina i tuoi dati",
+            "content": "Apri Impostazioni → iCloud e backup.\n\n• Salva backup salva abitudini, categorie, registrazioni e profilo in un file da tenere dove vuoi.\n• Ripristina backup riporta in Ritualist un backup salvato, sostituendo ciò che c'è ora (Pro).\n• Elimina tutti i dati rimuove definitivamente le tue abitudini e i tuoi dati da questo dispositivo e da iCloud. Non si può annullare, quindi salva prima un backup."
+          }
+        ]
+      },
+      {
+        "key": "personalize",
+        "color": "indigo",
+        "title": "Rendilo tuo",
+        "items": [
+          {
+            "key": "quickAccess",
+            "emoji": "📌",
+            "title": "Accesso rapido",
+            "subtitle": "Le tue scorciatoie in cima alle Impostazioni",
+            "content": "Accesso rapido, in cima alle Impostazioni, tiene a portata di mano le pagine che apri di più. Finché non lo cambi, Ritualist lo riempie in base a ciò che usi, come Gestisci abitudini, Su di te e la Guida al respiro.\n\nTocca Modifica per aggiungere, rimuovere o riordinare le scorciatoie. Usa i suggerimenti torna alle scelte di Ritualist."
+          },
+          {
+            "key": "assistants",
+            "emoji": "🤝",
+            "title": "Assistenti",
+            "subtitle": "Coach del digiuno, Guida al respiro e Motivazione quotidiana",
+            "content": "Impostazioni → Assistenti ha una pagina per ognuno degli aiutanti di Ritualist:\n\n• Coach del digiuno — guida ogni digiuno, fase per fase. Scegli il tuo coach, gli Avvisi di digiuno, i tuoi orari di sonno e i Digiuni oltre la mezzanotte.\n• Guida al respiro — dà il ritmo a ogni respiro. Scegli le sue vibrazioni e se attenua lo schermo.\n• Motivazione quotidiana — qualche parola adatta al punto della tua giornata, in una scheda nella Home.\n\nOgni pagina elenca le abitudini che aiuta, o ti propone di aggiungerne una."
+          },
+          {
+            "key": "customizeHome",
+            "emoji": "🏡",
+            "title": "Personalizza Home",
+            "subtitle": "Tieni solo ciò che ti serve",
+            "content": "Apri Impostazioni → Personalizza Home.\n\n• Schede — scegli quali schede mostra la Home, come il digiuno in corso, le sfide, I miei luoghi, le abitudini per i tuoi obiettivi e la scheda della motivazione.\n• Abitudini — gestisci le categorie, mostra o nascondi i Filtri di categoria e Raggruppa per momento.\n• Avanzate — azioni di scorrimento, icone sulle schede delle abitudini e i primi passi della Home.\n\nPuoi anche nascondere una scheda direttamente dalla Home con la sua ✕. La Home si apre sul calendario che hai scelto per ultimo."
+          },
+          {
+            "key": "preferences",
+            "emoji": "🎛️",
+            "title": "Generali",
+            "subtitle": "Aspetto, vibrazioni e lingua",
+            "content": "Apri Impostazioni → Generali per:\n\n• Scegliere l'aspetto Sistema, Chiaro o Scuro.\n• Attivare o disattivare il Feedback aptico.\n• Scegliere una lingua: inglese, tedesco, spagnolo, francese, italiano o rumeno. Riavvia Ritualist perché la modifica abbia effetto.\n\nIn Avanzate trovi il fuso orario, Mostra il logo dell'app e Ripristina impostazioni, che riporta preferenze e Home ai valori predefiniti. Le tue abitudini restano."
+          },
+          {
+            "key": "profile",
+            "emoji": "👤",
+            "title": "Il tuo profilo e i tuoi obiettivi",
+            "subtitle": "Nome, foto e ciò a cui stai lavorando",
+            "content": "Tocca il tuo profilo in cima alle Impostazioni per impostare nome e foto. Il tuo nome può comparire nei saluti e nelle notifiche.\n\nGenere e fascia d'età sono facoltativi. Personalizzano la Galleria delle abitudini e i consigli della Guida al digiuno, e le Impostazioni li chiedono finché mancano. I tuoi obiettivi, sotto il profilo, conserva gli obiettivi che hai scelto; la galleria e la Home li usano per suggerire abitudini.\n\nIl tuo profilo si sincronizza tramite il tuo database iCloud privato."
+          },
+          {
+            "key": "timezone",
+            "emoji": "🌍",
+            "title": "Viaggi e fusi orari",
+            "subtitle": "Giorni allineati anche in viaggio",
+            "content": "Ritualist decide quando inizia e finisce ogni giorno in base all'impostazione del fuso orario. In Impostazioni → Generali → Avanzate, scegli se seguire il luogo in cui ti trovi, mantenere il fuso orario di casa in viaggio o usarne uno specifico.\n\nQuando Ritualist nota un nuovo fuso orario, ti chiede cosa fare: Mantieni l'ora di casa durante il viaggio, oppure Ora vivo qui se ora vivi lì."
+          }
+        ]
+      },
+      {
+        "key": "tips",
+        "color": "purple",
+        "title": "Consigli e aiuto",
+        "items": [
+          {
+            "key": "startSmall",
+            "emoji": "🌱",
+            "title": "Inizia in piccolo",
+            "subtitle": "Prendi slancio un passo alla volta",
+            "content": "Inizia con 1–3 abitudini e padroneggiale prima di aggiungerne altre. Meglio completare con costanza poche abitudini che faticare con molte. Il successo costruisce la fiducia e la motivazione che servono per obiettivi più grandi."
+          },
+          {
+            "key": "habitStacking",
+            "emoji": "🧱",
+            "title": "Abbinare le abitudini",
+            "subtitle": "Collega le nuove abitudini a quelle che hai già",
+            "content": "Aggancia una nuova abitudine a una routine che hai già. Ad esempio: \"Dopo aver versato il caffè del mattino, medito per 5 minuti.\" La routine esistente diventa lo spunto, e la nuova abitudine è più facile da ricordare. Un promemoria a orario o di luogo può rafforzare il legame."
+          },
+          {
+            "key": "twoMinRule",
+            "emoji": "⏱️",
+            "title": "La regola dei 2 minuti",
+            "subtitle": "Rendi le abitudini facili da iniziare",
+            "content": "Riduci qualsiasi abitudine a qualcosa che puoi fare in 2 minuti o meno. \"Leggere 30 minuti\" diventa \"Leggere una pagina\". Una volta iniziato, spesso continui. Con un'abitudine Conteggio, parti da un obiettivo piccolo e alzalo dopo, oppure dalle un obiettivo settimanale, come 3 giorni a settimana, invece di ogni giorno."
+          },
+          {
+            "key": "helpAndFeedback",
+            "emoji": "💬",
+            "title": "Aiuto, feedback e cosa arriva",
+            "subtitle": "Trova risposte e dai forma a Ritualist",
+            "content": "Nelle Impostazioni, alla voce Info:\n\n• Aiuto — questa Guida, le FAQ e l'Assistenza, per scrivere al team di Ritualist.\n• Novità — i punti salienti di ogni versione.\n• Richiedi una funzione — scopri cosa è in programma, vota ciò che vuoi di più o proponi un'idea tua."
           }
         ]
       }
@@ -2154,7 +2596,7 @@
             "emoji": "🎛️",
             "title": "General",
             "subtitle": "Aspect, vibrații și limbă",
-            "content": "Deschide Setări → General ca să:\n\n• Alegi aspectul Sistem, Luminos sau Întunecat.\n• Pornești sau oprești feedbackul haptic.\n• Alegi o limbă: engleză, germană, spaniolă, franceză sau română. Repornește Ritualist ca schimbarea să aibă efect.\n\nLa Avansat găsești fusul orar, Afișează logoul și Resetează setările, care readuce preferințele și ecranul Acasă la valorile implicite. Obiceiurile rămân."
+            "content": "Deschide Setări → General ca să:\n\n• Alegi aspectul Sistem, Luminos sau Întunecat.\n• Pornești sau oprești feedbackul haptic.\n• Alegi o limbă: engleză, germană, spaniolă, franceză, italiană sau română. Repornește Ritualist ca schimbarea să aibă efect.\n\nLa Avansat găsești fusul orar, Afișează logoul și Resetează setările, care readuce preferințele și ecranul Acasă la valorile implicite. Obiceiurile rămân."
           },
           {
             "key": "profile",

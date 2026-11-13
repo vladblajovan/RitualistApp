@@ -6,7 +6,7 @@ users only ever see the latest content.
 
 ## How to record a revision
 
-1. Edit `content.json` in **all five languages** (en, de, es, fr, ro). Every
+1. Edit `content.json` in **all six languages** (en, de, es, fr, it, ro). Every
    language must have the same sections and items, in the same order, with the
    same `key`s.
 2. Add a new entry at the top of this file:
@@ -25,6 +25,18 @@ Versioning:
 
 Item `key`s are stable identifiers. Keep a key when an item is reworded; use a
 new key when an item is replaced by something different.
+
+## [3.2.0] - 2026-11-13
+
+Checked against Ritualist 2.1 (main, Italian added to the app).
+
+### Added
+
+- Italian (`it`), every section and item, with each button named as the app's Italian names it; Italian in the guide's language menu.
+
+### Changed
+
+- `personalize/preferences`: Italian is among the languages to pick, in every language.
 
 ## [3.1.0] - 2026-11-09
 

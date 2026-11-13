@@ -10,7 +10,7 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const guideDir = join(root, 'app', 'user-guide');
-const LANGS = ['en', 'de', 'es', 'fr', 'ro'];
+const LANGS = ['en', 'de', 'es', 'fr', 'it', 'ro'];
 const errors = [];
 
 const content = JSON.parse(readFileSync(join(guideDir, 'content.json'), 'utf8'));

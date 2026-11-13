@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import content from './content.json';
 
-type Lang = 'en' | 'de' | 'es' | 'fr' | 'ro';
-const SUPPORTED_LANGS: Lang[] = ['en', 'de', 'es', 'fr', 'ro'];
+type Lang = 'en' | 'de' | 'es' | 'fr' | 'it' | 'ro';
+const SUPPORTED_LANGS: Lang[] = ['en', 'de', 'es', 'fr', 'it', 'ro'];
 const LANG_LABELS: Record<Lang, string> = {
   en: 'English',
   de: 'Deutsch',
   es: 'Español',
   fr: 'Français',
+  it: 'Italiano',
   ro: 'Română',
 };
 
