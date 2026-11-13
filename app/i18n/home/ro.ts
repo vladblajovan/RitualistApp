@@ -168,9 +168,9 @@ const ro: HomeCopy = {
     ],
     bestValue: 'Cel mai bun preț',
     plans: {
-      annual: { name: 'Anual', price: '49,99 $', cadence: 'pe an', note: '1 săptămână gratuită pentru abonamentele noi' },
+      annual: { name: 'Anual', price: '39,99 $', cadence: 'pe an', note: '1 săptămână gratuită pentru abonamentele noi' },
       monthly: { name: 'Lunar', price: '9,99 $', cadence: 'pe lună', note: 'Anulezi oricând' },
-      lifetime: { name: 'Pe viață', price: '99,99 $', cadence: 'o singură dată', note: 'Plătești o dată, Pro pentru totdeauna' },
+      lifetime: { name: 'Pe viață', price: '69,99 $', cadence: 'o singură dată', note: 'Plătești o dată, Pro pentru totdeauna' },
     },
   },
   faq: {

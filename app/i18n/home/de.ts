@@ -168,9 +168,9 @@ const de: HomeCopy = {
     ],
     bestValue: 'Bester Wert',
     plans: {
-      annual: { name: 'Jährlich', price: '49,99 $', cadence: 'pro Jahr', note: '1 Woche gratis für Neuabonnenten' },
+      annual: { name: 'Jährlich', price: '39,99 $', cadence: 'pro Jahr', note: '1 Woche gratis für Neuabonnenten' },
       monthly: { name: 'Monatlich', price: '9,99 $', cadence: 'pro Monat', note: 'Jederzeit kündbar' },
-      lifetime: { name: 'Lebenslang', price: '99,99 $', cadence: 'einmalig', note: 'Einmal zahlen, Pro für immer' },
+      lifetime: { name: 'Lebenslang', price: '69,99 $', cadence: 'einmalig', note: 'Einmal zahlen, Pro für immer' },
     },
   },
   faq: {

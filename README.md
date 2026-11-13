@@ -49,7 +49,7 @@ The website accurately reflects the app's pricing:
 - **Free:** Up to 5 habits with basic features
 - **Weekly:** $2.99/week
 - **Monthly:** $9.99/month
-- **Annual:** $49.99/year (Most Popular)
+- **Annual:** $39.99/year (Most Popular)
 
 ## License
 

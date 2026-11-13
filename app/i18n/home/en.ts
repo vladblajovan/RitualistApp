@@ -169,9 +169,9 @@ const en = {
     ],
     bestValue: 'Best value',
     plans: {
-      annual: { name: 'Annual', price: '$49.99', cadence: 'a year', note: '1 week free for new subscribers' },
+      annual: { name: 'Annual', price: '$39.99', cadence: 'a year', note: '1 week free for new subscribers' },
       monthly: { name: 'Monthly', price: '$9.99', cadence: 'a month', note: 'Cancel anytime' },
-      lifetime: { name: 'Lifetime', price: '$99.99', cadence: 'once', note: 'Pay once, Pro for good' },
+      lifetime: { name: 'Lifetime', price: '$69.99', cadence: 'once', note: 'Pay once, Pro for good' },
     },
   },
   faq: {

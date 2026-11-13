@@ -128,9 +128,9 @@ function softwareApplicationLd(t: HomeCopy) {
     screenshot: 'https://vladblajovan.github.io/RitualistApp/screenshots/v2/home.webp',
     offers: [
       { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Pro Annual', price: '49.99', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Pro Annual', price: '39.99', priceCurrency: 'USD' },
       { '@type': 'Offer', name: 'Pro Monthly', price: '9.99', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Pro Lifetime', price: '99.99', priceCurrency: 'USD' },
+      { '@type': 'Offer', name: 'Pro Lifetime', price: '69.99', priceCurrency: 'USD' },
     ],
   };
 }
